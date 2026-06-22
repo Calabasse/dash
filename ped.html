@@ -101,12 +101,6 @@
       </label>
       <label id="ngdlScaleWrap" style="display:none">ng/dL per mg
         <input type="number" id="ngdlScale" value="6" step="0.5" style="width:60px" onchange="redraw()"></label>
-      <label id="basisWrap">Index basis
-        <select id="indexBasis" onchange="redraw()">
-          <option value="rat">Rat A:A (Hershberger)</option>
-          <option value="arbind">AR binding affinity</option>
-          <option value="custom">Custom / n=1</option>
-        </select></label>
       <label>Tail days <input type="number" id="tail" value="28" min="0" max="120" style="width:60px" onchange="redraw()"></label>
       <label><input type="checkbox" id="showTotal" checked onchange="redraw()"> show total</label>
     </div>
@@ -216,8 +210,6 @@
       <button class="mini" onclick="document.getElementById('importFile').click()">⤒ import JSON</button>
       <input type="file" id="importFile" style="display:none" accept="application/json" onchange="importData(event)">
       <button class="mini" onclick="exportForAPE()">⤓ export for APE</button>
-      <button class="mini" onclick="document.getElementById('idxFile').click()">⤒ import n=1 index</button>
-      <input type="file" id="idxFile" style="display:none" accept="application/json" onchange="importIndex(event)">
       <button class="mini danger" onclick="clearAll()">clear &amp; start over</button>
     </div>
     <div class="note">“Save to file” downloads a readable plain-text file (never uploaded). JSON / APE export also available. “Load” reads a saved file back in. Your cycle auto-saves in this browser between visits.</div>
@@ -416,7 +408,7 @@ function redraw(){
   const cal = calibrationInfo(series, days, t0);
   const isIndex = (units==='anabolic'||units==='androgen');
   document.getElementById('ngdlScaleWrap').style.display = (units==='ngdl')?'inline-flex':'none';
-  const basis = document.getElementById('indexBasis').value;
+  const basis = 'rat';   // index basis selector removed; default to rat A:A
   const ngdlFactor = (units==='ngdl') ? (cal.factor || (+document.getElementById('ngdlScale').value||6)) : 1;
   document.getElementById('calFactor').textContent =
     (units==='ngdl' && cal.factor) ? `calibrated: ${cal.factor.toFixed(1)} ng/dL per model-mg` : '';
@@ -513,17 +505,11 @@ function redraw(){
       ctx.beginPath();ctx.arc(x,y,6,0,7);ctx.fill();
       ctx.fillText(p.val+" ng/dL", x+10, y+6); }); }
 
-  // legend (+ mechanism badges: E=aromatizes, P=progestogenic, D=DHT/5α)
-  const mech=s=>{ const t=[];
-    if(s.arom>0) t.push(`<b title="Estrogenic 0-10" style="color:#6aa9ff">E${s.arom}</b>`);
-    if(s.prog>0) t.push(`<b title="Progestogenic 0-10" style="color:#f472b6">P${s.prog}</b>`);
-    if(s.dht>0)  t.push(`<b title="Androgenic 0-10" style="color:#f5c451">A${s.dht}</b>`);
-    return t.length?(' '+t.join(' ')):''; };
+  // legend
   document.getElementById('legend').innerHTML =
-    plot.map(p=>`<span><span class="swatch" style="background:${p.color}"></span>${p.label}${mech(p.src)}</span>`).join('')
+    plot.map(p=>`<span><span class="swatch" style="background:${p.color}"></span>${p.label}</span>`).join('')
     + (showTotal?`<span><span class="swatch" style="background:#fff"></span>Total</span>`:'')
-    + (units==='ngdl'&&cal.points.length?`<span><span class="swatch" style="background:#f5c451"></span>bloodwork</span>`:'')
-    + `<span style="color:var(--dim)">E estrogenic · P progest · A androgenic (0-10)</span>`;
+    + (units==='ngdl'&&cal.points.length?`<span><span class="swatch" style="background:#f5c451"></span>bloodwork</span>`:'');
 
   renderAncTimeline();
 }
@@ -926,12 +912,6 @@ function renderAncTimeline(){
 }
 
 // ============================ APE EXPORT ============================
-function importIndex(e){ const f=e.target.files[0]; if(!f) return; const r=new FileReader();
-  r.onload=()=>{ try{ const j=JSON.parse(r.result); const map=j.coefficients||j;
-    state.customIndex=map; save();
-    document.getElementById('units').value='anabolic'; document.getElementById('indexBasis').value='custom';
-    redraw(); alert('Loaded n=1 index for '+Object.keys(map).length+' compounds. Units→Anabolic, basis→Custom.');
-  }catch(err){ alert('bad index file'); } }; r.readAsText(f); }
 
 function exportForAPE(){
   const payload={ exported_at:new Date().toISOString(),
@@ -945,6 +925,17 @@ function exportForAPE(){
 function renderAll(){ renderProtocol(); renderLib(); renderPresets(); renderCycles();
   renderCalibrations(); renderAnc(); redraw(); }
 renderAll();
+
+// ---- panel order (by h2 title; DOM-reorder so HTML source order doesn't matter) ----
+(function reorderPanels(){
+  const order=['your data','saved cycles','cycle / protocol','estimated serum',
+    'supply calculator','ancillaries','bloodwork','compound library','dropdown presets'];
+  const wrap=document.querySelector('.wrap');
+  const rank=p=>{ const t=((p.querySelector('h2')||{}).textContent||'').toLowerCase();
+    const i=order.findIndex(o=>t.includes(o)); return i<0?999:i; };
+  [...wrap.querySelectorAll(':scope > .panel')].sort((a,b)=>rank(a)-rank(b))
+    .forEach(p=>wrap.appendChild(p));
+})();
 </script>
 </body>
 </html>
