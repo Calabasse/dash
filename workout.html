@@ -237,7 +237,11 @@
     last==null||prop==null ? '' :
     prop>last ? 'color:var(--up)' : prop<last ? 'color:var(--down)' : '';
 
-  const setVol = s => (s.lbs!=null && s.reps!=null) ? s.lbs*s.reps : 0;
+  // reps may be a number (last) or a range string like "11-15" (proposed) — use the midpoint
+  const repsNum = r => { if(r==null) return null; if(typeof r==='number') return r;
+    const m=String(r).match(/(\d+)(?:\s*[-–]\s*(\d+))?/); if(!m) return null;
+    return m[2]? (+m[1]+ +m[2])/2 : +m[1]; };
+  const setVol = s => { const r=repsNum(s.reps); return (s.lbs!=null && r!=null) ? s.lbs*r : 0; };
   const exVol = (ex,key) => ex.sets.reduce((a,s)=>a+setVol(s[key]),0);
 
   function volBars(ex){
