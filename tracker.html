@@ -68,6 +68,18 @@
   <h1>PED Cycle Tool <span style="color:var(--muted);font-weight:400;font-size:15px">+ Serum Estimator</span></h1>
   <div class="sub">Build your own cycle and estimate serum/active load — full editor, compound library, bloodwork panel, and supply calculator. <b>Nothing is uploaded</b>: your data stays in your browser and in a plain-text file you save to your own device. Estimates only — not medical advice; confirm with bloodwork.</div>
 
+  <!-- ===================== PROTOCOL ===================== -->
+  <div class="panel">
+    <h2>Cycle / Protocol <button class="mini primary" onclick="addProtoRow()">+ add compound</button></h2>
+    <table id="protoTable">
+      <thead><tr>
+        <th>Compound</th><th>Conc (mg/ml)</th><th>Dose (mg)</th><th>Frequency</th>
+        <th>Start</th><th>End</th><th>ml/inj</th><th></th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
   <!-- ===================== CHART ===================== -->
   <div class="panel">
     <h2>Estimated Serum / Active Load <button class="mini" onclick="redraw()">↻ refresh</button></h2>
@@ -116,18 +128,6 @@
     </div>
     <div id="calList"></div>
     <div class="note">Gyno-risk markers (E2 / Prolactin / Progesterone) are flagged when high. <b>Tren doesn't aromatize</b> — its gyno risk is progestogenic + prolactin, not E2, and a progesterone serum test won't reflect it. Only <b>Total-T</b> scales the serum curve (Tren/Deca/EQ don't assay as testosterone). Switch Units → "ng/dL" to view the calibrated curve.</div>
-  </div>
-
-  <!-- ===================== PROTOCOL ===================== -->
-  <div class="panel">
-    <h2>Cycle / Protocol <button class="mini primary" onclick="addProtoRow()">+ add compound</button></h2>
-    <table id="protoTable">
-      <thead><tr>
-        <th>Compound</th><th>Conc (mg/ml)</th><th>Dose (mg)</th><th>Frequency</th>
-        <th>Start</th><th>End</th><th>ml/inj</th><th></th>
-      </tr></thead>
-      <tbody></tbody>
-    </table>
   </div>
 
   <!-- ===================== SUPPLY CALCULATOR ===================== -->
