@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Workout Card — Last vs Proposed</title>
+<style>
+  :root {
+    --bg: #000;
+    --card: #0a0a0a;
+    --row-alt: #131313;
+    --line: #222;
+    --vline: #2a2a2a;
+    --text: #f2f2f2;
+    --head: #ffffff;
+    --muted: #8a8a8a;
+    --dim: #666;
+    --accent: #4ade80;
+    --gold: #f5c451;
+    --up: #4ade80;
+    --down: #f87171;
+    --same: #777;
+    --pad: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                 "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 15px; line-height: 1.3;
+  }
+  .card { max-width: 560px; margin: 0 auto; background: var(--card); padding: var(--pad); }
+
+  /* density toggle */
+  .density { display:flex; justify-content:flex-end; gap:0; margin-bottom:6px; }
+  .density button { background:#161616; color:var(--muted); border:1px solid var(--line);
+    font-size:11px; padding:3px 10px; cursor:pointer; }
+  .density button:first-child { border-radius:5px 0 0 5px; }
+  .density button:last-child { border-radius:0 5px 5px 0; border-left:0; }
+  .density button.on { background:var(--accent); color:#000; font-weight:600; border-color:var(--accent); }
+
+  body.compact table.sets td { padding: 2px 5px; font-size: 12px; }
+  body.compact table.sets th { padding: 1px 5px; }
+  body.compact .vol { margin: 1px 0 5px; }
+  body.compact .ex-head { padding: 5px 0 4px; }
+  body.compact h1.title { margin: 8px 0 3px; }
+  body.compact .delta { font-size: 9px; }
+  body.compact .llm { padding:6px 8px; margin:5px 0; }
+
+  /* header */
+  .head { display: flex; align-items: center; gap: 10px; }
+  .avatar { width: 34px; height: 34px; border-radius: 50%;
+    background: linear-gradient(135deg,#2b6cb0,#1a365d); flex: 0 0 auto; }
+  .head .who { display: flex; flex-direction: column; }
+  .head .name { font-weight: 600; font-size: 15px; }
+  .head .when { color: var(--muted); font-size: 13px; }
+  h1.title { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin: 12px 0 4px; }
+  .stats { color: var(--muted); font-size: 13px; display: flex; gap: 6px; margin-bottom: 6px; }
+  .stats .dot { color: var(--dim); }
+
+  .legend { display:flex; gap:14px; font-size:11px; color:var(--muted);
+    border-top:1px solid var(--line); padding-top:8px; margin-top:4px; flex-wrap:wrap; align-items:center; }
+  .legend span { display:inline-flex; align-items:center; gap:4px; }
+
+  /* exercise */
+  .ex { border-top: 1px solid var(--line); margin-top: 6px; }
+  .ex-head { position: sticky; top: 0; z-index: 5; background: var(--card);
+    display: flex; align-items: center; gap: 10px; padding: 8px 0 6px; }
+  .ex-icon { width: 28px; height: 28px; border-radius: 6px; background:#1c1c1c;
+    flex:0 0 auto; display:flex; align-items:center; justify-content:center; font-size:15px; }
+  .ex-name { font-weight: 600; font-size: 15px; flex: 1 1 auto; }
+  .ex-rest { color: var(--muted); font-size: 12px; white-space: nowrap; }
+
+  /* volume bars */
+  .vol { display:grid; grid-template-columns: 42px 1fr 70px; align-items:center;
+    gap:8px; margin:2px 0 8px; font-size:11px; }
+  .vol .vlabel { color: var(--dim); text-align:right; }
+  .vol .vbar { height:7px; border-radius:4px; background:#1a1a1a; overflow:hidden; }
+  .vol .vbar i { display:block; height:100%; border-radius:4px; }
+  .vol .vbar.last i { background:#3a3a3a; }
+  .vol .vbar.prop i { background:var(--accent); opacity:.85; }
+  .vol .vval { font-variant-numeric: tabular-nums; }
+  .vol .vdelta { font-weight:600; }
+
+  /* LLM blocks */
+  .llm { background:#101010; border:1px solid var(--line); border-left:2px solid var(--accent);
+    border-radius:6px; padding:8px 10px; margin:6px 0; font-size:12.5px; line-height:1.5; }
+  .llm.assess { border-left-color:#6aa9ff; }
+  .llm .lh { display:flex; align-items:center; gap:6px; font-size:10px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--muted); margin-bottom:3px; font-weight:600; }
+  .llm .lh .ai { color:var(--accent); }
+  .llm.assess .lh .ai { color:#6aa9ff; }
+  .llm p { margin:0; color:#cfcfcf; }
+  .llm b { color:var(--text); }
+
+  /* collapsible cues */
+  .cues-wrap { margin:0 0 8px; }
+  .cues-toggle { background:none; border:none; color:var(--muted); font-size:12px;
+    cursor:pointer; padding:2px 0; display:flex; align-items:center; gap:6px; }
+  .cues-toggle .ck { color:var(--accent); font-weight:700; }
+  .cues-toggle .chev { transition:transform .15s; font-size:10px; }
+  .cues-wrap.open .cues-toggle .chev { transform:rotate(90deg); }
+  .cues { color: var(--text); font-size: 13px; line-height: 1.5; margin-top:5px; display:none; }
+  .cues-wrap.open .cues { display:block; }
+  .cues .ck { color: var(--accent); font-weight: 700; margin-right: 4px; }
+  .cues .sep { display:inline-block; width:8px; }
+
+  /* sets table */
+  .tscroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  table.sets { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; min-width: 460px; }
+  table.sets th { color: var(--head); font-weight: 500; font-size: 11px; padding: 2px 5px; text-align: right; }
+  table.sets th.setcol, table.sets td.setcol { text-align: center; width: 38px; }
+  table.sets th.grp { text-align: center; font-size: 10px; letter-spacing: .07em;
+    color: var(--head); text-transform: uppercase; padding-bottom: 1px; font-weight:600; }
+  table.sets td { padding: 4px 5px; font-size: 13px; text-align: right; }
+  table.sets tbody tr:nth-child(odd) { background: var(--row-alt); }
+  .grpdiv { border-left: 1px solid var(--vline); }
+  .rpe { font-weight:600; }
+  .delta { font-size:10px; font-weight:700; margin-left:3px; }
+  .up { color: var(--up); } .down { color: var(--down); } .same { color: var(--same); } .neu { color: var(--muted); }
+  .dim { color: var(--dim); }
+
+  /* set-type badges */
+  .badge { font-size:10px; font-weight:700; padding:1px 4px; border-radius:3px; line-height:1.4; }
+  .badge.top { background:var(--gold); color:#000; }
+  .tag { font-size:14px; line-height:1; }
+
+  /* session nav */
+  .nav { display:flex; align-items:center; justify-content:space-between; gap:8px; margin:8px 0 2px; }
+  .nav button { background:#161616; color:var(--text); border:1px solid var(--line);
+    border-radius:6px; font-size:12px; padding:5px 12px; cursor:pointer; }
+  .nav button:disabled { opacity:.32; cursor:default; }
+  .nav .dots { display:flex; gap:7px; align-items:center; }
+  .nav .dot2 { width:9px; height:9px; border-radius:50%; background:#2c2c2c; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; font-size:0; }
+  .nav .dot2.on { background:var(--accent); transform:scale(1.15); }
+  .when2 { color:var(--muted); font-size:13px; margin:2px 0 2px; }
+  .when2 b { color:var(--text); }
+  .when2 .since { color:var(--accent); }
+
+  /* overall session summary */
+  .summary { background:#0e0e0e; border:1px solid var(--line); border-radius:8px;
+    padding:11px 13px; margin:8px 0 6px; }
+  .summary .sh { display:flex; align-items:center; gap:8px; margin-bottom:5px; flex-wrap:wrap; }
+  .summary .pill { font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+    padding:2px 7px; border-radius:4px; }
+  .summary .pill.progress { background:var(--accent); color:#000; }
+  .summary .pill.hold { background:var(--gold); color:#000; }
+  .summary .pill.review { background:#6aa9ff; color:#000; }
+  .summary .headline { font-weight:600; font-size:14px; }
+  .summary .row { font-size:12.5px; line-height:1.5; color:#cfcfcf; margin-top:5px; }
+  .summary .row b { color:var(--text); }
+  .summary .lab { color:var(--muted); font-size:10px; text-transform:uppercase;
+    letter-spacing:.07em; font-weight:700; margin-right:5px; }
+  body.compact .summary { padding:8px 10px; }
+
+  /* mobile: stack last above proposed */
+  @media (max-width: 460px) {
+    .stackbtn { display:inline-flex !important; }
+    body.stack table.sets { min-width:0; }
+    body.stack .grp.lastgrp, body.stack .sub-last { display:none; }
+    body.stack .blk-last { display:none; }
+    body.stack table.sets .grpdiv { border-left:0; }
+  }
+</style>
+  <style>
+    #toolbar{max-width:560px;margin:0 auto 0;display:flex;gap:8px;align-items:center;padding:10px 14px 0}
+    #toolbar button{background:#161616;color:#f2f2f2;border:1px solid #2a2a2a;border-radius:7px;font-size:13px;padding:7px 12px;cursor:pointer}
+    #toolbar button.go{background:#4ade80;color:#000;font-weight:600;border-color:#4ade80}
+    #toolbar button:disabled{opacity:.5;cursor:default}
+    #tbStatus{font-size:11px;color:#8a8a8a;margin-left:auto}
+    #analysis{max-width:560px;margin:10px auto 0;padding:0 14px}
+    #analysis .box{background:#0e1410;border:1px solid #234023;border-left:3px solid #4ade80;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.6;white-space:pre-wrap}
+  </style>
+</head>
+<body>
+<a href="index.html" style="position:fixed;top:8px;right:10px;z-index:9999;font:600 12px -apple-system,sans-serif;color:#9ecbff;background:rgba(22,27,34,.85);border:1px solid #2a2f37;border-radius:6px;padding:4px 9px;text-decoration:none">← Home</a>
+  <div id="toolbar">
+    <button class="go" id="btnSync" onclick="loadFromVOLM()">⟳ Load from VOLM</button>
+    <button id="btnGPT" onclick="handoff('chatgpt')">⤳ Ask ChatGPT</button>
+    <button id="btnClaude" onclick="handoff('claude')">⤳ Ask Claude</button>
+    <span id="tbStatus"></span>
+  </div>
+  <div class="card" id="card"></div>
+  <div id="analysis"></div>
+
+  <script src="workout-card.data.js"></script>
+  <script>
+  // ---- data: proposed values + LLM rationale are produced by an LLM from the last workout ----
+  const program = window.PROGRAM;
+  if(!program || !program.sessions){ document.getElementById('card').innerHTML='<p style="padding:20px;color:#f87171">workout-card.data.js not loaded — run tools/build_card_data.py</p>'; throw new Error('no PROGRAM'); }
+
+  // ---- helpers ----
+  const esc = s => String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const fmt = v => v===null||v===undefined ? '<span class="dim">–</span>' : v;
+
+  function typeCell(t){
+    if(t==="W") return '<span class="tag" title="Warm-up">🔥</span>';
+    if(t==="T") return '<span class="badge top" title="Top Set">TOP</span>';
+    return `<span class="dim">${esc(t)}</span>`;
+  }
+
+  function rpeColor(r){
+    if(r==null) return 'var(--dim)';
+    const t = Math.max(0, Math.min(1, (r-5)/5));
+    const hue = 150 - t*150;
+    return `hsl(${hue} 70% 60%)`;
+  }
+  function rpeCell(r){
+    if(r==null) return '<span class="dim">–</span>';
+    return `<span class="rpe" style="color:${rpeColor(r)}">${r}</span>`;
+  }
+  // proposed RPE with directional (neutral) arrow
+  function rpePropCell(last,prop){
+    if(prop==null) return '<span class="dim">–</span>';
+    let d='';
+    if(last!=null){
+      const diff=+(prop-last).toFixed(1);
+      if(diff>0) d=`<span class="delta neu" title="+${diff} RPE vs last">▲${diff}</span>`;
+      else if(diff<0) d=`<span class="delta neu" title="${diff} RPE vs last">▼${Math.abs(diff)}</span>`;
+      else d=`<span class="delta same">·</span>`;
+    }
+    return `<span class="rpe" style="color:${rpeColor(prop)}">${prop}</span>${d}`;
+  }
+
+  function deltaTag(last, prop){
+    if(last==null||prop==null) return '';
+    if(typeof prop!=='number'||typeof last!=='number') return ''; // rep ranges are strings
+    const d = +(prop-last).toFixed(1);
+    if(d>0) return `<span class="delta up" title="+${d} vs last">▲${d}</span>`;
+    if(d<0) return `<span class="delta down" title="${d} vs last">▼${Math.abs(d)}</span>`;
+    return `<span class="delta same">·</span>`;
+  }
+  const propColor = (last,prop) =>
+    last==null||prop==null ? '' :
+    prop>last ? 'color:var(--up)' : prop<last ? 'color:var(--down)' : '';
+
+  const setVol = s => (s.lbs!=null && s.reps!=null) ? s.lbs*s.reps : 0;
+  const exVol = (ex,key) => ex.sets.reduce((a,s)=>a+setVol(s[key]),0);
+
+  function volBars(ex){
+    const L=exVol(ex,'last'), P=exVol(ex,'prop');
+    if(L===0 && P===0) return '';
+    const max=Math.max(L,P,1), pct=v=>Math.round(v/max*100);
+    const d=L? Math.round((P-L)/L*100):null;
+    const dStr=d===null?'':`<span class="vdelta ${d>0?'up':d<0?'down':'same'}">${d>0?'+':''}${d}%</span>`;
+    const k=n=>n>=1000?(n/1000).toFixed(1)+'k':n;
+    return `
+      <div class="vol"><span class="vlabel">last</span>
+        <span class="vbar last"><i style="width:${pct(L)}%"></i></span>
+        <span class="vval dim">${k(L)}</span></div>
+      <div class="vol"><span class="vlabel">prop</span>
+        <span class="vbar prop"><i style="width:${pct(P)}%"></i></span>
+        <span class="vval">${k(P)} ${dStr}</span></div>`;
+  }
+
+  let cueId=0;
+  function cuesHTML(cues){
+    if(!cues.length) return '';
+    const id='cues'+(cueId++);
+    const body=cues.map(c=>`<span><span class="ck">✓</span>${esc(c)}</span>`).join('<span class="sep"></span>');
+    return `<div class="cues-wrap" id="${id}">
+      <button class="cues-toggle" onclick="document.getElementById('${id}').classList.toggle('open')">
+        <span class="chev">▶</span><span class="ck">✓</span>${cues.length} cues</button>
+      <div class="cues">${body}</div></div>`;
+  }
+
+  function llmHTML(ex){
+    let h='';
+    if(ex.assess) h+=`<div class="llm assess"><div class="lh"><span class="ai">✦</span>Last workout · assessment</div><p>${ex.assess}</p></div>`;
+    if(ex.rationale) h+=`<div class="llm"><div class="lh"><span class="ai">✦</span>Proposed · adjustments</div><p>${ex.rationale}</p></div>`;
+    return h;
+  }
+
+  function setsTable(ex){
+    const showLbs=!ex.noWeight;
+    const grpSpan=showLbs?3:2;
+    const head=`
+      <thead>
+        <tr>
+          <th class="setcol" rowspan="2">set</th>
+          <th class="grp lastgrp" colspan="${grpSpan}">Last</th>
+          <th class="grp grpdiv" colspan="${grpSpan}">Proposed</th>
+        </tr>
+        <tr>
+          ${showLbs?'<th class="sub-last">lbs</th>':''}<th class="sub-last">reps</th><th class="sub-last">RPE</th>
+          ${showLbs?'<th class="grpdiv">lbs</th>':'<th class="grpdiv">reps</th>'}
+          ${showLbs?'<th>reps</th>':''}<th>RPE</th>
+        </tr>
+      </thead>`;
+    const rows=ex.sets.map(s=>{
+      const L=s.last,P=s.prop;
+      const lbsLast=showLbs?`<td class="blk-last">${fmt(L.lbs)}</td>`:'';
+      const repsLast=`<td class="blk-last">${fmt(L.reps)}</td>`;
+      const rpeLast=`<td class="blk-last">${rpeCell(L.rpe)}</td>`;
+      const lbsProp=showLbs?`<td class="grpdiv" style="${propColor(L.lbs,P.lbs)}">${fmt(P.lbs)}${deltaTag(L.lbs,P.lbs)}</td>`:'';
+      const repsProp=showLbs
+        ?`<td style="${propColor(L.reps,P.reps)}">${fmt(P.reps)}${deltaTag(L.reps,P.reps)}</td>`
+        :`<td class="grpdiv" style="${propColor(L.reps,P.reps)}">${fmt(P.reps)}${deltaTag(L.reps,P.reps)}</td>`;
+      return `<tr>
+        <td class="setcol">${typeCell(s.type)}</td>
+        ${lbsLast}${repsLast}${rpeLast}
+        ${lbsProp}${repsProp}<td>${rpePropCell(L.rpe,P.rpe)}</td>
+      </tr>`;
+    }).join('');
+    return `<div class="tscroll"><table class="sets">${head}<tbody>${rows}</tbody></table></div>`;
+  }
+
+  function exHTML(ex){
+    return `<div class="ex">
+      <div class="ex-head">
+        <div class="ex-icon">${ex.icon||''}</div>
+        <div class="ex-name">${esc(ex.name)}</div>
+        ${ex.rest?`<div class="ex-rest">⏱ ${ex.rest}</div>`:''}
+      </div>
+      ${volBars(ex)}
+      ${llmHTML(ex)}
+      ${cuesHTML(ex.cues||[])}
+      ${setsTable(ex)}
+    </div>`;
+  }
+
+  // ---- date helpers ----
+  const DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const parseD = s => { const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); };
+  const formatDate = s => { const d=parseD(s); return `${DOW[d.getDay()]}, ${MON[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`; };
+  const daysSince = ses => ses.prevDate ? Math.round((parseD(ses.date)-parseD(ses.prevDate))/86400000) : null;
+
+  function dotsHTML(idx){
+    return program.sessions.map((s,i)=>
+      `<span class="dot2 ${i===idx?'on':''}" onclick="goTo(${i})" title="Day ${s.day} · ${formatDate(s.date)}"></span>`
+    ).join('');
+  }
+
+  function summaryHTML(sm){
+    if(!sm) return '';
+    const cls = sm.status||'progress';
+    const label = cls==='progress'?'Progress':cls==='hold'?'Hold / Maintain':'Review';
+    return `<div class="summary">
+      <div class="sh"><span class="pill ${cls}">${label}</span><span class="headline">${sm.headline}</span></div>
+      <div class="row"><span class="lab">Last</span>${sm.assess}</div>
+      <div class="row"><span class="lab">Next</span>${sm.prescription}</div>
+    </div>`;
+  }
+
+  function render(s, idx, total){
+    const compact = document.body.classList.contains('compact');
+    const stacked = document.body.classList.contains('stack');
+    const ds = daysSince(s);
+    return `
+      <div class="density">
+        <button id="d-comf" class="${compact?'':'on'}" onclick="setDensity('comfortable')">Comfortable</button>
+        <button id="d-comp" class="${compact?'on':''}" onclick="setDensity('compact')">Compact</button>
+        <button id="d-stack" class="stackbtn ${stacked?'on':''}" style="display:none;margin-left:8px;border-radius:5px;border-left:1px solid var(--line)" onclick="toggleStack()">Stack ▤</button>
+      </div>
+      <div class="head">
+        <div class="avatar"></div>
+        <div class="who"><span class="name">${esc(program.author)}</span>
+          <span class="when">Workout history · ${idx+1} of ${total}</span></div>
+      </div>
+      <div class="nav">
+        <button onclick="goTo(${idx+1})" ${idx>=total-1?'disabled':''}>◀ Older</button>
+        <div class="dots">${dotsHTML(idx)}</div>
+        <button onclick="goTo(${idx-1})" ${idx<=0?'disabled':''}>Newer ▶</button>
+      </div>
+      <h1 class="title">${esc(s.title)}</h1>
+      <div class="when2"><b>${formatDate(s.date)}</b>${ds!=null?` · <span class="since">${ds} days since last Day ${esc(s.day)}</span>`:''}</div>
+      <div class="stats">${s.stats.map((x,i)=>(i?'<span class="dot">·</span>':'')+`<span>${esc(x)}</span>`).join('')}</div>
+      ${summaryHTML(s.summary)}
+      <div class="legend">
+        <span>🔥 Warm-up</span><span><b class="badge top">TOP</b> Top Set</span>
+        <span><b class="up">▲</b> up</span><span><b class="down">▼</b> down</span>
+        <span>✦ LLM</span>
+        <span style="color:hsl(150 70% 60%)">RPE 6</span>→<span style="color:hsl(0 70% 60%)">10</span>
+      </div>
+      ${s.exercises.map(exHTML).join('')}
+    `;
+  }
+
+  let cur = 0;
+  function draw(){
+    cueId = 0;
+    document.getElementById('card').innerHTML = render(program.sessions[cur], cur, program.sessions.length);
+  }
+  window.goTo=function(i){
+    cur = Math.max(0, Math.min(program.sessions.length-1, i));
+    draw();
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+  window.setDensity=function(mode){
+    document.body.classList.toggle('compact', mode==='compact');
+    draw();
+  };
+  window.toggleStack=function(){
+    document.body.classList.toggle('stack');
+    draw();
+  };
+  document.addEventListener('keydown', e=>{
+    if(e.key==='ArrowLeft') goTo(cur+1);    // older
+    if(e.key==='ArrowRight') goTo(cur-1);    // newer
+  });
+
+  draw();
+
+  // ---- live buttons (work only when served by tools/server.py) ----
+  const SERVED = (location.protocol==='http:'||location.protocol==='https:')
+    && /^(localhost|127\.0\.0\.1)$/.test(location.hostname);  // live sync only from the local launcher
+  const tb=m=>{document.getElementById('tbStatus').textContent=m;};
+  window.loadFromVOLM=async function(){
+    if(!SERVED){ tb('open via the "Workout Card (live)" launcher to enable'); return; }
+    const b=document.getElementById('btnSync'); b.disabled=true; tb('syncing VOLM…');
+    try{ const r=await fetch('/api/sync',{method:'POST'}); const j=await r.json();
+      if(j.ok){ tb('synced '+j.sessions+' sessions — reloading'); location.reload(); }
+      else { tb('sync failed (see console)'); console.log(j); } }
+    catch(e){ tb('sync error: '+e.message); } finally{ b.disabled=false; }
+  };
+  // Build a handoff prompt from the CURRENT session (last vs proposed).
+  function handoffPrompt(){
+    const s=program.sessions[cur];
+    let t=`I'm reviewing my training. Day: ${s.title} (${s.date}). Session stats: ${s.stats.join(', ')}.\n\n`;
+    t+=`Below is each exercise — what I PERFORMED last vs the engine's PROPOSED next session (with its action + QC status):\n`;
+    s.exercises.forEach(e=>{
+      t+=`\n${e.name}  [action: ${e.action}, type: ${e.loading_type}, QC: ${e.qc}]\n`;
+      e.sets.forEach(x=>{ const L=x.last,P=x.prop;
+        const lf=`${L.lbs??'-'}x${L.reps??'-'}@${L.rpe??'-'}`, pf=`${P.lbs??'-'}x${P.reps??'-'}@${P.rpe??'-'}`;
+        t+=`  set ${x.type}: last ${lf}  →  proposed ${pf}\n`; });
+      if(e.rationale) t+=`  engine note: ${e.rationale.replace(/<[^>]+>/g,'')}\n`;
+    });
+    t+=`\nPlease assess (1) the quality of my last session and (2) whether the proposed prescription is sound for hypertrophy — load/rep/RPE coherence, progression logic, fatigue. Then let's discuss adjustments. Ask me anything you need.`;
+    return t;
+  }
+  window.handoff=async function(provider){
+    const p=handoffPrompt();
+    let copied=false;
+    try{ await navigator.clipboard.writeText(p); copied=true; }catch(e){}
+    // also drop it in a selectable box as a fallback (file:// often blocks clipboard)
+    const ta=document.createElement('textarea');
+    ta.value=p; ta.style.cssText='width:100%;height:150px;background:#0e1410;color:#cfe;border:1px solid #234023;border-radius:8px;padding:10px;font:12px/1.5 monospace';
+    const box=document.getElementById('analysis'); box.innerHTML='';
+    const note=document.createElement('div'); note.style.cssText='font-size:12px;color:#8a8a8a;margin:8px 0 4px';
+    note.textContent=(copied?'Context copied to clipboard':'Select + copy this context')+' — paste it into the chat if it didn’t prefill.';
+    box.appendChild(note); box.appendChild(ta); ta.select();
+    const url = provider==='chatgpt'
+      ? 'https://chatgpt.com/?q='+encodeURIComponent(p)
+      : 'https://claude.ai/new?q='+encodeURIComponent(p);
+    // URL has length limits; if too long, open base chat and rely on the copied context
+    const safe = url.length>6000 ? (provider==='chatgpt'?'https://chatgpt.com/':'https://claude.ai/new') : url;
+    window.open(safe,'_blank');
+    tb('handed off to '+(provider==='chatgpt'?'ChatGPT':'Claude'));
+  };
+  if(!SERVED) tb('static mode — "Load from VOLM" needs the live launcher; handoff works here');
+  </script>
+</body>
+</html>

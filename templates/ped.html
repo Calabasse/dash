@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PED Cycle Tracker + Serum Estimator</title>
+<style>
+  :root{
+    --bg:#000; --card:#0a0a0a; --panel:#101010; --line:#222; --line2:#2a2a2a;
+    --text:#f2f2f2; --head:#fff; --muted:#8a8a8a; --dim:#666;
+    --accent:#4ade80; --gold:#f5c451; --blue:#6aa9ff; --red:#f87171; --pad:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;font-size:14px;line-height:1.35}
+  .wrap{max-width:920px;margin:0 auto;padding:var(--pad)}
+  h1{font-size:21px;font-weight:700;letter-spacing:-.02em;margin-bottom:2px}
+  .sub{color:var(--muted);font-size:12px;margin-bottom:12px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:12px 13px;margin-bottom:14px}
+  .panel h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700;margin-bottom:9px;
+    display:flex;justify-content:space-between;align-items:center}
+  button{background:#161616;color:var(--text);border:1px solid var(--line);border-radius:6px;
+    font-size:12px;padding:5px 11px;cursor:pointer}
+  button:hover{border-color:var(--line2)}
+  button.primary{background:var(--accent);color:#000;font-weight:600;border-color:var(--accent)}
+  button.mini{padding:2px 7px;font-size:11px}
+  button.danger{color:var(--red)}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  th{color:var(--head);font-weight:600;font-size:11px;text-align:left;padding:4px 6px;border-bottom:1px solid var(--line)}
+  td{padding:3px 6px;font-size:13px;border-bottom:1px solid #161616;vertical-align:middle}
+  input,select{background:#141414;color:var(--text);border:1px solid var(--line);border-radius:5px;
+    padding:4px 6px;font-size:13px;font-family:inherit;width:100%}
+  input[type=number]{width:74px}
+  input[type=date]{width:140px}
+  select{cursor:pointer}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:middle}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:8px}
+  .legend span{display:inline-flex;align-items:center}
+  canvas{width:100%;height:340px;display:block;background:#080808;border-radius:7px;border:1px solid var(--line)}
+  .ctrls{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:10px;font-size:12px;color:var(--muted)}
+  .ctrls label{display:inline-flex;align-items:center;gap:5px}
+  .stat{display:inline-flex;flex-direction:column;background:#141414;border:1px solid var(--line);border-radius:6px;padding:6px 10px;min-width:90px}
+  .stat b{font-size:16px;color:var(--head)}
+  .stat span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .note{font-size:11px;color:var(--dim);line-height:1.5;margin-top:10px}
+  .tag{font-size:10px;padding:1px 5px;border-radius:3px;background:#1c1c1c;color:var(--muted)}
+  .addbar{display:flex;gap:6px;margin-top:8px}
+  .addbar input{max-width:170px}
+
+  /* compact protocol / ancillary / cycle tables: size to content, not 100% */
+  #protoTable, #ancTable { width:auto; }
+  #protoTable td, #protoTable th, #ancTable td, #ancTable th { padding:3px 8px; white-space:nowrap; }
+  #protoTable select, #ancTable select { width:auto; }
+  #protoTable input, #ancTable input { width:auto; }
+  #protoTable td:first-child select { min-width:180px; max-width:196px; }   /* compound */
+  #ancTable td:first-child input { width:150px; }
+  #protoTable input[type=number] { width:58px; }
+  #protoTable input[type=date], #ancTable input[type=date] { width:118px; }
+  #protoTable select[onchange*="conc"] { width:64px; }
+  #protoTable select[onchange*="freq"], #ancTable select[onchange*="freq"] { width:118px; }
+</style>
+</head>
+<body>
+<a href="index.html" style="position:fixed;top:8px;right:10px;z-index:9999;font:600 12px -apple-system,sans-serif;color:#9ecbff;background:rgba(22,27,34,.85);border:1px solid #2a2f37;border-radius:6px;padding:4px 9px;text-decoration:none">← Home</a>
+<div class="wrap">
+  <h1>PED Cycle <span style="color:var(--muted);font-weight:400;font-size:15px">+ Serum Estimator</span></h1>
+  <div class="sub">Current cycle and pharmacokinetic serum estimate. Read-only view. Estimates only — not medical advice; confirm with bloodwork.</div>
+
+  <!-- ===================== CHART ===================== -->
+  <div class="panel">
+    <h2>Estimated Serum / Active Load <button class="mini" onclick="redraw()">↻ refresh</button></h2>
+    <div class="ctrls">
+      <label>Model
+        <select id="model" onchange="redraw()">
+          <option value="bateman">Absorption + ester decay (Bateman)</option>
+          <option value="mono">Ester half-life decay (mono-exp)</option>
+        </select>
+      </label>
+      <label>Units
+        <select id="units" onchange="redraw()">
+          <option value="mg">Active mg in system</option>
+          <option value="ngdl">ng/dL (serum testosterone)</option>
+          <option value="anabolic">Anabolic load (test-equiv mg)</option>
+          <option value="androgen">Androgen load (test-equiv mg)</option>
+        </select>
+      </label>
+      <label id="ngdlScaleWrap" style="display:none">ng/dL per mg
+        <input type="number" id="ngdlScale" value="6" step="0.5" style="width:60px" onchange="redraw()"></label>
+      <label id="basisWrap">Index basis
+        <select id="indexBasis" onchange="redraw()">
+          <option value="rat">Rat A:A (Hershberger)</option>
+          <option value="arbind">AR binding affinity</option>
+          <option value="custom">Custom / n=1</option>
+        </select></label>
+      <label>Tail days <input type="number" id="tail" value="28" min="0" max="120" style="width:60px" onchange="redraw()"></label>
+      <label><input type="checkbox" id="showTotal" checked onchange="redraw()"> show total</label>
+    </div>
+    <canvas id="chart" width="1800" height="680"></canvas>
+    <div class="legend" id="legend"></div>
+    <div class="stats" id="stats"></div>
+    <div class="note">Model: each administration contributes a curve from the compound's ester half-life; the plot sums them (superposition), same approach as steroidplotter. "Active mg in system" is a relative estimate of hormone released, not a measured ng/dL serum value (true serum needs volume-of-distribution + individual clearance).</div>
+  </div>
+
+  <!-- ===================== BLOODWORK / HORMONE PANEL ===================== -->
+  <div class="panel">
+    <h2>Bloodwork & Hormone Panel <span class="tag">Total-T calibrates the curve · others logged with ranges</span></h2>
+    <div class="row" style="margin-bottom:8px">
+      <label style="font-size:12px;color:var(--muted);display:inline-flex;gap:6px;align-items:center">Date <input type="date" id="calDate"></label>
+      <label style="font-size:12px;color:var(--muted);display:inline-flex;gap:6px;align-items:center">Marker
+        <select id="calMarker" style="width:170px" onchange="document.getElementById('calUnit').textContent=MARKERS[this.value].unit"></select></label>
+      <label style="font-size:12px;color:var(--muted);display:inline-flex;gap:6px;align-items:center">Value <input type="number" step="0.1" id="calVal" style="width:90px"> <span id="calUnit" style="color:var(--dim)"></span></label>
+      <button class="mini primary" onclick="addCalibration()">+ add reading</button>
+      <span id="calFactor" style="font-size:11px;color:var(--dim)"></span>
+    </div>
+    <div id="calList"></div>
+    <div class="note">Gyno-risk markers (E2 / Prolactin / Progesterone) are flagged when high. <b>Tren doesn't aromatize</b> — its gyno risk is progestogenic + prolactin, not E2, and a progesterone serum test won't reflect it. Only <b>Total-T</b> scales the serum curve (Tren/Deca/EQ don't assay as testosterone). Switch Units → "ng/dL" to view the calibrated curve.</div>
+  </div>
+
+  <!-- ===================== PROTOCOL ===================== -->
+  <div class="panel">
+    <h2>Cycle / Protocol <button class="mini primary" onclick="addProtoRow()">+ add compound</button></h2>
+    <table id="protoTable">
+      <thead><tr>
+        <th>Compound</th><th>Conc (mg/ml)</th><th>Dose (mg)</th><th>Frequency</th>
+        <th>Start</th><th>End</th><th>ml/inj</th><th></th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- ===================== SUPPLY CALCULATOR ===================== -->
+  <div class="panel">
+    <h2>Supply Calculator — amount needed for X days</h2>
+    <div class="row" style="margin-bottom:8px">
+      <label style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)">
+        Days supply <input type="number" id="supplyDays" value="14" min="1" max="365" style="width:80px"></label>
+      <button class="mini primary" onclick="calcSupply()">Calculate</button>
+      <span style="font-size:11px;color:var(--dim)">uses the current protocol above · U-100 syringe (100 units = 1 mL)</span>
+    </div>
+    <div id="supplyOut"></div>
+  </div>
+
+  <!-- ===================== SAVED CYCLES ===================== -->
+  <div class="panel">
+    <h2>Saved Cycles
+      <span>
+        <button class="mini" onclick="quickCycle('cruise')">+ cruise 70mg T-Cyp</button>
+        <button class="mini" onclick="quickCycle('blast')">+ blast 161mg</button>
+        <button class="mini primary" onclick="saveCurrentCycle()">save current protocol</button>
+      </span>
+    </h2>
+    <table id="cycleTable">
+      <thead><tr><th>Cycle</th><th>Type</th><th>Started</th><th>Ended</th><th>mg/wk</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div class="note">Saved cycles are read-only by default. Use <b>Load</b> to pull a cycle into the editor, <b>Finish</b> to stamp today's end date, <b>Edit</b> to change details (then Save), <b>×</b> to delete. Finish/Edit/Delete all confirm to prevent accidents.</div>
+  </div>
+
+  <!-- ===================== ANCILLARIES / PCT ===================== -->
+  <div class="panel">
+    <h2>Ancillaries & PCT <button class="mini primary" onclick="addAnc()">+ add</button></h2>
+    <div id="ancTimeline" style="margin-bottom:10px"></div>
+    <table id="ancTable">
+      <thead><tr><th>Name</th><th>Dose</th><th>Unit</th><th>Frequency</th><th>Start</th><th>End</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <datalist id="ancNames">${''}</datalist>
+    <div class="note">AI / SERM / HCG etc. — a schedule track, not added to androgen load (HCG aside). Shown as a timeline aligned to the chart's date range.</div>
+  </div>
+
+  <!-- ===================== COMPOUND LIBRARY ===================== -->
+  <div class="panel">
+    <h2>Compound Library <span class="tag">editable — add your own</span></h2>
+    <table id="libTable">
+      <thead><tr><th>Name</th><th>Half-life (d)</th><th>Conc</th><th>Anab</th><th>Andro</th><th>AR aff</th><th title="Estrogenic 0–10">Estro</th><th title="Progestogenic 0–10">Progest</th><th title="Androgenic side 0–10">Andro</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div class="addbar">
+      <input id="newCompName" placeholder="Name (e.g. Test Enanthate)">
+      <input id="newCompHl" type="number" step="0.1" placeholder="half-life d" style="max-width:110px">
+      <input id="newCompConc" type="number" step="1" placeholder="conc mg/ml" style="max-width:110px">
+      <button class="mini primary" onclick="addCompound()">+ add compound</button>
+    </div>
+  </div>
+
+  <!-- ===================== DROPDOWN PRESETS ===================== -->
+  <div class="panel">
+    <h2>Dropdown Presets</h2>
+    <div class="row" style="align-items:flex-start">
+      <div style="flex:1;min-width:220px">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:5px">Concentrations (mg/ml)</div>
+        <div id="concChips" class="row"></div>
+        <div class="addbar"><input id="newConc" type="number" placeholder="e.g. 250" style="max-width:120px">
+          <button class="mini" onclick="addPreset('concentrations','newConc',true)">+ add</button></div>
+      </div>
+      <div style="flex:1;min-width:260px">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:5px">Frequencies (label → interval days)</div>
+        <div id="freqChips" class="row"></div>
+        <div class="addbar"><input id="newFreqLabel" placeholder="label e.g. E4D" style="max-width:110px">
+          <input id="newFreqDays" type="number" step="0.5" placeholder="days" style="max-width:80px">
+          <button class="mini" onclick="addFreq()">+ add</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <button class="mini" onclick="exportData()">⤓ export JSON</button>
+    <button class="mini" onclick="exportForAPE()">⤓ export for APE (ped-cycles.json)</button>
+    <button class="mini" onclick="document.getElementById('idxFile').click()">⤒ import n=1 index</button>
+    <input type="file" id="idxFile" style="display:none" accept="application/json" onchange="importIndex(event)">
+    <button class="mini" onclick="document.getElementById('importFile').click()">⤒ import JSON</button>
+    <input type="file" id="importFile" style="display:none" accept="application/json" onchange="importData(event)">
+    <button class="mini danger" onclick="resetAll()">reset to defaults</button>
+  </div>
+</div>
+
+<script>
+// ============================ STATE ============================
+const LS = "ped_tracker_v1";
+const DAY = 1;
+
+// READ-ONLY public view. The owner's cycle is injected below by deploy.sh as
+// window.PED_DATA (full state object). Until injected it is null and a demo
+// seed is shown. This page never reads or writes the visitor's localStorage.
+const READONLY = true;
+window.PED_DATA = window.PED_DATA || null;  /* @@PED_DATA@@ deploy.sh replaces this line */
+
+// seed compound library: half-life in DAYS (orals converted from hours)
+const SEED_COMPOUNDS = [
+  // Testosterone esters
+  {name:"Testosterone Propionate", cls:"Test", hl:0.8,  conc:100},
+  {name:"Testosterone Phenylpropionate", cls:"Test", hl:1.5, conc:100},
+  {name:"Testosterone Isocaproate", cls:"Test", hl:4, conc:100},
+  {name:"Testosterone Enanthate", cls:"Test", hl:4.5, conc:250},
+  {name:"Testosterone Cypionate", cls:"Test", hl:5, conc:200},
+  {name:"Testosterone Decanoate", cls:"Test", hl:7.5, conc:100},
+  {name:"Testosterone Undecanoate", cls:"Test", hl:20.9, conc:250},
+  {name:"Sustanon 250 (blend)", cls:"Test", hl:5, conc:250},
+  // Nandrolone
+  {name:"NPP (Nandrolone Phenylprop)", cls:"Nand", hl:2.7, conc:100},
+  {name:"Nandrolone Decanoate (Deca)", cls:"Nand", hl:7, conc:200},
+  // Trenbolone
+  {name:"Trenbolone Acetate", cls:"Tren", hl:1, conc:100},
+  {name:"Trenbolone Enanthate", cls:"Tren", hl:5, conc:200},
+  {name:"Trenbolone Hexa (Parabolan)", cls:"Tren", hl:8, conc:76},
+  // Drostanolone
+  {name:"Masteron Propionate", cls:"Mast", hl:2, conc:100},
+  {name:"Masteron Enanthate", cls:"Mast", hl:5, conc:200},
+  // Boldenone / Methenolone
+  {name:"Boldenone Undecylenate (EQ)", cls:"EQ", hl:14, conc:300},
+  {name:"Primobolan Enanthate", cls:"Primo", hl:5, conc:100},
+  // Orals (hl in days; hours/24)
+  {name:"Dianabol (oral)", cls:"Oral", hl:0.2, conc:1},
+  {name:"Anadrol (oral)", cls:"Oral", hl:0.35, conc:1},
+  {name:"Winstrol (oral)", cls:"Oral", hl:0.375, conc:1},
+  {name:"Anavar (oral)", cls:"Oral", hl:0.4, conc:1},
+  {name:"Turinabol (oral)", cls:"Oral", hl:0.67, conc:1},
+  {name:"Superdrol (oral)", cls:"Oral", hl:0.33, conc:1},
+  // Ancillary
+  {name:"HCG", cls:"Anc", hl:1.4, conc:1},
+];
+// anabolic:androgenic ratios (rodent Hershberger bioassay; NOT human-predictive,
+// but the conventional reference). Test = 100:100 by definition.
+function ratioFor(name){
+  const n=(name||'').toLowerCase();
+  if(/hcg|gonadotropin/.test(n)) return [0,0];
+  if(/test|sustanon/.test(n)) return [100,100];
+  if(/tren/.test(n)) return [500,500];
+  if(/nandrolone|npp|deca/.test(n)) return [125,37];
+  if(/mast|drostanolone/.test(n)) return [62,25];
+  if(/boldenone|eq|equipoise/.test(n)) return [100,50];
+  if(/primo|methenolone/.test(n)) return [88,44];
+  if(/dianabol|methandro|dbol/.test(n)) return [150,50];
+  if(/anadrol|oxymetholone/.test(n)) return [320,45];
+  if(/winstrol|stanozolol/.test(n)) return [320,30];
+  if(/anavar|oxandrolone/.test(n)) return [400,25];
+  if(/turinabol|tbol/.test(n)) return [100,6];
+  if(/superdrol|methasterone/.test(n)) return [400,20];
+  return [100,100];
+}
+// AR relative binding affinity (test=100; Saartok/Fang approx) + mechanism flags.
+// These are better-than-rat *priors*, still imperfect — affinity ≠ effect.
+// arbind = AR relative binding affinity (test=100). estro/prog/andro = graded
+// 0–10 side-effect propensity (estrogenic, progestogenic, androgenic). Estimates.
+function mechFor(name){
+  const n=(name||'').toLowerCase();
+  let arbind=100, estro=0, prog=0, andro=6;
+  if(/hcg|gonadotropin/.test(n)){ arbind=0; andro=0; }
+  else if(/test|sustanon/.test(n)){ arbind=100; estro=10; andro=6; }
+  else if(/tren/.test(n)){ arbind=197; estro=0; prog=9; andro=10; }
+  else if(/nandrolone|npp|deca/.test(n)){ arbind=154; estro=3; prog=8; andro=3; }
+  else if(/mast|drostanolone/.test(n)){ arbind=140; estro=0; andro=7; }
+  else if(/boldenone|eq|equipoise/.test(n)){ arbind=85; estro=5; andro=4; }
+  else if(/primo|methenolone/.test(n)){ arbind=90; estro=0; andro=4; }
+  else if(/dianabol|methandro|dbol/.test(n)){ arbind=40; estro=6; andro=4; }
+  else if(/anadrol|oxymetholone/.test(n)){ arbind=10; estro=7; andro=5; }
+  else if(/winstrol|stanozolol/.test(n)){ arbind=25; estro=0; andro=6; }
+  else if(/anavar|oxandrolone/.test(n)){ arbind=20; estro=0; andro=4; }
+  else if(/turinabol|tbol/.test(n)){ arbind=30; estro=0; andro=2; }
+  else if(/superdrol|methasterone/.test(n)){ arbind=60; estro=0; andro=6; }
+  return {arbind, arom:estro, prog, dht:andro};   // field names kept; values now 0–10
+}
+SEED_COMPOUNDS.forEach(c=>{ const r=ratioFor(c.name); c.anab=r[0]; c.andro=r[1];
+  Object.assign(c, mechFor(c.name)); });
+const SEED_CONC = [50,76,100,150,200,250,300];
+const SEED_FREQ = [
+  {label:"ED (daily)", days:1},
+  {label:"EOD", days:2},
+  {label:"E3D", days:3},
+  {label:"Twice weekly (E3.5D)", days:3.5},
+  {label:"E5D", days:5},
+  {label:"Weekly", days:7},
+  {label:"E10D", days:10},
+  {label:"E14D", days:14},
+];
+function seedProtocol(){
+  const today = new Date(); const s = today.toISOString().slice(0,10);
+  const end = new Date(today.getTime()+84*864e5).toISOString().slice(0,10);
+  return [
+    {comp:"Testosterone Enanthate", conc:250, dose:125, freq:"Twice weekly (E3.5D)", start:s, end:end},
+    {comp:"Nandrolone Decanoate (Deca)", conc:200, dose:100, freq:"Twice weekly (E3.5D)", start:s, end:end},
+  ];
+}
+
+let state = load();
+if(!state.cycles) state.cycles=[];   // migrate older saves
+if(!state.calibrations) state.calibrations=[];
+if(!state.ancillaries) state.ancillaries=[];
+state.compounds.forEach(c=>{ if(c.anab==null){ const r=ratioFor(c.name); c.anab=r[0]; c.andro=r[1]; }
+  if(c.arbind==null || typeof c.arom==='boolean') Object.assign(c, mechFor(c.name)); });
+if(!state.customIndex) state.customIndex={};
+function load(){
+  const base = { compounds:[...SEED_COMPOUNDS], concentrations:[...SEED_CONC],
+           frequencies:[...SEED_FREQ], protocol:seedProtocol(), cycles:[],
+           calibrations:[], ancillaries:[] };
+  if(window.PED_DATA){ return Object.assign(base, window.PED_DATA); }  // owner's injected cycle
+  return base;  // demo seed until data is injected
+}
+const SEED_ANCILLARIES = ["Anastrozole","Exemestane","Tamoxifen (Nolvadex)","Clomiphene (Clomid)","Enclomiphene","HCG","Cabergoline"];
+function save(){ /* read-only view — never persists to the visitor's browser */ }
+
+const COLORS = ["#4ade80","#6aa9ff","#f5c451","#f87171","#c084fc","#22d3ee","#fb923c","#a3e635","#f472b6","#94a3b8"];
+const freqDays = label => (state.frequencies.find(f=>f.label===label)||{days:7}).days;
+const compHl = name => (state.compounds.find(c=>c.name===name)||{hl:5}).hl;
+
+// ============================ PK MODEL ============================
+// contribution of a single dose D given at tau days ago.
+function contrib(D, tau, hl, model){
+  if(tau<0) return 0;
+  const ke = Math.LN2/hl;                 // ester / elimination rate
+  if(model==="mono") return D*Math.exp(-ke*tau);
+  // Bateman: absorption (fast) + ester decay (slow terminal). ka>ke.
+  const riseHl = Math.min(0.6, hl*0.4);   // absorption half-life
+  const ka = Math.LN2/riseHl;
+  if(Math.abs(ka-ke)<1e-6) return D*ke*tau*Math.exp(-ke*tau);
+  const f = ka/(ka-ke)*(Math.exp(-ke*tau)-Math.exp(-ka*tau));
+  return D*f;
+}
+
+function buildSeries(){
+  const rows = state.protocol.filter(p=>p.comp && p.start);
+  if(!rows.length) return {days:[],series:[],t0:null};
+  let minT=Infinity, maxT=-Infinity;
+  rows.forEach(p=>{
+    const s=Date.parse(p.start); const e=p.end?Date.parse(p.end):s+84*864e5;
+    minT=Math.min(minT,s); maxT=Math.max(maxT,e);
+  });
+  const tail = (+document.getElementById('tail').value||0);
+  const model = document.getElementById('model').value;
+  const t0 = minT;
+  const totalDays = Math.ceil((maxT-minT)/864e5) + tail;
+  const N = Math.min(totalDays, 1000);
+  const days = []; for(let d=0;d<=N;d++) days.push(d);
+
+  const series = rows.map((p,i)=>{
+    const comp = state.compounds.find(x=>x.name===p.comp)||{};
+    const hl = compHl(p.comp);
+    const sOff = Math.round((Date.parse(p.start)-t0)/864e5);
+    const eOff = Math.round(((p.end?Date.parse(p.end):maxT)-t0)/864e5);
+    const iv = freqDays(p.freq);
+    // injection day offsets within [sOff,eOff]
+    const events=[]; for(let t=sOff;t<=eOff+1e-6;t+=iv) events.push(t);
+    const dose = +p.dose||0;
+    const vals = days.map(d=>{
+      let sum=0; for(const ev of events){ if(ev<=d) sum+=contrib(dose, d-ev, hl, model); }
+      return sum;
+    });
+    return {label:p.comp, color:COLORS[i%COLORS.length], vals, weekly: dose*(7/iv), hl,
+            events:events.length, anab:comp.anab??100, andro:comp.andro??100,
+            arbind:comp.arbind??100, arom:!!comp.arom, prog:!!comp.prog, dht:!!comp.dht};
+  });
+  return {days,series,t0};
+}
+
+// ============================ CHART ============================
+function redraw(){
+  renderStats();
+  const {days,series,t0}=buildSeries();
+  const cv=document.getElementById('chart'), ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
+  const padL=70,padR=20,padT=18,padB=46;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  if(!series.length){ ctx.fillStyle="#666";ctx.font="26px sans-serif";ctx.fillText("Add a compound to your protocol",padL,H/2); document.getElementById('legend').innerHTML=""; return; }
+
+  const units=document.getElementById('units').value;
+  const showTotal=document.getElementById('showTotal').checked;
+  window.lastRange = {t0, last:days[days.length-1]};   // for ancillary timeline
+  const cal = calibrationInfo(series, days, t0);
+  const isIndex = (units==='anabolic'||units==='androgen');
+  document.getElementById('ngdlScaleWrap').style.display = (units==='ngdl')?'inline-flex':'none';
+  const basis = document.getElementById('indexBasis').value;
+  const ngdlFactor = (units==='ngdl') ? (cal.factor || (+document.getElementById('ngdlScale').value||6)) : 1;
+  document.getElementById('calFactor').textContent =
+    (units==='ngdl' && cal.factor) ? `calibrated: ${cal.factor.toFixed(1)} ng/dL per model-mg` : '';
+
+  // index coefficient per series under the chosen basis (test=1.0)
+  function coef(s, kind){
+    if(basis==='arbind') return (s.arbind||0)/100;
+    if(basis==='custom'){ const c=(state.customIndex||{})[s.label]; return c!=null? c : (kind==='andro'?(s.andro||0):(s.anab||0))/100; }
+    return ((kind==='andro'? s.andro : s.anab)||0)/100;   // rat A:A
+  }
+  // per-series scale factor by chosen units. null => not shown in this mode.
+  function pf(s){
+    if(units==='anabolic') return coef(s,'anab');
+    if(units==='androgen') return coef(s,'andro');
+    if(units==='ngdl')     return isTest(s.label)? ngdlFactor : null;   // only T assays as serum testosterone
+    return 1;
+  }
+  const ylabel = units==='ngdl' ? 'ng/dL'
+    : units==='anabolic' ? `Anabolic Index (rel · ${basis})`
+    : units==='androgen' ? `Androgen Index (rel · ${basis})` : 'mg';
+
+  // scaled, drawable series
+  const plot = series.map(s=>({s, f:pf(s)})).filter(o=>o.f!==null)
+    .map(o=>({label:o.s.label, color:o.s.color, anab:o.s.anab, andro:o.s.andro,
+              sv:o.s.vals.map(v=>v*o.f), src:o.s}));
+  const total = days.map((_,i)=>plot.reduce((a,p)=>a+p.sv[i],0));
+
+  let ymax=0; plot.forEach(p=>p.sv.forEach(v=>ymax=Math.max(ymax,v)));
+  if(showTotal) total.forEach(v=>ymax=Math.max(ymax,v));
+  ymax=ymax*1.10||1;
+
+  const lastDay=days[days.length-1];
+  const X=d=>padL+ (days.length>1? d/lastDay*plotW : 0);
+  const Y=v=>padT+plotH-(v/ymax)*plotH;
+
+  // grid + axes
+  ctx.strokeStyle="#1c1c1c"; ctx.lineWidth=1; ctx.fillStyle="#777"; ctx.font="20px sans-serif";
+  ctx.fillText(ylabel, 8, padT-2);
+  for(let g=0;g<=5;g++){ const yv=ymax*g/5, y=Y(yv);
+    ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(W-padR,y);ctx.stroke();
+    ctx.fillText(Math.round(yv), 8, y+7); }
+  const step = lastDay>180?28: lastDay>90?14:7;
+  for(let d=0;d<=lastDay;d+=step){ const x=X(d);
+    ctx.strokeStyle="#161616";ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();
+    ctx.fillStyle="#777";ctx.fillText("d"+d, x-12, padT+plotH+26); }
+
+  // today marker
+  const todayOff=Math.round((Date.now()-t0)/864e5);
+  if(todayOff>=0&&todayOff<=lastDay){ const x=X(todayOff);
+    ctx.strokeStyle="#4ade80";ctx.setLineDash([6,5]);ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle="#4ade80";ctx.fillText("today", x-18, padT+12); }
+
+  // collision detection: only dash + nudge series whose curves overlap another.
+  const colliding = new Set();
+  for(let a=0;a<plot.length;a++) for(let b=a+1;b<plot.length;b++){
+    let diff=0,cnt=0; for(let i=0;i<days.length;i+=3){ diff+=Math.abs(plot[a].sv[i]-plot[b].sv[i]); cnt++; }
+    if(cnt && (diff/cnt) < ymax*0.04){ colliding.add(a); colliding.add(b); }
+  }
+
+  // lines
+  ctx.font="20px sans-serif";
+  plot.forEach((p,idx)=>{
+    const hit = colliding.has(idx);
+    const off = hit ? (idx%2?2.2:-2.2) : 0;     // separate only the colliding ones
+    ctx.strokeStyle=p.color; ctx.lineWidth=2.6; ctx.globalAlpha=hit?0.95:1;
+    ctx.setLineDash(hit ? (idx%2?[12,6]:[4,6]) : []);  // dashed only when colliding
+    ctx.beginPath();
+    p.sv.forEach((v,i)=>{ const x=X(days[i]),y=Y(v)+off; i?ctx.lineTo(x,y):ctx.moveTo(x,y); });
+    ctx.stroke();
+  });
+  ctx.setLineDash([]); ctx.globalAlpha=1;
+  if(showTotal){ ctx.strokeStyle="#ffffff"; ctx.lineWidth=2.8; ctx.setLineDash([7,4]); ctx.beginPath();
+    total.forEach((v,i)=>{ const x=X(days[i]),y=Y(v); i?ctx.lineTo(x,y):ctx.moveTo(x,y); }); ctx.stroke(); ctx.setLineDash([]); }
+
+  // ---- steady-state callouts: plateau mean per compound, labeled at the right ----
+  ctx.font="600 19px sans-serif";
+  const labels = plot.map(p=>{ const mx=Math.max(...p.sv);
+      const plat=p.sv.filter(v=>v>=mx*0.9); const css=plat.length?plat.reduce((a,v)=>a+v,0)/plat.length:mx;
+      return {color:p.color, css, label:p.label}; })
+    .filter(l=>l.css>0).sort((a,b)=>b.css-a.css);
+  let prevY=-99;
+  labels.forEach(l=>{ let y=Y(l.css); if(y-prevY<20) y=prevY+20; prevY=y;
+    ctx.fillStyle=l.color; ctx.textAlign="right";
+    ctx.fillText("Css≈"+Math.round(l.css), W-padR-6, y-4); });
+  if(showTotal){ const mx=Math.max(...total); const plat=total.filter(v=>v>=mx*0.9);
+    const css=plat.length?plat.reduce((a,v)=>a+v,0)/plat.length:mx;
+    ctx.fillStyle="#fff"; let y=Y(css); if(y-prevY<20) y=prevY+20;
+    ctx.fillText("Σ Css≈"+Math.round(css), W-padR-6, y-4); }
+  ctx.textAlign="left";
+
+  // bloodwork points (ng/dL mode)
+  if(units==='ngdl'){ ctx.fillStyle="#f5c451"; ctx.font="18px sans-serif";
+    cal.points.forEach(p=>{ if(p.off<0||p.off>lastDay) return; const x=X(p.off),y=Y(p.val);
+      ctx.beginPath();ctx.arc(x,y,6,0,7);ctx.fill();
+      ctx.fillText(p.val+" ng/dL", x+10, y+6); }); }
+
+  // legend (+ mechanism badges: E=aromatizes, P=progestogenic, D=DHT/5α)
+  const mech=s=>{ const t=[];
+    if(s.arom>0) t.push(`<b title="Estrogenic 0-10" style="color:#6aa9ff">E${s.arom}</b>`);
+    if(s.prog>0) t.push(`<b title="Progestogenic 0-10" style="color:#f472b6">P${s.prog}</b>`);
+    if(s.dht>0)  t.push(`<b title="Androgenic 0-10" style="color:#f5c451">A${s.dht}</b>`);
+    return t.length?(' '+t.join(' ')):''; };
+  document.getElementById('legend').innerHTML =
+    plot.map(p=>`<span><span class="swatch" style="background:${p.color}"></span>${p.label}${mech(p.src)}</span>`).join('')
+    + (showTotal?`<span><span class="swatch" style="background:#fff"></span>Total</span>`:'')
+    + (units==='ngdl'&&cal.points.length?`<span><span class="swatch" style="background:#f5c451"></span>bloodwork</span>`:'')
+    + `<span style="color:var(--dim)">E estrogenic · P progest · A androgenic (0-10)</span>`;
+
+  renderAncTimeline();
+}
+
+function renderStats(){
+  const rows=state.protocol.filter(p=>p.comp);
+  const stats=document.getElementById('stats');
+  const wk = rows.reduce((a,p)=>a+ (+p.dose||0)*(7/freqDays(p.freq)),0);
+  let html = `<div class="stat"><b>${rows.length}</b><span>compounds</span></div>`;
+  rows.forEach(p=>{ const w=(+p.dose||0)*(7/freqDays(p.freq));
+    html += `<div class="stat"><b>${Math.round(w)}</b><span>${p.comp.split(' ')[0]} mg/wk</span></div>`; });
+  html += `<div class="stat"><b>${Math.round(wk)}</b><span>total mg/wk</span></div>`;
+  stats.innerHTML=html;
+}
+
+// ============================ RENDER TABLES ============================
+function compOptions(sel){ return state.compounds.map(c=>`<option ${c.name===sel?'selected':''}>${c.name}</option>`).join(''); }
+function concOptions(sel){ return state.concentrations.map(c=>`<option ${(+c===+sel)?'selected':''}>${c}</option>`).join(''); }
+function freqOptions(sel){ return state.frequencies.map(f=>`<option ${f.label===sel?'selected':''}>${f.label}</option>`).join(''); }
+
+function renderProtocol(){
+  const tb=document.querySelector('#protoTable tbody'); tb.innerHTML='';
+  state.protocol.forEach((p,i)=>{
+    const ml = (p.dose&&p.conc)? (p.dose/p.conc).toFixed(2):'—';
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><select onchange="updProto(${i},'comp',this.value)">${compOptions(p.comp)}</select></td>
+      <td><select onchange="updProto(${i},'conc',this.value)">${concOptions(p.conc)}</select></td>
+      <td><input type="number" value="${p.dose||''}" onchange="updProto(${i},'dose',this.value)"></td>
+      <td><select onchange="updProto(${i},'freq',this.value)">${freqOptions(p.freq)}</select></td>
+      <td><input type="date" value="${p.start||''}" onchange="updProto(${i},'start',this.value)"></td>
+      <td><input type="date" value="${p.end||''}" onchange="updProto(${i},'end',this.value)"></td>
+      <td style="color:var(--muted)">${ml}</td>
+      <td><button class="mini danger" onclick="delProto(${i})">×</button></td>`;
+    tb.appendChild(tr);
+  });
+}
+function renderLib(){
+  const tb=document.querySelector('#libTable tbody'); tb.innerHTML='';
+  state.compounds.forEach((c,i)=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><input value="${c.name}" style="width:220px" onchange="updComp(${i},'name',this.value)"></td>
+      <td><input type="number" step="0.1" value="${c.hl}" style="width:52px" onchange="updComp(${i},'hl',this.value)"></td>
+      <td><input type="number" value="${c.conc||''}" style="width:52px" onchange="updComp(${i},'conc',this.value)"></td>
+      <td><input type="number" value="${c.anab??''}" style="width:50px" onchange="updComp(${i},'anab',this.value)"></td>
+      <td><input type="number" value="${c.andro??''}" style="width:50px" onchange="updComp(${i},'andro',this.value)"></td>
+      <td><input type="number" value="${c.arbind??''}" style="width:50px" onchange="updComp(${i},'arbind',this.value)"></td>
+      <td><input type="number" min="0" max="10" value="${c.arom??0}" style="width:44px" onchange="updComp(${i},'arom',this.value)"></td>
+      <td><input type="number" min="0" max="10" value="${c.prog??0}" style="width:44px" onchange="updComp(${i},'prog',this.value)"></td>
+      <td><input type="number" min="0" max="10" value="${c.dht??0}" style="width:44px" onchange="updComp(${i},'dht',this.value)"></td>
+      <td><button class="mini danger" onclick="delComp(${i})">×</button></td>`;
+    tb.appendChild(tr);
+  });
+}
+function renderPresets(){
+  document.getElementById('concChips').innerHTML =
+    state.concentrations.map((c,i)=>`<span class="tag">${c} <a style="cursor:pointer;color:var(--red)" onclick="delPreset('concentrations',${i})">×</a></span>`).join(' ');
+  document.getElementById('freqChips').innerHTML =
+    state.frequencies.map((f,i)=>`<span class="tag">${f.label} · ${f.days}d <a style="cursor:pointer;color:var(--red)" onclick="delPreset('frequencies',${i})">×</a></span>`).join(' ');
+}
+
+// ============================ MUTATIONS ============================
+function updProto(i,k,v){ state.protocol[i][k]= (k==='dose'||k==='conc')? +v : v;
+  if(k==='comp'){ const c=state.compounds.find(x=>x.name===v); if(c&&c.conc) state.protocol[i].conc=c.conc; }
+  save();renderProtocol();redraw(); }
+function addProtoRow(){ const c=state.compounds[0];
+  const s=new Date().toISOString().slice(0,10), e=new Date(Date.now()+84*864e5).toISOString().slice(0,10);
+  state.protocol.push({comp:c.name,conc:c.conc,dose:100,freq:state.frequencies[3].label,start:s,end:e}); save();renderProtocol();redraw(); }
+function delProto(i){ state.protocol.splice(i,1); save();renderProtocol();redraw(); }
+
+function updComp(i,k,v){ state.compounds[i][k]=(['hl','conc','anab','andro','arbind','arom','prog','dht'].includes(k))?+v:v; save();renderLib();renderProtocol();redraw(); }
+function addCompound(){ const n=val('newCompName'),h=+val('newCompHl');
+  if(!n||!h){alert('Need name + half-life');return;}
+  const r=ratioFor(n), m=mechFor(n);
+  state.compounds.push({name:n,cls:'Custom',hl:h,conc:+val('newCompConc')||100,anab:r[0],andro:r[1],...m});
+  ['newCompName','newCompHl','newCompConc','newCompClass'].forEach(id=>document.getElementById(id).value='');
+  save();renderLib();renderProtocol(); }
+function delComp(i){ state.compounds.splice(i,1); save();renderLib();renderProtocol(); }
+
+function addPreset(key,inputId,num){ const v=val(inputId); if(!v)return;
+  state[key].push(num?+v:v); document.getElementById(inputId).value=''; save();renderPresets();renderProtocol(); }
+function addFreq(){ const l=val('newFreqLabel'),d=+val('newFreqDays'); if(!l||!d)return;
+  state.frequencies.push({label:l,days:d}); document.getElementById('newFreqLabel').value='';document.getElementById('newFreqDays').value='';
+  save();renderPresets();renderProtocol();redraw(); }
+function delPreset(key,i){ state[key].splice(i,1); save();renderPresets();renderProtocol();redraw(); }
+
+// ============================ IO ============================
+function val(id){ return document.getElementById(id).value.trim(); }
+function exportData(){ const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='ped-cycle.json'; a.click(); }
+function importData(e){ const f=e.target.files[0]; if(!f)return; const r=new FileReader();
+  r.onload=()=>{ try{ state=JSON.parse(r.result); save(); renderAll(); }catch(err){alert('bad file');} }; r.readAsText(f); }
+function resetAll(){ if(!confirm('Reset compounds, presets, and protocol to defaults?'))return;
+  localStorage.removeItem(LS); state=load(); renderAll(); }
+
+// ============================ SUPPLY CALCULATOR ============================
+function calcSupply(){
+  const days = +document.getElementById('supplyDays').value || 14;
+  const rows = state.protocol.filter(p=>p.comp && +p.dose>0);
+  const out = document.getElementById('supplyOut');
+  if(!rows.length){ out.innerHTML='<span style="color:var(--dim)">Add compounds to the protocol first.</span>'; return; }
+
+  const inj=[], orals=[];
+  rows.forEach(p=>{
+    const c = state.compounds.find(x=>x.name===p.comp)||{};
+    const iv = freqDays(p.freq);
+    const weekly = (+p.dose)*(7/iv);
+    const periodMg = weekly*days/7;
+    const item = {name:p.comp, conc:+p.conc, iv, weekly, periodMg,
+      dailyMg:weekly/7, perInjMg:+p.dose, injCount:Math.ceil(days/iv)};
+    if((c.cls||'')==='Oral'){ orals.push(item); }
+    else { item.mL=periodMg/(+p.conc||1); item.dailyML=item.dailyMg/(+p.conc||1);
+           item.dailyIU=item.dailyML*100; item.perInjML=item.perInjMg/(+p.conc||1);
+           inj.push(item); }
+  });
+
+  let mixML=0, dailyMixML=0;
+  const tr = inj.map(it=>{ mixML+=it.mL; dailyMixML+=it.dailyML;
+    return `<tr><td>${it.name}</td><td>${Math.round(it.weekly)}</td>
+      <td>${Math.round(it.periodMg)}</td><td>${it.conc}</td>
+      <td><b>${it.mL.toFixed(2)} mL</b></td>
+      <td>${it.dailyML.toFixed(3)} mL</td>
+      <td><b>${it.dailyIU.toFixed(1)} U</b></td></tr>`; }).join('');
+
+  let html = `<table><thead><tr><th>Compound</th><th>mg/wk</th><th>mg / ${days}d</th>
+      <th>conc</th><th>vol / ${days}d</th><th>daily</th><th>daily units</th></tr></thead><tbody>${tr}</tbody></table>`;
+
+  html += `<div class="panel" style="margin-top:10px;background:#0c130c;border-color:#1d3a1d">
+      <div style="font-size:13px;line-height:1.7">
+      <b>Combined oil mix for ${days} days:</b> draw <b style="color:var(--accent)">${mixML.toFixed(2)} mL</b> total
+      (${inj.map(it=>it.mL.toFixed(2)+' mL '+it.name.split(' ')[0]).join(' + ')}).<br>
+      <b>Inject daily:</b> <b style="color:var(--accent)">${(dailyMixML*100).toFixed(1)} units</b>
+      (${dailyMixML.toFixed(3)} mL) on a U-100 insulin syringe.</div></div>`;
+
+  if(orals.length){
+    html += `<div style="margin-top:8px;font-size:12px;color:var(--muted)"><b>Orals (not in oil mix):</b> `
+      + orals.map(o=>`${o.name.split(' ')[0]} ${Math.round(o.dailyMg)} mg/day`).join(' · ') + `</div>`;
+  }
+  html += `<div class="note">Per-injection volume assumes the listed frequency. Daily-mix figures assume one combined daily shot. Verify concentrations on your vials before drawing.</div>`;
+  out.innerHTML = html;
+}
+
+// ============================ SAVED CYCLES ============================
+let editCycleId = null;
+function cycleWeekly(cyc){ return cyc.protocol.reduce((a,p)=>a+(+p.dose||0)*(7/freqDays(p.freq)),0); }
+function minStart(proto){ const ds=proto.map(p=>p.start).filter(Boolean).sort(); return ds[0]||new Date().toISOString().slice(0,10); }
+
+function saveCurrentCycle(){
+  if(!state.protocol.length){ alert('No protocol to save.'); return; }
+  const name = prompt('Cycle name:', defaultCycleName());
+  if(name===null) return;
+  const type = prompt('Type (blast / cruise / bridge / custom):', guessType())||'custom';
+  state.cycles.unshift({ id:Date.now(), name:name||defaultCycleName(), type:type.toLowerCase(),
+    start:minStart(state.protocol), end:'', status:'active',
+    protocol: JSON.parse(JSON.stringify(state.protocol)) });
+  save(); renderCycles();
+}
+function defaultCycleName(){ return guessType()[0].toUpperCase()+guessType().slice(1)+' '+new Date().toISOString().slice(0,7); }
+function guessType(){ const w=state.protocol.reduce((a,p)=>a+(+p.dose||0)*(7/freqDays(p.freq)),0);
+  return w<=120?'cruise':'blast'; }
+
+function quickCycle(kind){
+  const conc = (state.compounds.find(c=>c.name.includes('Cypionate'))||{conc:200}).conc;
+  const comp = (state.compounds.find(c=>c.name.includes('Cypionate'))||{name:'Testosterone Cypionate'}).name;
+  const ed = (state.frequencies.find(f=>f.days===1)||{label:'ED (daily)'}).label;
+  const today = new Date().toISOString().slice(0,10);
+  const dose = kind==='cruise'? +(70/7).toFixed(1) : +(161/7).toFixed(1);  // mg per daily dose
+  const proto = [{comp, conc, dose, freq:ed, start:today, end:''}];
+  state.cycles.unshift({ id:Date.now(), name:(kind==='cruise'?'Cruise 70mg':'Blast 161mg')+' '+today.slice(0,7),
+    type:kind, start:today, end:'', status:'active', protocol:JSON.parse(JSON.stringify(proto)) });
+  save(); renderCycles();
+}
+
+function loadCycle(i){ if(!confirm('Load this cycle into the editor? Replaces the current protocol.')) return;
+  state.protocol = JSON.parse(JSON.stringify(state.cycles[i].protocol)); save(); renderAll(); }
+function finishCycle(i){ if(!confirm('Mark this cycle finished as of today?')) return;
+  state.cycles[i].end = new Date().toISOString().slice(0,10); state.cycles[i].status='finished'; save(); renderCycles(); }
+function delCycle(i){ if(!confirm('Delete this saved cycle? Cannot be undone.')) return;
+  state.cycles.splice(i,1); save(); renderCycles(); }
+function startEdit(i){ editCycleId = state.cycles[i].id; renderCycles(); }
+function cancelEdit(){ editCycleId=null; renderCycles(); }
+function saveEdit(i){ const c=state.cycles[i];
+  c.name=val('ce_name'); c.type=(val('ce_type')||'custom').toLowerCase();
+  c.start=val('ce_start'); c.end=val('ce_end'); c.status=c.end?'finished':'active';
+  editCycleId=null; save(); renderCycles(); }
+
+const TYPE_COLOR = {blast:'var(--red)', cruise:'var(--blue)', bridge:'var(--gold)', custom:'var(--muted)'};
+function renderCycles(){
+  const tb=document.querySelector('#cycleTable tbody'); tb.innerHTML='';
+  if(!state.cycles.length){ tb.innerHTML='<tr><td colspan="7" style="color:var(--dim)">No saved cycles yet.</td></tr>'; return; }
+  state.cycles.forEach((c,i)=>{
+    const tr=document.createElement('tr');
+    if(c.id===editCycleId){
+      tr.innerHTML=`
+        <td><input id="ce_name" value="${c.name}"></td>
+        <td><input id="ce_type" value="${c.type}" style="width:80px"></td>
+        <td><input type="date" id="ce_start" value="${c.start||''}"></td>
+        <td><input type="date" id="ce_end" value="${c.end||''}"></td>
+        <td>${Math.round(cycleWeekly(c))}</td>
+        <td colspan="2"><button class="mini primary" onclick="saveEdit(${i})">save</button>
+            <button class="mini" onclick="cancelEdit()">cancel</button></td>`;
+    } else {
+      const badge=`<span class="tag" style="color:${TYPE_COLOR[c.type]||'var(--muted)'}">${c.type}</span>`;
+      const status = c.status==='active'
+        ? `<span style="color:var(--accent)">● active</span>`
+        : `<span style="color:var(--muted)">finished</span>`;
+      tr.innerHTML=`
+        <td>${c.name}<div style="font-size:10px;color:var(--dim)">${c.protocol.map(p=>p.comp.split(' ')[0]).join(', ')}</div></td>
+        <td>${badge}</td><td>${c.start||'—'}</td><td>${c.end||'—'}</td>
+        <td><b>${Math.round(cycleWeekly(c))}</b></td><td>${status}</td>
+        <td style="white-space:nowrap">
+          <button class="mini" onclick="loadCycle(${i})">Load</button>
+          ${c.status==='active'?`<button class="mini" onclick="finishCycle(${i})">Finish</button>`:''}
+          <button class="mini" onclick="startEdit(${i})">Edit</button>
+          <button class="mini danger" onclick="delCycle(${i})">×</button></td>`;
+    }
+    tb.appendChild(tr);
+  });
+}
+
+// ============================ BLOODWORK / HORMONE PANEL ============================
+// male reference ranges; `gyno` flags markers whose HIGH value raises gyno risk
+const MARKERS = {
+  "Total-T":        {unit:"ng/dL", lo:264, hi:916},
+  "Free-T":         {unit:"pg/mL", lo:8.7, hi:25.1},
+  "Estradiol (E2)": {unit:"pg/mL", lo:8,   hi:35,  gyno:true},
+  "Progesterone":   {unit:"ng/mL", lo:0,   hi:1.4, gyno:true},
+  "Prolactin":      {unit:"ng/mL", lo:4,   hi:18,  gyno:true},
+  "SHBG":           {unit:"nmol/L",lo:16.5,hi:55.9},
+  "LH":             {unit:"mIU/mL",lo:1.7, hi:8.6},
+  "FSH":            {unit:"mIU/mL",lo:1.5, hi:12.4},
+  "Hematocrit":     {unit:"%",     lo:38.3,hi:48.6},
+};
+// migrate legacy {date,ngdl} -> {date,marker,value,unit}
+state.calibrations = (state.calibrations||[]).map(c=>
+  c.marker ? c : {date:c.date, marker:"Total-T", value:c.ngdl, unit:"ng/dL"});
+
+const isTest = n => /testosterone|sustanon/i.test(n) ||
+  ((state.compounds.find(c=>c.name===n)||{}).cls==='Test');
+
+function calibrationInfo(series, days, t0){
+  const cals=state.calibrations.filter(c=>c.marker==="Total-T" && c.date && c.value>0);
+  if(!cals.length || !series.length) return {factor:null, points:[]};
+  const testTotal = days.map((_,i)=>series.reduce((a,s)=>a+(isTest(s.label)?s.vals[i]:0),0));
+  const points=[]; let latest=null, latestDate='';
+  cals.forEach(c=>{ const off=Math.round((Date.parse(c.date)-t0)/864e5);
+    points.push({off, val:c.value});
+    if(off>=0 && off<days.length){ const model=testTotal[off];
+      if(model>0 && c.date>=latestDate){ latest=c.value/model; latestDate=c.date; } } });
+  return {factor:latest, points};
+}
+function addCalibration(){ const d=val('calDate'), m=val('calMarker'), v=+val('calVal');
+  if(!d||!v||!m){ alert('Need date, marker, value'); return; }
+  state.calibrations.push({date:d, marker:m, value:v, unit:MARKERS[m].unit});
+  document.getElementById('calVal').value='';
+  save(); renderCalibrations(); if(m==="Total-T") document.getElementById('units').value='ngdl'; redraw(); }
+function delCalibration(i){ state.calibrations.splice(i,1); save(); renderCalibrations(); redraw(); }
+function flagOf(m,v){ const r=MARKERS[m]; if(!r) return ['',''];
+  if(v>r.hi) return [r.gyno?'⚠ HIGH':'HIGH','var(--red)'];
+  if(v<r.lo) return ['LOW','var(--blue)'];
+  return ['ok','var(--accent)']; }
+function renderCalibrations(){
+  // populate marker dropdown once
+  const sel=document.getElementById('calMarker');
+  if(sel && !sel.options.length){ sel.innerHTML=Object.keys(MARKERS).map(m=>`<option>${m}</option>`).join('');
+    document.getElementById('calUnit').textContent=MARKERS[sel.value].unit; }
+  const list=document.getElementById('calList');
+  const rows=[...state.calibrations].sort((a,b)=> (b.date||'').localeCompare(a.date)||0);
+  if(!rows.length){ list.innerHTML='<span style="color:var(--dim);font-size:12px">No readings yet.</span>'; return; }
+  list.innerHTML = `<table style="width:auto"><thead><tr>
+      <th>Date</th><th>Marker</th><th>Value</th><th>Ref range</th><th>Flag</th><th></th></tr></thead><tbody>`
+    + rows.map(c=>{ const r=MARKERS[c.marker]||{}; const [flag,col]=flagOf(c.marker,c.value);
+        const idx=state.calibrations.indexOf(c);
+        return `<tr><td>${c.date}</td><td>${c.marker}</td>
+          <td><b>${c.value}</b> ${c.unit||r.unit||''}</td>
+          <td style="color:var(--dim)">${r.lo!=null?r.lo+'–'+r.hi:''}</td>
+          <td style="color:${col};font-weight:600">${flag}</td>
+          <td><button class="mini danger" onclick="delCalibration(${idx})">×</button></td></tr>`;
+      }).join('') + `</tbody></table>`;
+}
+
+// ============================ ANCILLARIES / PCT ============================
+function addAnc(){ const ed=(state.frequencies.find(f=>f.days===1)||{label:'ED (daily)'}).label;
+  const today=new Date().toISOString().slice(0,10);
+  state.ancillaries.push({name:'Anastrozole', dose:0.5, unit:'mg', freq:ed, start:today, end:''});
+  save(); renderAnc(); }
+function updAnc(i,k,v){ state.ancillaries[i][k]=(k==='dose')?+v:v; save(); renderAnc(); }
+function delAnc(i){ state.ancillaries.splice(i,1); save(); renderAnc(); }
+function renderAnc(){
+  document.getElementById('ancNames').innerHTML = SEED_ANCILLARIES.map(n=>`<option value="${n}">`).join('');
+  const tb=document.querySelector('#ancTable tbody'); tb.innerHTML='';
+  state.ancillaries.forEach((a,i)=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><input list="ancNames" value="${a.name}" onchange="updAnc(${i},'name',this.value)"></td>
+      <td><input type="number" step="0.25" value="${a.dose}" onchange="updAnc(${i},'dose',this.value)"></td>
+      <td><select onchange="updAnc(${i},'unit',this.value)">
+        ${['mg','IU','mcg'].map(u=>`<option ${u===a.unit?'selected':''}>${u}</option>`).join('')}</select></td>
+      <td><select onchange="updAnc(${i},'freq',this.value)">${freqOptions(a.freq)}</select></td>
+      <td><input type="date" value="${a.start||''}" onchange="updAnc(${i},'start',this.value)"></td>
+      <td><input type="date" value="${a.end||''}" onchange="updAnc(${i},'end',this.value)"></td>
+      <td><button class="mini danger" onclick="delAnc(${i})">×</button></td>`;
+    tb.appendChild(tr);
+  });
+  renderAncTimeline();
+}
+const ANC_COLORS=["#f472b6","#c084fc","#22d3ee","#fb923c","#a3e635","#94a3b8"];
+function renderAncTimeline(){
+  const el=document.getElementById('ancTimeline'); if(!el) return;
+  const r=window.lastRange; const ancs=(state.ancillaries||[]).filter(a=>a.start);
+  if(!r || !ancs.length){ el.innerHTML = ancs.length?'' : '<span style="color:var(--dim);font-size:12px">No ancillaries scheduled.</span>'; return; }
+  const span=Math.max(1, r.last);
+  el.innerHTML = ancs.map((a,i)=>{
+    const s=Math.max(0,(Date.parse(a.start)-r.t0)/864e5);
+    const e=Math.min(span,(a.end?(Date.parse(a.end)-r.t0)/864e5:span));
+    const left=s/span*100, w=Math.max(2,(e-s)/span*100);
+    const col=ANC_COLORS[i%ANC_COLORS.length];
+    return `<div style="position:relative;height:20px;margin:3px 0">
+      <div style="position:absolute;left:${left}%;width:${w}%;height:16px;background:${col};opacity:.8;border-radius:4px;
+        font-size:10px;color:#000;padding:1px 6px;white-space:nowrap;overflow:hidden">${a.name} ${a.dose}${a.unit} ${a.freq.split(' ')[0]}</div></div>`;
+  }).join('');
+}
+
+// ============================ APE EXPORT ============================
+function importIndex(e){ const f=e.target.files[0]; if(!f) return; const r=new FileReader();
+  r.onload=()=>{ try{ const j=JSON.parse(r.result); const map=j.coefficients||j;
+    state.customIndex=map; save();
+    document.getElementById('units').value='anabolic'; document.getElementById('indexBasis').value='custom';
+    redraw(); alert('Loaded n=1 index for '+Object.keys(map).length+' compounds. Units→Anabolic, basis→Custom.');
+  }catch(err){ alert('bad index file'); } }; r.readAsText(f); }
+
+function exportForAPE(){
+  const payload={ exported_at:new Date().toISOString(),
+    cycles:state.cycles, calibrations:state.calibrations,
+    ancillaries:state.ancillaries, current_protocol:state.protocol };
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='ped-cycles.json'; a.click();
+  alert('Saved ped-cycles.json to Downloads.\nMove it to ~ and run:\n  cd ~/forge/projects/APE && .venv311/bin/python tools/ped_sync.py ~/ped-cycles.json');
+}
+
+function renderAll(){ renderProtocol(); renderLib(); renderPresets(); renderCycles();
+  renderCalibrations(); renderAnc(); redraw(); }
+
+// ---- read-only lockdown: show values, remove every editing affordance ----
+function applyReadonly(){
+  if(!READONLY) return;
+  // hide panels that exist only for editing
+  document.querySelectorAll('.panel').forEach(p=>{
+    const h=(p.querySelector('h2')||{}).textContent||'';
+    if(/Compound Library|Dropdown Presets/.test(h)) p.style.display='none';
+  });
+  // hide every mutating control; keep chart view controls + supply calculator
+  const KEEP=new Set(['model','units','tail','showTotal','ngdlScale','indexBasis','supplyDays']);
+  document.querySelectorAll('button').forEach(b=>{
+    const oc=b.getAttribute('onclick')||'';
+    if(/redraw|calcSupply/.test(oc)) return;
+    if(/add|del|save|reset|finish|Edit|quickCycle|import|export|clear/i.test(oc)) b.style.display='none';
+  });
+  document.querySelectorAll('.addbar').forEach(e=>e.style.display='none');
+  // the trailing JSON import/export row + its file inputs
+  document.querySelectorAll('input[type=file]').forEach(e=>{ const r=e.closest('.row'); if(r) r.style.display='none'; });
+  // lock the data fields so values display but can't be changed
+  document.querySelectorAll('input,select').forEach(el=>{ if(!KEEP.has(el.id)) el.disabled=true; });
+}
+renderAll();
+applyReadonly();
+</script>
+</body>
+</html>
