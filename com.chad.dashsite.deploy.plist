@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Daily deploy for the public dashboard site.
+  Install:
+    cp com.chad.dashsite.deploy.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.chad.dashsite.deploy.plist
+  Run now (test):
+    launchctl start com.chad.dashsite.deploy
+  Logs: ~/forge/projects/dash-site/deploy.log
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>            <string>com.chad.dashsite.deploy</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/chadcrawford/forge/projects/dash-site/deploy.sh</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>    <integer>6</integer>
+    <key>Minute</key>  <integer>30</integer>
+  </dict>
+  <key>StandardOutPath</key>  <string>/Users/chadcrawford/forge/projects/dash-site/deploy.log</string>
+  <key>StandardErrorPath</key><string>/Users/chadcrawford/forge/projects/dash-site/deploy.log</string>
+  <key>RunAtLoad</key>        <false/>
+</dict>
+</plist>
