@@ -432,24 +432,28 @@
     t+=`\nPlease assess (1) the quality of my last session and (2) whether the proposed prescription is sound for hypertrophy — load/rep/RPE coherence, progression logic, fatigue. Then let's discuss adjustments. Ask me anything you need.`;
     return t;
   }
-  window.handoff=async function(provider){
+  window.handoff=function(provider){
     const p=handoffPrompt();
-    let copied=false;
-    try{ await navigator.clipboard.writeText(p); copied=true; }catch(e){}
-    // also drop it in a selectable box as a fallback (file:// often blocks clipboard)
-    const ta=document.createElement('textarea');
-    ta.value=p; ta.style.cssText='width:100%;height:150px;background:#0e1410;color:#cfe;border:1px solid #234023;border-radius:8px;padding:10px;font:12px/1.5 monospace';
-    const box=document.getElementById('analysis'); box.innerHTML='';
-    const note=document.createElement('div'); note.style.cssText='font-size:12px;color:#8a8a8a;margin:8px 0 4px';
-    note.textContent=(copied?'Context copied to clipboard':'Select + copy this context')+' — paste it into the chat if it didn’t prefill.';
-    box.appendChild(note); box.appendChild(ta); ta.select();
+    // Open the chat FIRST, synchronously, in the click gesture — any await before
+    // window.open() makes the browser treat it as non-user-initiated and block the popup.
     const url = provider==='chatgpt'
       ? 'https://chatgpt.com/?q='+encodeURIComponent(p)
       : 'https://claude.ai/new?q='+encodeURIComponent(p);
     // URL has length limits; if too long, open base chat and rely on the copied context
     const safe = url.length>6000 ? (provider==='chatgpt'?'https://chatgpt.com/':'https://claude.ai/new') : url;
-    window.open(safe,'_blank');
-    tb('handed off to '+(provider==='chatgpt'?'ChatGPT':'Claude'));
+    const win = window.open(safe,'_blank');
+    const blocked = !win;
+    // selectable fallback box (always) + clipboard copy (async, after the open)
+    const ta=document.createElement('textarea');
+    ta.value=p; ta.style.cssText='width:100%;height:150px;background:#0e1410;color:#cfe;border:1px solid #234023;border-radius:8px;padding:10px;font:12px/1.5 monospace';
+    const box=document.getElementById('analysis'); box.innerHTML='';
+    const note=document.createElement('div'); note.style.cssText='font-size:12px;color:#8a8a8a;margin:8px 0 4px';
+    note.textContent=(blocked?'Popup blocked — open '+(provider==='chatgpt'?'ChatGPT':'Claude')+' manually and paste this':'Context ready — paste it into the chat if it didn’t prefill.');
+    box.appendChild(note); box.appendChild(ta); ta.select();
+    if(navigator.clipboard) navigator.clipboard.writeText(p)
+      .then(()=>{ if(!blocked) note.textContent='Context copied to clipboard — paste it into the chat if it didn’t prefill.'; })
+      .catch(()=>{});
+    tb(blocked?'popup blocked — context is in the box below':'handed off to '+(provider==='chatgpt'?'ChatGPT':'Claude'));
   };
   if(!SERVED) tb('static mode — "Load from VOLM" needs the live launcher; handoff works here');
   </script>
