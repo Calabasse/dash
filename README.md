@@ -6,11 +6,17 @@ it builds the data files and pushes them here. No server or database runs online
 ## Pages
 - `index.html` — landing / nav
 - `workout.html` + `workout-card.data.js` — training (read-only). Built from VOLM/duckdb.
-- `ped.html` — owner's PED cycle + serum estimate (read-only). Generated from
-  `templates/ped.html` with the owner's cycle injected at the `@@PED_DATA@@` marker.
+- `ped.html` — owner's PED cycle + full serum estimator, preloaded with the owner's
+  cycle. Fully interactive (edit / recalc / save). Generated from `templates/ped.html`
+  with the owner's cycle injected at the `@@PED_DATA@@` marker. Links back to the hub.
 - `weight.html` — Withings body composition (self-contained, copied as-is).
-- `tracker.html` — **independent public tool**: anyone can build their own cycle and
-  save/load it to a plain-text file on their own device. Nothing is uploaded.
+- `tracker.html` — **independent public tool**, standalone (no link back to the hub):
+  same full feature set, starts empty, each visitor builds their own cycle and saves /
+  loads it to a plain-text file on their own device. Nothing is uploaded.
+
+Both PED pages share the same feature set and IO (plain-text save/load + JSON / APE
+export). They differ only in: `ped.html` preloads the owner's cycle and links home;
+`tracker.html` starts empty and stands alone.
 
 ## Deploy
 ```

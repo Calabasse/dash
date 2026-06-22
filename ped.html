@@ -67,7 +67,7 @@
 <a href="index.html" style="position:fixed;top:8px;right:10px;z-index:9999;font:600 12px -apple-system,sans-serif;color:#9ecbff;background:rgba(22,27,34,.85);border:1px solid #2a2f37;border-radius:6px;padding:4px 9px;text-decoration:none">← Home</a>
 <div class="wrap">
   <h1>PED Cycle <span style="color:var(--muted);font-weight:400;font-size:15px">+ Serum Estimator</span></h1>
-  <div class="sub">Current cycle and pharmacokinetic serum estimate. Read-only view. Estimates only — not medical advice; confirm with bloodwork.</div>
+  <div class="sub">My current cycle with the full serum estimator — preloaded with my latest cycle. Fully interactive: edit, recalculate, and save your own copy to a plain-text file. Estimates only — not medical advice; confirm with bloodwork.</div>
 
   <!-- ===================== CHART ===================== -->
   <div class="panel">
@@ -206,14 +206,21 @@
     </div>
   </div>
 
-  <div class="row">
-    <button class="mini" onclick="exportData()">⤓ export JSON</button>
-    <button class="mini" onclick="exportForAPE()">⤓ export for APE (ped-cycles.json)</button>
-    <button class="mini" onclick="document.getElementById('idxFile').click()">⤒ import n=1 index</button>
-    <input type="file" id="idxFile" style="display:none" accept="application/json" onchange="importIndex(event)">
-    <button class="mini" onclick="document.getElementById('importFile').click()">⤒ import JSON</button>
-    <input type="file" id="importFile" style="display:none" accept="application/json" onchange="importData(event)">
-    <button class="mini danger" onclick="resetAll()">reset to defaults</button>
+  <div class="panel">
+    <h2>Your data — save &amp; load</h2>
+    <div class="row">
+      <button class="mini primary" onclick="exportText()">⤓ Save to file (.txt)</button>
+      <button class="mini" onclick="document.getElementById('txtFile').click()">⤒ Load from file (.txt)</button>
+      <input type="file" id="txtFile" style="display:none" accept=".txt,text/plain" onchange="importText(event)">
+      <button class="mini" onclick="exportData()">⤓ export JSON</button>
+      <button class="mini" onclick="document.getElementById('importFile').click()">⤒ import JSON</button>
+      <input type="file" id="importFile" style="display:none" accept="application/json" onchange="importData(event)">
+      <button class="mini" onclick="exportForAPE()">⤓ export for APE</button>
+      <button class="mini" onclick="document.getElementById('idxFile').click()">⤒ import n=1 index</button>
+      <input type="file" id="idxFile" style="display:none" accept="application/json" onchange="importIndex(event)">
+      <button class="mini danger" onclick="clearAll()">clear &amp; start over</button>
+    </div>
+    <div class="note">“Save to file” downloads a readable plain-text file (never uploaded). JSON / APE export also available. “Load” reads a saved file back in. Your cycle auto-saves in this browser between visits.</div>
   </div>
 </div>
 
@@ -221,11 +228,8 @@
 // ============================ STATE ============================
 const LS = "ped_tracker_v1";
 const DAY = 1;
-
-// READ-ONLY public view. The owner's cycle is injected below by deploy.sh as
-// window.PED_DATA (full state object). Until injected it is null and a demo
-// seed is shown. This page never reads or writes the visitor's localStorage.
-const READONLY = true;
+// Owner's cycle is injected on the next line by deploy.sh. Until then it is null and a
+// demo seed shows. Visitor edits persist in their own localStorage.
 window.PED_DATA = null;  /* no cycle file — showing demo seed */
 
 // seed compound library: half-life in DAYS (orals converted from hours)
@@ -333,14 +337,15 @@ state.compounds.forEach(c=>{ if(c.anab==null){ const r=ratioFor(c.name); c.anab=
   if(c.arbind==null || typeof c.arom==='boolean') Object.assign(c, mechFor(c.name)); });
 if(!state.customIndex) state.customIndex={};
 function load(){
+  try{ const s = JSON.parse(localStorage.getItem(LS)); if(s&&s.compounds) return s; }catch(e){}
   const base = { compounds:[...SEED_COMPOUNDS], concentrations:[...SEED_CONC],
            frequencies:[...SEED_FREQ], protocol:seedProtocol(), cycles:[],
            calibrations:[], ancillaries:[] };
-  if(window.PED_DATA){ return Object.assign(base, window.PED_DATA); }  // owner's injected cycle
-  return base;  // demo seed until data is injected
+  if(window.PED_DATA) return Object.assign(base, window.PED_DATA);  // owner's injected cycle
+  return base;
 }
 const SEED_ANCILLARIES = ["Anastrozole","Exemestane","Tamoxifen (Nolvadex)","Clomiphene (Clomid)","Enclomiphene","HCG","Cabergoline"];
-function save(){ /* read-only view — never persists to the visitor's browser */ }
+function save(){ localStorage.setItem(LS, JSON.stringify(state)); }
 
 const COLORS = ["#4ade80","#6aa9ff","#f5c451","#f87171","#c084fc","#22d3ee","#fb923c","#a3e635","#f472b6","#94a3b8"];
 const freqDays = label => (state.frequencies.find(f=>f.label===label)||{days:7}).days;
@@ -614,6 +619,83 @@ function importData(e){ const f=e.target.files[0]; if(!f)return; const r=new Fil
   r.onload=()=>{ try{ state=JSON.parse(r.result); save(); renderAll(); }catch(err){alert('bad file');} }; r.readAsText(f); }
 function resetAll(){ if(!confirm('Reset compounds, presets, and protocol to defaults?'))return;
   localStorage.removeItem(LS); state=load(); renderAll(); }
+function clearAll(){ if(!confirm('Clear cycle, ancillaries, and bloodwork and start over?'))return;
+  state.protocol=[]; state.cycles=[]; state.ancillaries=[]; state.calibrations=[]; save(); renderAll(); }
+
+// ---- plain-text save / load (human-readable; round-trips the cycle) ----
+function serializeText(){
+  const L=[];
+  L.push('# PED Cycle Tracker — saved '+new Date().toISOString().slice(0,10));
+  L.push('# Plain text. Hand-edit if you like; keep the [Section] headers and "Key: value" lines.');
+  L.push('# Blank line separates records within a section.');
+  L.push('');
+  const rec=(o,keys)=>keys.forEach(k=>{ if(o[k]!=null && o[k]!=='') L.push(k[0].toUpperCase()+k.slice(1)+': '+o[k]); });
+  L.push('[Protocol]');
+  (state.protocol||[]).forEach((p,i)=>{ if(i) L.push('');
+    rec({Compound:p.comp,Conc:p.conc,Dose:p.dose,Frequency:p.freq,Start:p.start,End:p.end},
+        ['Compound','Conc','Dose','Frequency','Start','End']); });
+  L.push(''); L.push('[Cycle]');
+  (state.cycles||[]).forEach((c,i)=>{ if(i) L.push('');
+    rec({Name:c.name,Type:c.type,Start:c.start,End:c.end,Status:c.status},['Name','Type','Start','End','Status']);
+    (c.protocol||[]).forEach(p=>L.push('  Row: Compound='+p.comp+' | Conc='+(p.conc||'')+' | Dose='+(p.dose||'')
+      +' | Frequency='+(p.freq||'')+' | Start='+(p.start||'')+' | End='+(p.end||''))); });
+  L.push(''); L.push('[Ancillary]');
+  (state.ancillaries||[]).forEach((a,i)=>{ if(i) L.push('');
+    rec({Name:a.name,Dose:a.dose,Unit:a.unit,Frequency:a.freq,Start:a.start,End:a.end},
+        ['Name','Dose','Unit','Frequency','Start','End']); });
+  L.push(''); L.push('[Bloodwork]');
+  (state.calibrations||[]).forEach((b,i)=>{ if(i) L.push('');
+    rec({Date:b.date,Marker:b.marker,Value:b.value,Unit:b.unit},['Date','Marker','Value','Unit']); });
+  L.push('');
+  return L.join('\n');
+}
+function parseText(txt){
+  const out={protocol:[],cycles:[],ancillaries:[],calibrations:[]};
+  let section=null, rec=null, curCycle=null;
+  const flush=()=>{ if(!rec){ rec=null; return; }
+    if(section==='Protocol' && rec.Compound)
+      out.protocol.push({comp:rec.Compound,conc:+rec.Conc||0,dose:+rec.Dose||0,freq:rec.Frequency||'',start:rec.Start||'',end:rec.End||''});
+    else if(section==='Cycle' && rec.Name){ curCycle={id:Date.now()+out.cycles.length,name:rec.Name,
+        type:(rec.Type||'custom').toLowerCase(),start:rec.Start||'',end:rec.End||'',
+        status:rec.Status||(rec.End?'finished':'active'),protocol:rec._rows||[]}; out.cycles.push(curCycle); }
+    else if(section==='Ancillary' && rec.Name)
+      out.ancillaries.push({name:rec.Name,dose:+rec.Dose||0,unit:rec.Unit||'mg',freq:rec.Frequency||'',start:rec.Start||'',end:rec.End||''});
+    else if(section==='Bloodwork' && rec.Date)
+      out.calibrations.push({date:rec.Date,marker:rec.Marker||'Total-T',value:+rec.Value||0,unit:rec.Unit||'ng/dL'});
+    rec=null; };
+  txt.split(/\r?\n/).forEach(line=>{
+    const t=line.trim();
+    if(t.startsWith('#')) return;
+    const sec=t.match(/^\[(\w+)\]$/);
+    if(sec){ flush(); section=sec[1]; return; }
+    if(t===''){ flush(); return; }
+    const row=t.match(/^Row:\s*(.+)$/i);
+    if(row && rec){ const r={}; row[1].split('|').forEach(pair=>{ const m=pair.split('='); if(m.length>=2) r[m[0].trim().toLowerCase()]=m.slice(1).join('=').trim(); });
+      (rec._rows=rec._rows||[]).push({comp:r.compound,conc:+r.conc||0,dose:+r.dose||0,freq:r.frequency||'',start:r.start||'',end:r.end||''}); return; }
+    const kv=t.match(/^(\w+):\s*(.*)$/);
+    if(kv){ if(!rec) rec={}; rec[kv[1]]=kv[2]; }
+  });
+  flush();
+  return out;
+}
+function exportText(){
+  const blob=new Blob([serializeText()],{type:'text/plain'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='ped-cycle-'+new Date().toISOString().slice(0,10)+'.txt'; a.click();
+}
+function importText(e){ const f=e.target.files[0]; if(!f) return; const r=new FileReader();
+  r.onload=()=>{ try{
+    const p=parseText(r.result);
+    state.protocol=p.protocol; state.cycles=p.cycles;
+    state.ancillaries=p.ancillaries; state.calibrations=p.calibrations;
+    const have=new Set(state.compounds.map(c=>c.name));
+    const refs=new Set(); p.protocol.forEach(x=>refs.add(x.comp)); p.cycles.forEach(c=>c.protocol.forEach(x=>refs.add(x.comp)));
+    refs.forEach(n=>{ if(n && !have.has(n)){ const rr=ratioFor(n),m=mechFor(n);
+      state.compounds.push({name:n,cls:'Custom',hl:5,conc:100,anab:rr[0],andro:rr[1],...m}); } });
+    save(); renderAll();
+  }catch(err){ alert('Could not read that file. Keep the [Section] headers and "Key: value" lines.'); } };
+  r.readAsText(f); e.target.value='';
+}
 
 // ============================ SUPPLY CALCULATOR ============================
 function calcSupply(){
@@ -862,30 +944,7 @@ function exportForAPE(){
 
 function renderAll(){ renderProtocol(); renderLib(); renderPresets(); renderCycles();
   renderCalibrations(); renderAnc(); redraw(); }
-
-// ---- read-only lockdown: show values, remove every editing affordance ----
-function applyReadonly(){
-  if(!READONLY) return;
-  // hide panels that exist only for editing
-  document.querySelectorAll('.panel').forEach(p=>{
-    const h=(p.querySelector('h2')||{}).textContent||'';
-    if(/Compound Library|Dropdown Presets/.test(h)) p.style.display='none';
-  });
-  // hide every mutating control; keep chart view controls + supply calculator
-  const KEEP=new Set(['model','units','tail','showTotal','ngdlScale','indexBasis','supplyDays']);
-  document.querySelectorAll('button').forEach(b=>{
-    const oc=b.getAttribute('onclick')||'';
-    if(/redraw|calcSupply/.test(oc)) return;
-    if(/add|del|save|reset|finish|Edit|quickCycle|import|export|clear/i.test(oc)) b.style.display='none';
-  });
-  document.querySelectorAll('.addbar').forEach(e=>e.style.display='none');
-  // the trailing JSON import/export row + its file inputs
-  document.querySelectorAll('input[type=file]').forEach(e=>{ const r=e.closest('.row'); if(r) r.style.display='none'; });
-  // lock the data fields so values display but can't be changed
-  document.querySelectorAll('input,select').forEach(el=>{ if(!KEEP.has(el.id)) el.disabled=true; });
-}
 renderAll();
-applyReadonly();
 </script>
 </body>
 </html>
