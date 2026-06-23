@@ -1,0 +1,433 @@
+{
+  "active_profile": "yates_mentzer",
+  "profiles": {
+    "yates_mentzer": {
+      "label": "Modified Yates / Mentzer",
+      "note": "Low volume, high intensity, reps-before-load, RPE 9-10. The current default.",
+      "globals": {
+        "warmup_fracs": [
+          0.55,
+          0.8
+        ],
+        "backoff_frac": 0.9,
+        "barbell_step_kg": 2.5,
+        "dumbbell_step_lb": 5,
+        "machine_step_lb": 5,
+        "weighted_bw_step_lb": 5
+      },
+      "types": {
+        "barbell": {
+          "rep_lo": 5,
+          "rep_hi": 10,
+          "anchor": 10,
+          "top_rpe": 10,
+          "warmups": 2,
+          "backoffs": 1,
+          "is_isolation": false
+        },
+        "dumbbell_compound": {
+          "rep_lo": 6,
+          "rep_hi": 12,
+          "anchor": 12,
+          "top_rpe": 10,
+          "warmups": 2,
+          "backoffs": 1,
+          "is_isolation": false
+        },
+        "dumbbell_isolation": {
+          "rep_lo": 10,
+          "rep_hi": 15,
+          "anchor": 12,
+          "top_rpe": 9.5,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": true
+        },
+        "cable_or_machine": {
+          "rep_lo": 8,
+          "rep_hi": 15,
+          "anchor": 12,
+          "top_rpe": 9.5,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": true
+        },
+        "band_assisted_bodyweight": {
+          "rep_lo": 8,
+          "rep_hi": 15,
+          "anchor": 15,
+          "top_rpe": 10,
+          "warmups": 2,
+          "backoffs": 1,
+          "is_isolation": false
+        },
+        "band_resisted_isolation": {
+          "rep_lo": 14,
+          "rep_hi": 20,
+          "anchor": 15,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": true
+        },
+        "band_combo": {
+          "rep_lo": 12,
+          "rep_hi": 20,
+          "anchor": 15,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": true
+        },
+        "bodyweight": {
+          "rep_lo": 8,
+          "rep_hi": 20,
+          "anchor": 12,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": false
+        },
+        "bodyweight_abs": {
+          "rep_lo": 15,
+          "rep_hi": 25,
+          "anchor": 20,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": false
+        },
+        "weighted_bodyweight": {
+          "rep_lo": 6,
+          "rep_hi": 12,
+          "anchor": 12,
+          "top_rpe": 10,
+          "warmups": 2,
+          "backoffs": 1,
+          "is_isolation": false
+        }
+      }
+    },
+    "hit": {
+      "label": "Pure HIT / Heavy Duty (Mentzer)",
+      "note": "One all-out set to failure, minimal volume, no backoffs, long rest, bigger jumps when earned.",
+      "globals": {
+        "warmup_fracs": [
+          0.6
+        ],
+        "backoff_frac": 0.0,
+        "barbell_step_kg": 5.0,
+        "dumbbell_step_lb": 10,
+        "machine_step_lb": 10,
+        "weighted_bw_step_lb": 10
+      },
+      "types": {
+        "barbell": {
+          "rep_lo": 6,
+          "rep_hi": 10,
+          "anchor": 8,
+          "top_rpe": 10,
+          "warmups": 1,
+          "backoffs": 0,
+          "is_isolation": false
+        },
+        "dumbbell_compound": {
+          "rep_lo": 6,
+          "rep_hi": 10,
+          "anchor": 8,
+          "top_rpe": 10,
+          "warmups": 1,
+          "backoffs": 0,
+          "is_isolation": false
+        },
+        "dumbbell_isolation": {
+          "rep_lo": 8,
+          "rep_hi": 12,
+          "anchor": 10,
+          "top_rpe": 10,
+          "warmups": 1,
+          "backoffs": 0,
+          "is_isolation": true
+        },
+        "cable_or_machine": {
+          "rep_lo": 8,
+          "rep_hi": 12,
+          "anchor": 10,
+          "top_rpe": 10,
+          "warmups": 1,
+          "backoffs": 0,
+          "is_isolation": true
+        },
+        "band_assisted_bodyweight": {
+          "rep_lo": 6,
+          "rep_hi": 12,
+          "anchor": 10,
+          "top_rpe": 10,
+          "warmups": 1,
+          "backoffs": 0,
+          "is_isolation": false
+        },
+        "band_resisted_isolation": {
+          "rep_lo": 12,
+          "rep_hi": 18,
+          "anchor": 12,
+          "top_rpe": 10,
+          "warmups": 1,
+          "backoffs": 0,
+          "is_isolation": true
+        },
+        "band_combo": {
+          "rep_lo": 10,
+          "rep_hi": 15,
+          "anchor": 12,
+          "top_rpe": 10,
+          "warmups": 1,
+          "backoffs": 0,
+          "is_isolation": true
+        },
+        "bodyweight": {
+          "rep_lo": 6,
+          "rep_hi": 15,
+          "anchor": 10,
+          "top_rpe": 10,
+          "warmups": 1,
+          "backoffs": 0,
+          "is_isolation": false
+        },
+        "bodyweight_abs": {
+          "rep_lo": 12,
+          "rep_hi": 20,
+          "anchor": 15,
+          "top_rpe": 10,
+          "warmups": 1,
+          "backoffs": 0,
+          "is_isolation": false
+        },
+        "weighted_bodyweight": {
+          "rep_lo": 6,
+          "rep_hi": 10,
+          "anchor": 8,
+          "top_rpe": 10,
+          "warmups": 1,
+          "backoffs": 0,
+          "is_isolation": false
+        }
+      }
+    },
+    "volume": {
+      "label": "High-Volume Hypertrophy (GVT-style)",
+      "note": "More sets, moderate RPE 8-9, higher rep ranges, smaller load jumps.",
+      "globals": {
+        "warmup_fracs": [
+          0.5,
+          0.7
+        ],
+        "backoff_frac": 0.85,
+        "barbell_step_kg": 2.5,
+        "dumbbell_step_lb": 5,
+        "machine_step_lb": 5,
+        "weighted_bw_step_lb": 5
+      },
+      "types": {
+        "barbell": {
+          "rep_lo": 8,
+          "rep_hi": 12,
+          "anchor": 12,
+          "top_rpe": 9,
+          "warmups": 2,
+          "backoffs": 2,
+          "is_isolation": false
+        },
+        "dumbbell_compound": {
+          "rep_lo": 8,
+          "rep_hi": 15,
+          "anchor": 12,
+          "top_rpe": 9,
+          "warmups": 2,
+          "backoffs": 3,
+          "is_isolation": false
+        },
+        "dumbbell_isolation": {
+          "rep_lo": 12,
+          "rep_hi": 20,
+          "anchor": 15,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 3,
+          "is_isolation": true
+        },
+        "cable_or_machine": {
+          "rep_lo": 12,
+          "rep_hi": 20,
+          "anchor": 15,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 3,
+          "is_isolation": true
+        },
+        "band_assisted_bodyweight": {
+          "rep_lo": 10,
+          "rep_hi": 18,
+          "anchor": 15,
+          "top_rpe": 9,
+          "warmups": 2,
+          "backoffs": 2,
+          "is_isolation": false
+        },
+        "band_resisted_isolation": {
+          "rep_lo": 15,
+          "rep_hi": 25,
+          "anchor": 18,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 3,
+          "is_isolation": true
+        },
+        "band_combo": {
+          "rep_lo": 15,
+          "rep_hi": 25,
+          "anchor": 18,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 3,
+          "is_isolation": true
+        },
+        "bodyweight": {
+          "rep_lo": 12,
+          "rep_hi": 25,
+          "anchor": 18,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 2,
+          "is_isolation": false
+        },
+        "bodyweight_abs": {
+          "rep_lo": 20,
+          "rep_hi": 30,
+          "anchor": 25,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 2,
+          "is_isolation": false
+        },
+        "weighted_bodyweight": {
+          "rep_lo": 8,
+          "rep_hi": 15,
+          "anchor": 12,
+          "top_rpe": 9,
+          "warmups": 2,
+          "backoffs": 2,
+          "is_isolation": false
+        }
+      }
+    },
+    "strength_rpt": {
+      "label": "Strength 5x5 / Reverse Pyramid",
+      "note": "Lower reps, bigger load jumps, lower RPE caps, more warmups; backoffs as ~10% drops.",
+      "globals": {
+        "warmup_fracs": [
+          0.4,
+          0.6,
+          0.8
+        ],
+        "backoff_frac": 0.9,
+        "barbell_step_kg": 5.0,
+        "dumbbell_step_lb": 10,
+        "machine_step_lb": 10,
+        "weighted_bw_step_lb": 10
+      },
+      "types": {
+        "barbell": {
+          "rep_lo": 4,
+          "rep_hi": 6,
+          "anchor": 5,
+          "top_rpe": 9,
+          "warmups": 3,
+          "backoffs": 2,
+          "is_isolation": false
+        },
+        "dumbbell_compound": {
+          "rep_lo": 5,
+          "rep_hi": 8,
+          "anchor": 6,
+          "top_rpe": 9,
+          "warmups": 2,
+          "backoffs": 2,
+          "is_isolation": false
+        },
+        "dumbbell_isolation": {
+          "rep_lo": 6,
+          "rep_hi": 10,
+          "anchor": 8,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 2,
+          "is_isolation": true
+        },
+        "cable_or_machine": {
+          "rep_lo": 6,
+          "rep_hi": 10,
+          "anchor": 8,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 2,
+          "is_isolation": true
+        },
+        "band_assisted_bodyweight": {
+          "rep_lo": 5,
+          "rep_hi": 10,
+          "anchor": 8,
+          "top_rpe": 9,
+          "warmups": 2,
+          "backoffs": 2,
+          "is_isolation": false
+        },
+        "band_resisted_isolation": {
+          "rep_lo": 10,
+          "rep_hi": 15,
+          "anchor": 12,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 2,
+          "is_isolation": true
+        },
+        "band_combo": {
+          "rep_lo": 8,
+          "rep_hi": 12,
+          "anchor": 10,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 2,
+          "is_isolation": true
+        },
+        "bodyweight": {
+          "rep_lo": 5,
+          "rep_hi": 12,
+          "anchor": 8,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 2,
+          "is_isolation": false
+        },
+        "bodyweight_abs": {
+          "rep_lo": 10,
+          "rep_hi": 18,
+          "anchor": 12,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 2,
+          "is_isolation": false
+        },
+        "weighted_bodyweight": {
+          "rep_lo": 4,
+          "rep_hi": 8,
+          "anchor": 6,
+          "top_rpe": 9,
+          "warmups": 2,
+          "backoffs": 2,
+          "is_isolation": false
+        }
+      }
+    }
+  }
+}

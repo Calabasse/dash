@@ -288,9 +288,9 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 32.5,
+                "lbs": 25,
                 "reps": "15",
-                "rpe": 6.0
+                "rpe": 5.0
               }
             },
             {
@@ -373,9 +373,9 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 27.5,
+                "lbs": 22.5,
                 "reps": "15",
-                "rpe": 6.0
+                "rpe": 5.0
               }
             },
             {
@@ -486,7 +486,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "progress",
-        "headline": "DAY C \u2014 DELTS / ABS (3-4 days) \u2014 0 load\u2191 \u00b7 5 rep\u2191 \u00b7 0 hold.",
+        "headline": "DAY C \u2014 DELTS / ABS (3-4 days) \u2014 2 load\u2191 \u00b7 3 rep\u2191 \u00b7 0 hold.",
         "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>6/6</b> prescriptions passed the validation gate."
       },
@@ -505,9 +505,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 20 lb \u00d7 14 @ RPE 8 \u00b7 dumbbell \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 20 \u2014 reps below anchor; chase reps to ~15 at RPE 9.5 before adding load.",
+          "action": "increase_load",
+          "assess": "Last top set: 20 lb \u00d7 14 @ RPE 8 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (14/12/10/14) \u2014 earn the jump; load 20\u219225. Isolation: only loaded once the whole cluster is productive.",
           "sets": [
             {
               "type": "W",
@@ -518,8 +518,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 15,
-                "reps": "20",
-                "rpe": 6.0
+                "reps": "15",
+                "rpe": 5.0
               }
             },
             {
@@ -530,8 +530,8 @@ window.PROGRAM = {
                 "rpe": 8
               },
               "prop": {
-                "lbs": 20,
-                "reps": "14\u201320",
+                "lbs": 25,
+                "reps": "10\u201312",
                 "rpe": 9.5
               }
             },
@@ -543,8 +543,8 @@ window.PROGRAM = {
                 "rpe": 8.5
               },
               "prop": {
-                "lbs": 17.5,
-                "reps": "16\u201320",
+                "lbs": 22.5,
+                "reps": "12",
                 "rpe": 9.0
               }
             },
@@ -649,9 +649,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 20 lb \u00d7 12 @ RPE 8.5 \u00b7 dumbbell \u00b7 anchor 13 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 20 \u2014 reps below anchor; chase reps to ~13 at RPE 9.5 before adding load.",
+          "action": "increase_load",
+          "assess": "Last top set: 20 lb \u00d7 12 @ RPE 8.5 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/13) \u2014 earn the jump; load 20\u219225. Isolation: only loaded once the whole cluster is productive.",
           "sets": [
             {
               "type": "W",
@@ -662,8 +662,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 15,
-                "reps": "18",
-                "rpe": 6.0
+                "reps": "15",
+                "rpe": 5.0
               }
             },
             {
@@ -674,8 +674,8 @@ window.PROGRAM = {
                 "rpe": 8.5
               },
               "prop": {
-                "lbs": 20,
-                "reps": "12\u201318",
+                "lbs": 25,
+                "reps": "10\u201312",
                 "rpe": 9.5
               }
             },
@@ -687,8 +687,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 17.5,
-                "reps": "14\u201318",
+                "lbs": 22.5,
+                "reps": "12",
                 "rpe": 9.0
               }
             }
@@ -720,9 +720,9 @@ window.PROGRAM = {
                 "rpe": 8
               },
               "prop": {
-                "lbs": 25,
+                "lbs": 20,
                 "reps": "15",
-                "rpe": 6.0
+                "rpe": 5.0
               }
             },
             {
@@ -1015,9 +1015,9 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 27.5,
+                "lbs": 22.5,
                 "reps": "15",
-                "rpe": 6.0
+                "rpe": 5.0
               }
             },
             {
@@ -1208,8 +1208,8 @@ window.PROGRAM = {
           "loading_type": "dumbbell",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: bodyweight \u00d7 None @ RPE 7 \u00b7 dumbbell \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 No load logged last session \u2014 record the load and chase reps to ~15 at RPE 9.5 before adding weight.",
+          "assess": "Last top set: bodyweight \u00d7 None @ RPE 7 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 No load logged last session \u2014 record the load and chase reps to ~12 at RPE 9.5 before adding weight.",
           "sets": [
             {
               "type": "W",
@@ -1220,7 +1220,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": null,
-                "reps": "20",
+                "reps": "15",
                 "rpe": 6.0
               }
             },
@@ -1233,7 +1233,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": null,
-                "reps": "12\u201320",
+                "reps": "10\u201315",
                 "rpe": 9.5
               }
             },
@@ -1246,7 +1246,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": null,
-                "reps": "14\u201320",
+                "reps": "12\u201315",
                 "rpe": 9.0
               }
             }
@@ -1272,9 +1272,9 @@ window.PROGRAM = {
                 "rpe": 7
               },
               "prop": {
-                "lbs": 20,
+                "lbs": 17.5,
                 "reps": "15",
-                "rpe": 6.0
+                "rpe": 5.0
               }
             },
             {
@@ -1620,9 +1620,9 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 32.5,
+                "lbs": 25,
                 "reps": "15",
-                "rpe": 6.0
+                "rpe": 5.0
               }
             },
             {
@@ -1692,9 +1692,9 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 27.5,
+                "lbs": 22.5,
                 "reps": "15",
-                "rpe": 6.0
+                "rpe": 5.0
               }
             },
             {

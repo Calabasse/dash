@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prescription Tuning</title>
+<style>
+  :root{--bg:#000;--panel:#101010;--line:#222;--line2:#2a2a2a;--text:#f2f2f2;--head:#fff;
+        --muted:#8a8a8a;--dim:#666;--accent:#4ade80;--blue:#6aa9ff;--gold:#f5c451;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text);font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1000px;margin:0 auto;padding:14px}
+  h1{font-size:21px;margin-bottom:2px}
+  .sub{color:var(--muted);font-size:12px;margin-bottom:12px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:12px 13px;margin-bottom:14px}
+  .panel h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700;margin-bottom:9px}
+  label{font-size:12px;color:var(--muted)}
+  select,input{background:#141414;color:var(--text);border:1px solid var(--line);border-radius:5px;padding:5px 7px;font:inherit}
+  select{cursor:pointer;font-size:14px}
+  input[type=number]{width:64px}
+  input.frac{width:120px}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;margin-top:4px}
+  th{color:var(--head);font-size:11px;text-align:left;padding:5px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:3px 6px;border-bottom:1px solid #161616}
+  td.k{color:var(--blue);white-space:nowrap}
+  button{background:#161616;color:var(--text);border:1px solid var(--line);border-radius:6px;font-size:13px;padding:7px 12px;cursor:pointer}
+  button.primary{background:var(--accent);color:#000;font-weight:600;border-color:var(--accent)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .note{font-size:11px;color:var(--dim);line-height:1.6;margin-top:8px}
+  .gl{display:flex;gap:14px;flex-wrap:wrap}
+  .gl label{display:flex;flex-direction:column;gap:3px;color:var(--muted)}
+  .banner{background:#2a1d00;border:1px solid #5a3d00;color:var(--gold);padding:8px 12px;border-radius:8px;font-size:12px;margin-bottom:12px}
+</style>
+</head>
+<body>
+<a href="index.html" style="position:fixed;top:8px;right:10px;z-index:9999;font:600 12px -apple-system,sans-serif;color:#9ecbff;background:rgba(22,27,34,.85);border:1px solid #2a2f37;border-radius:6px;padding:4px 9px;text-decoration:none">← Home</a>
+<div class="wrap">
+  <h1>Prescription Tuning</h1>
+  <div class="sub">Edit the parameters the workout engine (<code>prescribe_hypertrophy.py</code>) uses. Pick a philosophy, tweak any value, Save to a config file. <b>Deterministic algorithm — no AI.</b></div>
+
+  <div class="banner">This page is static — it can't run the Python live. <b>Save → replace <code>prescription_config.json</code> in the repo → redeploy</b> (or drop it where deploy.sh reads it). Prescriptions update on the next build.</div>
+
+  <div class="panel">
+    <h2>Training philosophy</h2>
+    <div class="row">
+      <select id="profileSel" onchange="switchProfile(this.value)"></select>
+      <span id="profileNote" class="note" style="margin:0"></span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Global parameters</h2>
+    <div class="gl" id="globals"></div>
+    <div class="note">warm-up fracs = comma list of % of top load (one per warm-up set). backoff frac = backoff load as a fraction of top. step sizes = how much load is added when a set is "earned".</div>
+  </div>
+
+  <div class="panel">
+    <h2>Per-movement parameters</h2>
+    <table id="typeTable">
+      <thead><tr>
+        <th>movement type</th><th title="display rep range low">rep lo</th><th title="display rep range high">rep hi</th>
+        <th title="top-set reps that earn a load increase">anchor</th><th title="target RPE for the top set">top RPE</th>
+        <th title="number of warm-up sets">warmups</th><th title="number of back-off sets">backoffs</th>
+        <th title="treated as isolation (stricter load progression)">isolation</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+    <div class="note">anchor = reps you must hit on the top set before load goes up. top RPE = the intensity cap. Loads always snap to your real equipment (plates / bands) regardless of these.</div>
+  </div>
+
+  <div class="panel">
+    <h2>Save &amp; load</h2>
+    <div class="row">
+      <button class="primary" onclick="saveConfig()">⤓ Save config (.json)</button>
+      <button onclick="document.getElementById('f').click()">⤒ Load config</button>
+      <input type="file" id="f" style="display:none" accept=".json,application/json" onchange="loadFile(event)">
+      <button onclick="reload()">↺ reset to deployed</button>
+      <span id="status" class="note" style="margin:0"></span>
+    </div>
+    <div class="note">Save downloads the full config with your edits and the selected philosophy as active. To apply: replace <code>prescription_config.json</code> in the dash-site repo and redeploy.</div>
+  </div>
+</div>
+
+<script>
+const TYPE_LABELS={
+  barbell:"Barbell", dumbbell_compound:"Dumbbell — compound", dumbbell_isolation:"Dumbbell — isolation",
+  cable_or_machine:"Cable / machine", band_assisted_bodyweight:"Band-assisted (pull-ups)",
+  band_resisted_isolation:"Band isolation (laterals)", band_combo:"Band stack (triceps)",
+  bodyweight:"Bodyweight", bodyweight_abs:"Bodyweight — abs", weighted_bodyweight:"Weighted bodyweight"};
+const GLOBAL_FIELDS=[
+  ["warmup_fracs","warm-up fracs","frac"],["backoff_frac","backoff frac","num"],
+  ["barbell_step_kg","barbell step (kg)","num"],["dumbbell_step_lb","dumbbell step (lb)","num"],
+  ["machine_step_lb","machine step (lb)","num"],["weighted_bw_step_lb","weighted-BW step (lb)","num"]];
+const TYPE_FIELDS=["rep_lo","rep_hi","anchor","top_rpe","warmups","backoffs"];
+
+let cfg=null, cur=null;
+
+async function reload(){
+  status("loading…");
+  try{ const r=await fetch('prescription_config.json?cb='+Date.now()); cfg=await r.json(); }
+  catch(e){ status("could not load prescription_config.json"); return; }
+  cur=cfg.active_profile;
+  renderProfiles(); render(); status("loaded deployed config");
+}
+function status(m){ document.getElementById('status').textContent=m; }
+
+function renderProfiles(){
+  const sel=document.getElementById('profileSel');
+  sel.innerHTML=Object.entries(cfg.profiles).map(([k,p])=>
+    `<option value="${k}" ${k===cur?'selected':''}>${p.label||k}</option>`).join('');
+}
+function switchProfile(k){ cur=k; render(); }
+
+function render(){
+  const p=cfg.profiles[cur];
+  document.getElementById('profileNote').textContent=p.note||'';
+  // globals
+  document.getElementById('globals').innerHTML=GLOBAL_FIELDS.map(([key,lab,kind])=>{
+    const v=p.globals[key];
+    const val=Array.isArray(v)?v.join(', '):v;
+    const cls=kind==='frac'?'frac':'';
+    return `<label>${lab}<input class="${cls}" data-g="${key}" data-kind="${kind}" value="${val}"
+       oninput="setGlobal(this)"></label>`;
+  }).join('');
+  // types
+  const tb=document.querySelector('#typeTable tbody');
+  tb.innerHTML=Object.keys(TYPE_LABELS).map(tk=>{
+    const t=p.types[tk]; if(!t) return '';
+    const cells=TYPE_FIELDS.map(f=>`<td><input type="number" step="${f==='top_rpe'?0.5:1}" value="${t[f]}"
+        data-t="${tk}" data-f="${f}" oninput="setType(this)"></td>`).join('');
+    const iso=`<td><input type="checkbox" ${t.is_isolation?'checked':''} data-t="${tk}" data-f="is_isolation"
+        onchange="setType(this)"></td>`;
+    return `<tr><td class="k">${TYPE_LABELS[tk]}</td>${cells}${iso}</tr>`;
+  }).join('');
+}
+
+function setGlobal(el){
+  const key=el.dataset.g, kind=el.dataset.kind;
+  if(kind==='frac') cfg.profiles[cur].globals[key]=el.value.split(',').map(x=>parseFloat(x.trim())).filter(x=>!isNaN(x));
+  else cfg.profiles[cur].globals[key]=parseFloat(el.value)||0;
+}
+function setType(el){
+  const tk=el.dataset.t, f=el.dataset.f;
+  if(f==='is_isolation') cfg.profiles[cur].types[tk][f]=el.checked;
+  else cfg.profiles[cur].types[tk][f]=parseFloat(el.value)||0;
+}
+
+function saveConfig(){
+  cfg.active_profile=cur;
+  const blob=new Blob([JSON.stringify(cfg,null,2)+'\n'],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='prescription_config.json'; a.click();
+  status('saved — replace prescription_config.json in the repo + redeploy to apply');
+}
+function loadFile(e){ const file=e.target.files[0]; if(!file) return; const r=new FileReader();
+  r.onload=()=>{ try{ cfg=JSON.parse(r.result); cur=cfg.active_profile||Object.keys(cfg.profiles)[0];
+    renderProfiles(); render(); status('loaded from file (not yet applied)'); }
+    catch(err){ status('bad config file'); } }; r.readAsText(file); e.target.value=''; }
+
+reload();
+</script>
+</body>
+</html>

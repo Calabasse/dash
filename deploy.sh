@@ -13,6 +13,12 @@ LOG(){ echo "[$(date '+%H:%M:%S')] $*"; }
 
 cd "$SITE" || { echo "no site dir"; exit 1; }
 
+# 0) PRESCRIPTION CONFIG — push the tuned philosophy/params to the engine
+if [ -f "$SITE/prescription_config.json" ]; then
+  cp "$SITE/prescription_config.json" "$APE/tools/prescription_config.json"
+  LOG "prescription config synced to engine"
+fi
+
 # 1) TRAINING — sync VOLM (best-effort) then rebuild the card data file
 LOG "training: VOLM sync"
 ( cd "$APE" && "$VENV" -c "from app.api.routes.sync import run_sync; run_sync()" ) \
