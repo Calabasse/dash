@@ -24,6 +24,15 @@ export). They differ only in: `ped.html` preloads the owner's cycle and links ho
 ```
 Network steps (VOLM sync, Withings) are best-effort; last good data is kept on failure.
 
+## Tuning the prescription engine
+`tuning.html` edits `prescription_config.json` (training philosophy + every parameter
+of `prescribe_hypertrophy.py`). To apply:
+1. On the page: pick philosophy, tweak, **Save** (downloads `prescription_config.json`).
+2. Run `./deploy.sh` — it auto-picks the file up from `~/Downloads`, validates it,
+   copies it into the repo + engine (`APE/tools/`), rebuilds, and pushes. The applied
+   Downloads copy is renamed `prescription_config.applied-<timestamp>.json` so it isn't
+   re-applied. (Or just replace `prescription_config.json` in the repo manually.)
+
 ### Owner PED data (optional)
 Drop an exported cycle JSON at `private/ped-cycles.json` (gitignored). `deploy.sh`
 injects it into `ped.html`. Without it, `ped.html` shows a demo seed. Export the JSON
