@@ -425,11 +425,11 @@ window.PROGRAM = {
           "rest": "2:00",
           "cues": [],
           "noWeight": false,
-          "loading_type": "cable_or_machine",
+          "loading_type": "band_combo",
           "qc": "pass",
           "action": "increase_load",
-          "assess": "Last top set: 275 lb \u00d7 15 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (20/16/15) \u2014 earn the jump; load 275\u2192280. Isolation: only loaded once the whole cluster is productive.",
+          "assess": "Last top set: 275 lb \u00d7 15 @ RPE 9 \u00b7 band_combo \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set hit 15 (\u226515) reps \u2014 add bands 275\u2192300 lb and rebuild reps.",
           "sets": [
             {
               "type": "W",
@@ -439,7 +439,7 @@ window.PROGRAM = {
                 "rpe": 7
               },
               "prop": {
-                "lbs": 195,
+                "lbs": 275.0,
                 "reps": "20",
                 "rpe": 6.0
               }
@@ -452,9 +452,9 @@ window.PROGRAM = {
                 "rpe": 8
               },
               "prop": {
-                "lbs": 280,
-                "reps": "8\u201312",
-                "rpe": 9.5
+                "lbs": 300.0,
+                "reps": "12\u201315",
+                "rpe": 9.0
               }
             },
             {
@@ -465,8 +465,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 250,
-                "reps": "10\u201312",
+                "lbs": 275.0,
+                "reps": "14\u201315",
                 "rpe": 9.0
               }
             }
@@ -886,7 +886,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "progress",
-        "headline": "DAY B - CHEST / TRICEPS  (5 days) \u2014 1 load\u2191 \u00b7 5 rep\u2191 \u00b7 1 hold.",
+        "headline": "DAY B - CHEST / TRICEPS  (5 days) \u2014 1 load\u2191 \u00b7 6 rep\u2191 \u00b7 0 hold.",
         "assess": "7 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>7/7</b> prescriptions passed the validation gate."
       },
@@ -1074,11 +1074,11 @@ window.PROGRAM = {
             "Keep tension on triceps"
           ],
           "noWeight": false,
-          "loading_type": "dumbbell",
+          "loading_type": "band_combo",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: 70 lb \u00d7 9 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 70 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load.",
+          "assess": "Last top set: 70 lb \u00d7 9 @ RPE 9 \u00b7 band_combo \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 75 lb band stack \u2014 chase reps to ~15 at RPE 9 before adding a band. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350.",
           "sets": [
             {
               "type": "W",
@@ -1088,8 +1088,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 50,
-                "reps": "15",
+                "lbs": 50.0,
+                "reps": "20",
                 "rpe": 6.0
               }
             },
@@ -1101,9 +1101,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 70,
-                "reps": "9\u201315",
-                "rpe": 9.5
+                "lbs": 75.0,
+                "reps": "9\u201320",
+                "rpe": 9.0
               }
             },
             {
@@ -1114,8 +1114,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 62.5,
-                "reps": "11\u201315",
+                "lbs": 50.0,
+                "reps": "11\u201320",
                 "rpe": 9.0
               }
             }
@@ -1133,11 +1133,11 @@ window.PROGRAM = {
             "Keep tension on triceps"
           ],
           "noWeight": false,
-          "loading_type": "cable_or_machine",
+          "loading_type": "band_combo",
           "qc": "pass",
-          "action": "hold",
-          "assess": "Last top set: 275 lb \u00d7 12 @ RPE 8.5 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 275 \u2014 backoffs not yet productive; chase reps to ~12 at RPE 9.5 before adding load.",
+          "action": "add_reps",
+          "assess": "Last top set: 275 lb \u00d7 12 @ RPE 8.5 \u00b7 band_combo \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 275 lb band stack \u2014 chase reps to ~15 at RPE 9 before adding a band. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350.",
           "sets": [
             {
               "type": "W",
@@ -1147,7 +1147,7 @@ window.PROGRAM = {
                 "rpe": 7
               },
               "prop": {
-                "lbs": 190,
+                "lbs": 250.0,
                 "reps": "20",
                 "rpe": 6.0
               }
@@ -1160,9 +1160,9 @@ window.PROGRAM = {
                 "rpe": 10
               },
               "prop": {
-                "lbs": 275,
+                "lbs": 275.0,
                 "reps": "12\u201320",
-                "rpe": 9.5
+                "rpe": 9.0
               }
             },
             {
@@ -1173,7 +1173,7 @@ window.PROGRAM = {
                 "rpe": 8.5
               },
               "prop": {
-                "lbs": 250,
+                "lbs": 250.0,
                 "reps": "14\u201320",
                 "rpe": 9.0
               }
@@ -1372,7 +1372,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "progress",
-        "headline": "DAY A \u2014 BACK / BICEPS (4-5 days) \u2014 2 load\u2191 \u00b7 4 rep\u2191 \u00b7 0 hold.",
+        "headline": "DAY A \u2014 BACK / BICEPS (4-5 days) \u2014 1 load\u2191 \u00b7 5 rep\u2191 \u00b7 0 hold.",
         "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>6/6</b> prescriptions passed the validation gate."
       },
@@ -1744,11 +1744,11 @@ window.PROGRAM = {
           "rest": "2:00",
           "cues": [],
           "noWeight": false,
-          "loading_type": "cable_or_machine",
+          "loading_type": "band_combo",
           "qc": "pass",
-          "action": "increase_load",
-          "assess": "Last top set: 250 lb \u00d7 14 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (20/18/14) \u2014 earn the jump; load 250\u2192255. Isolation: only loaded once the whole cluster is productive.",
+          "action": "add_reps",
+          "assess": "Last top set: 250 lb \u00d7 14 \u00b7 band_combo \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 250 lb band stack \u2014 chase reps to ~15 at RPE 9 before adding a band. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350.",
           "sets": [
             {
               "type": "W",
@@ -1758,7 +1758,7 @@ window.PROGRAM = {
                 "rpe": null
               },
               "prop": {
-                "lbs": 180,
+                "lbs": 225.0,
                 "reps": "20",
                 "rpe": 6.0
               }
@@ -1771,9 +1771,9 @@ window.PROGRAM = {
                 "rpe": null
               },
               "prop": {
-                "lbs": 255,
-                "reps": "8\u201312",
-                "rpe": 9.5
+                "lbs": 250.0,
+                "reps": "14\u201320",
+                "rpe": 9.0
               }
             },
             {
@@ -1784,8 +1784,8 @@ window.PROGRAM = {
                 "rpe": null
               },
               "prop": {
-                "lbs": 230,
-                "reps": "10\u201312",
+                "lbs": 225.0,
+                "reps": "16\u201320",
                 "rpe": 9.0
               }
             }
