@@ -36,7 +36,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 125 assist \u00d7 11 @ RPE 10 \u00b7 band_assisted_bodyweight \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 125 lb assist \u2014 need 15+ clean reps before stepping down the band (125\u2192100\u219275\u219250\u2192bodyweight). No intermediate assist values exist.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 125 lb assist \u2014 build toward 15 reps before reducing assistance. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350 (less assist = harder).",
           "sets": [
             {
               "type": "W",
@@ -46,8 +46,8 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 125.0,
-                "reps": "15",
+                "lbs": 175.0,
+                "reps": "7",
                 "rpe": 5.0
               }
             },
@@ -59,9 +59,9 @@ window.PROGRAM = {
                 "rpe": 10
               },
               "prop": {
-                "lbs": 125.0,
-                "reps": "15",
-                "rpe": 6.5
+                "lbs": 150.0,
+                "reps": "7",
+                "rpe": 6.0
               }
             },
             {
@@ -85,7 +85,7 @@ window.PROGRAM = {
                 "rpe": null
               },
               "prop": {
-                "lbs": 125.0,
+                "lbs": 150.0,
                 "reps": "13\u201315",
                 "rpe": 9.0
               }
@@ -1394,7 +1394,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 125 assist \u00d7 12 @ RPE 10 \u00b7 band_assisted_bodyweight \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 125 lb assist \u2014 need 15+ clean reps before stepping down the band (125\u2192100\u219275\u219250\u2192bodyweight). No intermediate assist values exist.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 125 lb assist \u2014 build toward 15 reps before reducing assistance. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350 (less assist = harder).",
           "sets": [
             {
               "type": "W",
@@ -1404,8 +1404,8 @@ window.PROGRAM = {
                 "rpe": 7
               },
               "prop": {
-                "lbs": 125.0,
-                "reps": "15",
+                "lbs": 175.0,
+                "reps": "8",
                 "rpe": 5.0
               }
             },
@@ -1417,9 +1417,9 @@ window.PROGRAM = {
                 "rpe": 10
               },
               "prop": {
-                "lbs": 125.0,
-                "reps": "15",
-                "rpe": 6.5
+                "lbs": 150.0,
+                "reps": "8",
+                "rpe": 6.0
               }
             },
             {
@@ -1443,7 +1443,7 @@ window.PROGRAM = {
                 "rpe": null
               },
               "prop": {
-                "lbs": 125.0,
+                "lbs": 150.0,
                 "reps": "14\u201315",
                 "rpe": 9.0
               }
