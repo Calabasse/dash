@@ -149,9 +149,7 @@ function normalizeCurrent(obs, station) {
  * data available. The dashboard renders whatever series it receives.          */
 async function history(env, station, range) {
   requireKey(env);
-  const feed = range === 'day' || range === 'week'
-    ? `${WX_BASE}/observations/all/7day?stationId=${encodeURIComponent(station)}&format=json&units=e&apiKey=${env.WEATHER_API_KEY}`
-    : `${WX_BASE}/observations/hourly/7day?stationId=${encodeURIComponent(station)}&format=json&units=e&apiKey=${env.WEATHER_API_KEY}`;
+  const feed = `${WX_BASE}/observations/hourly/7day?stationId=${encodeURIComponent(station)}&format=json&units=e&apiKey=${env.WEATHER_API_KEY}`;
 
   const res = await fetch(feed, { cf: { cacheTtl: 300 } });
   if (!res.ok) {
