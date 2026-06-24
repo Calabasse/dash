@@ -198,6 +198,10 @@ function series(field, start, end, agg){
 }
 function median(a){ if(!a.length) return NaN; const s=[...a].sort((x,y)=>x-y); const m=s.length>>1; return s.length%2?s[m]:(s[m-1]+s[m])/2; }
 function isAgg(start,end){ return bucketSize(start,end)>0; }
+function noDataMessage(fallback){
+  if(DATA && DATA.source==='live' && !(DATA.observations||[]).length && DATA.note) return DATA.note;
+  return fallback;
+}
 
 /* ═══ Trend (least squares) ═════════════════════════════════════════════════*/
 function linregress(pts){
@@ -245,7 +249,7 @@ function lineChart(panelId, title, seriesDefs, opts){
 
   const sData=seriesDefs.map(def=>({ def, pts:series(def.field, start, end, def.agg||'mean') }));
   const hasAny=sData.some(s=>s.pts.length);
-  if(!hasAny){ panel.innerHTML=`<div class="chart-panel-title">${title}</div><div class="chart-no-data">No data in this window</div>`; return; }
+  if(!hasAny){ panel.innerHTML=`<div class="chart-panel-title">${title}</div><div class="chart-no-data">${noDataMessage('No data in this window')}</div>`; return; }
 
   const W=panel.clientWidth-32||760, IW=W-M.l-M.r, IH=CHART_H-M.t-M.b;
   const xFn=t=>M.l+(t-start)/(end-start)*IW;
@@ -371,7 +375,7 @@ function windDirChart(panelId,title){
   const panel=document.getElementById(panelId); if(!panel) return;
   const { start, end }=getRange();
   const pts=series('windDirection', start, end, 'mean');
-  if(!pts.length){ panel.innerHTML=`<div class="chart-panel-title">${title}</div><div class="chart-no-data">No wind data in this window</div>`; return; }
+  if(!pts.length){ panel.innerHTML=`<div class="chart-panel-title">${title}</div><div class="chart-no-data">${noDataMessage('No wind data in this window')}</div>`; return; }
   const W=panel.clientWidth-32||760, IW=W-M.l-M.r, IH=CHART_H-M.t-M.b;
   const xFn=t=>M.l+(t-start)/(end-start)*IW;
   const yFn=v=>M.t+IH-(v/360)*IH;
