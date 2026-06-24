@@ -68,6 +68,7 @@ const S = {
 //                   observedAtLocal, source, observations:[{t, ...metrics}] }
 let DATA = null;
 let refreshTimer = null;
+let lastGoodLive = null;
 
 /* ═══ Time utils ════════════════════════════════════════════════════════════*/
 const MIN=60000, HOUR=3600000, DAY=86400000;
@@ -415,10 +416,11 @@ function buildHeader(){
   const fresh=DATA.freshnessMinutes;
   const freshStr=fresh==null?'unknown':(fresh<1?'just now':`${Math.round(fresh)} min ago`);
   const staleWarn=(DATA.status==='stale'||DATA.status==='offline')?` <b style="color:var(--stale)">⚠ stale observation</b>`:'';
+  const note=DATA.note?` <span style="color:var(--stale)">${DATA.note}</span>`:'';
   document.getElementById('hdr-meta').innerHTML=
     `<span>Last updated: <b>${DATA.observedAtLocal||'—'}</b> (${freshStr})${staleWarn}</span>
      <span>Source: <b>${DATA.source==='mock'?'Demo / mock':'Weather.com PWS (proxied)'}</b></span>
-     <span>Observations: <b>${(DATA.observations||[]).length}</b></span>`;
+     <span>Observations: <b>${(DATA.observations||[]).length}</b>${note}</span>`;
 }
 
 /* ═══ Summary cards ═════════════════════════════════════════════════════════*/
@@ -550,21 +552,47 @@ async function loadData(){
   if(CONFIG.API_BASE_URL){
     try{
       const range=S.range==='custom'||S.range==='day'?'week':S.range;
-      const [curR,histR]=await Promise.all([
+      const [curR,histR]=await Promise.allSettled([
         fetch(`${CONFIG.API_BASE_URL}/api/weather/current`),
         fetch(`${CONFIG.API_BASE_URL}/api/weather/history?range=${encodeURIComponent(range)}`),
       ]);
-      if(!curR.ok||!histR.ok) throw new Error('proxy '+curR.status+'/'+histR.status);
-      const cur=await curR.json(), hist=await histR.json();
-      DATA={
+      if(curR.status!=='fulfilled' || !curR.value.ok) {
+        const status=curR.status==='fulfilled'?curR.value.status:'network';
+        throw new Error('current '+status);
+      }
+      const cur=await curR.value.json();
+      if(!cur.current) throw new Error('current '+(cur.error||cur.status||'empty'));
+
+      let hist={ observations: [] };
+      let note='';
+      if(histR.status==='fulfilled' && histR.value.ok) {
+        hist=await histR.value.json();
+        if(hist.note) note='History unavailable; current conditions live.';
+      } else {
+        const status=histR.status==='fulfilled'?histR.value.status:'network';
+        note=`History unavailable (${status}); current conditions live.`;
+      }
+
+      const live={
         stationId:cur.stationId, status:cur.status, units:cur.units,
         observedAtLocal:cur.observedAtLocal, freshnessMinutes:cur.freshnessMinutes,
         current:cur.current, source:'live',
+        note,
         observations:(hist.observations||[]).map(o=>({ t:Date.parse(o.observedAtUtc||o.t), ...o.values||o })),
       };
-      computeDerived(DATA);
+      DATA=computeDerived(live);
+      lastGoodLive=JSON.parse(JSON.stringify(DATA));
       return;
-    }catch(e){ console.warn('Live fetch failed, using mock:',e); }
+    }catch(e){
+      console.warn('Live current fetch failed:',e);
+      if(lastGoodLive){
+        DATA=JSON.parse(JSON.stringify(lastGoodLive));
+        DATA.status='stale';
+        DATA.note='Using last good live observation; refresh failed.';
+        computeDerived(DATA);
+        return;
+      }
+    }
   }
   DATA=buildMock();
   computeDerived(DATA);
