@@ -202,6 +202,27 @@ function noDataMessage(fallback){
   if(DATA && DATA.source==='live' && !(DATA.observations||[]).length && DATA.note) return DATA.note;
   return fallback;
 }
+function currentObservation(cur){
+  const c=cur && cur.current;
+  if(!c) return null;
+  const t=Date.parse(cur.observedAtUtc || cur.observedAtLocal || '') || nowMs();
+  return {
+    t,
+    temperature:c.temperature,
+    dewpoint:c.dewpoint,
+    humidity:c.humidity,
+    pressure:c.pressure,
+    windSpeed:c.windSpeed,
+    windGust:c.windGust,
+    windDirection:c.windDirection,
+    rainRate:c.rainRate,
+    precipIncr:0,
+    rainAccum:c.rainToday,
+    rainToday:c.rainToday,
+    uv:c.uv,
+    solarRadiation:c.solarRadiation,
+  };
+}
 
 /* ═══ Trend (least squares) ═════════════════════════════════════════════════*/
 function linregress(pts){
@@ -584,6 +605,11 @@ async function loadData(){
         note,
         observations:(hist.observations||[]).map(o=>({ t:Date.parse(o.observedAtUtc||o.t), ...o.values||o })),
       };
+      if(!live.observations.length) {
+        const snapshot=currentObservation(cur);
+        if(snapshot) live.observations=[snapshot];
+        live.note=note || 'History unavailable; charts show current snapshot only.';
+      }
       DATA=computeDerived(live);
       lastGoodLive=JSON.parse(JSON.stringify(DATA));
       return;
