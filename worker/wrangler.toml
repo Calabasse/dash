@@ -1,0 +1,12 @@
+name = "weather-proxy"
+main = "weather-proxy.js"
+compatibility_date = "2024-11-01"
+
+# Public, non-secret config. The API key is a SECRET (see README), never here.
+[vars]
+PWS_STATION_ID = "KVAGAINE55"
+# Comma-separated allowlist. Your GitHub Pages origin (no trailing slash):
+ALLOWED_ORIGIN = "https://calabasse.github.io"
+
+# Set the key (never committed):
+#   wrangler secret put WEATHER_API_KEY

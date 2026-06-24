@@ -1,3 +1,7 @@
 private/
 *.local
 .DS_Store
+# Cloudflare Worker
+worker/node_modules/
+worker/.wrangler/
+.dev.vars

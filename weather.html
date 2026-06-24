@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Weather Station — CHAD_OS</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f0f13;--surface:#1a1a24;--surface2:#22222e;--border:#2e2e3e;
+  --text:#e0e0f0;--muted:#7070a0;--accent:#4a9eff;--accent2:#7ec8ff;
+  /* metric colors */
+  --temp:#ff8c42;--dew:#6dda6d;--humid:#4a9eff;--press:#c08bff;
+  --rain:#4a9eff;--rainrate:#7ec8ff;--rainaccum:#3a6dd0;
+  --wind:#6dda6d;--gust:#ff8c42;--winddir:#c08bff;--uv:#ffe066;--solar:#ff8c42;
+  --trend:rgba(200,200,255,.5);--iqr:rgba(74,158,255,.12);
+  --gap:#3a3a50;--grid:rgba(255,255,255,.04);
+  --hi:#ffe066;--lo:#66ddff;
+  --online:#6dda6d;--stale:#ffb84d;--offline:#ff6b6b;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --mono:'SF Mono','Menlo','Consolas',monospace;
+}
+html{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.5}
+body{max-width:1200px;margin:0 auto;padding:0 16px 60px}
+
+/* ── Header ── */
+.site-header{padding:20px 0 12px;border-bottom:1px solid var(--border);margin-bottom:16px}
+.hdr-row1{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hdr-title{font-size:20px;font-weight:600;letter-spacing:-.3px}
+.hdr-sub{font-size:13px;color:var(--muted)}
+.badge{font-size:11px;padding:2px 8px;border-radius:10px;font-weight:500}
+.badge-station{background:rgba(74,158,255,.15);color:var(--accent2);font-family:var(--mono)}
+.badge-mock{background:rgba(255,200,60,.15);color:#ffd060}
+.status-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:3px 10px;border-radius:12px;font-weight:500}
+.status-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.status-online{background:rgba(109,218,109,.14);color:var(--online)} .status-online .status-dot{background:var(--online);box-shadow:0 0 6px var(--online)}
+.status-stale{background:rgba(255,184,77,.14);color:var(--stale)} .status-stale .status-dot{background:var(--stale)}
+.status-offline{background:rgba(255,107,107,.14);color:var(--offline)} .status-offline .status-dot{background:var(--offline)}
+.hdr-meta{margin-top:8px;display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--muted)}
+.hdr-meta span b{color:var(--text)}
+
+/* ── Controls ── */
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--border);margin-bottom:16px}
+.range-btns,.nav-btns,.unit-btns{display:flex;gap:4px}
+.btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:4px 12px;border-radius:6px;cursor:pointer;font-size:13px;transition:all .15s}
+.btn:hover{border-color:var(--accent);color:var(--text)}
+.btn.active{background:rgba(74,158,255,.18);border-color:var(--accent);color:var(--accent2);font-weight:500}
+.btn-nav{padding:4px 10px;font-size:16px;line-height:1}
+.custom-range{display:none;gap:8px;align-items:center;font-size:13px}
+.custom-range input[type=date]{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:3px 8px;border-radius:5px;font-size:12px}
+.toggle-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tog-label{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--muted);cursor:pointer;user-select:none}
+.tog-label input{accent-color:var(--accent)}
+.tog-label:hover{color:var(--text)}
+
+/* ── Summary cards (rows of 4) ── */
+.card-section-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:6px 2px 8px;font-weight:600}
+.card-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+@media(max-width:780px){.card-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:430px){.card-row{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;min-width:0}
+.card-label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.card-value{font-size:22px;font-weight:600;margin:4px 0 2px;letter-spacing:-.5px}
+.card-value .unit{font-size:13px;font-weight:400;color:var(--muted)}
+.card-sub{font-size:11px;color:var(--muted)}
+.card-accent{font-size:12px;font-weight:500}
+.compass{display:inline-block;transition:transform .3s}
+
+/* intensity chips */
+.chip{display:inline-block;font-size:10px;padding:1px 7px;border-radius:9px;font-weight:600;letter-spacing:.03em}
+.chip-none{background:rgba(112,112,160,.18);color:var(--muted)}
+.chip-light{background:rgba(74,158,255,.16);color:var(--accent2)}
+.chip-moderate{background:rgba(126,200,255,.18);color:#7ec8ff}
+.chip-heavy{background:rgba(255,184,77,.18);color:var(--stale)}
+.chip-violent{background:rgba(255,107,107,.2);color:var(--offline)}
+.tendency-rising{color:var(--temp)} .tendency-falling{color:var(--humid)} .tendency-steady{color:var(--muted)}
+
+/* ── Chart panels ── */
+.chart-panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:14px;padding:16px}
+.chart-panel-title{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.chart-wrap{position:relative;width:100%;overflow:visible}
+.chart-no-data{display:flex;align-items:center;justify-content:center;height:100px;color:var(--muted);font-size:13px}
+
+/* ── SVG chart styles ── */
+.chart-svg{display:block;width:100%;overflow:visible}
+.axis-line{stroke:#3a3a50;stroke-width:1}
+.grid-line{stroke:var(--grid);stroke-width:1}
+.axis-text{fill:var(--muted);font-size:11px;font-family:var(--font)}
+.axis-text-sm{fill:var(--muted);font-size:10px;font-family:var(--font)}
+.y-label-svg{fill:var(--muted);font-size:11px;font-family:var(--font)}
+.trend-label{fill:var(--muted);font-size:11px;font-family:var(--font)}
+.line-path{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.trend-path{fill:none;stroke:var(--trend);stroke-width:1.5;stroke-dasharray:5 4}
+.gap-marker-line{stroke:var(--gap);stroke-width:1;stroke-dasharray:3 3}
+.rain-bar{opacity:.55}
+.accum-path{fill:none;stroke:var(--rainaccum);stroke-width:1.6;opacity:.9}
+.pt-dot{cursor:pointer;opacity:.85}
+.pt-dot:hover{opacity:1}
+.pt-hi{fill:var(--hi)} .pt-lo{fill:var(--lo)}
+.hi-label{fill:var(--hi);font-size:10px;font-family:var(--font)}
+.lo-label{fill:var(--lo);font-size:10px;font-family:var(--font)}
+
+/* ── Legend ── */
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:8px;font-size:12px;color:var(--muted)}
+.leg-item{display:flex;align-items:center;gap:5px}
+.leg-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.leg-line{width:14px;height:2px;display:inline-block;border-radius:2px}
+
+/* ── Tooltip ── */
+.tooltip{position:fixed;background:#1e1e2e;border:1px solid #3a3a60;border-radius:8px;padding:10px 14px;font-size:12px;max-width:260px;z-index:9999;pointer-events:none;box-shadow:0 4px 20px rgba(0,0,0,.5)}
+.tt-date{font-size:11px;color:var(--muted);margin-bottom:4px}
+.tt-val{font-size:16px;font-weight:600}
+
+/* ── Banner ── */
+.banner{background:#2a1d00;border:1px solid #5a3d00;color:#ffd479;padding:8px 12px;border-radius:8px;font-size:12px;margin:0 0 14px}
+</style>
+</head>
+<body>
+
+<!-- ── Header ─────────────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="hdr-row1">
+    <span class="hdr-title">Personal Weather Station</span>
+    <span class="badge badge-station" id="station-badge">KVAGAINE55</span>
+    <span class="status-pill status-offline" id="status-pill"><span class="status-dot"></span><span id="status-text">offline</span></span>
+    <span class="badge badge-mock" id="mock-badge" style="display:none">Demo data — backend not configured</span>
+  </div>
+  <div class="hdr-sub">CHAD_OS Weather / Stormwater Monitor</div>
+  <div class="hdr-meta" id="hdr-meta"></div>
+</header>
+
+<!-- ── Controls ───────────────────────────────────────────────────── -->
+<section class="controls" id="controls">
+  <div class="range-btns">
+    <button class="btn btn-range" data-range="day">Day</button>
+    <button class="btn btn-range active" data-range="week">Week</button>
+    <button class="btn btn-range" data-range="month">Month</button>
+    <button class="btn btn-range" data-range="quarter">Quarter</button>
+    <button class="btn btn-range" data-range="year">Year</button>
+    <button class="btn btn-range" data-range="all">All-time</button>
+    <button class="btn btn-range" data-range="custom">Custom</button>
+  </div>
+  <div class="nav-btns">
+    <button class="btn btn-nav" id="btn-prev" title="Previous period (←)">‹</button>
+    <button class="btn btn-nav" id="btn-latest" title="Jump to latest">Latest</button>
+    <button class="btn btn-nav" id="btn-next" title="Next period (→)">›</button>
+  </div>
+  <div class="custom-range" id="custom-range">
+    <span>From</span><input type="date" id="inp-cstart">
+    <span>to</span><input type="date" id="inp-cend">
+  </div>
+  <div class="unit-btns">
+    <button class="btn btn-unit active" data-units="imperial">Imperial</button>
+    <button class="btn btn-unit" data-units="metric">Metric</button>
+  </div>
+  <div class="toggle-row">
+    <label class="tog-label"><input type="checkbox" id="tog-trend" checked> Trend</label>
+    <label class="tog-label"><input type="checkbox" id="tog-highlow" checked> High/Low</label>
+    <label class="tog-label"><input type="checkbox" id="tog-rawonAgg"> Raw on aggregate</label>
+    <label class="tog-label"><input type="checkbox" id="tog-gaps" checked> Gap markers</label>
+  </div>
+</section>
+
+<div class="banner">Observations are read-only and refreshed automatically. Stormwater/operational use: confirm critical decisions against an authoritative gauge.</div>
+
+<!-- ── Summary cards ──────────────────────────────────────────────── -->
+<section id="summary-cards"></section>
+
+<!-- ── Charts ─────────────────────────────────────────────────────── -->
+<main id="charts-main">
+  <div class="chart-panel" id="panel-temp"></div>
+  <div class="chart-panel" id="panel-rain"></div>
+  <div class="chart-panel" id="panel-pressure"></div>
+  <div class="chart-panel" id="panel-humidity"></div>
+  <div class="chart-panel" id="panel-wind"></div>
+  <div class="chart-panel" id="panel-winddir"></div>
+  <div class="chart-panel" id="panel-solar"></div>
+</main>
+
+<!-- ── Tooltip ────────────────────────────────────────────────────── -->
+<div id="tooltip" class="tooltip" role="tooltip" style="display:none"></div>
+
+<script src="weather.js"></script>
+</body>
+</html>
