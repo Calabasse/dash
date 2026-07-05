@@ -4,7 +4,7 @@
 # if VOLM/Withings are unreachable, the last good data is kept and the rest still deploys.
 set -uo pipefail
 
-SITE="$HOME/forge/projects/dash-site"
+SITE="$HOME/repos/dash-site"
 APE="$HOME/forge/projects/APE"
 CHAD_OS="$HOME/knowledge/CHAD_OS"
 VENV="$APE/.venv311/bin/python"
