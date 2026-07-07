@@ -113,3 +113,90 @@ Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings
 [06:30:15] ped: render from template
   ped.html written (demo seed)
 [06:30:15] git: commit + push
+To https://github.com/Calabasse/dash.git
+   2af9a55..958d803  main -> main
+[06:30:22] deployed.
+[06:30:01] prescription config synced to engine
+[06:30:01] training: VOLM sync
+list_workouts failed at offset=50
+Traceback (most recent call last):
+  File "/Users/chadcrawford/forge/projects/APE/app/services/sync/sync_workouts.py", line 56, in sync_workouts
+    response = client.list_workouts(limit=limit, offset=offset)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/services/sync/client.py", line 30, in list_workouts
+    r.raise_for_status()
+  File "/Users/chadcrawford/forge/projects/APE/.venv311/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.volm.app/v1/workouts?limit=50&offset=50'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Step 1 FAILED
+Traceback (most recent call last):
+  File "/Users/chadcrawford/forge/projects/APE/app/services/sync/sync_workouts.py", line 56, in sync_workouts
+    response = client.list_workouts(limit=limit, offset=offset)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/services/sync/client.py", line 30, in list_workouts
+    r.raise_for_status()
+  File "/Users/chadcrawford/forge/projects/APE/.venv311/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.volm.app/v1/workouts?limit=50&offset=50'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 75, in run_sync
+    _call_first_available(
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 40, in _call_first_available
+    return fn()
+           ^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/services/sync/sync_workouts.py", line 59, in sync_workouts
+    raise RuntimeError("Sync aborted — API list failure") from e
+RuntimeError: Sync aborted — API list failure
+Traceback (most recent call last):
+  File "/Users/chadcrawford/forge/projects/APE/app/services/sync/sync_workouts.py", line 56, in sync_workouts
+    response = client.list_workouts(limit=limit, offset=offset)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/services/sync/client.py", line 30, in list_workouts
+    r.raise_for_status()
+  File "/Users/chadcrawford/forge/projects/APE/.venv311/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.volm.app/v1/workouts?limit=50&offset=50'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 75, in run_sync
+    _call_first_available(
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 40, in _call_first_available
+    return fn()
+           ^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/services/sync/sync_workouts.py", line 59, in sync_workouts
+    raise RuntimeError("Sync aborted — API list failure") from e
+RuntimeError: Sync aborted — API list failure
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 85, in run_sync
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: {'status': 'error', 'stage': 'sync', 'message': 'Sync aborted — API list failure'}
+🚨 NORMALIZE FILE EXECUTING 🚨
+SYNC START
+Fetched 50 workout headers (offset=0)
+[06:30:13]   sync failed (rate limit / offline) — keeping last data
+[06:30:13] training: build card data
+wrote /Users/chadcrawford/knowledge/CHAD_OS/tools/workout-card.data.js — 4 sessions
+  2026-07-05  Day C  DAY C — DELTS / ABS (3-4 days)  (6 ex)
+  2026-07-04  Day B  DAY B - CHEST / TRICEPS  (5 days)  (7 ex)
+  2026-07-03  Day A  DAY A — BACK / BICEPS (4-5 days)  (6 ex)
+  2026-07-01  Day C  DAY C — DELTS / ABS (3-4 days)  (6 ex)
+[06:30:13] weight: refresh withings
+→ Using data: /Users/chadcrawford/knowledge/CHAD_OS/raw/withings/2026-06-20/withings-bb3040d60f44ba3e.json (fetched 2026-06-20)
+→ Regenerating dashboard...
+Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings_body_composition.html
+✓ Dashboard: /Users/chadcrawford/forge/projects/APE/dashboards/withings_body_composition.html
+[06:30:13] ped: render from template
+  ped.html written (demo seed)
+[06:30:13] git: commit + push
