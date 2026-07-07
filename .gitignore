@@ -4,5 +4,5 @@ private/
 poller.log
 # Cloudflare Worker
 worker/node_modules/
-worker/.wrangler/
+.wrangler/
 .dev.vars
