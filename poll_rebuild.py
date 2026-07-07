@@ -60,6 +60,8 @@ def api(cfg: dict, path: str, method: str = "GET", body: dict | None = None, tok
     data = json.dumps(body).encode() if body is not None else None
     req = urllib.request.Request(url, data=data, method=method)
     req.add_header("Content-Type", "application/json")
+    # Cloudflare's edge 403s the default "Python-urllib" UA as a bot.
+    req.add_header("User-Agent", "dash-poller/1.0")
     if token:
         req.add_header("Authorization", "Bearer " + cfg.get("POLLER_TOKEN", ""))
     with urllib.request.urlopen(req, timeout=20) as r:

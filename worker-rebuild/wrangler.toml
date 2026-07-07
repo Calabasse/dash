@@ -13,7 +13,7 @@ RATE_LIMIT_SECONDS = "600"
 #   wrangler kv namespace create REBUILD_KV
 [[kv_namespaces]]
 binding = "REBUILD_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "58de645c4734480caa1c48b25ae88b53"
 
 # Shared secret with the Mac poller (never committed):
 #   wrangler secret put POLLER_TOKEN

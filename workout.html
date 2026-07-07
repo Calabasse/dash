@@ -417,7 +417,7 @@
   const tb=m=>{document.getElementById('tbStatus').textContent=m;};
   // Remote-rebuild Worker (dash-rebuild). Empty = disabled → button stays inert
   // on the public page. Set to the URL printed by `wrangler deploy`.
-  const REBUILD_API = '';  // e.g. 'https://dash-rebuild.<you>.workers.dev'
+  const REBUILD_API = 'https://dash-rebuild.chad-dash.workers.dev';
   const rbase = ()=>REBUILD_API.replace(/\/$/,'');
   window.loadFromVOLM=async function(){
     const b=document.getElementById('btnSync');
