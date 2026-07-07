@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Rebuild poller for the public dashboard. Every 120s it asks the dash-rebuild
+  Cloudflare Worker whether a rebuild was requested from the public page; if so it
+  runs deploy.sh (VOLM sync + build + git push) and reports the result back.
+  Pull-only: nothing inbound to the Mac.
+
+  Install:
+    cp com.chad.dashsite.poller.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.chad.dashsite.poller.plist
+  Run now (test):
+    launchctl start com.chad.dashsite.poller
+  Logs: ~/repos/dash-site/poller.log
+  Requires: ~/repos/dash-site/private/rebuild.env  (WORKER_URL + POLLER_TOKEN)
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>            <string>com.chad.dashsite.poller</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/chadcrawford/repos/dash-site/poll_rebuild.py</string>
+  </array>
+  <key>StartInterval</key>    <integer>120</integer>
+  <key>StandardOutPath</key>  <string>/Users/chadcrawford/repos/dash-site/poller.log</string>
+  <key>StandardErrorPath</key><string>/Users/chadcrawford/repos/dash-site/poller.log</string>
+  <key>RunAtLoad</key>        <true/>
+</dict>
+</plist>

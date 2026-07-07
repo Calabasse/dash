@@ -334,9 +334,11 @@
   const daysSince = ses => ses.prevDate ? Math.round((parseD(ses.date)-parseD(ses.prevDate))/86400000) : null;
 
   function dotsHTML(idx){
+    // sessions[0] is newest; render right-to-left so newest sits by the "Newer ▶"
+    // button and the lit dot tracks toward whichever nav button is pressed.
     return program.sessions.map((s,i)=>
       `<span class="dot2 ${i===idx?'on':''}" onclick="goTo(${i})" title="Day ${s.day} · ${formatDate(s.date)}"></span>`
-    ).join('');
+    ).reverse().join('');
   }
 
   function summaryHTML(sm){
@@ -413,14 +415,51 @@
   const SERVED = (location.protocol==='http:'||location.protocol==='https:')
     && /^(localhost|127\.0\.0\.1)$/.test(location.hostname);  // live sync only from the local launcher
   const tb=m=>{document.getElementById('tbStatus').textContent=m;};
+  // Remote-rebuild Worker (dash-rebuild). Empty = disabled → button stays inert
+  // on the public page. Set to the URL printed by `wrangler deploy`.
+  const REBUILD_API = '';  // e.g. 'https://dash-rebuild.<you>.workers.dev'
+  const rbase = ()=>REBUILD_API.replace(/\/$/,'');
   window.loadFromVOLM=async function(){
-    if(!SERVED){ tb('open via the "Workout Card (live)" launcher to enable'); return; }
-    const b=document.getElementById('btnSync'); b.disabled=true; tb('syncing VOLM…');
-    try{ const r=await fetch('/api/sync',{method:'POST'}); const j=await r.json();
-      if(j.ok){ tb('synced '+j.sessions+' sessions — reloading'); location.reload(); }
-      else { tb('sync failed (see console)'); console.log(j); } }
-    catch(e){ tb('sync error: '+e.message); } finally{ b.disabled=false; }
+    const b=document.getElementById('btnSync');
+    if(SERVED){  // local launcher — sync directly against tools/server.py
+      b.disabled=true; tb('syncing VOLM…');
+      try{ const r=await fetch('/api/sync',{method:'POST'}); const j=await r.json();
+        if(j.ok){ tb('synced '+j.sessions+' sessions — reloading'); location.reload(); }
+        else { tb('sync failed (see console)'); console.log(j); } }
+      catch(e){ tb('sync error: '+e.message); } finally{ b.disabled=false; }
+      return;
+    }
+    // public page — ask the Mac to rebuild via the Worker, then poll for status
+    if(!REBUILD_API){ tb('static mode — set REBUILD_API to enable remote refresh'); return; }
+    b.disabled=true; tb('requesting rebuild…');
+    try{
+      const j=await (await fetch(rbase()+'/api/rebuild',{method:'POST'})).json();
+      if(!j.ok){
+        tb(j.error==='rate_limited'
+          ? 'recently refreshed — try again in ~'+Math.ceil((j.retry_after_seconds||600)/60)+' min'
+          : 'rebuild refused: '+(j.error||'unknown'));
+        b.disabled=false; return;
+      }
+      tb('queued — the Mac will refresh within ~2 min…');
+      pollRebuild(b);
+    }catch(e){ tb('rebuild error: '+e.message); b.disabled=false; }
   };
+  // Poll the Worker until the Mac reports done/error. Guard against a stale prior
+  // 'done' by only accepting a terminal state after we've seen queued/building.
+  function pollRebuild(b){
+    const started=Date.now(), TIMEOUT=10*60*1000; let sawActive=false;
+    const tick=async()=>{
+      try{
+        const s=await (await fetch(rbase()+'/api/rebuild-status')).json();
+        if(s.status==='queued'||s.status==='building'){ sawActive=true; tb(s.status==='building'?'building on the Mac…':'queued — waiting for the Mac…'); }
+        else if(sawActive && s.status==='done'){ tb('deployed ✓ '+(s.sessions!=null?s.sessions+' sessions — ':'')+'reloading'); setTimeout(()=>location.reload(),1500); return; }
+        else if(sawActive && s.status==='error'){ tb('rebuild failed on the Mac (see poller.log)'); b.disabled=false; return; }
+      }catch(e){/* transient — keep polling */}
+      if(Date.now()-started>TIMEOUT){ tb('still working — reload in a minute'); b.disabled=false; return; }
+      setTimeout(tick,5000);
+    };
+    setTimeout(tick,4000);
+  }
   // Build a handoff prompt from the CURRENT session (last vs proposed).
   function handoffPrompt(){
     const s=program.sessions[cur];
@@ -459,7 +498,9 @@
       .catch(()=>{});
     tb(blocked?'popup blocked — context is in the box below':'handed off to '+(provider==='chatgpt'?'ChatGPT':'Claude'));
   };
-  if(!SERVED) tb('static mode — "Load from VOLM" needs the live launcher; handoff works here');
+  if(!SERVED) tb(REBUILD_API
+    ? 'ready — "Load from VOLM" refreshes from anywhere (rebuilds on the Mac)'
+    : 'static mode — set REBUILD_API to enable remote refresh; handoff works here');
   </script>
 </body>
 </html>

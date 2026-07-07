@@ -1,6 +1,7 @@
 private/
 *.local
 .DS_Store
+poller.log
 # Cloudflare Worker
 worker/node_modules/
 worker/.wrangler/
