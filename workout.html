@@ -188,6 +188,11 @@
 
   <script src="workout-card.data.js"></script>
   <script>
+  // ---- APE live-data config (Option A) ----
+  // Set to the deployed APE API base URL (e.g. "https://<api>.up.railway.app") to serve
+  // live data from Postgres. Empty string = use the baked workout-card.data.js (current).
+  window.APE_API_BASE = window.APE_API_BASE || "";
+
   // ---- data: proposed values + LLM rationale are produced by an LLM from the last workout ----
   const program = window.PROGRAM;
   if(!program || !program.sessions){ document.getElementById('card').innerHTML='<p style="padding:20px;color:#f87171">workout-card.data.js not loaded — run tools/build_card_data.py</p>'; throw new Error('no PROGRAM'); }
@@ -509,6 +514,25 @@
   if(!SERVED) tb(REBUILD_API
     ? 'ready — "Load from VOLM" refreshes from anywhere (rebuilds on the Mac)'
     : 'static mode — set REBUILD_API to enable remote refresh; handoff works here');
+
+  // ---- Option A: live data from the deployed APE API ----
+  // Non-breaking + opt-in: inert unless window.APE_API_BASE is set (the baked data
+  // renders instantly). On success, swaps in live data and re-renders via the existing
+  // draw(); on any error/offline, the baked workout-card.data.js stays.
+  (async () => {
+    const api = window.APE_API_BASE;
+    if (!api) return;
+    try {
+      const r = await fetch(api.replace(/\/$/, '') + '/api/v1/program', { cache: 'no-store' });
+      if (!r.ok) return;
+      const live = await r.json();
+      if (!live || !Array.isArray(live.sessions) || !live.sessions.length) return;
+      program.sessions = live.sessions;
+      if (live.author) program.author = live.author;
+      cur = Math.min(cur, program.sessions.length - 1);
+      draw();
+    } catch (_) { /* keep baked data */ }
+  })();
   </script>
 </body>
 </html>
