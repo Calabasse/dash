@@ -203,3 +203,120 @@ Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings
 failed to get: -25320
 fatal: could not read Username for 'https://github.com': Device not configured
 [06:30:14]   push failed — commit is local
+[06:30:05] prescription config synced to engine
+[06:30:05] training: VOLM sync
+TRANSACTION FAILED — ROLLBACK
+Traceback (most recent call last):
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 118, in run_sync
+    _call_first_available(
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 38, in _call_first_available
+    return fn(conn=conn)
+           ^^^^^^^^^^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/services/recommendations/recommendations.py", line 172, in generate_recommendations
+    conn.execute(
+_duckdb.ConversionException: Conversion Error: Could not convert string 'medium' to DOUBLE
+Traceback (most recent call last):
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 118, in run_sync
+    _call_first_available(
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 38, in _call_first_available
+    return fn(conn=conn)
+           ^^^^^^^^^^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/services/recommendations/recommendations.py", line 172, in generate_recommendations
+    conn.execute(
+_duckdb.ConversionException: Conversion Error: Could not convert string 'medium' to DOUBLE
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 135, in run_sync
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: {'status': 'error', 'stage': 'transaction', 'message': "Conversion Error: Could not convert string 'medium' to DOUBLE"}
+🚨 NORMALIZE FILE EXECUTING 🚨
+SYNC START
+Fetched 50 workout headers (offset=0)
+Fetched 8 workout headers (offset=50)
+No more workouts found. Ending sync.
+
+SYNC COMPLETE
+Headers processed: 58
+Detailed workouts stored: 58
+Skipped: 0
+DEBUG raw_workouts rows: 61
+DEBUG sets for ci-fixture-session-001: 4
+DEBUG sets for ci-fixture-session-002: 4
+DEBUG sets for ci-fixture-session-003: 4
+DEBUG sets for f5d9ff2e-8e09-4348-997f-33cd35f6d700: 21
+DEBUG sets for 310eae85-d153-45b1-b94c-3d760d551066: 17
+DEBUG sets for 2ab17bc5-7df9-4c06-9d71-94cc215be33f: 20
+DEBUG sets for d2190a88-cd56-4078-9213-2bbd461f8723: 21
+DEBUG sets for c6dc4666-b5d5-4ff1-a896-db24b0e306d7: 17
+DEBUG sets for 0eb5c728-9005-4f03-b809-86ad0502143e: 17
+DEBUG sets for bd9e9261-32d6-4044-bcd1-7fc077c967c9: 18
+DEBUG sets for 04ed67f0-e590-4ece-9f9b-0c708c9ffa12: 17
+DEBUG sets for e1f71f9e-305f-4d94-82a7-3da4cf61e764: 18
+DEBUG sets for c0df82a8-58c4-4b9d-88f0-751660f681a3: 18
+DEBUG sets for 91af8e20-16ca-47db-a7fb-e893c7187355: 17
+DEBUG sets for 3d2413fc-a2be-4c45-944a-cdcdc355292b: 16
+DEBUG sets for 07b7c16e-8d6b-4940-9aa6-39c7d5daac56: 16
+DEBUG sets for 412904c9-0b8d-4670-b885-04184be3b209: 18
+DEBUG sets for 8a8d60a3-233b-4182-be57-93d34c6fc770: 17
+DEBUG sets for fdc4c4db-2b22-4f26-87af-38350f996ef2: 16
+DEBUG sets for 123e3722-a86a-4a77-ab92-74824dcbf2ff: 15
+DEBUG sets for 6df0ab57-8f48-4f2e-a327-031a3a1932b3: 16
+DEBUG sets for c10d7907-34e6-4eea-8f47-67c79d3ec736: 16
+DEBUG sets for fe486b1b-b87e-41c1-8c50-8216bfd2ad1f: 14
+DEBUG sets for 298ab704-612b-4cb8-a777-177217cf0ecf: 16
+DEBUG sets for 7b31a045-fbcf-4875-9e0a-297e38c75885: 16
+DEBUG sets for d8e77143-ba07-49d1-a102-46fda48b2dd1: 16
+DEBUG sets for d764d3ea-3ea5-405c-a904-17ff28021091: 18
+DEBUG sets for 689f99cb-f857-4835-b125-7bc8309d70c2: 14
+DEBUG sets for fb197f96-f07c-4473-b48d-5ae2fcfe44d1: 16
+DEBUG sets for 44b5a1d1-d690-410b-8c85-2445cb04e443: 18
+DEBUG sets for 1154b180-1895-475f-a549-15d0dac5e309: 17
+DEBUG sets for 7ef91b05-30c5-4d3f-a71f-80dd66be9be7: 16
+DEBUG sets for 4d36dc80-f523-481c-886a-2d82a98d32b2: 17
+DEBUG sets for 16f1a287-f1b5-4b3f-88ca-778142aa9650: 18
+DEBUG sets for 4cfe1f5c-4c9c-4415-a79a-57e0c77a24f5: 19
+DEBUG sets for 3229684f-828b-4584-9b7e-3020b2a7c043: 17
+DEBUG sets for ef4d0610-1f28-4135-8e4a-b1095198556f: 18
+DEBUG sets for f38ab2e9-9082-460a-8af0-cea0d72c4d83: 17
+DEBUG sets for 9c6775b1-d2dc-4d61-acff-d03e14852e51: 18
+DEBUG sets for e16dde1e-59a4-4f0b-a483-e21d93469c39: 17
+DEBUG sets for 5cf7dcae-9081-40c0-9b90-6079ce6e0269: 17
+DEBUG sets for 11f67b61-0ba1-4126-8f33-373985df3c18: 18
+DEBUG sets for 4bd39b30-ba8e-4a16-a03b-907389d63c79: 15
+DEBUG sets for 284daffc-ce5f-4e66-b3b5-c7fd305bf254: 14
+DEBUG sets for 5f6a3adf-ec90-40fd-b4d9-85d8d3d26075: 14
+DEBUG sets for ccbad86b-f23d-4d0c-888e-58a8b744c780: 9
+DEBUG sets for f059bbee-6134-4d82-9d54-1465e5fa4e97: 18
+DEBUG sets for e60a3278-8327-418a-aabe-95ea884a6904: 12
+DEBUG sets for 6e9e2e4a-9ab2-4bba-aeb7-b5e2743d7382: 17
+DEBUG sets for da6e2a1a-641f-4ac3-b15f-c3f5394e2af2: 24
+DEBUG sets for 5f5ceb0b-a13a-4c18-8a1b-3261b2dea227: 25
+DEBUG sets for c92add48-4b0e-4efa-90e2-e8f76bedb44a: 22
+DEBUG sets for 92b58215-da42-4ede-87f7-eb3b3fc8179e: 22
+DEBUG sets for b02a6891-b7c4-44e0-848b-d3fe5415f6d8: 24
+DEBUG sets for 71476de7-9496-4a51-b038-ab3b8bc1e9d0: 22
+DEBUG sets for d9d3df7f-61ee-4935-a2ff-725ab50c3ac3: 22
+DEBUG sets for 85494f00-ea62-4777-9c24-294f5ffba9c6: 22
+DEBUG sets for a7da514e-701c-452a-bb48-635c0029210c: 24
+DEBUG sets for fb328d28-4241-4b0f-8093-2880d2596144: 22
+DEBUG sets for b3d2830d-353e-4574-a55f-73a81a60c08e: 24
+DEBUG sets for c8dbc020-24f0-463c-9d8f-a3ad0011fbcf: 22
+✅ normalize complete — sessions: 61, sets: 1054
+[06:30:15]   sync failed (rate limit / offline) — keeping last data
+[06:30:15] training: build card data
+wrote /Users/chadcrawford/knowledge/CHAD_OS/tools/workout-card.data.js — 4 sessions
+  2026-07-08  Day B  DAY B - CHEST / TRICEPS  (5 days)  (7 ex)
+  2026-07-07  Day A  DAY A — BACK / BICEPS (4-5 days)  (6 ex)
+  2026-07-05  Day C  DAY C — DELTS / ABS (3-4 days)  (6 ex)
+  2026-07-04  Day B  DAY B - CHEST / TRICEPS  (5 days)  (7 ex)
+[06:30:15] weight: refresh withings
+→ Using data: /Users/chadcrawford/knowledge/CHAD_OS/raw/withings/2026-06-20/withings-bb3040d60f44ba3e.json (fetched 2026-06-20)
+→ Regenerating dashboard...
+Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings_body_composition.html
+✓ Dashboard: /Users/chadcrawford/forge/projects/APE/dashboards/withings_body_composition.html
+[06:30:16] ped: render from template
+  ped.html written (demo seed)
+[06:30:16] git: commit + push
