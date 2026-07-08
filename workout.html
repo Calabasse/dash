@@ -522,16 +522,28 @@
   (async () => {
     const api = window.APE_API_BASE;
     if (!api) return;
+    const base = api.replace(/\/$/, '');
+    async function loadProgram() {
+      try {
+        const r = await fetch(base + '/api/v1/program', { cache: 'no-store' });
+        if (!r.ok) return false;
+        const live = await r.json();
+        if (!live || !Array.isArray(live.sessions) || !live.sessions.length) return false;
+        program.sessions = live.sessions;
+        if (live.author) program.author = live.author;
+        cur = Math.min(cur, program.sessions.length - 1);
+        draw();
+        return true;
+      } catch (_) { return false; }
+    }
+    // 1) instant: render the latest already in the database
+    await loadProgram();
+    // 2) background: ask the server to check VOLM (throttled) — re-render only if it synced.
+    //    Throttled + graceful, so refreshing never blocks or hammers VOLM.
     try {
-      const r = await fetch(api.replace(/\/$/, '') + '/api/v1/program', { cache: 'no-store' });
-      if (!r.ok) return;
-      const live = await r.json();
-      if (!live || !Array.isArray(live.sessions) || !live.sessions.length) return;
-      program.sessions = live.sessions;
-      if (live.author) program.author = live.author;
-      cur = Math.min(cur, program.sessions.length - 1);
-      draw();
-    } catch (_) { /* keep baked data */ }
+      const s = await fetch(base + '/api/v1/sync', { method: 'POST' });
+      if (s.ok && (await s.json()).status === 'synced') await loadProgram();
+    } catch (_) { /* offline / throttled — keep what's shown */ }
   })();
   </script>
 </body>
