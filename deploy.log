@@ -375,3 +375,54 @@ Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings
 [06:30:17] ped: render from template
   ped.html written (demo seed)
 [06:30:17] git: commit + push
+fatal: could not read Username for 'https://github.com': Device not configured
+[06:30:17]   push failed — commit is local
+[06:33:02] prescription config synced to engine
+[06:33:02] training: VOLM sync
+list_workouts offset=0 attempt 1/3 failed: [Errno 8] nodename nor servname provided, or not known
+list_workouts offset=0 attempt 2/3 failed: [Errno 8] nodename nor servname provided, or not known
+list_workouts offset=0 attempt 3/3 failed: [Errno 8] nodename nor servname provided, or not known
+Step 1 FAILED
+Traceback (most recent call last):
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 75, in run_sync
+    _call_first_available(
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 40, in _call_first_available
+    return fn()
+           ^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/services/sync/sync_workouts.py", line 72, in sync_workouts
+    raise RuntimeError("Sync aborted — API list failure")
+RuntimeError: Sync aborted — API list failure
+Traceback (most recent call last):
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 75, in run_sync
+    _call_first_available(
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 40, in _call_first_available
+    return fn()
+           ^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/services/sync/sync_workouts.py", line 72, in sync_workouts
+    raise RuntimeError("Sync aborted — API list failure")
+RuntimeError: Sync aborted — API list failure
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 85, in run_sync
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: {'status': 'error', 'stage': 'sync', 'message': 'Sync aborted — API list failure'}
+🚨 NORMALIZE FILE EXECUTING 🚨
+SYNC START
+[06:33:14]   sync failed (rate limit / offline) — keeping last data
+[06:33:14] training: build card data
+wrote /Users/chadcrawford/knowledge/CHAD_OS/tools/workout-card.data.js — 4 sessions
+  2026-07-08  Day B  DAY B - CHEST / TRICEPS  (5 days)  (7 ex)
+  2026-07-07  Day A  DAY A — BACK / BICEPS (4-5 days)  (6 ex)
+  2026-07-05  Day C  DAY C — DELTS / ABS (3-4 days)  (6 ex)
+  2026-07-04  Day B  DAY B - CHEST / TRICEPS  (5 days)  (7 ex)
+[06:33:14] weight: refresh withings
+→ Using data: /Users/chadcrawford/knowledge/CHAD_OS/raw/withings/2026-06-20/withings-bb3040d60f44ba3e.json (fetched 2026-06-20)
+→ Regenerating dashboard...
+Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings_body_composition.html
+✓ Dashboard: /Users/chadcrawford/forge/projects/APE/dashboards/withings_body_composition.html
+[06:33:14] ped: render from template
+  ped.html written (demo seed)
+[06:33:14] git: commit + push
