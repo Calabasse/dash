@@ -426,3 +426,5 @@ Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings
 [06:33:14] ped: render from template
   ped.html written (demo seed)
 [06:33:14] git: commit + push
+fatal: unable to access 'https://github.com/Calabasse/dash.git/': Could not resolve host: github.com
+[06:33:14]   push failed — commit is local
