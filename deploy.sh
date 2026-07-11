@@ -32,10 +32,16 @@ if [ -f "$SITE/prescription_config.json" ]; then
   LOG "prescription config synced to engine"
 fi
 
-# 1) TRAINING — sync VOLM (best-effort) then rebuild the card data file
-LOG "training: VOLM sync"
-( cd "$APE" && "$VENV" -c "from app.api.routes.sync import run_sync; run_sync()" ) \
-  || LOG "  sync failed (rate limit / offline) — keeping last data"
+# 1) TRAINING — rebuild the card data file. VOLM sync is OPT-IN (--sync only),
+# because each sync consumes a short-lived VOLM token. Default deploy just
+# republishes the last-synced data — no VOLM call.
+if [ "${1:-}" = "--sync" ]; then
+  LOG "training: VOLM sync (--sync given)"
+  ( cd "$APE" && "$VENV" -c "from app.api.routes.sync import run_sync; run_sync()" ) \
+    || LOG "  sync failed (rate limit / offline) — keeping last data"
+else
+  LOG "training: skipping VOLM sync (no --sync) — republishing last data"
+fi
 LOG "training: build card data"
 ( cd "$APE" && "$VENV" tools/build_card_data.py ) \
   || LOG "  build_card_data failed — keeping last data"
