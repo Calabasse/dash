@@ -463,3 +463,22 @@ Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings
 [06:30:03] ped: render from template
   ped.html written (demo seed)
 [06:30:03] git: commit + push
+failed to get: -25320
+fatal: could not read Username for 'https://github.com': Device not configured
+[06:30:03]   push failed — commit is local
+[06:30:05] prescription config synced to engine
+[06:30:05] training: skipping VOLM sync (no --sync) — republishing last data
+[06:30:05] training: build card data
+wrote /Users/chadcrawford/knowledge/CHAD_OS/tools/workout-card.data.js — 4 sessions
+  2026-07-08  Day B  DAY B - CHEST / TRICEPS  (5 days)  (7 ex)
+  2026-07-07  Day A  DAY A — BACK / BICEPS (4-5 days)  (6 ex)
+  2026-07-05  Day C  DAY C — DELTS / ABS (3-4 days)  (6 ex)
+  2026-07-04  Day B  DAY B - CHEST / TRICEPS  (5 days)  (7 ex)
+[06:30:05] weight: refresh withings
+→ Using data: /Users/chadcrawford/knowledge/CHAD_OS/raw/withings/2026-06-20/withings-bb3040d60f44ba3e.json (fetched 2026-06-20)
+→ Regenerating dashboard...
+Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings_body_composition.html
+✓ Dashboard: /Users/chadcrawford/forge/projects/APE/dashboards/withings_body_composition.html
+[06:30:05] ped: render from template
+  ped.html written (demo seed)
+[06:30:05] git: commit + push
