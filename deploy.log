@@ -710,3 +710,6 @@ Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings
 [06:30:03] ped: render from template
   ped.html written (demo seed)
 [06:30:03] git: commit + push
+To https://github.com/Calabasse/dash.git
+   8f80ebc..9f2baac  main -> main
+[06:31:58] deployed.
