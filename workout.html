@@ -186,16 +186,16 @@
   <div class="card" id="card"></div>
   <div id="analysis"></div>
 
-  <script src="workout-card.data.js"></script>
+  <script src="workout-card.data.js?v=20260726065913"></script>
   <script>
   // ---- APE live-data config (Option A) ----
   // Set to the deployed APE API base URL (e.g. "https://<api>.up.railway.app") to serve
-  // live data from Postgres. Empty string = use the baked workout-card.data.js (current).
+  // live data from Postgres. Empty string = use the baked workout-card.data.js?v=20260726065913 (current).
   window.APE_API_BASE = window.APE_API_BASE || "https://ape-production-a149.up.railway.app";
 
   // ---- data: proposed values + LLM rationale are produced by an LLM from the last workout ----
   const program = window.PROGRAM;
-  if(!program || !program.sessions){ document.getElementById('card').innerHTML='<p style="padding:20px;color:#f87171">workout-card.data.js not loaded — run tools/build_card_data.py</p>'; throw new Error('no PROGRAM'); }
+  if(!program || !program.sessions){ document.getElementById('card').innerHTML='<p style="padding:20px;color:#f87171">workout-card.data.js?v=20260726065913 not loaded — run tools/build_card_data.py</p>'; throw new Error('no PROGRAM'); }
 
   // ---- helpers ----
   const esc = s => String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
@@ -518,7 +518,7 @@
   // ---- Option A: live data from the deployed APE API ----
   // Non-breaking + opt-in: inert unless window.APE_API_BASE is set (the baked data
   // renders instantly). On success, swaps in live data and re-renders via the existing
-  // draw(); on any error/offline, the baked workout-card.data.js stays.
+  // draw(); on any error/offline, the baked workout-card.data.js?v=20260726065913 stays.
   (async () => {
     const api = window.APE_API_BASE;
     if (!api) return;

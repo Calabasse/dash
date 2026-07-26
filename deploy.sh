@@ -46,6 +46,11 @@ LOG "training: build card data"
 ( cd "$APE" && "$VENV" tools/build_card_data.py ) \
   || LOG "  build_card_data failed — keeping last data"
 [ -f "$CHAD_OS/tools/workout-card.data.js" ] && cp "$CHAD_OS/tools/workout-card.data.js" "$SITE/workout-card.data.js"
+# cache-bust: stamp the data.js <script src> so browsers always fetch the fresh copy
+# (GitHub Pages sets long cache TTLs; without a version query the card never updates).
+STAMP=$(date +%Y%m%d%H%M%S)
+sed -i '' -E "s#workout-card\.data\.js(\?v=[0-9]+)?#workout-card.data.js?v=$STAMP#" "$SITE/workout.html" \
+  && LOG "training: cache-busted workout.html (v=$STAMP)"
 
 # 2) WEIGHT — refresh Withings dashboard (self-contained html), best-effort
 LOG "weight: refresh withings"
