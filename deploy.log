@@ -729,3 +729,6 @@ Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings
 [06:30:04] ped: render from template
   ped.html written (demo seed)
 [06:30:04] git: commit + push
+failed to get: -25320
+fatal: could not read Username for 'https://github.com': Device not configured
+[06:30:04]   push failed — commit is local
