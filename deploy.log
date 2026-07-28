@@ -749,3 +749,23 @@ Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings
 [06:30:06] ped: render from template
   ped.html written (demo seed)
 [06:30:06] git: commit + push
+To https://github.com/Calabasse/dash.git
+   5314db0..9ae1f27  main -> main
+[06:45:00] deployed.
+[06:30:01] prescription config synced to engine
+[06:30:01] training: skipping VOLM sync (no --sync) — republishing last data
+[06:30:01] training: build card data
+wrote /Users/chadcrawford/knowledge/CHAD_OS/tools/workout-card.data.js — 4 sessions
+  2026-07-25  Day C  DAY C — DELTS / ABS (3-4 days)  (6 ex)
+  2026-07-21  Day B  DAY B - CHEST / TRICEPS  (5 days)  (7 ex)
+  2026-07-20  Day A  DAY A — BACK / BICEPS (4-5 days)  (6 ex)
+  2026-07-19  Day C  DAY C — DELTS / ABS (3-4 days)  (6 ex)
+[06:30:01] training: cache-busted workout.html (v=20260728063001)
+[06:30:01] weight: refresh withings
+→ Using data: /Users/chadcrawford/knowledge/CHAD_OS/raw/withings/2026-07-13/withings-03fb95eb8d76fd08.json (fetched 2026-07-13)
+→ Regenerating dashboard...
+Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings_body_composition.html
+✓ Dashboard: /Users/chadcrawford/forge/projects/APE/dashboards/withings_body_composition.html
+[06:30:02] ped: render from template
+  ped.html written (demo seed)
+[06:30:02] git: commit + push
