@@ -75,6 +75,28 @@ out = re.sub(r'^.*@@PED_DATA@@.*$', line, tpl, count=1, flags=re.M)
 print("  ped.html written (%s)" % ("owner data" if src.exists() else "demo seed"))
 PY
 
+# 3b) RESEARCH — publish opt-in last30days briefs.
+# Only briefs deliberately copied into publish/ ever reach the public site.
+# ~/knowledge/research/last30days/ itself is private and is never synced.
+# An empty publish/ removes research/ from the site, so unpublishing is a delete.
+LOG "research: sync opt-in last30days briefs"
+L30D_PUBLISH="$HOME/knowledge/research/last30days/publish"
+L30D_SKILL="$HOME/.claude/skills/last30days/scripts/last30days.py"
+L30D_PY="/opt/homebrew/bin/python3.12"
+L30D_COUNT=$(ls -1 "$L30D_PUBLISH"/*.md 2>/dev/null | wc -l | tr -d ' ')
+if [ "${L30D_COUNT:-0}" -gt 0 ]; then
+  if "$L30D_PY" "$L30D_SKILL" library feed --save-dir "$L30D_PUBLISH" >/dev/null 2>&1; then
+    mkdir -p "$SITE/research"
+    rsync -a --delete --exclude='.*' "$L30D_PUBLISH"/ "$SITE/research"/
+    LOG "  research: $L30D_COUNT brief(s) published"
+  else
+    LOG "  research: feed build failed — keeping last published copy"
+  fi
+else
+  rm -rf "$SITE/research"
+  LOG "  research: publish/ empty — nothing published"
+fi
+
 # 4) commit + push
 LOG "git: commit + push"
 git add -A
