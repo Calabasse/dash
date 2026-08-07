@@ -7,6 +7,12 @@ window.PROGRAM = {
       "title": "DAY B - CHEST / TRICEPS  (5 days)",
       "date": "2026-08-07",
       "prevDate": "2026-08-02",
+      "nextAvailable": {
+        "earliest": "2026-08-10",
+        "latest": "2026-08-11",
+        "fatigue_state": "elevated",
+        "driver": "chest recovery (heavy stimulus, elevated fatigue, ~84h)"
+      },
       "stats": [
         "64m",
         "13 sets",
@@ -454,6 +460,12 @@ window.PROGRAM = {
       "title": "DAY A \u2014 BACK / BICEPS (4-5 days)",
       "date": "2026-08-06",
       "prevDate": "2026-08-01",
+      "nextAvailable": {
+        "earliest": "2026-08-09",
+        "latest": "2026-08-10",
+        "fatigue_state": "elevated",
+        "driver": "back recovery (heavy stimulus, elevated fatigue, ~86h)"
+      },
       "stats": [
         "73m",
         "14 sets",
@@ -967,6 +979,12 @@ window.PROGRAM = {
       "title": "DAY C \u2014 DELTS / ABS (3-4 days)",
       "date": "2026-08-04",
       "prevDate": "2026-07-30",
+      "nextAvailable": {
+        "earliest": "2026-08-07",
+        "latest": "2026-08-08",
+        "fatigue_state": "elevated",
+        "driver": "delts recovery (heavy stimulus, elevated fatigue, ~82h)"
+      },
       "stats": [
         "61m",
         "17 sets",
@@ -1380,6 +1398,12 @@ window.PROGRAM = {
       "title": "DAY B - CHEST / TRICEPS  (5 days)",
       "date": "2026-08-02",
       "prevDate": "2026-07-28",
+      "nextAvailable": {
+        "earliest": "2026-08-05",
+        "latest": "2026-08-06",
+        "fatigue_state": "elevated",
+        "driver": "chest recovery (heavy stimulus, elevated fatigue, ~84h)"
+      },
       "stats": [
         "52m",
         "15 sets",
