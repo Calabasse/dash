@@ -35,7 +35,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "increase_load",
           "assess": "Last top set: 143 lb \u00d7 10 @ RPE 9 \u00b7 barbell \u00b7 anchor 10 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 143\u00d710 at RPE 9 (\u2265 anchor 10), backoffs productive \u2014 add load to 148.8 and reset reps; drive to RPE 10.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 143\u00d710 at RPE 9 (\u2265 anchor 10), backoffs productive \u2014 top set 143\u2192148.8, back-off \u2248132.3; reset reps; drive to RPE 10.",
           "sets": [
             {
               "type": "W",
@@ -120,7 +120,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "increase_load",
           "assess": "Last top set: 40 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/12) \u2014 earn the jump; load 40\u219245. Isolation: only loaded once the whole cluster is productive.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/12) \u2014 earn the jump; top set 40\u219245, back-off \u224840. Isolation: only loaded once the whole cluster is productive.",
           "sets": [
             {
               "type": "W",
@@ -305,7 +305,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "increase_load",
           "assess": "Last top set: 22.5 lb \u00d7 14 @ RPE 9.5 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (15/14/14) \u2014 earn the jump; load 22.5\u219227.5. Isolation: only loaded once the whole cluster is productive.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (15/14/14) \u2014 earn the jump; top set 22.5\u219227.5, back-off \u224825. Isolation: only loaded once the whole cluster is productive.",
           "sets": [
             {
               "type": "W",
@@ -627,7 +627,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "increase_load",
           "assess": "Last top set: 30 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/10) \u2014 earn the jump; load 30\u219235. Isolation: only loaded once the whole cluster is productive.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/10) \u2014 earn the jump; top set 30\u219235, back-off \u224832.5. Isolation: only loaded once the whole cluster is productive.",
           "sets": [
             {
               "type": "W",
@@ -686,7 +686,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "increase_load",
           "assess": "Last top set: 70 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 70\u00d713 at RPE 9 (\u2265 anchor 12), backoffs productive \u2014 add load to 75 and reset reps; drive to RPE 10.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 70\u00d713 at RPE 9 (\u2265 anchor 12), backoffs productive \u2014 top set 70\u219275, back-off \u224867.5; reset reps; drive to RPE 10.",
           "sets": [
             {
               "type": "W",
@@ -758,7 +758,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "increase_load",
           "assess": "Last top set: 27.5 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/10) \u2014 earn the jump; load 27.5\u219232.5. Isolation: only loaded once the whole cluster is productive.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/10) \u2014 earn the jump; top set 27.5\u219232.5, back-off \u224830. Isolation: only loaded once the whole cluster is productive.",
           "sets": [
             {
               "type": "W",
@@ -995,7 +995,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "increase_load",
           "assess": "Last top set: 22.5 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/14/12/17) \u2014 earn the jump; load 22.5\u219227.5. Isolation: only loaded once the whole cluster is productive.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/14/12/17) \u2014 earn the jump; top set 22.5\u219227.5, back-off \u224825. Isolation: only loaded once the whole cluster is productive.",
           "sets": [
             {
               "type": "W",
@@ -1139,7 +1139,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "increase_load",
           "assess": "Last top set: 20 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (13/15/13) \u2014 earn the jump; load 20\u219225. Isolation: only loaded once the whole cluster is productive.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (13/15/13) \u2014 earn the jump; top set 20\u219225, back-off \u224822.5. Isolation: only loaded once the whole cluster is productive.",
           "sets": [
             {
               "type": "W",
@@ -1211,7 +1211,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "increase_load",
           "assess": "Last top set: 30 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/11) \u2014 earn the jump; load 30\u219235. Isolation: only loaded once the whole cluster is productive.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/11) \u2014 earn the jump; top set 30\u219235, back-off \u224832.5. Isolation: only loaded once the whole cluster is productive.",
           "sets": [
             {
               "type": "W",
