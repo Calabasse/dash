@@ -139,6 +139,9 @@
   .when2 { color:var(--muted); font-size:13px; margin:2px 0 2px; }
   .when2 b { color:var(--text); }
   .when2 .since { color:var(--accent); }
+  .when2 .next-est { color:var(--text-muted); }
+  .when2 .next-est .est-badge { font-size:9px; font-weight:700; padding:1px 4px; border-radius:3px;
+    border:1px solid var(--line); margin-left:4px; text-transform:uppercase; letter-spacing:.02em; }
 
   /* overall session summary */
   .summary { background:#0e0e0e; border:1px solid var(--line); border-radius:8px;
@@ -340,6 +343,7 @@
   const parseD = s => { const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); };
   const formatDate = s => { const d=parseD(s); return `${DOW[d.getDay()]}, ${MON[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`; };
   const shortDate  = s => { const d=parseD(s); return `${MON[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`; };
+  const formatShort = s => { const d=parseD(s); return `${MON[d.getMonth()]} ${d.getDate()}`; };
   // STATIC: gap between the last two completed sessions of this day-type (from prevDate).
   const daysSince = ses => ses.prevDate ? Math.round((parseD(ses.date)-parseD(ses.prevDate))/86400000) : null;
   // DYNAMIC: days from the most recent completed session of this day-type to *today*.
@@ -390,6 +394,7 @@
       </div>
       <h1 class="title">${esc(s.title)}</h1>
       <div class="when2"><b>${formatDate(s.date)}</b>${s.prevDate?` · <span class="since">${ds} day${plural(ds)} since previous Day ${esc(s.day)}</span>`:''}${dsl!=null?` · <span class="since">${dsl<=0?`last Day ${esc(s.day)} today`:`${dsl} day${plural(dsl)} since last Day ${esc(s.day)}`}</span>`:''}</div>
+      ${s.nextAvailable ? `<div class="when2"><span class="next-est">Est. next Day ${esc(s.day)}: ${formatShort(s.nextAvailable.earliest)}–${formatShort(s.nextAvailable.latest)} · ${esc(s.nextAvailable.driver)}<span class="est-badge">estimate</span></span></div>` : ''}
       <div class="stats">${s.stats.map((x,i)=>(i?'<span class="dot">·</span>':'')+`<span>${esc(x)}</span>`).join('')}</div>
       ${summaryHTML(s.summary)}
       <div class="legend">
