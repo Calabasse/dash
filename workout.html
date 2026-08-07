@@ -139,7 +139,7 @@
   .when2 { color:var(--muted); font-size:13px; margin:2px 0 2px; }
   .when2 b { color:var(--text); }
   .when2 .since { color:var(--accent); }
-  .when2 .next-est { color:var(--text-muted); }
+  .when2 .next-est { color:var(--dim); }
   .when2 .next-est .est-badge { font-size:9px; font-weight:700; padding:1px 4px; border-radius:3px;
     border:1px solid var(--line); margin-left:4px; text-transform:uppercase; letter-spacing:.02em; }
 
@@ -394,7 +394,7 @@
       </div>
       <h1 class="title">${esc(s.title)}</h1>
       <div class="when2"><b>${formatDate(s.date)}</b>${s.prevDate?` · <span class="since">${ds} day${plural(ds)} since previous Day ${esc(s.day)}</span>`:''}${dsl!=null?` · <span class="since">${dsl<=0?`last Day ${esc(s.day)} today`:`${dsl} day${plural(dsl)} since last Day ${esc(s.day)}`}</span>`:''}</div>
-      ${s.nextAvailable ? `<div class="when2"><span class="next-est">Est. next Day ${esc(s.day)}: ${formatShort(s.nextAvailable.earliest)}–${formatShort(s.nextAvailable.latest)} · ${esc(s.nextAvailable.driver)}<span class="est-badge">estimate</span></span></div>` : ''}
+      ${s.nextAvailable && parseD(s.nextAvailable.latest) >= startOfToday() ? `<div class="when2"><span class="next-est">Est. next Day ${esc(s.day)}: ${formatShort(s.nextAvailable.earliest)}–${formatShort(s.nextAvailable.latest)} · ${esc(s.nextAvailable.driver)}<span class="est-badge">estimate</span></span></div>` : ''}
       <div class="stats">${s.stats.map((x,i)=>(i?'<span class="dot">·</span>':'')+`<span>${esc(x)}</span>`).join('')}</div>
       ${summaryHTML(s.summary)}
       <div class="legend">
