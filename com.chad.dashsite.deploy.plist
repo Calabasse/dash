@@ -16,6 +16,7 @@
   <array>
     <string>/bin/bash</string>
     <string>/Users/chadcrawford/repos/dash-site/deploy.sh</string>
+    <string>--sync</string>
   </array>
   <key>StartCalendarInterval</key>
   <dict>

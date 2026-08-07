@@ -54,7 +54,7 @@ sed -i '' -E "s#workout-card\.data\.js(\?v=[0-9]+)?#workout-card.data.js?v=$STAM
 
 # 2) WEIGHT — refresh Withings dashboard (self-contained html), best-effort
 LOG "weight: refresh withings"
-( cd "$APE" && ./refresh_withings_dashboard.sh --no-fetch ) \
+( cd "$APE" && ./refresh_withings_dashboard.sh ) \
   || LOG "  withings refresh failed — keeping last weight.html"
 [ -f "$APE/dashboards/withings_body_composition.html" ] && cp "$APE/dashboards/withings_body_composition.html" "$SITE/weight.html"
 

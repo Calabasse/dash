@@ -116,7 +116,7 @@ def main() -> int:
 
     log("rebuild claimed — running deploy.sh")
     try:
-        r = subprocess.run(["/bin/bash", str(DEPLOY)], cwd=str(SITE),
+        r = subprocess.run(["/bin/bash", str(DEPLOY), "--sync"], cwd=str(SITE),
                             capture_output=True, text=True, timeout=900)
         ok = r.returncode == 0
         tail = (r.stdout + r.stderr)[-400:]
