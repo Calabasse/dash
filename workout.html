@@ -72,6 +72,8 @@
     flex:0 0 auto; display:flex; align-items:center; justify-content:center; font-size:15px; }
   .ex-name { font-weight: 600; font-size: 15px; flex: 1 1 auto; }
   .ex-rest { color: var(--muted); font-size: 12px; white-space: nowrap; }
+  .ex-stale { color:#000; background:var(--gold); font-size:10px; font-weight:700;
+    padding:2px 6px; border-radius:3px; white-space:nowrap; cursor:help; }
 
   /* volume bars */
   .vol { display:grid; grid-template-columns: 42px 1fr 70px; align-items:center;
@@ -328,6 +330,7 @@
       <div class="ex-head">
         <div class="ex-icon">${ex.icon||''}</div>
         <div class="ex-name">${esc(ex.name)}</div>
+        ${ex.gate_status==='stale_ignored'?`<div class="ex-stale" title="${esc(ex.gate_reason||'')}">⚠ stale decision ignored</div>`:''}
         ${ex.rest?`<div class="ex-rest">⏱ ${ex.rest}</div>`:''}
       </div>
       ${volBars(ex)}
