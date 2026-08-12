@@ -416,7 +416,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: increase (fresh) \u2014 no change needed"
         }
       ]
     },
@@ -725,7 +725,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: increase (fresh) \u2014 no change needed"
         },
         {
           "name": "Dumbbell Incline Bicep Curl",
@@ -1418,7 +1418,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: increase (fresh) \u2014 no change needed"
         }
       ]
     },
@@ -1788,7 +1788,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: increase (fresh) \u2014 no change needed"
         },
         {
           "name": "Hanging Leg Raise",
