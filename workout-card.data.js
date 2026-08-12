@@ -97,7 +97,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Band Lateral Raise",
@@ -158,7 +159,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Rear Dumbbell Raise",
@@ -232,7 +234,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Dumbbell Incline Bicep Curl",
@@ -293,7 +296,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-11, past that. Advisory only -- no volume was changed."
         },
         {
           "name": "Hanging Leg Raise",
@@ -354,7 +358,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "no_signal",
-          "gate_reason": null
+          "gate_reason": null,
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Triceps Pushdown",
@@ -416,9 +421,11 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: increase (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-10, past that. Advisory only -- no volume was changed."
         }
-      ]
+      ],
+      "sequencingAdvisory": "\"Seated Lateral Raise\" (isolation/accessory) is displayed before \"Hanging Leg Raise\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
     },
     {
       "day": "B",
@@ -528,7 +535,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Dumbbell Fly",
@@ -589,7 +597,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Dumbbell Triceps Extension",
@@ -651,7 +660,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Triceps Pushdown",
@@ -725,7 +735,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: increase (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Dumbbell Incline Bicep Curl",
@@ -780,7 +791,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Seated Lateral Raise",
@@ -828,7 +840,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": "Day C (delts/abs) also trains delts (the logged Day C session on 2026-08-08). This exercise's own recovery estimate (52h, stretch stimulus, moderate fatigue) extends to 2026-08-10, past that. Advisory only -- no volume was changed."
         },
         {
           "name": "Chest Dip",
@@ -883,9 +896,11 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "no_signal",
-          "gate_reason": null
+          "gate_reason": null,
+          "recoveryOverlapWarning": null
         }
-      ]
+      ],
+      "sequencingAdvisory": "\"Dumbbell Fly\" (isolation/accessory) is displayed before \"Chest Dip\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
     },
     {
       "day": "A",
@@ -983,7 +998,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Barbell Bent Over Row",
@@ -1057,7 +1073,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Dumbbell Incline Bicep Curl",
@@ -1118,7 +1135,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-07). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-09, past that. Advisory only -- no volume was changed."
         },
         {
           "name": "Dumbbell One Arm Row",
@@ -1192,7 +1210,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Dumbbell Cross Body Hammer Curl",
@@ -1253,7 +1272,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-07). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-09, past that. Advisory only -- no volume was changed."
         },
         {
           "name": "Seated Lateral Raise",
@@ -1295,7 +1315,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Cable Crunch",
@@ -1324,7 +1345,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "no_signal",
-          "gate_reason": null
+          "gate_reason": null,
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Triceps Pushdown",
@@ -1392,9 +1414,11 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: increase (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-07). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-08, past that. Advisory only -- no volume was changed."
         }
-      ]
+      ],
+      "sequencingAdvisory": "\"Dumbbell Incline Bicep Curl\" (isolation/accessory) is displayed before \"Dumbbell One Arm Row\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
     },
     {
       "day": "C",
@@ -1504,7 +1528,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Band Lateral Raise",
@@ -1565,7 +1590,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Rear Dumbbell Raise",
@@ -1639,7 +1665,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Dumbbell Incline Bicep Curl",
@@ -1700,7 +1727,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (the logged Day A session on 2026-08-06). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-07, past that. Advisory only -- no volume was changed."
         },
         {
           "name": "Triceps Pushdown",
@@ -1762,7 +1790,8 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: increase (fresh) \u2014 no change needed"
+          "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
+          "recoveryOverlapWarning": null
         },
         {
           "name": "Hanging Leg Raise",
@@ -1823,9 +1852,11 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "no_signal",
-          "gate_reason": null
+          "gate_reason": null,
+          "recoveryOverlapWarning": null
         }
-      ]
+      ],
+      "sequencingAdvisory": "\"Seated Lateral Raise\" (isolation/accessory) is displayed before \"Hanging Leg Raise\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
     }
   ]
 };
