@@ -51,6 +51,8 @@ LOG "training: build card data"
 STAMP=$(date +%Y%m%d%H%M%S)
 sed -i '' -E "s#workout-card\.data\.js(\?v=[0-9]+)?#workout-card.data.js?v=$STAMP#" "$SITE/workout.html" \
   && LOG "training: cache-busted workout.html (v=$STAMP)"
+sed -i '' -E "s#workout-card\.data\.js(\?v=[0-9]+)?#workout-card.data.js?v=$STAMP#" "$SITE/workout2.html" \
+  && LOG "training: cache-busted workout2.html (v=$STAMP)"
 
 # 2) WEIGHT — refresh Withings dashboard (self-contained html), best-effort
 LOG "weight: refresh withings"

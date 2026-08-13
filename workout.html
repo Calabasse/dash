@@ -181,7 +181,10 @@
   </style>
 </head>
 <body>
-<a href="index.html" style="position:fixed;top:8px;right:10px;z-index:9999;font:600 12px -apple-system,sans-serif;color:#9ecbff;background:rgba(22,27,34,.85);border:1px solid #2a2f37;border-radius:6px;padding:4px 9px;text-decoration:none">← Home</a>
+<div style="position:fixed;top:8px;right:10px;z-index:9999;display:flex;gap:6px;">
+  <a href="index.html" style="font:600 12px -apple-system,sans-serif;color:#9ecbff;background:rgba(22,27,34,.85);border:1px solid #2a2f37;border-radius:6px;padding:4px 9px;text-decoration:none">← Home</a>
+  <a href="workout2.html" style="font:600 12px -apple-system,sans-serif;color:#9ecbff;background:rgba(22,27,34,.85);border:1px solid #2a2f37;border-radius:6px;padding:4px 9px;text-decoration:none">Audit Trail →</a>
+</div>
   <div id="toolbar">
     <button class="go" id="btnSync" onclick="loadFromVOLM()">⟳ Load from VOLM</button>
     <button id="btnGPT" onclick="handoff('chatgpt')">⤳ Ask ChatGPT</button>
