@@ -375,6 +375,37 @@
         </div>`;
       }
 
+      // D-11: last-five-decisions mini-timeline. Rows 2-5 are raw display
+      // values only -- never re-gated (no gateBadge()/apply_decision_gate
+      // call anywhere in this block). Omit the whole section when there is
+      // no history to show; render exactly as many rows as exist, never
+      // padded to five.
+      let timeline = '';
+      if(ex.decisionHistory && ex.decisionHistory.length){
+        const tlRows = ex.decisionHistory.map((h,i)=>{
+          let cls = '';
+          let tag = '';
+          // Index 0 never receives dim/changed treatment; with fewer than
+          // 2 rows there is nothing to compare and no row gets a class.
+          if(i>0){
+            if(h.decision === ex.decisionHistory[i-1].decision){
+              cls = ' dim';
+            } else {
+              cls = ' changed';
+              tag = '<span class="tag-changed">changed</span>';
+            }
+          }
+          const dateStr = fmt(h.date!=null?formatShort(h.date):null);
+          const decStr = fmt(h.decision!=null?esc(h.decision):null);
+          const scoreStr = fmt(h.decisionScore);
+          return `<div class="audit-tl-row${cls}"><span>${dateStr}</span><span>${decStr}</span><span>${scoreStr}</span>${tag}</div>`;
+        }).join('');
+        timeline = `<div class="audit-sec">
+          <div class="audit-lab">LAST 5 DECISIONS</div>
+          ${tlRows}
+        </div>`;
+      }
+
       let notApplied = '';
       if(ex.gate_status==='no_signal' || ex.gate_status==='stale_ignored' || ex.gate_status==='gate_error'){
         let naBody;
@@ -387,11 +418,11 @@
           naBody = 'No decision has been computed for this exercise yet.';
         }
         notApplied = `<div class="audit-sec">
-          <div class="audit-lab">Not applied — here's why</div>
+          <div class="audit-lab">NOT APPLIED — HERE'S WHY</div>
           <div class="audit-notapplied">${naBody}</div>
         </div>`;
       }
-      body = signalChain + notApplied;
+      body = signalChain + timeline + notApplied;
     }
 
     return `<div class="audit-wrap" id="${id}">
