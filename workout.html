@@ -21,6 +21,7 @@
     --down: #f87171;
     --same: #777;
     --pad: 14px;
+    --blue: #6aa9ff;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
@@ -74,6 +75,11 @@
   .ex-rest { color: var(--muted); font-size: 12px; white-space: nowrap; }
   .ex-stale { color:#000; background:var(--gold); font-size:10px; font-weight:700;
     padding:2px 6px; border-radius:3px; white-space:nowrap; cursor:help; }
+  /* WR-03: ported verbatim from workout2.html -- badge tone for no_signal,
+     distinct from .ex-stale's gold. Keep these two definitions in sync. */
+  .ex-nosignal { color:var(--blue); background:#12161c; border:1px solid #223047;
+    font-size:10px; font-weight:700; padding:2px 6px; border-radius:3px;
+    white-space:nowrap; cursor:help; }
 
   /* volume bars */
   .vol { display:grid; grid-template-columns: 42px 1fr 70px; align-items:center;
@@ -208,6 +214,14 @@
   const program = window.PROGRAM;
   if(!program || !program.sessions){ document.getElementById('card').innerHTML='<p style="padding:20px;color:#f87171">workout-card.data.js?v=20260813063246 not loaded — run tools/build_card_data.py</p>'; throw new Error('no PROGRAM'); }
 
+  // WR-03: gateBadge() below is ported verbatim from workout2.html and must
+  // stay byte-identical to that copy (tests/tools/test_build_card_data_history_panel.py::
+  // test_shared_js_helpers_stay_identical_across_workout_pages enforces this).
+  // This page previously only special-cased stale_ignored, so exercises with
+  // no_signal or gate_error silently showed no badge at all. The expandable
+  // audit-trail detail panel (auditHTML) is intentionally NOT ported here --
+  // that's workout2.html's page-specific feature (D-09/D-12).
+
   // ---- helpers ----
   const esc = s => String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   const fmt = v => v===null||v===undefined ? '<span class="dim">–</span>' : v;
@@ -287,6 +301,23 @@
       <div class="cues">${body}</div></div>`;
   }
 
+  // D-06/D-07/D-08, RESEARCH Pitfall 4: 6 gate_status values, not 5 --
+  // confirmed silent, no_signal plain-language, stale_ignored unchanged,
+  // gate_error a safe fallback, overridden_reduce/overridden_deload
+  // deferred, and any FUTURE value also falls through to no badge rather
+  // than broken markup.
+  function gateBadge(ex){
+    const gr = esc(ex.gate_reason||'');
+    if (ex.gate_status === 'stale_ignored')
+      return `<div class="ex-stale" title="${gr}">⚠ stale decision ignored</div>`;
+    if (ex.gate_status === 'no_signal')
+      return `<div class="ex-nosignal" title="No decision has been computed for this exercise yet">No decision signal yet</div>`;
+    if (ex.gate_status === 'confirmed') return ''; // D-06: silent
+    if (ex.gate_status === 'gate_error')
+      return `<div class="ex-stale" title="internal gate error — failed open">⚠ gate error</div>`;
+    return ''; // overridden_reduce / overridden_deload — deferred per D-08
+  }
+
   function llmHTML(ex){
     let h='';
     if(ex.assess) h+=`<div class="llm assess"><div class="lh"><span class="ai">✦</span>Last workout · assessment</div><p>${ex.assess}</p></div>`;
@@ -333,7 +364,7 @@
       <div class="ex-head">
         <div class="ex-icon">${ex.icon||''}</div>
         <div class="ex-name">${esc(ex.name)}</div>
-        ${ex.gate_status==='stale_ignored'?`<div class="ex-stale" title="${esc(ex.gate_reason||'')}">⚠ stale decision ignored</div>`:''}
+        ${gateBadge(ex)}
         ${ex.rest?`<div class="ex-rest">⏱ ${ex.rest}</div>`:''}
       </div>
       ${volBars(ex)}
