@@ -98,7 +98,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 29.810833333333335,
+              "decisionScoreRaw": 29.810833333333335,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 22.54,
+              "decisionScoreRaw": 22.54,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "hold",
+              "decisionScore": 27.006666666666668,
+              "decisionScoreRaw": 27.006666666666668,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-02",
+              "decision": "hold",
+              "decisionScore": 20.87333333333333,
+              "decisionScoreRaw": 20.87333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 22.04,
+              "decisionScoreRaw": 22.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Band Lateral Raise",
@@ -160,7 +215,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 94.37333333333333,
+              "decisionScoreRaw": 94.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "hold",
+              "decisionScore": 91.70666666666668,
+              "decisionScoreRaw": 91.70666666666668,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-30",
+              "decision": "hold",
+              "decisionScore": 88.42888888888888,
+              "decisionScoreRaw": 88.42888888888888,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-25",
+              "decision": "hold",
+              "decisionScore": 87.37333333333333,
+              "decisionScoreRaw": 87.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-19",
+              "decision": "hold",
+              "decisionScore": 88.04,
+              "decisionScoreRaw": 88.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Rear Dumbbell Raise",
@@ -235,7 +345,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 26.394166666666667,
+              "decisionScoreRaw": 26.394166666666667,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "hold",
+              "decisionScore": 25.29,
+              "decisionScoreRaw": 25.29,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-30",
+              "decision": "hold",
+              "decisionScore": 25.081666666666663,
+              "decisionScoreRaw": 25.081666666666663,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-25",
+              "decision": "hold",
+              "decisionScore": 24.1025,
+              "decisionScoreRaw": 24.1025,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-19",
+              "decision": "hold",
+              "decisionScore": 22.43583333333333,
+              "decisionScoreRaw": 22.43583333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Dumbbell Incline Bicep Curl",
@@ -297,7 +462,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-11, past that. Advisory only -- no volume was changed."
+          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-11, past that. Advisory only -- no volume was changed.",
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 37.151111111111106,
+              "decisionScoreRaw": 37.151111111111106,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-07",
+              "decision": "hold",
+              "decisionScore": 28.31777777777778,
+              "decisionScoreRaw": 28.31777777777778,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 35.151111111111106,
+              "decisionScoreRaw": 35.151111111111106,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "hold",
+              "decisionScore": 36.59555555555555,
+              "decisionScoreRaw": 36.59555555555555,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 34.51222222222222,
+              "decisionScoreRaw": 34.51222222222222,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Hanging Leg Raise",
@@ -359,7 +579,11 @@ window.PROGRAM = {
           ],
           "gate_status": "no_signal",
           "gate_reason": null,
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
+          "ignoredDecision": null
         },
         {
           "name": "Triceps Pushdown",
@@ -422,7 +646,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-10, past that. Advisory only -- no volume was changed."
+          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-10, past that. Advisory only -- no volume was changed.",
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "increase",
+              "decisionScore": 360.3177777777778,
+              "decisionScoreRaw": 360.3177777777778,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-07",
+              "decision": "increase",
+              "decisionScore": 360.04,
+              "decisionScoreRaw": 360.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "increase",
+              "decisionScore": 375.04,
+              "decisionScoreRaw": 375.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-02",
+              "decision": "increase",
+              "decisionScore": 343.165,
+              "decisionScoreRaw": 343.165,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "increase",
+              "decisionScore": 333.37333333333333,
+              "decisionScoreRaw": 333.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         }
       ],
       "sequencingAdvisory": "\"Seated Lateral Raise\" (isolation/accessory) is displayed before \"Hanging Leg Raise\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
@@ -536,7 +815,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-07",
+              "decision": "hold",
+              "decisionScore": 152.86666666666665,
+              "decisionScoreRaw": 152.86666666666665,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-02",
+              "decision": "hold",
+              "decisionScore": 152.5,
+              "decisionScoreRaw": 152.5,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-28",
+              "decision": "hold",
+              "decisionScore": 146.33999999999997,
+              "decisionScoreRaw": 146.33999999999997,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-21",
+              "decision": "hold",
+              "decisionScore": 140.83999999999997,
+              "decisionScoreRaw": 140.83999999999997,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-08",
+              "decision": "hold",
+              "decisionScore": 158.66916666666668,
+              "decisionScoreRaw": 158.66916666666668,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Dumbbell Fly",
@@ -598,7 +932,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-07",
+              "decision": "hold",
+              "decisionScore": 47.54,
+              "decisionScoreRaw": 47.54,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-02",
+              "decision": "hold",
+              "decisionScore": 44.12333333333333,
+              "decisionScoreRaw": 44.12333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-28",
+              "decision": "hold",
+              "decisionScore": 47.04,
+              "decisionScoreRaw": 47.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-21",
+              "decision": "hold",
+              "decisionScore": 44.81777777777778,
+              "decisionScoreRaw": 44.81777777777778,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-08",
+              "decision": "hold",
+              "decisionScore": 48.79,
+              "decisionScoreRaw": 48.79,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Dumbbell Triceps Extension",
@@ -661,7 +1050,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-07",
+              "decision": "hold",
+              "decisionScore": 80.70666666666668,
+              "decisionScoreRaw": 80.70666666666668,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-02",
+              "decision": "hold",
+              "decisionScore": 77.81777777777778,
+              "decisionScoreRaw": 77.81777777777778,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-28",
+              "decision": "hold",
+              "decisionScore": 80.59555555555556,
+              "decisionScoreRaw": 80.59555555555556,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-21",
+              "decision": "hold",
+              "decisionScore": 77.70666666666668,
+              "decisionScoreRaw": 77.70666666666668,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-08",
+              "decision": "hold",
+              "decisionScore": 80.59555555555556,
+              "decisionScoreRaw": 80.59555555555556,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Triceps Pushdown",
@@ -736,7 +1180,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "increase",
+              "decisionScore": 360.3177777777778,
+              "decisionScoreRaw": 360.3177777777778,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-07",
+              "decision": "increase",
+              "decisionScore": 360.04,
+              "decisionScoreRaw": 360.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "increase",
+              "decisionScore": 375.04,
+              "decisionScoreRaw": 375.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-02",
+              "decision": "increase",
+              "decisionScore": 343.165,
+              "decisionScoreRaw": 343.165,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "increase",
+              "decisionScore": 333.37333333333333,
+              "decisionScoreRaw": 333.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Dumbbell Incline Bicep Curl",
@@ -792,7 +1291,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 37.151111111111106,
+              "decisionScoreRaw": 37.151111111111106,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-07",
+              "decision": "hold",
+              "decisionScore": 28.31777777777778,
+              "decisionScoreRaw": 28.31777777777778,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 35.151111111111106,
+              "decisionScoreRaw": 35.151111111111106,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "hold",
+              "decisionScore": 36.59555555555555,
+              "decisionScoreRaw": 36.59555555555555,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 34.51222222222222,
+              "decisionScoreRaw": 34.51222222222222,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Seated Lateral Raise",
@@ -841,7 +1395,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": "Day C (delts/abs) also trains delts (the logged Day C session on 2026-08-08). This exercise's own recovery estimate (52h, stretch stimulus, moderate fatigue) extends to 2026-08-10, past that. Advisory only -- no volume was changed."
+          "recoveryOverlapWarning": "Day C (delts/abs) also trains delts (the logged Day C session on 2026-08-08). This exercise's own recovery estimate (52h, stretch stimulus, moderate fatigue) extends to 2026-08-10, past that. Advisory only -- no volume was changed.",
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 29.810833333333335,
+              "decisionScoreRaw": 29.810833333333335,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 22.54,
+              "decisionScoreRaw": 22.54,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "hold",
+              "decisionScore": 27.006666666666668,
+              "decisionScoreRaw": 27.006666666666668,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-02",
+              "decision": "hold",
+              "decisionScore": 20.87333333333333,
+              "decisionScoreRaw": 20.87333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 22.04,
+              "decisionScoreRaw": 22.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Chest Dip",
@@ -897,7 +1506,11 @@ window.PROGRAM = {
           ],
           "gate_status": "no_signal",
           "gate_reason": null,
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
+          "ignoredDecision": null
         }
       ],
       "sequencingAdvisory": "\"Dumbbell Fly\" (isolation/accessory) is displayed before \"Chest Dip\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
@@ -999,7 +1612,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 32.95666666666666,
+              "decisionScoreRaw": 32.95666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 33.37333333333333,
+              "decisionScoreRaw": 33.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-26",
+              "decision": "hold",
+              "decisionScore": 32.33166666666666,
+              "decisionScoreRaw": 32.33166666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-20",
+              "decision": "hold",
+              "decisionScore": 65.04,
+              "decisionScoreRaw": 65.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-07",
+              "decision": "hold",
+              "decisionScore": 95.45666666666666,
+              "decisionScoreRaw": 95.45666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Barbell Bent Over Row",
@@ -1074,7 +1742,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 150.19,
+              "decisionScoreRaw": 150.19,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 146.5233333333333,
+              "decisionScoreRaw": 146.5233333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-26",
+              "decision": "hold",
+              "decisionScore": 145.42333333333332,
+              "decisionScoreRaw": 145.42333333333332,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-20",
+              "decision": "hold",
+              "decisionScore": 147.80666666666664,
+              "decisionScoreRaw": 147.80666666666664,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-07",
+              "decision": "hold",
+              "decisionScore": 163.64666666666668,
+              "decisionScoreRaw": 163.64666666666668,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Dumbbell Incline Bicep Curl",
@@ -1136,7 +1859,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-07). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-09, past that. Advisory only -- no volume was changed."
+          "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-07). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-09, past that. Advisory only -- no volume was changed.",
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 37.151111111111106,
+              "decisionScoreRaw": 37.151111111111106,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-07",
+              "decision": "hold",
+              "decisionScore": 28.31777777777778,
+              "decisionScoreRaw": 28.31777777777778,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 35.151111111111106,
+              "decisionScoreRaw": 35.151111111111106,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "hold",
+              "decisionScore": 36.59555555555555,
+              "decisionScoreRaw": 36.59555555555555,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 34.51222222222222,
+              "decisionScoreRaw": 34.51222222222222,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Dumbbell One Arm Row",
@@ -1211,7 +1989,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 74.70666666666666,
+              "decisionScoreRaw": 74.70666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 72.04,
+              "decisionScoreRaw": 72.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-26",
+              "decision": "hold",
+              "decisionScore": 69.58166666666666,
+              "decisionScoreRaw": 69.58166666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-20",
+              "decision": "hold",
+              "decisionScore": 75.31777777777778,
+              "decisionScoreRaw": 75.31777777777778,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-07",
+              "decision": "hold",
+              "decisionScore": 84.8525,
+              "decisionScoreRaw": 84.8525,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Dumbbell Cross Body Hammer Curl",
@@ -1273,7 +2106,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-07). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-09, past that. Advisory only -- no volume was changed."
+          "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-07). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-09, past that. Advisory only -- no volume was changed.",
+          "decisionHistory": [
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 34.428888888888885,
+              "decisionScoreRaw": 34.428888888888885,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 33.98444444444444,
+              "decisionScoreRaw": 33.98444444444444,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-26",
+              "decision": "hold",
+              "decisionScore": 34.59555555555555,
+              "decisionScoreRaw": 34.59555555555555,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-20",
+              "decision": "hold",
+              "decisionScore": 39.54,
+              "decisionScoreRaw": 39.54,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-07",
+              "decision": "hold",
+              "decisionScore": 41.54,
+              "decisionScoreRaw": 41.54,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Seated Lateral Raise",
@@ -1316,7 +2204,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 29.810833333333335,
+              "decisionScoreRaw": 29.810833333333335,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 22.54,
+              "decisionScoreRaw": 22.54,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "hold",
+              "decisionScore": 27.006666666666668,
+              "decisionScoreRaw": 27.006666666666668,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-02",
+              "decision": "hold",
+              "decisionScore": 20.87333333333333,
+              "decisionScoreRaw": 20.87333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 22.04,
+              "decisionScoreRaw": 22.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Cable Crunch",
@@ -1346,7 +2289,11 @@ window.PROGRAM = {
           ],
           "gate_status": "no_signal",
           "gate_reason": null,
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
+          "ignoredDecision": null
         },
         {
           "name": "Triceps Pushdown",
@@ -1415,7 +2362,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-07). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-08, past that. Advisory only -- no volume was changed."
+          "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-07). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-08, past that. Advisory only -- no volume was changed.",
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "increase",
+              "decisionScore": 360.3177777777778,
+              "decisionScoreRaw": 360.3177777777778,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-07",
+              "decision": "increase",
+              "decisionScore": 360.04,
+              "decisionScoreRaw": 360.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "increase",
+              "decisionScore": 375.04,
+              "decisionScoreRaw": 375.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-02",
+              "decision": "increase",
+              "decisionScore": 343.165,
+              "decisionScoreRaw": 343.165,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "increase",
+              "decisionScore": 333.37333333333333,
+              "decisionScoreRaw": 333.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         }
       ],
       "sequencingAdvisory": "\"Dumbbell Incline Bicep Curl\" (isolation/accessory) is displayed before \"Dumbbell One Arm Row\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
@@ -1529,7 +2531,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 29.810833333333335,
+              "decisionScoreRaw": 29.810833333333335,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 22.54,
+              "decisionScoreRaw": 22.54,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "hold",
+              "decisionScore": 27.006666666666668,
+              "decisionScoreRaw": 27.006666666666668,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-02",
+              "decision": "hold",
+              "decisionScore": 20.87333333333333,
+              "decisionScoreRaw": 20.87333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 22.04,
+              "decisionScoreRaw": 22.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Band Lateral Raise",
@@ -1591,7 +2648,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 94.37333333333333,
+              "decisionScoreRaw": 94.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "hold",
+              "decisionScore": 91.70666666666668,
+              "decisionScoreRaw": 91.70666666666668,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-30",
+              "decision": "hold",
+              "decisionScore": 88.42888888888888,
+              "decisionScoreRaw": 88.42888888888888,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-25",
+              "decision": "hold",
+              "decisionScore": 87.37333333333333,
+              "decisionScoreRaw": 87.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-19",
+              "decision": "hold",
+              "decisionScore": 88.04,
+              "decisionScoreRaw": 88.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Rear Dumbbell Raise",
@@ -1666,7 +2778,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 26.394166666666667,
+              "decisionScoreRaw": 26.394166666666667,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "hold",
+              "decisionScore": 25.29,
+              "decisionScoreRaw": 25.29,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-30",
+              "decision": "hold",
+              "decisionScore": 25.081666666666663,
+              "decisionScoreRaw": 25.081666666666663,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-25",
+              "decision": "hold",
+              "decisionScore": 24.1025,
+              "decisionScoreRaw": 24.1025,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-07-19",
+              "decision": "hold",
+              "decisionScore": 22.43583333333333,
+              "decisionScoreRaw": 22.43583333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Dumbbell Incline Bicep Curl",
@@ -1728,7 +2895,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (the logged Day A session on 2026-08-06). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-07, past that. Advisory only -- no volume was changed."
+          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (the logged Day A session on 2026-08-06). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-07, past that. Advisory only -- no volume was changed.",
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 37.151111111111106,
+              "decisionScoreRaw": 37.151111111111106,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-07",
+              "decision": "hold",
+              "decisionScore": 28.31777777777778,
+              "decisionScoreRaw": 28.31777777777778,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 35.151111111111106,
+              "decisionScoreRaw": 35.151111111111106,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "hold",
+              "decisionScore": 36.59555555555555,
+              "decisionScoreRaw": 36.59555555555555,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 34.51222222222222,
+              "decisionScoreRaw": 34.51222222222222,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Triceps Pushdown",
@@ -1791,7 +3013,62 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-08",
+              "decision": "increase",
+              "decisionScore": 360.3177777777778,
+              "decisionScoreRaw": 360.3177777777778,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-07",
+              "decision": "increase",
+              "decisionScore": 360.04,
+              "decisionScoreRaw": 360.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-04",
+              "decision": "increase",
+              "decisionScore": 375.04,
+              "decisionScoreRaw": 375.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-02",
+              "decision": "increase",
+              "decisionScore": 343.165,
+              "decisionScoreRaw": 343.165,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "increase",
+              "decisionScore": 333.37333333333333,
+              "decisionScoreRaw": 333.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2"
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null
         },
         {
           "name": "Hanging Leg Raise",
@@ -1853,7 +3130,11 @@ window.PROGRAM = {
           ],
           "gate_status": "no_signal",
           "gate_reason": null,
-          "recoveryOverlapWarning": null
+          "recoveryOverlapWarning": null,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
+          "ignoredDecision": null
         }
       ],
       "sequencingAdvisory": "\"Seated Lateral Raise\" (isolation/accessory) is displayed before \"Hanging Leg Raise\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
