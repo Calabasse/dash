@@ -349,11 +349,21 @@
     const h0 = hist[0];
     const ignored = ex.ignoredDecision;
 
+    // D-13: per-exercise recovery-overlap advisory -- engine's own prose,
+    // rendered verbatim through esc(), reusing .audit-notapplied's
+    // informational blue-left-border treatment. Only when truthy.
+    const recoveryHTML = ex.recoveryOverlapWarning
+      ? `<div class="audit-sec">
+          <div class="audit-lab">RECOVERY OVERLAP</div>
+          <div class="audit-notapplied">${esc(ex.recoveryOverlapWarning)}</div>
+        </div>`
+      : '';
+
     let body;
     if(!hist.length && !ignored){
       // Never an empty signal-chain table -- a true absence gets the empty
       // state line and nothing else (UI-SPEC "empty" resolution).
-      body = `<div class="audit-notapplied">No decision has been computed for this exercise yet.</div>`;
+      body = `<div class="audit-notapplied">No decision has been computed for this exercise yet.</div>` + recoveryHTML;
     } else {
       let signalChain = '';
       if(h0){
@@ -422,7 +432,7 @@
           <div class="audit-notapplied">${naBody}</div>
         </div>`;
       }
-      body = signalChain + timeline + notApplied;
+      body = signalChain + timeline + notApplied + recoveryHTML;
     }
 
     return `<div class="audit-wrap" id="${id}">
@@ -522,6 +532,16 @@
     </div>`;
   }
 
+  // D-13: session-level sequencing advisory -- engine's own prose about
+  // exercise ordering, rendered verbatim through esc(). Session-scoped
+  // (not per-exercise); sits between the summary card and the legend.
+  function seqAdvisoryHTML(s){
+    if(!s.sequencingAdvisory) return '';
+    return `<div class="seq-advisory">
+      <span class="lab">SEQUENCING ADVISORY</span>${esc(s.sequencingAdvisory)}
+    </div>`;
+  }
+
   function render(s, idx, total){
     const compact = document.body.classList.contains('compact');
     const stacked = document.body.classList.contains('stack');
@@ -548,6 +568,7 @@
       ${s.nextAvailable && parseD(s.nextAvailable.latest) >= startOfToday() ? `<div class="when2"><span class="next-est">Est. next Day ${esc(s.day)}: ${formatShort(s.nextAvailable.earliest)}–${formatShort(s.nextAvailable.latest)} · ${esc(s.nextAvailable.driver)}<span class="est-badge">estimate</span></span></div>` : ''}
       <div class="stats">${s.stats.map((x,i)=>(i?'<span class="dot">·</span>':'')+`<span>${esc(x)}</span>`).join('')}</div>
       ${summaryHTML(s.summary)}
+      ${seqAdvisoryHTML(s)}
       <div class="legend">
         <span>🔥 Warm-up</span><span><b class="badge top">TOP</b> Top Set</span>
         <span><b class="up">▲</b> up</span><span><b class="down">▼</b> down</span>
