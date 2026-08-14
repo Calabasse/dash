@@ -1624,3 +1624,5 @@ withings  ERROR: URLError: <urlopen error [Errno 8] nodename nor servname provid
 [06:32:16] research: sync opt-in last30days briefs
 [06:32:16]   research: publish/ empty — nothing published
 [06:32:16] git: commit + push
+fatal: unable to access 'https://github.com/Calabasse/dash.git/': Could not resolve host: github.com
+[06:32:16]   push failed — commit is local
