@@ -141,6 +141,13 @@
     font-size:10px; font-weight:700; padding:2px 6px; border-radius:3px;
     white-space:nowrap; cursor:help; }
 
+  /* DATA-01 (plan 04-01): behavior_class outcome badge -- header badge for
+     the 4 real deviation classes, .prog/.regr/.neut color the progress/
+     regress/neutral bucket _class_to_bucket() already encodes (D-16). */
+  .ex-outcome { font-size:10px; font-weight:700; padding:2px 6px; border-radius:3px;
+    white-space:nowrap; background:#12161c; border:1px solid currentColor; }
+  .ex-outcome.prog { color:var(--up); }
+
   /* Session-level sequencingAdvisory banner (near .summary, not per-exercise) */
   .seq-advisory { background:#0e131a; border:1px solid #1c2635; border-left:3px solid var(--blue);
     border-radius:8px; padding:9px 12px; margin:6px 0; font-size:12.5px; line-height:1.5; color:#cfcfcf; }
@@ -250,6 +257,15 @@
   const esc = s => String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   const fmt = v => v===null||v===undefined ? '<span class="dim">–</span>' : v;
 
+  // DATA-01 (plan 04-01, D-14): signed numeric delta string, e.g. "+3 reps"
+  // or "-8 lbs". Empty string for a null/undefined/non-finite value -- the
+  // caller omits the parenthetical entirely in that case.
+  function fmtDelta(n, unit){
+    if(n===null || n===undefined || typeof n!=='number' || !isFinite(n)) return '';
+    const sign = n>0 ? '+' : n<0 ? '-' : '+';
+    return `${sign}${Math.abs(n)} ${unit}`;
+  }
+
   function typeCell(t){
     if(t==="W") return '<span class="tag" title="Warm-up">🔥</span>';
     if(t==="T") return '<span class="badge top" title="Top Set">TOP</span>';
@@ -340,6 +356,23 @@
     if (ex.gate_status === 'gate_error')
       return `<div class="ex-stale" title="internal gate error — failed open">⚠ gate error</div>`;
     return ''; // overridden_reduce / overridden_deload — deferred per D-08
+  }
+
+  // DATA-01 (plan 04-01, D-14/D-15/D-16): header badge for the real
+  // behavior_class deviation classes. Task 1 (this tracer slice) wires only
+  // the happy-path volume_overshoot -> .prog case plus the silent-healthy
+  // matched/absent-outcome cases; the remaining six behavior_class states
+  // and their color buckets are Task 2's scope, not handled here yet.
+  function behaviorBadge(ex){
+    if(!ex.outcome) return '';
+    const bc = ex.outcome.behaviorClass;
+    if(bc === 'matched') return ''; // D-15: silent-healthy
+    if(bc === 'volume_overshoot'){
+      const delta = fmtDelta(ex.outcome.repDelta, 'reps');
+      const label = delta ? `${esc(bc)} (${delta})` : esc(bc);
+      return `<div class="ex-outcome prog">${label}</div>`;
+    }
+    return ''; // remaining behavior_class states are Task 2's scope
   }
 
   // D-09/D-10/D-12: the expandable per-exercise audit-trail panel. Reuses
@@ -435,13 +468,36 @@
           <div class="audit-notapplied">${naBody}</div>
         </div>`;
       }
-      body = signalChain + timeline + notApplied + recoveryHTML;
+      body = signalChain + timeline + notApplied + recoveryHTML + outcomeHTML(ex);
     }
 
     return `<div class="audit-wrap" id="${id}">
       <button class="audit-toggle" onclick="document.getElementById('${id}').classList.toggle('open')">
         <span class="chev">▶</span>Audit trail</button>
       <div class="audit-panel">${body}</div></div>`;
+  }
+
+  // DATA-01 (plan 04-01): THIS SESSION'S OUTCOME section inside the existing
+  // Audit trail panel -- reuses .audit-row .k/.v markup verbatim (D-08: joins
+  // the SAME panel decision provenance already renders in, not a new one).
+  // Task 1 (this tracer slice): returns '' when ex.outcome is absent -- an
+  // intentionally incomplete state. Task 3 replaces this with the locked
+  // Building-history box per the Codex empty-state finding (must_haves
+  // truth 6): a rendered audit panel must always state outcome absence
+  // explicitly, never omit the section.
+  function outcomeHTML(ex){
+    const o = ex.outcome;
+    if(!o) return ''; // Task 1 tracer-only state -- Task 3 supersedes this branch
+    const rows = `
+      <div class="audit-row"><span class="k">Prescribed</span><span class="v">${fmt(o.prescribedLoad)} lbs × ${fmt(o.prescribedReps)} reps @ RPE ${fmt(o.prescribedRpe)}</span></div>
+      <div class="audit-row"><span class="k">Actual</span><span class="v">${fmt(o.actualLoad)} lbs × ${fmt(o.actualReps)} reps</span></div>
+      <div class="audit-row"><span class="k">Load delta</span><span class="v">${fmtDelta(o.loadDelta,'lbs')||'<span class="dim">–</span>'}</span></div>
+      <div class="audit-row"><span class="k">Rep delta</span><span class="v">${fmtDelta(o.repDelta,'reps')||'<span class="dim">–</span>'}</span></div>
+      <div class="audit-row"><span class="k">Class</span><span class="v">${esc(o.behaviorClass)}</span></div>`;
+    return `<div class="audit-sec">
+      <div class="audit-lab">THIS SESSION'S OUTCOME</div>
+      ${rows}
+    </div>`;
   }
 
   function llmHTML(ex){
@@ -491,6 +547,7 @@
         <div class="ex-icon">${ex.icon||''}</div>
         <div class="ex-name">${esc(ex.name)}</div>
         ${gateBadge(ex)}
+        ${behaviorBadge(ex)}
         ${ex.rest?`<div class="ex-rest">⏱ ${ex.rest}</div>`:''}
       </div>
       ${volBars(ex)}
