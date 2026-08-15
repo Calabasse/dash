@@ -147,6 +147,8 @@
   .ex-outcome { font-size:10px; font-weight:700; padding:2px 6px; border-radius:3px;
     white-space:nowrap; background:#12161c; border:1px solid currentColor; }
   .ex-outcome.prog { color:var(--up); }
+  .ex-outcome.regr { color:var(--down); }
+  .ex-outcome.neut { color:var(--same); }
 
   /* Session-level sequencingAdvisory banner (near .summary, not per-exercise) */
   .seq-advisory { background:#0e131a; border:1px solid #1c2635; border-left:3px solid var(--blue);
@@ -358,21 +360,24 @@
     return ''; // overridden_reduce / overridden_deload — deferred per D-08
   }
 
-  // DATA-01 (plan 04-01, D-14/D-15/D-16): header badge for the real
-  // behavior_class deviation classes. Task 1 (this tracer slice) wires only
-  // the happy-path volume_overshoot -> .prog case plus the silent-healthy
-  // matched/absent-outcome cases; the remaining six behavior_class states
-  // and their color buckets are Task 2's scope, not handled here yet.
+  // DATA-01 (plan 04-01, D-14/D-15/D-16): header badge for the 4 real
+  // behavior_class deviation classes. matched is silent-healthy (D-15);
+  // unknown/insufficient_data are non-outcome states -- handled BEFORE any
+  // bucket lookup, they never reach a colored badge, they render only
+  // inside outcomeHTML()'s muted box (D-12/D-18, RESEARCH.md Pitfall 6).
   function behaviorBadge(ex){
     if(!ex.outcome) return '';
     const bc = ex.outcome.behaviorClass;
+    if(bc === 'unknown' || bc === 'insufficient_data') return '';
     if(bc === 'matched') return ''; // D-15: silent-healthy
-    if(bc === 'volume_overshoot'){
-      const delta = fmtDelta(ex.outcome.repDelta, 'reps');
-      const label = delta ? `${esc(bc)} (${delta})` : esc(bc);
-      return `<div class="ex-outcome prog">${label}</div>`;
-    }
-    return ''; // remaining behavior_class states are Task 2's scope
+    let cls, delta;
+    if(bc === 'volume_overshoot'){ cls = 'prog'; delta = fmtDelta(ex.outcome.repDelta, 'reps'); }
+    else if(bc === 'load_overshoot'){ cls = 'regr'; delta = fmtDelta(ex.outcome.loadDelta, 'lbs'); }
+    else if(bc === 'volume_undershoot'){ cls = 'regr'; delta = fmtDelta(ex.outcome.repDelta, 'reps'); }
+    else if(bc === 'load_undershoot'){ cls = 'neut'; delta = fmtDelta(ex.outcome.loadDelta, 'lbs'); }
+    else return ''; // unrecognized future value -- safe fallthrough, no broken badge
+    const label = delta ? `${esc(bc)} (${delta})` : esc(bc);
+    return `<div class="ex-outcome ${cls}">${label}</div>`;
   }
 
   // D-09/D-10/D-12: the expandable per-exercise audit-trail panel. Reuses
@@ -480,14 +485,28 @@
   // DATA-01 (plan 04-01): THIS SESSION'S OUTCOME section inside the existing
   // Audit trail panel -- reuses .audit-row .k/.v markup verbatim (D-08: joins
   // the SAME panel decision provenance already renders in, not a new one).
-  // Task 1 (this tracer slice): returns '' when ex.outcome is absent -- an
-  // intentionally incomplete state. Task 3 replaces this with the locked
+  // Task 1 (this tracer slice) left ex.outcome absent returning '' --
+  // superseded by Task 3, which replaces that branch with the locked
   // Building-history box per the Codex empty-state finding (must_haves
   // truth 6): a rendered audit panel must always state outcome absence
   // explicitly, never omit the section.
   function outcomeHTML(ex){
     const o = ex.outcome;
     if(!o) return ''; // Task 1 tracer-only state -- Task 3 supersedes this branch
+    // D-12/D-18 (Task 2): unknown/insufficient_data are non-outcome states --
+    // no real comparison happened, so no Prescribed/Actual/delta rows (there
+    // are no numbers to show), and no colored bucket. Distinct locked copy
+    // per state, reusing .audit-notapplied verbatim, never collapsed to one
+    // shared "no data" string (RESEARCH.md Pitfall 6).
+    if(o.behaviorClass === 'unknown' || o.behaviorClass === 'insufficient_data'){
+      const naBody = o.behaviorClass === 'unknown'
+        ? 'No comparison available — actual performance data is missing for this session.'
+        : 'Not enough data to prescribe — the engine declined to issue a target this session (QC).';
+      return `<div class="audit-sec">
+        <div class="audit-lab">THIS SESSION'S OUTCOME</div>
+        <div class="audit-notapplied">${naBody}</div>
+      </div>`;
+    }
     const rows = `
       <div class="audit-row"><span class="k">Prescribed</span><span class="v">${fmt(o.prescribedLoad)} lbs × ${fmt(o.prescribedReps)} reps @ RPE ${fmt(o.prescribedRpe)}</span></div>
       <div class="audit-row"><span class="k">Actual</span><span class="v">${fmt(o.actualLoad)} lbs × ${fmt(o.actualReps)} reps</span></div>
