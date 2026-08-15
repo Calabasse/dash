@@ -150,6 +150,29 @@
   .ex-outcome.regr { color:var(--down); }
   .ex-outcome.neut { color:var(--same); }
 
+  /* DATA-01 (plan 04-03, D-17): header effectiveness-rate chip + inline
+     sparkline. Reuses .ex-outcome's exact box/label-scale conventions
+     (10px/700/2px 6px padding/3px radius/nowrap) -- no new spacing or type
+     scale introduced. The populated state reuses --up/--accent, extending
+     the SAME "positive movement" meaning --accent already carries
+     site-wide (D-19) rather than opening a new context for it; the empty
+     ("Building history") state uses the muted/dim tokens instead, at
+     regular (400) weight, matching .audit-notapplied's body-copy weight. */
+  .ex-effrate { font-size:10px; font-weight:700; padding:2px 6px; border-radius:3px;
+    white-space:nowrap; background:#12161c; border:1px solid currentColor;
+    color:var(--up); display:inline-flex; align-items:center; gap:4px; }
+  .ex-effrate.dim { color:var(--dim); border-color:var(--line); font-weight:400; }
+  .ex-spark { vertical-align:middle; }
+
+  /* DATA-01 (plan 04-03, D-10): 4th cell appended to the existing
+     LAST 5 DECISIONS mini-timeline row -- styled from the same
+     muted/dim tokens the rest of the audit panel already uses. */
+  .audit-tl-out { font-size:11px; margin-left:auto; white-space:nowrap; }
+  .audit-tl-out.prog { color:var(--up); font-weight:700; }
+  .audit-tl-out.regr { color:var(--down); font-weight:700; }
+  .audit-tl-out.neut { color:var(--same); font-weight:700; }
+  .audit-tl-out.dim { color:var(--dim); font-weight:400; }
+
   /* Session-level sequencingAdvisory banner (near .summary, not per-exercise) */
   .seq-advisory { background:#0e131a; border:1px solid #1c2635; border-left:3px solid var(--blue);
     border-radius:8px; padding:9px 12px; margin:6px 0; font-size:12.5px; line-height:1.5; color:#cfcfcf; }
@@ -380,6 +403,76 @@
     return `<div class="ex-outcome ${cls}">${label}</div>`;
   }
 
+  // DATA-01 (plan 04-03, D-09/D-17): header effectiveness-rate chip --
+  // visible without expanding the audit panel. Zero valid outcomes (or no
+  // effectiveness data at all) is a first-class, expected-common state on
+  // day one (most exercises), not a fallback -- rendered with the SAME
+  // locked "Building history" copy the empty-state Copywriting Contract
+  // specifies, never a fabricated percentage. Never pads the denominator
+  // up to five: a window with 3 valid sessions reads "N/3", matching the
+  // existing mini-timeline's never-padded convention (D-11).
+  function effRateHTML(ex){
+    const eff = ex.effectiveness;
+    if(!eff || eff.validCount === 0){
+      return `<div class="ex-effrate dim" title="Not enough sessions yet to compare prescribed vs. actual — check back after your next few logged sessions.">Building history</div>`;
+    }
+    const spark = sparklineSVG(eff.scores || []);
+    return `<div class="ex-effrate">${eff.progressCount}/${eff.validCount} progress${spark}</div>`;
+  }
+
+  // DATA-01 (plan 04-03, D-17): inline SVG trend line of the valid
+  // effectiveness_score values in the ranked 5-session window. Returns ''
+  // for fewer than 2 points -- a flat/single-point line is never drawn
+  // (UI-SPEC empty/media). `currentColor` stroke so it inherits
+  // .ex-effrate's color; no axes, gridlines, fill, or legend -- a trend
+  // indicator, not a chart.
+  function sparklineSVG(scores){
+    if(!scores || scores.length < 2) return '';
+    // `scores` arrives freshest-first (matching the emitted `window` list
+    // and the decisionHistory/timeline convention). Reversed here on a
+    // COPY -- .slice() first, never mutating the caller's array -- so the
+    // plotted order is freshest-LAST and the line reads left to right as
+    // time. Live 04-REVIEWS finding: plotting the emitted order directly
+    // would run the line backwards in time, so this reversal stays an
+    // explicit, commented line rather than an implicit assumption.
+    const chron = scores.slice().reverse();
+    const w = 44, h = 14, pad = 1;
+    const min = Math.min(...chron), max = Math.max(...chron);
+    const range = (max - min) || 1;
+    const step = (w - pad * 2) / (chron.length - 1);
+    const pts = chron.map((v, i) => {
+      const x = pad + i * step;
+      const y = pad + (h - pad * 2) * (1 - (v - min) / range);
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(' ');
+    return `<svg class="ex-spark" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  }
+
+  // DATA-01 (plan 04-03, D-10): 4th cell appended to each row of the
+  // existing LAST 5 DECISIONS mini-timeline -- one timeline, not two. A
+  // timeline row whose decision predates the outcomes wiring, or whose
+  // session was QC-refused, still renders its decision (the row itself is
+  // untouched); only this cell degrades to the muted no-data label
+  // (UI-SPEC "partial"). `matched` gets a short affirmative marker rather
+  // than an empty cell, so a healthy row reads as verified, not missing.
+  function tlOutcomeCell(h){
+    const o = h.outcome;
+    if(!o || o.behaviorClass === 'unknown' || o.behaviorClass === 'insufficient_data'){
+      return `<span class="audit-tl-out dim">no data</span>`;
+    }
+    if(o.behaviorClass === 'matched'){
+      return `<span class="audit-tl-out prog">✓ matched</span>`;
+    }
+    let cls, delta;
+    if(o.behaviorClass === 'volume_overshoot'){ cls = 'prog'; delta = fmtDelta(o.repDelta, 'reps'); }
+    else if(o.behaviorClass === 'load_overshoot'){ cls = 'regr'; delta = fmtDelta(o.loadDelta, 'lbs'); }
+    else if(o.behaviorClass === 'volume_undershoot'){ cls = 'regr'; delta = fmtDelta(o.repDelta, 'reps'); }
+    else if(o.behaviorClass === 'load_undershoot'){ cls = 'neut'; delta = fmtDelta(o.loadDelta, 'lbs'); }
+    else return `<span class="audit-tl-out dim">no data</span>`; // unrecognized future value -- safe fallthrough
+    const label = delta ? `${esc(o.behaviorClass)} (${delta})` : esc(o.behaviorClass);
+    return `<span class="audit-tl-out ${cls}">${label}</span>`;
+  }
+
   // D-09/D-10/D-12: the expandable per-exercise audit-trail panel. Reuses
   // the .cues-wrap open/close mechanic verbatim under the .audit-wrap names.
   // Defaults collapsed for every exercise regardless of gate_status.
@@ -449,7 +542,8 @@
           const dateStr = fmt(h.date!=null?formatShort(h.date):null);
           const decStr = fmt(h.decision!=null?esc(h.decision):null);
           const scoreStr = fmt(h.decisionScore);
-          return `<div class="audit-tl-row${cls}"><span>${dateStr}</span><span>${decStr}</span><span>${scoreStr}</span>${tag}</div>`;
+          const outStr = tlOutcomeCell(h);
+          return `<div class="audit-tl-row${cls}"><span>${dateStr}</span><span>${decStr}</span><span>${scoreStr}</span>${tag}${outStr}</div>`;
         }).join('');
         timeline = `<div class="audit-sec">
           <div class="audit-lab">LAST 5 DECISIONS</div>
@@ -577,6 +671,7 @@
         <div class="ex-name">${esc(ex.name)}</div>
         ${gateBadge(ex)}
         ${behaviorBadge(ex)}
+        ${effRateHTML(ex)}
         ${ex.rest?`<div class="ex-rest">⏱ ${ex.rest}</div>`:''}
       </div>
       ${volBars(ex)}
