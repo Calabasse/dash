@@ -68,7 +68,7 @@
   /* exercise */
   .ex { border-top: 1px solid var(--line); margin-top: 6px; }
   .ex-head { position: sticky; top: 0; z-index: 5; background: var(--card);
-    display: flex; align-items: center; gap: 10px; padding: 8px 0 6px; }
+    display: flex; align-items: center; gap: 10px; padding: 8px 0 6px; flex-wrap:wrap; }
   .ex-icon { width: 28px; height: 28px; border-radius: 6px; background:#1c1c1c;
     flex:0 0 auto; display:flex; align-items:center; justify-content:center; font-size:15px; }
   .ex-name { font-weight: 600; font-size: 15px; flex: 1 1 auto; }
@@ -485,14 +485,24 @@
   // DATA-01 (plan 04-01): THIS SESSION'S OUTCOME section inside the existing
   // Audit trail panel -- reuses .audit-row .k/.v markup verbatim (D-08: joins
   // the SAME panel decision provenance already renders in, not a new one).
-  // Task 1 (this tracer slice) left ex.outcome absent returning '' --
-  // superseded by Task 3, which replaces that branch with the locked
-  // Building-history box per the Codex empty-state finding (must_haves
-  // truth 6): a rendered audit panel must always state outcome absence
-  // explicitly, never omit the section.
+  // Per the Codex empty-state finding (must_haves truth 6): no branch below
+  // ever returns an empty string -- a rendered audit panel always states
+  // outcome absence explicitly (real outcome, unknown, insufficient_data,
+  // and absent-outcome/Building-history all render markup).
   function outcomeHTML(ex){
     const o = ex.outcome;
-    if(!o) return ''; // Task 1 tracer-only state -- Task 3 supersedes this branch
+    if(!o){
+      // D-04 (Task 3): zero outcomes history for this exercise -- a
+      // first-class, expected-common state (real data is thin today), not a
+      // fallback. Reuses the same .audit-notapplied container the no-data
+      // boxes use; only the copy differs. Resolves the Codex empty-state
+      // finding (must_haves truth 6): outcomeHTML() never returns '' when
+      // the audit panel renders -- absence is always stated explicitly.
+      return `<div class="audit-sec">
+        <div class="audit-lab">THIS SESSION'S OUTCOME</div>
+        <div class="audit-notapplied"><b>Building history</b><br>Not enough sessions yet to compare prescribed vs. actual — check back after your next few logged sessions.</div>
+      </div>`;
+    }
     // D-12/D-18 (Task 2): unknown/insufficient_data are non-outcome states --
     // no real comparison happened, so no Prescribed/Actual/delta rows (there
     // are no numbers to show), and no colored bucket. Distinct locked copy
