@@ -13,23 +13,12 @@ LOG(){ echo "[$(date '+%H:%M:%S')] $*"; }
 
 cd "$SITE" || { echo "no site dir"; exit 1; }
 
-# 0a) PICK UP a freshly-saved config from Downloads (from the tuning web page).
-# Validated, copied into the repo, then stamped so it isn't re-applied next run.
-DL="$HOME/Downloads/prescription_config.json"
-if [ -f "$DL" ]; then
-  if python3 -c "import json,sys; d=json.load(open('$DL')); assert d.get('profiles') and d.get('active_profile')" 2>/dev/null; then
-    cp "$DL" "$SITE/prescription_config.json"
-    mv "$DL" "$HOME/Downloads/prescription_config.applied-$(date +%Y%m%d-%H%M%S).json"
-    LOG "picked up new tuning config from Downloads"
-  else
-    LOG "Downloads/prescription_config.json invalid — ignored"
-  fi
-fi
-
-# 0b) PRESCRIPTION CONFIG — push the tuned philosophy/params to the engine
-if [ -f "$SITE/prescription_config.json" ]; then
-  cp "$SITE/prescription_config.json" "$APE/tools/prescription_config.json"
-  LOG "prescription config synced to engine"
+# 0) PRESCRIPTION CONFIG — this file's home is upstream in the engine
+# repo. This copy exists only so the site can display current values;
+# it is refreshed here on every deploy and never written back upstream.
+if [ -f "${APE}/tools/prescription_config.json" ]; then
+  cp "$APE/tools/prescription_config.json" "$SITE/prescription_config.json"
+  LOG "prescription config refreshed from engine"
 fi
 
 # 1) TRAINING — rebuild the card data file. VOLM sync is OPT-IN (--sync only),

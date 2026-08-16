@@ -20,7 +20,8 @@
           "rep_lo": 5,
           "rep_hi": 10,
           "anchor": 10,
-          "top_rpe": 10,
+          "top_rpe": 9,
+          "earn_rpe_cap": 10,
           "warmups": 2,
           "backoffs": 1,
           "is_isolation": false
@@ -29,7 +30,8 @@
           "rep_lo": 6,
           "rep_hi": 12,
           "anchor": 12,
-          "top_rpe": 10,
+          "top_rpe": 9,
+          "earn_rpe_cap": 10,
           "warmups": 2,
           "backoffs": 1,
           "is_isolation": false
@@ -56,7 +58,8 @@
           "rep_lo": 8,
           "rep_hi": 15,
           "anchor": 15,
-          "top_rpe": 10,
+          "top_rpe": 9,
+          "earn_rpe_cap": 10,
           "warmups": 2,
           "backoffs": 1,
           "is_isolation": false
@@ -101,7 +104,8 @@
           "rep_lo": 6,
           "rep_hi": 12,
           "anchor": 12,
-          "top_rpe": 10,
+          "top_rpe": 9,
+          "earn_rpe_cap": 10,
           "warmups": 2,
           "backoffs": 1,
           "is_isolation": false
