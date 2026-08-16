@@ -30,13 +30,18 @@ export). They differ only in: `ped.html` preloads the owner's cycle and links ho
 Network steps (VOLM sync, Withings) are best-effort; last good data is kept on failure.
 
 ## Tuning the prescription engine
-`tuning.html` edits `prescription_config.json` (training philosophy + every parameter
-of `prescribe_hypertrophy.py`). To apply:
-1. On the page: pick philosophy, tweak, **Save** (downloads `prescription_config.json`).
-2. Run `./deploy.sh` — it auto-picks the file up from `~/Downloads`, validates it,
-   copies it into the repo + engine (`APE/tools/`), rebuilds, and pushes. The applied
-   Downloads copy is renamed `prescription_config.applied-<timestamp>.json` so it isn't
-   re-applied. (Or just replace `prescription_config.json` in the repo manually.)
+`tuning.html` is a **read-only view** of the training philosophy and every parameter
+of `prescribe_hypertrophy.py`. It cannot be edited from the page.
+
+`~/forge/projects/APE/tools/prescription_config.json` is the source of truth. That is
+the only place the engine's parameters are ever edited. `deploy.sh` copies that file
+into this repo, one-way, on every run, so this page can display whatever the engine
+currently uses.
+
+**Do not re-add a sync in the other direction** (this repo back into the engine
+config). dash-site is a public read-only projection of APE; a browser-reachable write
+path into governed engine config violates APE's Trust OS constraint ("Observability
+without mutation").
 
 ### Owner PED data (optional)
 Drop an exported cycle JSON at `private/ped-cycles.json` (gitignored). `deploy.sh`
