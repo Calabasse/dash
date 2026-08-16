@@ -30,6 +30,15 @@
   .gl{display:flex;gap:14px;flex-wrap:wrap}
   .gl label{display:flex;flex-direction:column;gap:3px;color:var(--muted)}
   .banner{background:#2a1d00;border:1px solid #5a3d00;color:var(--gold);padding:8px 12px;border-radius:8px;font-size:12px;margin-bottom:12px}
+  /* Phase 5.2 (plan 05.2-04): badge idiom for the expanded calibration
+     panels, matching workout2.html's .ex-outcome/.ex-nosignal scale
+     (10px/700/2px 6px padding/3px radius) rather than inventing new
+     spacing -- these two files don't share a stylesheet, so the classes
+     are re-declared here rather than imported. */
+  .cal-pinned{color:var(--gold);background:#1a1400;border:1px solid currentColor;font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;white-space:nowrap}
+  .cal-auto{color:var(--accent);background:#0e1410;border:1px solid currentColor;font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;white-space:nowrap}
+  .cal-inactive{color:var(--muted);background:#141414;border:1px solid var(--line);font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;white-space:nowrap}
+  .cal-ratified{color:var(--blue);font-size:10px;cursor:help;border-bottom:1px dotted var(--blue)}
 </style>
 </head>
 <body>
@@ -71,7 +80,31 @@
   <div class="panel">
     <h2>Auto-tuned parameters</h2>
     <div id="calibration"></div>
-    <div class="note">Read-only reflection of the live self-tuning loop's state (D-07). Pinned values are set from a separate, local-only tool &mdash; this page has no write capability of any kind (D-08).</div>
+    <div class="note">Read-only reflection of the live self-tuning loop's state (D-07): live value, ratified bounds, and lock status for each of the three parameters run_system_tuner() actually persists. Pinned values are set from a separate, local-only tool &mdash; this page has no write capability of any kind (D-08).</div>
+  </div>
+
+  <div class="panel">
+    <h2>Recent tuning history</h2>
+    <div id="calHistory"></div>
+    <div class="note">The most recent auto-tuning adjustments across all three parameters, newest first &mdash; the change history control_tuning_history has always recorded, now with a display surface.</div>
+  </div>
+
+  <div class="panel">
+    <h2>Lock activity</h2>
+    <div id="calLockAudit"></div>
+    <div class="note">Lock/unlock actions and suppressed auto-tuner writes, newest first. A suppressed row shows both the pinned value that was kept and the computed value that was discarded &mdash; the reason a locked parameter's value has stopped moving.</div>
+  </div>
+
+  <div class="panel">
+    <h2>Declared but not auto-tuned</h2>
+    <div id="calInactive"></div>
+    <div class="note">Present in the control schema, but never written by the live self-tuning loop &mdash; shown separately from the three auto-tuned parameters above precisely because it behaves differently from them.</div>
+  </div>
+
+  <div class="panel">
+    <h2>Engine constants</h2>
+    <div id="engineConstants"></div>
+    <div class="note">Flat constants read from the engine's own config (not the calibration feed above) &mdash; no auto-calibration behavior exists for these. Where a value carries an explicit ratification record, it is marked.</div>
   </div>
 
   <div class="panel">
@@ -80,6 +113,7 @@
       <button onclick="reload()">↺ reset to deployed</button>
       <span id="status" class="note" style="margin:0"></span>
     </div>
+    <div id="calGeneratedAt" class="note"></div>
     <div class="note">Values are read-only. The config is edited at its source and this page refreshes to show whatever the engine currently uses.</div>
   </div>
 </div>
@@ -140,40 +174,132 @@ function render(){
         disabled></td>`;
     return `<tr><td class="k">${TYPE_LABELS[tk]}</td>${cells}${iso}</tr>`;
   }).join('');
+  // Phase 5.2 (plan 05.2-04, D-05/D-06): engine constants panel, sourced
+  // from THIS same config fetch -- never duplicated into the calibration
+  // feed (two sources for one value is how drift starts).
+  renderEngineConstants();
 }
 
-// Phase 5.2 (plan 05.2-01): read-only reflection of window.CALIBRATION,
-// a one-way projection built by tools/build_calibration_data.py from
-// live, governed DB state. No form control of any kind renders here --
+const escCal = s => String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+// Phase 5.2 (plan 05.2-01 tracer; expanded plan 05.2-04): read-only
+// reflection of window.CALIBRATION, a one-way projection built by
+// tools/build_calibration_data.py from live, governed DB state. No form
+// control of any kind renders in any of the five functions below --
 // plain text nodes only (D-08, T-05.2-02).
-function renderCalibration(){
+const CAL_PARAM_ORDER=['progression_bias','regression_sensitivity','rpe_target_adjustment'];
+
+function renderCalibrationParams(){
   const box=document.getElementById('calibration');
   const cal=window.CALIBRATION;
-  if(!cal || !cal.progressionBias){
+  const params=cal && cal.params;
+  if(!params){
     box.innerHTML='<div class="note" style="color:var(--dim)">no calibration data</div>';
     return;
   }
-  const pb=cal.progressionBias;
-  const valueText=(pb.value===null||pb.value===undefined)?'—':Number(pb.value).toFixed(4);
-  const lock=pb.lock;
-  let lockText;
-  if(!lock){
-    lockText='lock status unavailable';
-  }else if(lock.isLocked){
-    const lv=(lock.lockedValue===null||lock.lockedValue===undefined)?'—':Number(lock.lockedValue).toFixed(4);
-    lockText=`PINNED at ${lv} by ${lock.lockedBy||'unknown'} at ${lock.lockedAt||'unknown time'}`;
-  }else{
-    lockText='not pinned (auto-tuning active)';
+  const locks=cal.locks||{};
+  const rows=CAL_PARAM_ORDER.map(name=>{
+    const p=params[name];
+    if(!p) return '';
+    const valueText=(p.value===null||p.value===undefined)?'—':Number(p.value).toFixed(4);
+    const boundsText=(p.min!=null&&p.max!=null)?`[${Number(p.min).toFixed(2)}, ${Number(p.max).toFixed(2)}]`:'—';
+    const lock=locks[name];
+    let lockCell;
+    if(lock && lock.isLocked){
+      const lv=(lock.lockedValue===null||lock.lockedValue===undefined)?'—':Number(lock.lockedValue).toFixed(4);
+      lockCell=`<span class="cal-pinned">PINNED ${lv}</span> <span class="note" style="margin:0;display:inline">by ${escCal(lock.lockedBy||'unknown')} at ${escCal(lock.lockedAt||'unknown time')}</span>`;
+    }else if(lock){
+      lockCell='<span class="cal-auto">auto-tuning</span>';
+    }else{
+      lockCell='<span class="note" style="margin:0">lock status unavailable</span>';
+    }
+    return `<tr><td class="k">${escCal(name)}</td><td>${valueText}</td><td>${boundsText}</td><td>${lockCell}</td></tr>`;
+  }).join('');
+  box.innerHTML='<table><thead><tr><th>parameter</th><th>value</th><th>bounds</th><th>lock</th></tr></thead><tbody>'+rows+'</tbody></table>';
+}
+
+function renderHistory(){
+  const box=document.getElementById('calHistory');
+  const hist=window.CALIBRATION && window.CALIBRATION.history;
+  if(!hist || !hist.length){
+    box.innerHTML='<div class="note" style="color:var(--dim)">no tuning history yet</div>';
+    return;
   }
-  box.innerHTML=
-    '<table><tbody>'+
-    `<tr><td class="k">progression_bias</td><td>${valueText}</td></tr>`+
-    `<tr><td class="k">lock status</td><td>${lockText}</td></tr>`+
+  const rows=hist.map(h=>{
+    const prev=(h.previousValue===null||h.previousValue===undefined)?'—':Number(h.previousValue).toFixed(4);
+    const nv=(h.newValue===null||h.newValue===undefined)?'—':Number(h.newValue).toFixed(4);
+    return `<tr><td>${escCal(h.timestamp||'—')}</td><td class="k">${escCal(h.paramName||'—')}</td><td>${prev}</td><td>${nv}</td><td>${escCal(h.controlReason||'—')}</td></tr>`;
+  }).join('');
+  box.innerHTML='<table><thead><tr><th>timestamp</th><th>parameter</th><th>previous</th><th>new</th><th>reason</th></tr></thead><tbody>'+rows+'</tbody></table>';
+}
+
+function renderLockAudit(){
+  const box=document.getElementById('calLockAudit');
+  const audit=window.CALIBRATION && window.CALIBRATION.lock_audit;
+  if(!audit || !audit.length){
+    box.innerHTML='<div class="note" style="color:var(--dim)">no lock activity yet</div>';
+    return;
+  }
+  const rows=audit.map(a=>{
+    const lv=(a.lockedValue===null||a.lockedValue===undefined)?'—':Number(a.lockedValue).toFixed(4);
+    const cv=(a.computedValue===null||a.computedValue===undefined)?'':` (computed ${Number(a.computedValue).toFixed(4)} discarded)`;
+    return `<tr><td>${escCal(a.timestamp||'—')}</td><td class="k">${escCal(a.action||'—')}</td><td>${escCal(a.paramName||'—')}</td><td>${lv}${cv}</td><td>${escCal(a.actor||'—')}</td></tr>`;
+  }).join('');
+  box.innerHTML='<table><thead><tr><th>timestamp</th><th>action</th><th>parameter</th><th>value</th><th>actor</th></tr></thead><tbody>'+rows+'</tbody></table>';
+}
+
+// D-05/Pitfall 4: damping_factor rendered ONLY here, never inside
+// renderCalibrationParams() above -- the whole point of a separate panel
+// is that it is not auto-tuned, unlike the three parameters up top.
+function renderInactiveParams(){
+  const box=document.getElementById('calInactive');
+  const inactive=window.CALIBRATION && window.CALIBRATION.inactive_params;
+  const d=inactive && inactive.damping_factor;
+  if(!d){
+    box.innerHTML='<div class="note" style="color:var(--dim)">no data</div>';
+    return;
+  }
+  const valueText=(d.value===null||d.value===undefined)?'—':Number(d.value).toFixed(4);
+  box.innerHTML='<table><tbody>'+
+    `<tr><td class="k">damping_factor</td><td>${valueText}</td><td><span class="cal-inactive">declared in the control schema, not auto-tuned</span></td></tr>`+
     '</tbody></table>';
 }
 
+function renderGeneratedAtStamp(){
+  const el=document.getElementById('calGeneratedAt');
+  const stamp=window.CALIBRATION && window.CALIBRATION.generated_at;
+  el.textContent=stamp ? `Calibration data generated at ${stamp}` : 'Calibration data generation time unavailable';
+}
+
+// D-05/D-06: engine_constants panel -- reads from the EXISTING
+// prescription_config.json fetch (cfg, populated by render()), never from
+// window.CALIBRATION. Ratification markers come from engine_constants_meta
+// where present (plan 05.2-03).
+function renderEngineConstants(){
+  const box=document.getElementById('engineConstants');
+  const ec=cfg && cfg.engine_constants;
+  if(!ec){
+    box.innerHTML='<div class="note" style="color:var(--dim)">no engine_constants in config</div>';
+    return;
+  }
+  const meta=cfg.engine_constants_meta||{};
+  const rows=Object.entries(ec).map(([k,v])=>{
+    const val=Array.isArray(v)?v.join(', '):v;
+    const m=meta[k];
+    const ratified=m
+      ? `<span class="cal-ratified" title="${escCal(m.ratifying_authority||'')}">ratified ${escCal(m.ratified_date||'')} by ${escCal(m.ratified_by||'')}</span>`
+      : '';
+    return `<tr><td class="k">${escCal(k)}</td><td>${escCal(String(val))}</td><td>${ratified}</td></tr>`;
+  }).join('');
+  box.innerHTML='<table><thead><tr><th>key</th><th>value</th><th>ratification</th></tr></thead><tbody>'+rows+'</tbody></table>';
+}
+
 reload();
-renderCalibration();
+renderCalibrationParams();
+renderHistory();
+renderLockAudit();
+renderInactiveParams();
+renderGeneratedAtStamp();
 </script>
 </body>
 </html>
