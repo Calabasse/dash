@@ -112,6 +112,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-07",
@@ -345,6 +346,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-07",
@@ -579,6 +581,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-07",
@@ -825,6 +828,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -1051,6 +1055,7 @@ window.PROGRAM = {
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [],
           "increaseCutoff": null,
           "reduceCutoff": null,
@@ -1068,7 +1073,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "increase_load",
           "assess": "Last top set: 22.5 lb \u00d7 12 @ RPE 9.5 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (15/12/15) \u2014 earn the jump; top set 22.5\u219225; +11.1% load costs ~4 reps, so the rep target drops 12\u21928 [range 6-8]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 22.5 for 13-15, rebuilding to the reps it just produced.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/15) \u2014 earn the jump; top set 22.5\u219225; +11.1% load costs ~4 reps, so the rep target drops 12\u21928 [range 6-8]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 22.5 for 13-15, rebuilding to the reps it just produced.",
           "sets": [
             {
               "type": "W",
@@ -1139,6 +1144,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -1326,8 +1332,8 @@ window.PROGRAM = {
           "loading_type": "dumbbell",
           "qc": "fail",
           "action": "review_required",
-          "assess": "Every set was labeled warm-up, but at least one was performed at working effort.",
-          "rationale": "<b>\u2717 QC fail: set_role_conflict, warmup_labeled_set_at_working_effort(set 1 @ RPE 8)</b> \u00b7 Set-role labeling conflict \u2014 warmup_labeled_set_at_working_effort(set 1 @ RPE 8). Nothing here is typed as a working set, so there is no top set to progress from, but the data says work was done. Re-label the working set(s) and the engine resumes.",
+          "assess": "Last top set: load and reps not recorded.",
+          "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe: last session's load and reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
           "sets": [
             {
               "type": "W",
@@ -1359,6 +1365,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": "Day C (delts/abs) also trains delts (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (52h, stretch stimulus, moderate fatigue) extends to 2026-08-17, past that. Advisory only -- no volume was changed.",
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -1572,7 +1579,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 175 assist \u00d7 12 @ RPE 9 \u00b7 band_assisted_bodyweight \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 175 lb assist \u2014 build toward 15 reps before reducing assistance. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350 (less assist = harder). Back-off holds its own last load (200) for 7-9 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 175 lb assist \u2014 build toward 15 reps before reducing assistance. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350 (less assist = harder). Back-off holds its own last load (200) for 8-10 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -1622,7 +1629,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 200.0,
-                "reps": "7\u20139",
+                "reps": "8\u201310",
                 "rpe": 9.0
               }
             }
@@ -1630,6 +1637,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-06",
@@ -1876,6 +1884,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-06",
@@ -2122,6 +2131,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-14). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-16, past that. Advisory only -- no volume was changed.",
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -2368,6 +2378,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-06",
@@ -2614,6 +2625,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-14). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-16, past that. Advisory only -- no volume was changed.",
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-06",
@@ -2815,6 +2827,7 @@ window.PROGRAM = {
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [],
           "increaseCutoff": null,
           "reduceCutoff": null,
@@ -2864,6 +2877,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -3102,6 +3116,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-14). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-15, past that. Advisory only -- no volume was changed.",
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -3373,6 +3388,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -3615,6 +3631,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -3872,6 +3889,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -4116,6 +4134,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -4386,6 +4405,7 @@ window.PROGRAM = {
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [],
           "increaseCutoff": null,
           "reduceCutoff": null,
@@ -4455,6 +4475,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -4658,7 +4679,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY B - CHEST / TRICEPS  (5 days) \u2014 3 load\u2191 \u00b7 2 rep\u2191 \u00b7 0 hold.",
+        "headline": "DAY B - CHEST / TRICEPS  (5 days) \u2014 2 load\u2191 \u00b7 2 rep\u2191 \u00b7 1 hold.",
         "assess": "7 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>5/7</b> prescriptions passed the validation gate; <b>2 flagged</b> \u2014 see the \u2717 tags below."
       },
@@ -4677,9 +4698,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "barbell",
           "qc": "pass",
-          "action": "increase_load",
+          "action": "hold",
           "assess": "Last top set: 143 lb \u00d7 10 @ RPE 9 \u00b7 barbell \u00b7 anchor 10 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 143\u00d710 at RPE 9 (\u2265 anchor 10), backoffs productive \u2014 top set 143\u2192148.8; +4.1% load costs ~1 rep, so the rep target drops 10\u21929 [range 5-9]. Back-off holds its own last load (132.3) for 8-10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 143.3 \u2014 backoffs not yet productive; chase reps to ~10 at RPE 9 before adding load. Back-off holds its own last load (132.3) for 4-6 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -4689,7 +4710,7 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 82.7,
+                "lbs": 77.2,
                 "reps": "8",
                 "rpe": 5.0
               }
@@ -4702,7 +4723,7 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 121.3,
+                "lbs": 115.7,
                 "reps": "5",
                 "rpe": 6.5
               }
@@ -4728,8 +4749,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 148.8,
-                "reps": "5\u20139",
+                "lbs": 143.3,
+                "reps": "10",
                 "rpe": 9.0
               }
             },
@@ -4742,7 +4763,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 132.3,
-                "reps": "8\u201310",
+                "reps": "4\u20136",
                 "rpe": 9.0
               }
             }
@@ -4750,6 +4771,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-07",
@@ -4994,6 +5016,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-07",
@@ -5239,6 +5262,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-07",
@@ -5496,6 +5520,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -5688,7 +5713,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "increase_load",
           "assess": "Last top set: 22.5 lb \u00d7 14 @ RPE 9.5 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (15/14/14) \u2014 earn the jump; top set 22.5\u219225; +11.1% load costs ~4 reps, so the rep target drops 14\u219210 [range 8-10]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 22.5 for 12-14, rebuilding to the reps it just produced.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (14/14) \u2014 earn the jump; top set 22.5\u219225; +11.1% load costs ~4 reps, so the rep target drops 14\u219210 [range 8-10]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 22.5 for 12-14, rebuilding to the reps it just produced.",
           "sets": [
             {
               "type": "W",
@@ -5759,6 +5784,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -5957,8 +5983,8 @@ window.PROGRAM = {
           "loading_type": "dumbbell",
           "qc": "fail",
           "action": "review_required",
-          "assess": "Every set was labeled warm-up, but at least one was performed at working effort.",
-          "rationale": "<b>\u2717 QC fail: set_role_conflict, warmup_labeled_set_at_working_effort(set 1 @ RPE 8)</b> \u00b7 Set-role labeling conflict \u2014 warmup_labeled_set_at_working_effort(set 1 @ RPE 8). Nothing here is typed as a working set, so there is no top set to progress from, but the data says work was done. Re-label the working set(s) and the engine resumes.",
+          "assess": "Last top set: load and reps not recorded.",
+          "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe: last session's load and reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
           "sets": [
             {
               "type": "W",
@@ -5990,6 +6016,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": "Day C (delts/abs) also trains delts (the logged Day C session on 2026-08-08). This exercise's own recovery estimate (52h, stretch stimulus, moderate fatigue) extends to 2026-08-10, past that. Advisory only -- no volume was changed.",
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-08",
@@ -6215,6 +6242,7 @@ window.PROGRAM = {
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [],
           "increaseCutoff": null,
           "reduceCutoff": null,
