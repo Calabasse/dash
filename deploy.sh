@@ -35,6 +35,16 @@ LOG "training: build card data"
 ( cd "$APE" && "$VENV" tools/build_card_data.py ) \
   || LOG "  build_card_data failed — keeping last data"
 [ -f "$CHAD_OS/tools/workout-card.data.js" ] && cp "$CHAD_OS/tools/workout-card.data.js" "$SITE/workout-card.data.js"
+
+# 1b) CALIBRATION — read-only projection of calibration lock state (D-08,
+# plan 05.2-01). The build script never imports any write-capable
+# analytics module and opens volm.duckdb read-only; this is the ONLY path
+# calibration state reaches dash-site, and it is one-way.
+LOG "calibration: build calibration data"
+( cd "$APE" && "$VENV" tools/build_calibration_data.py ) \
+  || LOG "  build_calibration_data failed — keeping last data"
+[ -f "$CHAD_OS/tools/calibration-data.js" ] && cp "$CHAD_OS/tools/calibration-data.js" "$SITE/calibration-data.js"
+
 # cache-bust: stamp the data.js <script src> so browsers always fetch the fresh copy
 # (GitHub Pages sets long cache TTLs; without a version query the card never updates).
 STAMP=$(date +%Y%m%d%H%M%S)
@@ -42,6 +52,8 @@ sed -i '' -E "s#workout-card\.data\.js(\?v=[0-9]+)?#workout-card.data.js?v=$STAM
   && LOG "training: cache-busted workout.html (v=$STAMP)"
 sed -i '' -E "s#workout-card\.data\.js(\?v=[0-9]+)?#workout-card.data.js?v=$STAMP#" "$SITE/workout2.html" \
   && LOG "training: cache-busted workout2.html (v=$STAMP)"
+sed -i '' -E "s#calibration-data\.js(\?v=[0-9]+)?#calibration-data.js?v=$STAMP#" "$SITE/tuning.html" \
+  && LOG "calibration: cache-busted tuning.html (v=$STAMP)"
 
 # 2) WEIGHT — refresh Withings dashboard (self-contained html), best-effort
 LOG "weight: refresh withings"

@@ -69,6 +69,12 @@
   </div>
 
   <div class="panel">
+    <h2>Auto-tuned parameters</h2>
+    <div id="calibration"></div>
+    <div class="note">Read-only reflection of the live self-tuning loop's state (D-07). Pinned values are set from a separate, local-only tool &mdash; this page has no write capability of any kind (D-08).</div>
+  </div>
+
+  <div class="panel">
     <h2>Status</h2>
     <div class="row">
       <button onclick="reload()">↺ reset to deployed</button>
@@ -78,6 +84,7 @@
   </div>
 </div>
 
+<script src="calibration-data.js"></script>
 <script>
 /* This page lost its edit-and-save controls on 2026-08-16: dash-site is
    APE's read-only Trust Surface, and a browser-reachable path into
@@ -135,7 +142,38 @@ function render(){
   }).join('');
 }
 
+// Phase 5.2 (plan 05.2-01): read-only reflection of window.CALIBRATION,
+// a one-way projection built by tools/build_calibration_data.py from
+// live, governed DB state. No form control of any kind renders here --
+// plain text nodes only (D-08, T-05.2-02).
+function renderCalibration(){
+  const box=document.getElementById('calibration');
+  const cal=window.CALIBRATION;
+  if(!cal || !cal.progressionBias){
+    box.innerHTML='<div class="note" style="color:var(--dim)">no calibration data</div>';
+    return;
+  }
+  const pb=cal.progressionBias;
+  const valueText=(pb.value===null||pb.value===undefined)?'—':Number(pb.value).toFixed(4);
+  const lock=pb.lock;
+  let lockText;
+  if(!lock){
+    lockText='lock status unavailable';
+  }else if(lock.isLocked){
+    const lv=(lock.lockedValue===null||lock.lockedValue===undefined)?'—':Number(lock.lockedValue).toFixed(4);
+    lockText=`PINNED at ${lv} by ${lock.lockedBy||'unknown'} at ${lock.lockedAt||'unknown time'}`;
+  }else{
+    lockText='not pinned (auto-tuning active)';
+  }
+  box.innerHTML=
+    '<table><tbody>'+
+    `<tr><td class="k">progression_bias</td><td>${valueText}</td></tr>`+
+    `<tr><td class="k">lock status</td><td>${lockText}</td></tr>`+
+    '</tbody></table>';
+}
+
 reload();
+renderCalibration();
 </script>
 </body>
 </html>
