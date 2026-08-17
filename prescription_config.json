@@ -433,5 +433,28 @@
         }
       }
     }
+  },
+  "engine_constants": {
+    "pct_load_per_rep": 3.0,
+    "max_rep_cost_per_jump": 2,
+    "warmup_load_margin": 0.16,
+    "working_effort_rpe": 7.99,
+    "load_optional_types": [
+      "bodyweight"
+    ]
+  },
+  "engine_constants_meta": {
+    "warmup_load_margin": {
+      "ratified_date": "2026-08-15",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 05.1-02 Task 1 checkpoint:decision (gate=blocking), option-a: 'promote and prescribe -- effort evidence outranks the label'",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "working_effort_rpe": {
+      "ratified_date": "2026-08-15",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 05.1-02 Task 1 checkpoint:decision (gate=blocking), option-a: 'promote and prescribe -- effort evidence outranks the label'",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    }
   }
 }
