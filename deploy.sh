@@ -16,9 +16,23 @@ cd "$SITE" || { echo "no site dir"; exit 1; }
 # 0) PRESCRIPTION CONFIG — this file's home is upstream in the engine
 # repo. This copy exists only so the site can display current values;
 # it is refreshed here on every deploy and never written back upstream.
+#
+# 2026-08-17 todo fix: docs/calibration_tool.md states landing a config
+# edit "is a normal commit in this repository, made by a human" -- but
+# this step used to `cp` straight from the engine's working tree with no
+# check that the file was actually committed. A local, uncommitted edit
+# (mid-review, or someone just poking at the calibration tool) could
+# reach this public site on the next scheduled run before a human ever
+# committed it. Chad's call: skip the copy and keep the last published
+# value rather than block the whole scheduled deploy job over one
+# uncommitted file.
 if [ -f "${APE}/tools/prescription_config.json" ]; then
-  cp "$APE/tools/prescription_config.json" "$SITE/prescription_config.json"
-  LOG "prescription config refreshed from engine"
+  if ( cd "$APE" && git diff --quiet HEAD -- tools/prescription_config.json ) 2>/dev/null; then
+    cp "$APE/tools/prescription_config.json" "$SITE/prescription_config.json"
+    LOG "prescription config refreshed from engine"
+  else
+    LOG "prescription config has uncommitted changes in the engine repo — skipping refresh, keeping last published value"
+  fi
 fi
 
 # 1) TRAINING — rebuild the card data file. VOLM sync is OPT-IN (--sync only),
