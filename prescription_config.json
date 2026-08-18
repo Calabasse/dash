@@ -432,6 +432,734 @@
           "is_isolation": false
         }
       }
+    },
+    "5_3_1": {
+      "label": "5/3/1 (Jim Wendler)",
+      "note": "Training Max = 90% of an estimated 1RM (Epley-shaped heuristic; e1rm_reps_coefficient/training_max_rounding_lb engine constants are added by plan 05.3-04, not here). Canonical main-lift exercise_keys per this plan's Task 1 option-b ratification (2026-08-17, Chad Crawford, Program Director): no substitution -- squat/bench/press map to their canonical equipment_movement exercise identities (app/ontology/movement_cluster_map.json, app/ontology/exercise_identity_registry.py). All four main lifts have zero logged qualifying top sets in live session_sets data as of 2026-08-17, so the Training Max heuristic correctly refuses a number for every lift until at least one is actually trained -- intended RC-E discipline, not a defect. `deadlift`'s exercise_keys is deliberately empty: the only conventional-deadlift entry found in the ontology is the bare, unqualified string \"deadlift\" (movement_cluster_map.json's hip_hinge cluster), which breaks the equipment-qualified naming convention every other canonical exercise id in this codebase follows and has no corroborating entry in exercise_identity_registry.py or exercise_alias_map.json -- left unmapped per Task 1's own escape hatch rather than guessed. Follow-up: confirm a real canonical conventional-deadlift id when the ontology is extended.",
+      "globals": {
+        "warmup_fracs": [
+          0.55,
+          0.8
+        ],
+        "backoff_frac": 0.9,
+        "barbell_step_kg": 2.5,
+        "dumbbell_step_lb": 5,
+        "machine_step_lb": 5,
+        "weighted_bw_step_lb": 5
+      },
+      "types": {
+        "barbell": {
+          "rep_lo": 5,
+          "rep_hi": 10,
+          "anchor": 10,
+          "top_rpe": 8,
+          "earn_rpe_cap": 9,
+          "warmups": 2,
+          "backoffs": 1,
+          "is_isolation": false
+        },
+        "dumbbell_compound": {
+          "rep_lo": 8,
+          "rep_hi": 15,
+          "anchor": 12,
+          "top_rpe": 8,
+          "earn_rpe_cap": 9,
+          "warmups": 2,
+          "backoffs": 1,
+          "is_isolation": false
+        },
+        "dumbbell_isolation": {
+          "rep_lo": 10,
+          "rep_hi": 20,
+          "anchor": 15,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": true
+        },
+        "cable_or_machine": {
+          "rep_lo": 10,
+          "rep_hi": 20,
+          "anchor": 15,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": true
+        },
+        "band_assisted_bodyweight": {
+          "rep_lo": 8,
+          "rep_hi": 15,
+          "anchor": 15,
+          "top_rpe": 8,
+          "earn_rpe_cap": 9,
+          "warmups": 2,
+          "backoffs": 1,
+          "is_isolation": false
+        },
+        "band_resisted_isolation": {
+          "rep_lo": 15,
+          "rep_hi": 25,
+          "anchor": 20,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": true
+        },
+        "band_combo": {
+          "rep_lo": 12,
+          "rep_hi": 20,
+          "anchor": 15,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": true
+        },
+        "bodyweight": {
+          "rep_lo": 10,
+          "rep_hi": 25,
+          "anchor": 15,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": false
+        },
+        "bodyweight_abs": {
+          "rep_lo": 15,
+          "rep_hi": 30,
+          "anchor": 25,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": false
+        },
+        "weighted_bodyweight": {
+          "rep_lo": 8,
+          "rep_hi": 15,
+          "anchor": 12,
+          "top_rpe": 8,
+          "earn_rpe_cap": 9,
+          "warmups": 2,
+          "backoffs": 1,
+          "is_isolation": false
+        }
+      },
+      "main_lifts": {
+        "squat": {
+          "exercise_keys": [
+            "barbell_back_squat"
+          ],
+          "reference_max_lb": null,
+          "reference_max_source": "heuristic_top_set"
+        },
+        "bench": {
+          "exercise_keys": [
+            "barbell_flat_bench_press"
+          ],
+          "reference_max_lb": null,
+          "reference_max_source": "heuristic_top_set"
+        },
+        "deadlift": {
+          "exercise_keys": [],
+          "reference_max_lb": null,
+          "reference_max_source": "heuristic_top_set"
+        },
+        "press": {
+          "exercise_keys": [
+            "standing_barbell_overhead_press"
+          ],
+          "reference_max_lb": null,
+          "reference_max_source": "heuristic_top_set"
+        }
+      },
+      "waves": {
+        "intensity_basis": "training_max",
+        "training_max_frac_of_1rm": 0.9,
+        "cycle_weeks": 4,
+        "repeats": true,
+        "post_cycle": "repeat_wave",
+        "cold_start_week": 1,
+        "warmup_sets": [
+          {
+            "intensity_frac": 0.4,
+            "reps": 5
+          },
+          {
+            "intensity_frac": 0.5,
+            "reps": 5
+          },
+          {
+            "intensity_frac": 0.6,
+            "reps": 3
+          }
+        ],
+        "weeks": [
+          {
+            "week": 1,
+            "name": "5s",
+            "sets": [
+              {
+                "intensity_frac": 0.65,
+                "reps": 5,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.75,
+                "reps": 5,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.85,
+                "reps": 5,
+                "amrap": true
+              }
+            ]
+          },
+          {
+            "week": 2,
+            "name": "3s",
+            "sets": [
+              {
+                "intensity_frac": 0.7,
+                "reps": 3,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.8,
+                "reps": 3,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.9,
+                "reps": 3,
+                "amrap": true
+              }
+            ]
+          },
+          {
+            "week": 3,
+            "name": "5/3/1",
+            "sets": [
+              {
+                "intensity_frac": 0.75,
+                "reps": 5,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.85,
+                "reps": 3,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.95,
+                "reps": 1,
+                "amrap": true
+              }
+            ]
+          },
+          {
+            "week": 4,
+            "name": "deload",
+            "sets": [
+              {
+                "intensity_frac": 0.4,
+                "reps": 5,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.5,
+                "reps": 5,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.6,
+                "reps": 5,
+                "amrap": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "linear_periodization": {
+      "label": "Linear Periodization (classic strength)",
+      "note": "Classic 12-week linear block: hypertrophy (wk1-4) -> strength (wk5-8) -> power/peak (wk9-12); intensity_basis=one_rm (not Training Max, no warmup_sets ratified for this profile). Canonical main-lift exercise_keys per this plan's Task 1 option-b ratification (2026-08-17, Chad Crawford, Program Director): no substitution, same mapping as 5_3_1. All four main lifts have zero logged qualifying top sets in live session_sets data as of 2026-08-17. `deadlift`'s exercise_keys is deliberately empty for the same reason documented on the 5_3_1 profile -- no confidently-canonical conventional-deadlift exercise id exists yet in this codebase's ontology.",
+      "globals": {
+        "warmup_fracs": [
+          0.55,
+          0.8
+        ],
+        "backoff_frac": 0.9,
+        "barbell_step_kg": 2.5,
+        "dumbbell_step_lb": 5,
+        "machine_step_lb": 5,
+        "weighted_bw_step_lb": 5
+      },
+      "types": {
+        "barbell": {
+          "rep_lo": 4,
+          "rep_hi": 8,
+          "anchor": 6,
+          "top_rpe": 9,
+          "earn_rpe_cap": 10,
+          "warmups": 3,
+          "backoffs": 2,
+          "is_isolation": false
+        },
+        "dumbbell_compound": {
+          "rep_lo": 6,
+          "rep_hi": 10,
+          "anchor": 8,
+          "top_rpe": 9,
+          "earn_rpe_cap": 10,
+          "warmups": 2,
+          "backoffs": 2,
+          "is_isolation": false
+        },
+        "dumbbell_isolation": {
+          "rep_lo": 8,
+          "rep_hi": 12,
+          "anchor": 10,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": true
+        },
+        "cable_or_machine": {
+          "rep_lo": 8,
+          "rep_hi": 12,
+          "anchor": 10,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": true
+        },
+        "band_assisted_bodyweight": {
+          "rep_lo": 6,
+          "rep_hi": 12,
+          "anchor": 10,
+          "top_rpe": 9,
+          "earn_rpe_cap": 10,
+          "warmups": 2,
+          "backoffs": 1,
+          "is_isolation": false
+        },
+        "band_resisted_isolation": {
+          "rep_lo": 12,
+          "rep_hi": 18,
+          "anchor": 15,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": true
+        },
+        "band_combo": {
+          "rep_lo": 10,
+          "rep_hi": 16,
+          "anchor": 12,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": true
+        },
+        "bodyweight": {
+          "rep_lo": 6,
+          "rep_hi": 15,
+          "anchor": 10,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": false
+        },
+        "bodyweight_abs": {
+          "rep_lo": 12,
+          "rep_hi": 20,
+          "anchor": 15,
+          "top_rpe": 9,
+          "warmups": 1,
+          "backoffs": 1,
+          "is_isolation": false
+        },
+        "weighted_bodyweight": {
+          "rep_lo": 5,
+          "rep_hi": 10,
+          "anchor": 8,
+          "top_rpe": 9,
+          "earn_rpe_cap": 10,
+          "warmups": 2,
+          "backoffs": 1,
+          "is_isolation": false
+        }
+      },
+      "main_lifts": {
+        "squat": {
+          "exercise_keys": [
+            "barbell_back_squat"
+          ],
+          "reference_max_lb": null,
+          "reference_max_source": "heuristic_top_set"
+        },
+        "bench": {
+          "exercise_keys": [
+            "barbell_flat_bench_press"
+          ],
+          "reference_max_lb": null,
+          "reference_max_source": "heuristic_top_set"
+        },
+        "deadlift": {
+          "exercise_keys": [],
+          "reference_max_lb": null,
+          "reference_max_source": "heuristic_top_set"
+        },
+        "press": {
+          "exercise_keys": [
+            "standing_barbell_overhead_press"
+          ],
+          "reference_max_lb": null,
+          "reference_max_source": "heuristic_top_set"
+        }
+      },
+      "waves": {
+        "intensity_basis": "one_rm",
+        "cycle_weeks": 12,
+        "repeats": false,
+        "post_cycle": "hold_final_week",
+        "cold_start_week": 1,
+        "warmup_sets": [],
+        "weeks": [
+          {
+            "week": 1,
+            "name": "hypertrophy",
+            "sets": [
+              {
+                "intensity_frac": 0.6,
+                "reps": 12,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.6,
+                "reps": 12,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.6,
+                "reps": 12,
+                "amrap": false
+              }
+            ]
+          },
+          {
+            "week": 2,
+            "name": "hypertrophy",
+            "sets": [
+              {
+                "intensity_frac": 0.625,
+                "reps": 12,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.625,
+                "reps": 12,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.625,
+                "reps": 12,
+                "amrap": false
+              }
+            ]
+          },
+          {
+            "week": 3,
+            "name": "hypertrophy",
+            "sets": [
+              {
+                "intensity_frac": 0.65,
+                "reps": 10,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.65,
+                "reps": 10,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.65,
+                "reps": 10,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.65,
+                "reps": 10,
+                "amrap": false
+              }
+            ]
+          },
+          {
+            "week": 4,
+            "name": "hypertrophy",
+            "sets": [
+              {
+                "intensity_frac": 0.7,
+                "reps": 10,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.7,
+                "reps": 10,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.7,
+                "reps": 10,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.7,
+                "reps": 10,
+                "amrap": false
+              }
+            ]
+          },
+          {
+            "week": 5,
+            "name": "strength",
+            "sets": [
+              {
+                "intensity_frac": 0.75,
+                "reps": 8,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.75,
+                "reps": 8,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.75,
+                "reps": 8,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.75,
+                "reps": 8,
+                "amrap": false
+              }
+            ]
+          },
+          {
+            "week": 6,
+            "name": "strength",
+            "sets": [
+              {
+                "intensity_frac": 0.775,
+                "reps": 8,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.775,
+                "reps": 8,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.775,
+                "reps": 8,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.775,
+                "reps": 8,
+                "amrap": false
+              }
+            ]
+          },
+          {
+            "week": 7,
+            "name": "strength",
+            "sets": [
+              {
+                "intensity_frac": 0.8,
+                "reps": 6,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.8,
+                "reps": 6,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.8,
+                "reps": 6,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.8,
+                "reps": 6,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.8,
+                "reps": 6,
+                "amrap": false
+              }
+            ]
+          },
+          {
+            "week": 8,
+            "name": "strength",
+            "sets": [
+              {
+                "intensity_frac": 0.85,
+                "reps": 6,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.85,
+                "reps": 6,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.85,
+                "reps": 6,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.85,
+                "reps": 6,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.85,
+                "reps": 6,
+                "amrap": false
+              }
+            ]
+          },
+          {
+            "week": 9,
+            "name": "power/peak",
+            "sets": [
+              {
+                "intensity_frac": 0.85,
+                "reps": 5,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.85,
+                "reps": 5,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.85,
+                "reps": 5,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.85,
+                "reps": 5,
+                "amrap": false
+              }
+            ]
+          },
+          {
+            "week": 10,
+            "name": "power/peak",
+            "sets": [
+              {
+                "intensity_frac": 0.875,
+                "reps": 4,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.875,
+                "reps": 4,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.875,
+                "reps": 4,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.875,
+                "reps": 4,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.875,
+                "reps": 4,
+                "amrap": false
+              }
+            ]
+          },
+          {
+            "week": 11,
+            "name": "power/peak",
+            "sets": [
+              {
+                "intensity_frac": 0.9,
+                "reps": 3,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.9,
+                "reps": 3,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.9,
+                "reps": 3,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.9,
+                "reps": 3,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.9,
+                "reps": 3,
+                "amrap": false
+              }
+            ]
+          },
+          {
+            "week": 12,
+            "name": "power/peak",
+            "sets": [
+              {
+                "intensity_frac": 0.95,
+                "reps": 3,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.95,
+                "reps": 3,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.95,
+                "reps": 3,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.95,
+                "reps": 3,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.95,
+                "reps": 3,
+                "amrap": false
+              },
+              {
+                "intensity_frac": 0.95,
+                "reps": 3,
+                "amrap": false
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   "engine_constants": {
@@ -441,7 +1169,9 @@
     "working_effort_rpe": 7.99,
     "load_optional_types": [
       "bodyweight"
-    ]
+    ],
+    "e1rm_reps_coefficient": 30.0,
+    "training_max_rounding_lb": 5.0
   },
   "engine_constants_meta": {
     "warmup_load_margin": {
@@ -455,6 +1185,32 @@
       "ratified_by": "Chad Crawford (Program Director)",
       "ratifying_authority": "plan 05.1-02 Task 1 checkpoint:decision (gate=blocking), option-a: 'promote and prescribe -- effort evidence outranks the label'",
       "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "e1rm_reps_coefficient": {
+      "ratified_date": "2026-08-17",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 05.3-02 Task 1 checkpoint:decision (gate=blocking) -- proposed value ratified as-is, unaffected by the main-lift-mapping option selected",
+      "note": "CR-01 (05.3-REVIEW.md): registered here so the ratification-supersession gate (warning banner + mandatory second confirmation) actually fires for this field, matching the ratification already cited in tools/prescribe_hypertrophy.py's _FALLBACK_ENGINE_CONSTANTS comment. A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "training_max_rounding_lb": {
+      "ratified_date": "2026-08-17",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 05.3-02 Task 1 checkpoint:decision (gate=blocking) -- proposed value ratified as-is, unaffected by the main-lift-mapping option selected",
+      "note": "CR-01 (05.3-REVIEW.md): registered here so the ratification-supersession gate (warning banner + mandatory second confirmation) actually fires for this field, matching the ratification already cited in tools/prescribe_hypertrophy.py's _FALLBACK_ENGINE_CONSTANTS comment. A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    }
+  },
+  "profiles_meta": {
+    "5_3_1": {
+      "ratified_date": "2026-08-17",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 05.3-02 Task 1 checkpoint:decision (gate=blocking), option-b: 'Ratify as proposed, keep canonical main-lift names with no substitution'",
+      "note": "Full 5/3/1 value set (TM=90% of estimated 1RM, 4-week wave, assistance-work types framework), the Training-Max heuristic, and the cold_start/post_cycle defaults ratified as originally proposed in Task 1's <context> block, no amendments. Main-lift mapping ratified canonical (no substitution): squat->barbell_back_squat, bench->barbell_flat_bench_press, press->standing_barbell_overhead_press, deadlift left unmapped (empty exercise_keys) -- no confidently-canonical id found, follow-up noted rather than guessed, per Task 1's explicit instruction."
+    },
+    "linear_periodization": {
+      "ratified_date": "2026-08-17",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 05.3-02 Task 1 checkpoint:decision (gate=blocking), option-b: 'Ratify as proposed, keep canonical main-lift names with no substitution'",
+      "note": "Full linear-periodization value set (12-week hypertrophy/strength/power-peak block, %1RM progression, types framework) and the cold_start/post_cycle defaults ratified as originally proposed in Task 1's <context> block, no amendments. Main-lift mapping: same canonical, no-substitution mapping as 5_3_1 per Task 1's ratification ('use the same four keys for linear_periodization unless the ratification record says otherwise' -- it does not)."
     }
   }
 }
