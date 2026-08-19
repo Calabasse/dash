@@ -20,7 +20,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY A \u2014 BACK / BICEPS (4-5 days) \u2014 1 load\u2191 \u00b7 4 rep\u2191 \u00b7 1 hold.",
+        "headline": "DAY A \u2014 BACK / BICEPS (4-5 days) \u2014 0 load\u2191 \u00b7 5 rep\u2191 \u00b7 1 hold.",
         "assess": "8 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>6/8</b> prescriptions passed the validation gate; <b>2 flagged</b> \u2014 see the \u2717 tags below."
       },
@@ -80,7 +80,7 @@ window.PROGRAM = {
               "prop": {
                 "lbs": 175.0,
                 "reps": "11\u201315",
-                "rpe": 9.0
+                "rpe": 8.0
               }
             },
             {
@@ -289,7 +289,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 143 lb \u00d7 9 @ RPE 10 \u00b7 barbell \u00b7 anchor 10 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 143.3 \u2014 reps below anchor; chase reps to ~10 at RPE 9 before adding load. Back-off holds its own last load (132.3) for 10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 143.3 \u2014 reps below anchor; chase reps to ~10 at RPE 8 before adding load. Back-off holds its own last load (132.3) for 10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -327,7 +327,7 @@ window.PROGRAM = {
               "prop": {
                 "lbs": 143.3,
                 "reps": "9\u201310",
-                "rpe": 9.0
+                "rpe": 8.0
               }
             },
             {
@@ -535,8 +535,8 @@ window.PROGRAM = {
           "loading_type": "dumbbell",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: 35 lb \u00d7 11 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 35 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (32.5) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "assess": "Last top set: 35 lb \u00d7 11 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 35 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (32.5) for 10-12 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -560,8 +560,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 35,
-                "reps": "11\u201315",
-                "rpe": 9.5
+                "reps": "11\u201320",
+                "rpe": 9.0
               }
             },
             {
@@ -781,9 +781,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "increase_load",
+          "action": "hold",
           "assess": "Last top set: 75 lb \u00d7 13 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 75\u00d713 at RPE 10 (\u2265 anchor 12), backoffs productive \u2014 top set 75\u219280; +6.7% load costs ~2 reps, so the rep target drops 13\u219211 [range 6-11]. Back-off earned its own jump too \u2014 72.5 for 10-12, rebuilding to the reps it just produced.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 75 \u2014 backoffs not yet productive; chase reps to ~12 at RPE 8 before adding load. Back-off holds its own last load (67.5) for 12-14 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -793,7 +793,7 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 45,
+                "lbs": 40,
                 "reps": "8",
                 "rpe": 5.0
               }
@@ -806,7 +806,7 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 65,
+                "lbs": 60,
                 "reps": "5",
                 "rpe": 6.5
               }
@@ -819,9 +819,9 @@ window.PROGRAM = {
                 "rpe": 10
               },
               "prop": {
-                "lbs": 80,
-                "reps": "6\u201311",
-                "rpe": 9.0
+                "lbs": 75,
+                "reps": "13\u201315",
+                "rpe": 8.0
               }
             },
             {
@@ -832,8 +832,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 72.5,
-                "reps": "10\u201312",
+                "lbs": 67.5,
+                "reps": "12\u201314",
                 "rpe": 9.0
               }
             }
@@ -1028,9 +1028,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "hold",
-          "assess": "Last top set: 32.5 lb \u00d7 12 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 32.5 \u2014 backoffs not yet productive; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (30) for 11-13 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "action": "add_reps",
+          "assess": "Last top set: 32.5 lb \u00d7 12 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 32.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (30) for 11-13 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -1054,8 +1054,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 32.5,
-                "reps": "12\u201315",
-                "rpe": 9.5
+                "reps": "12\u201320",
+                "rpe": 9.0
               }
             },
             {
@@ -1294,8 +1294,8 @@ window.PROGRAM = {
           "loading_type": "dumbbell",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: 27.5 lb \u00d7 10 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 27.5 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off 25 for 12-15 \u2014 derived from the top set; no matching performed back-off was logged.",
+          "assess": "Last top set: 27.5 lb \u00d7 10 \u00b7 dumbbell \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 27.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off 25 for 12-20 \u2014 derived from the top set; no matching performed back-off was logged.",
           "sets": [
             {
               "type": "W",
@@ -1319,8 +1319,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 27.5,
-                "reps": "10\u201315",
-                "rpe": 9.5
+                "reps": "10\u201320",
+                "rpe": 9.0
               }
             },
             {
@@ -1332,7 +1332,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 25,
-                "reps": "12\u201315",
+                "reps": "12\u201320",
                 "rpe": 9.0
               }
             },
@@ -1785,7 +1785,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY C \u2014 DELTS / ABS (3-4 days) \u2014 1 load\u2191 \u00b7 4 rep\u2191 \u00b7 0 hold.",
+        "headline": "DAY C \u2014 DELTS / ABS (3-4 days) \u2014 0 load\u2191 \u00b7 6 rep\u2191 \u00b7 0 hold.",
         "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>5/6</b> prescriptions passed the validation gate; <b>1 flagged</b> \u2014 see the \u2717 tags below."
       },
@@ -1805,8 +1805,8 @@ window.PROGRAM = {
           "loading_type": "dumbbell",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: 27.5 lb \u00d7 10 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 27.5 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (25) for 12-14 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "assess": "Last top set: 27.5 lb \u00d7 10 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 27.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (25) for 12-14 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -1830,8 +1830,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 27.5,
-                "reps": "10\u201315",
-                "rpe": 9.5
+                "reps": "10\u201320",
+                "rpe": 9.0
               }
             },
             {
@@ -2062,9 +2062,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "band_resisted_isolation",
           "qc": "fail",
-          "action": "progress_reps_tempo",
-          "assess": "Last top set: 65 lb \u00d7 18 @ RPE 9 \u00b7 band_resisted_isolation \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2717 QC fail: set_role_conflict(warmup_labeled_set_at_working_effort(set 1 @ RPE 8))</b> \u00b7 Already on the top band (65 lb). No heavier band in inventory \u2014 progress reps \u2192 tempo \u2192 pauses \u2192 ROM \u2192 volume before any new band. Back-off holds its own last load (55) for 18-20 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "action": "add_reps",
+          "assess": "Last top set: 65 lb \u00d7 18 @ RPE 9 \u00b7 band_resisted_isolation \u00b7 anchor 20 reps.",
+          "rationale": "<b>\u2717 QC fail: set_role_conflict(warmup_labeled_set_at_working_effort(set 1 @ RPE 8))</b> \u00b7 Hold 65 lb band \u2014 chase reps to ~20 at RPE 9. Bands available: 35/45/55/65 only. Back-off holds its own last load (55) for 18-20 \u2014 it has not reached the 20-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -2088,7 +2088,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 65.0,
-                "reps": "18\u201320",
+                "reps": "18\u201325",
                 "rpe": 9.0
               }
             },
@@ -2297,8 +2297,8 @@ window.PROGRAM = {
           "loading_type": "dumbbell",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: 22.5 lb \u00d7 10 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 22.5 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (20) for 13-15 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "assess": "Last top set: 22.5 lb \u00d7 10 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 22.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (20) for 13-15 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -2322,8 +2322,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 22.5,
-                "reps": "10\u201315",
-                "rpe": 9.5
+                "reps": "10\u201320",
+                "rpe": 9.0
               }
             },
             {
@@ -2543,9 +2543,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "increase_load",
-          "assess": "Last top set: 32.5 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (13/12) \u2014 earn the jump; top set 32.5\u219235; +7.7% load costs ~3 reps, so the rep target drops 13\u219210 [range 8-10]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 32.5 for 10-12, rebuilding to the reps it just produced.",
+          "action": "add_reps",
+          "assess": "Last top set: 32.5 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 32.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (30) for 12-14 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -2555,7 +2555,7 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 20,
+                "lbs": 17.5,
                 "reps": "8",
                 "rpe": 5.0
               }
@@ -2568,8 +2568,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 35,
-                "reps": "8\u201310",
+                "lbs": 32.5,
+                "reps": "13\u201320",
                 "rpe": 9.0
               }
             },
@@ -2581,8 +2581,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 32.5,
-                "reps": "10\u201312",
+                "lbs": 30,
+                "reps": "12\u201314",
                 "rpe": 9.0
               }
             }
@@ -2778,8 +2778,8 @@ window.PROGRAM = {
           "loading_type": "bodyweight",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: 0 lb \u00d7 19 @ RPE 9 \u00b7 bodyweight \u00b7 anchor 20 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Bodyweight \u2014 chase reps to \u226520 at RPE 9 before adding external load. Back-off holds its own last load (bodyweight) for 16-18 \u2014 it has not reached the 20-rep anchor on its own performance yet.",
+          "assess": "Last top set: 0 lb \u00d7 19 @ RPE 9 \u00b7 bodyweight \u00b7 anchor 25 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Bodyweight \u2014 chase reps to \u226525 at RPE 9 before adding external load. Back-off holds its own last load (bodyweight) for 16-18 \u2014 it has not reached the 25-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -2803,7 +2803,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": null,
-                "reps": "19\u201325",
+                "reps": "19\u201330",
                 "rpe": 9.0
               }
             },
@@ -3116,8 +3116,8 @@ window.PROGRAM = {
       "nextAvailable": {
         "earliest": "2026-08-17",
         "latest": "2026-08-18",
-        "fatigue_state": "elevated",
-        "driver": "chest recovery (heavy stimulus, elevated fatigue, ~84h)"
+        "fatigue_state": "high",
+        "driver": "chest recovery (heavy stimulus, high fatigue, ~90h)"
       },
       "stats": [
         "64m",
@@ -3126,7 +3126,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY B - CHEST / TRICEPS  (5 days) \u2014 2 load\u2191 \u00b7 3 rep\u2191 \u00b7 0 hold.",
+        "headline": "DAY B - CHEST / TRICEPS  (5 days) \u2014 0 load\u2191 \u00b7 5 rep\u2191 \u00b7 0 hold.",
         "assess": "7 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>5/7</b> prescriptions passed the validation gate; <b>2 flagged</b> \u2014 see the \u2717 tags below."
       },
@@ -3147,7 +3147,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 148.5 lb \u00d7 9 @ RPE 9 \u00b7 barbell \u00b7 anchor 10 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 148.8 \u2014 reps below anchor; chase reps to ~10 at RPE 9 before adding load. Back-off holds its own last load (132.3) for 7-9 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 148.8 \u2014 reps below anchor; chase reps to ~10 at RPE 8 before adding load. Back-off holds its own last load (132.3) for 7-9 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -3198,7 +3198,7 @@ window.PROGRAM = {
               "prop": {
                 "lbs": 148.8,
                 "reps": "9\u201310",
-                "rpe": 9.0
+                "rpe": 8.0
               }
             },
             {
@@ -3405,9 +3405,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "increase_load",
-          "assess": "Last top set: 40 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (13/15) \u2014 earn the jump; top set 40\u219242.5; +6.2% load costs ~2 reps, so the rep target drops 13\u219211 [range 9-11]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 37.5 for 13-15, rebuilding to the reps it just produced.",
+          "action": "add_reps",
+          "assess": "Last top set: 40 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 40 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (35) for 15-17 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -3430,8 +3430,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 42.5,
-                "reps": "9\u201311",
+                "lbs": 40,
+                "reps": "13\u201320",
                 "rpe": 9.0
               }
             },
@@ -3443,8 +3443,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 37.5,
-                "reps": "13\u201315",
+                "lbs": 35,
+                "reps": "15\u201317",
                 "rpe": 9.0
               }
             }
@@ -4177,9 +4177,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "increase_load",
-          "assess": "Last top set: 22.5 lb \u00d7 12 @ RPE 9.5 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/15) \u2014 earn the jump; top set 22.5\u219225; +11.1% load costs ~4 reps, so the rep target drops 12\u21928 [range 6-8]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 22.5 for 13-15, rebuilding to the reps it just produced.",
+          "action": "add_reps",
+          "assess": "Last top set: 22.5 lb \u00d7 12 @ RPE 9.5 \u00b7 dumbbell \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 22.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (20) for 15-17 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -4189,7 +4189,7 @@ window.PROGRAM = {
                 "rpe": null
               },
               "prop": {
-                "lbs": 15,
+                "lbs": 12.5,
                 "reps": "8",
                 "rpe": 5.0
               }
@@ -4202,9 +4202,9 @@ window.PROGRAM = {
                 "rpe": null
               },
               "prop": {
-                "lbs": 25,
-                "reps": "6\u20138",
-                "rpe": 9.5
+                "lbs": 22.5,
+                "reps": "12\u201320",
+                "rpe": 9.0
               }
             },
             {
@@ -4215,8 +4215,8 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 22.5,
-                "reps": "13\u201315",
+                "lbs": 20,
+                "reps": "15\u201317",
                 "rpe": 9.0
               }
             },
@@ -4723,7 +4723,7 @@ window.PROGRAM = {
               "prop": {
                 "lbs": 175.0,
                 "reps": "12\u201315",
-                "rpe": 9.0
+                "rpe": 8.0
               }
             },
             {
@@ -4932,7 +4932,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 143 lb \u00d7 9 @ RPE 10 \u00b7 barbell \u00b7 anchor 10 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 143.3 \u2014 reps below anchor; chase reps to ~10 at RPE 9 before adding load. Back-off holds its own last load (132.3) for 9-10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 143.3 \u2014 reps below anchor; chase reps to ~10 at RPE 8 before adding load. Back-off holds its own last load (132.3) for 9-10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -4970,7 +4970,7 @@ window.PROGRAM = {
               "prop": {
                 "lbs": 143.3,
                 "reps": "9\u201310",
-                "rpe": 9.0
+                "rpe": 8.0
               }
             },
             {
@@ -5178,8 +5178,8 @@ window.PROGRAM = {
           "loading_type": "dumbbell",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: 35 lb \u00d7 10 @ RPE 8 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 35 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (35) for 11-13 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "assess": "Last top set: 35 lb \u00d7 10 @ RPE 8 \u00b7 dumbbell \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 35 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (35) for 11-13 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -5203,8 +5203,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 35,
-                "reps": "10\u201315",
-                "rpe": 9.5
+                "reps": "10\u201320",
+                "rpe": 9.0
               }
             },
             {
@@ -5426,7 +5426,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 75 lb \u00d7 10 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 75 \u2014 reps below anchor; chase reps to ~12 at RPE 9 before adding load. Back-off holds its own last load (65) for 11-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 75 \u2014 reps below anchor; chase reps to ~12 at RPE 8 before adding load. Back-off holds its own last load (65) for 11-13 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -5463,8 +5463,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 75,
-                "reps": "10\u201312",
-                "rpe": 9.0
+                "reps": "10\u201315",
+                "rpe": 8.0
               }
             },
             {
@@ -5476,7 +5476,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 65,
-                "reps": "11\u201312",
+                "reps": "11\u201313",
                 "rpe": 9.0
               }
             }
@@ -5672,8 +5672,8 @@ window.PROGRAM = {
           "loading_type": "dumbbell",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: 32.5 lb \u00d7 10 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 32.5 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (30) for 12-14 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "assess": "Last top set: 32.5 lb \u00d7 10 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 32.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (30) for 12-14 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
           "sets": [
             {
               "type": "W",
@@ -5697,8 +5697,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 32.5,
-                "reps": "10\u201315",
-                "rpe": 9.5
+                "reps": "10\u201320",
+                "rpe": 9.0
               }
             },
             {
