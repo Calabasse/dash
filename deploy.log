@@ -2495,3 +2495,91 @@ Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings
 [06:30:27] research: sync opt-in last30days briefs
 [06:30:27]   research: publish/ empty — nothing published
 [06:30:27] git: commit + push
+To https://github.com/Calabasse/dash.git
+   0f5587c..50eaefd  main -> main
+[06:30:33] deployed.
+[06:30:05] prescription config has uncommitted changes in the engine repo — skipping refresh, keeping last published value
+[06:30:05] training: VOLM sync (--sync given)
+Step 1 FAILED
+Traceback (most recent call last):
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 75, in run_sync
+    _call_first_available(
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 40, in _call_first_available
+    return fn()
+           ^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/services/sync/sync_workouts.py", line 29, in sync_workouts
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/db/connection.py", line 31, in get_connection
+    db = get_database()
+         ^^^^^^^^^^^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/db/dal/__init__.py", line 17, in get_database
+    return DuckDBAdapter()
+           ^^^^^^^^^^^^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/db/dal/duckdb_adapter.py", line 124, in __init__
+    self._conn = duckdb.connect(resolved)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+_duckdb.IOException: IO Error: Could not set lock on file "/Users/chadcrawford/forge/projects/APE/volm.duckdb": Conflicting lock is held in /Users/chadcrawford/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11 (PID 28436) by user chadcrawford. See also https://duckdb.org/docs/stable/connect/concurrency
+Traceback (most recent call last):
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 75, in run_sync
+    _call_first_available(
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 40, in _call_first_available
+    return fn()
+           ^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/services/sync/sync_workouts.py", line 29, in sync_workouts
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/db/connection.py", line 31, in get_connection
+    db = get_database()
+         ^^^^^^^^^^^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/db/dal/__init__.py", line 17, in get_database
+    return DuckDBAdapter()
+           ^^^^^^^^^^^^^^^
+  File "/Users/chadcrawford/forge/projects/APE/app/db/dal/duckdb_adapter.py", line 124, in __init__
+    self._conn = duckdb.connect(resolved)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+_duckdb.IOException: IO Error: Could not set lock on file "/Users/chadcrawford/forge/projects/APE/volm.duckdb": Conflicting lock is held in /Users/chadcrawford/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11 (PID 28436) by user chadcrawford. See also https://duckdb.org/docs/stable/connect/concurrency
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/Users/chadcrawford/forge/projects/APE/app/api/routes/sync.py", line 85, in run_sync
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: {'status': 'error', 'stage': 'sync', 'message': 'IO Error: Could not set lock on file "/Users/chadcrawford/forge/projects/APE/volm.duckdb": Conflicting lock is held in /Users/chadcrawford/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11 (PID 28436) by user chadcrawford. See also https://duckdb.org/docs/stable/connect/concurrency'}
+🚨 NORMALIZE FILE EXECUTING 🚨
+[06:30:06]   sync failed (rate limit / offline) — keeping last data
+[06:30:06] training: build card data
+Traceback (most recent call last):
+  File "/Users/chadcrawford/forge/projects/APE/tools/build_card_data.py", line 844, in <module>
+    build()
+  File "/Users/chadcrawford/forge/projects/APE/tools/build_card_data.py", line 802, in build
+    con = duckdb.connect(str(DB), read_only=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_duckdb.IOException: IO Error: Could not set lock on file "/Users/chadcrawford/forge/projects/APE/volm.duckdb": Conflicting lock is held in /Users/chadcrawford/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11 (PID 28443) by user chadcrawford. See also https://duckdb.org/docs/stable/connect/concurrency
+[06:30:06]   build_card_data failed — keeping last data
+[06:30:06] calibration: build calibration data
+Traceback (most recent call last):
+  File "/Users/chadcrawford/forge/projects/APE/tools/build_calibration_data.py", line 239, in <module>
+    build()
+  File "/Users/chadcrawford/forge/projects/APE/tools/build_calibration_data.py", line 223, in build
+    con = duckdb.connect(str(DB), read_only=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_duckdb.IOException: IO Error: Could not set lock on file "/Users/chadcrawford/forge/projects/APE/volm.duckdb": Conflicting lock is held in /Users/chadcrawford/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11 (PID 28443) by user chadcrawford. See also https://duckdb.org/docs/stable/connect/concurrency
+[06:30:06]   build_calibration_data failed — keeping last data
+[06:30:06] training: cache-busted workout.html (v=20260821063006)
+[06:30:06] training: cache-busted workout2.html (v=20260821063006)
+[06:30:06] calibration: cache-busted tuning.html (v=20260821063006)
+[06:30:06] weight: refresh withings
+→ Fetching Withings data...
+withings  mode=live    rows=999  ok
+  ✓ Fetch complete
+→ Using data: /Users/chadcrawford/knowledge/CHAD_OS/raw/withings/2026-08-21/withings-9e76e63875f6e63e.json (fetched 2026-08-21)
+→ Regenerating dashboard...
+Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings_body_composition.html
+✓ Dashboard: /Users/chadcrawford/forge/projects/APE/dashboards/withings_body_composition.html
+[06:30:16] ped: render from template
+  ped.html written (demo seed)
+[06:30:16] research: sync opt-in last30days briefs
+[06:30:16]   research: publish/ empty — nothing published
+[06:30:16] git: commit + push
