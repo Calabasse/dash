@@ -102,6 +102,7 @@
   .llm.assess .lh .ai { color:#6aa9ff; }
   .llm p { margin:0; color:#cfcfcf; }
   .llm b { color:var(--text); }
+  .wtal { font-size:11px; line-height:1.4; color:var(--muted); margin-top:3px; }
 
   /* collapsible cues */
   .cues-wrap { margin:0 0 8px; }
@@ -322,6 +323,7 @@
     let h='';
     if(ex.assess) h+=`<div class="llm assess"><div class="lh"><span class="ai">✦</span>Last workout · assessment</div><p>${ex.assess}</p></div>`;
     if(ex.rationale) h+=`<div class="llm"><div class="lh"><span class="ai">✦</span>Proposed · adjustments</div><p>${ex.rationale}</p></div>`;
+    if(ex.when_to_add_load) h+=`<div class="wtal">${esc(ex.when_to_add_load)}</div>`;
     return h;
   }
 
