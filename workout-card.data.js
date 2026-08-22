@@ -99,8 +99,44 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-21",
+              "decision": "hold",
+              "decisionScore": 31.1025,
+              "decisionScoreRaw": 31.1025,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 36.70666666666666,
+              "decisionScoreRaw": 36.70666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 30.27333333333333,
+              "decisionScoreRaw": 30.27333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
             {
               "date": "2026-08-08",
               "decision": "hold",
@@ -144,75 +180,6 @@ window.PROGRAM = {
                 "actualReps": 15.0,
                 "loadDelta": null,
                 "repDelta": null,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "hold",
-              "decisionScore": 27.006666666666668,
-              "decisionScoreRaw": 27.006666666666668,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 25,
-                "prescribedReps": 8,
-                "prescribedRpe": 9,
-                "actualLoad": 22.5,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 4,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-02",
-              "decision": "hold",
-              "decisionScore": 20.87333333333333,
-              "decisionScoreRaw": 20.87333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-              "outcome": {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "behaviorClass": "insufficient_data",
-                "prescribedLoad": null,
-                "prescribedReps": null,
-                "prescribedRpe": null,
-                "actualLoad": 12.5,
-                "actualReps": 20.0,
-                "loadDelta": null,
-                "repDelta": null,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 22.04,
-              "decisionScoreRaw": 22.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 18,
-                "prescribedReps": 9,
-                "prescribedRpe": 10,
-                "actualLoad": 15.0,
-                "actualReps": 15.0,
-                "loadDelta": -2,
-                "repDelta": 6,
                 "confidence": 0.75
               }
             }
@@ -331,8 +298,32 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-21",
+              "decision": "hold",
+              "decisionScore": 92.37333333333333,
+              "decisionScoreRaw": 92.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 93.37333333333333,
+              "decisionScoreRaw": 93.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
             {
               "date": "2026-08-08",
               "decision": "hold",
@@ -399,52 +390,6 @@ window.PROGRAM = {
                 "actualReps": 12.0,
                 "loadDelta": 0,
                 "repDelta": -8,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-25",
-              "decision": "hold",
-              "decisionScore": 87.37333333333333,
-              "decisionScoreRaw": 87.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "83713f49-b352-4815-baf4-0a7f4bba0aa3",
-              "outcome": {
-                "sessionId": "83713f49-b352-4815-baf4-0a7f4bba0aa3",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 65,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 65.0,
-                "actualReps": 10.0,
-                "loadDelta": 0,
-                "repDelta": -10,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-19",
-              "decision": "hold",
-              "decisionScore": 88.04,
-              "decisionScoreRaw": 88.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "d23c4815-40b8-457f-ad27-154f817249fd",
-              "outcome": {
-                "sessionId": "d23c4815-40b8-457f-ad27-154f817249fd",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 65,
-                "prescribedReps": 15,
-                "prescribedRpe": 9,
-                "actualLoad": 55.0,
-                "actualReps": 18.0,
-                "loadDelta": -10,
-                "repDelta": 3,
                 "confidence": 0.75
               }
             }
@@ -578,8 +523,32 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-21",
+              "decision": "hold",
+              "decisionScore": 26.8525,
+              "decisionScoreRaw": 26.8525,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 26.123333333333335,
+              "decisionScoreRaw": 26.123333333333335,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
             {
               "date": "2026-08-08",
               "decision": "hold",
@@ -646,52 +615,6 @@ window.PROGRAM = {
                 "actualReps": 10.0,
                 "loadDelta": 0,
                 "repDelta": -7,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-25",
-              "decision": "hold",
-              "decisionScore": 24.1025,
-              "decisionScoreRaw": 24.1025,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "83713f49-b352-4815-baf4-0a7f4bba0aa3",
-              "outcome": {
-                "sessionId": "83713f49-b352-4815-baf4-0a7f4bba0aa3",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 20,
-                "prescribedReps": 7,
-                "prescribedRpe": 10,
-                "actualLoad": 17.5,
-                "actualReps": 15.0,
-                "loadDelta": -2,
-                "repDelta": 8,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-19",
-              "decision": "hold",
-              "decisionScore": 22.43583333333333,
-              "decisionScoreRaw": 22.43583333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "d23c4815-40b8-457f-ad27-154f817249fd",
-              "outcome": {
-                "sessionId": "d23c4815-40b8-457f-ad27-154f817249fd",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 20,
-                "prescribedReps": 8,
-                "prescribedRpe": 10,
-                "actualLoad": 17.5,
-                "actualReps": 13.0,
-                "loadDelta": -2,
-                "repDelta": 5,
                 "confidence": 0.75
               }
             }
@@ -815,6 +738,54 @@ window.PROGRAM = {
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 38.87333333333333,
+              "decisionScoreRaw": 38.87333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 38.45666666666666,
+              "decisionScoreRaw": 38.45666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-14",
+              "decision": "hold",
+              "decisionScore": 28.04,
+              "decisionScoreRaw": 28.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-13",
+              "decision": "hold",
+              "decisionScore": 41.54,
+              "decisionScoreRaw": 41.54,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
+              "outcome": null
+            },
+            {
               "date": "2026-08-08",
               "decision": "hold",
               "decisionScore": 37.151111111111106,
@@ -834,98 +805,6 @@ window.PROGRAM = {
                 "actualReps": 10.0,
                 "loadDelta": 0,
                 "repDelta": -5,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-07",
-              "decision": "hold",
-              "decisionScore": 28.31777777777778,
-              "decisionScoreRaw": 28.31777777777778,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-              "outcome": {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 25,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 22.5,
-                "actualReps": 14.0,
-                "loadDelta": -2,
-                "repDelta": 4,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-06",
-              "decision": "hold",
-              "decisionScore": 35.151111111111106,
-              "decisionScoreRaw": 35.151111111111106,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-              "outcome": {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 32,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 30.0,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 3,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "hold",
-              "decisionScore": 36.59555555555555,
-              "decisionScoreRaw": 36.59555555555555,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 32,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 30.0,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 3,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 34.51222222222222,
-              "decisionScoreRaw": 34.51222222222222,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 30,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 30.0,
-                "actualReps": 11.0,
-                "loadDelta": 0,
-                "repDelta": -4,
                 "confidence": 0.75
               }
             }
@@ -1085,7 +964,7 @@ window.PROGRAM = {
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [],
           "increaseCutoff": null,
           "reduceCutoff": null,
@@ -1171,6 +1050,42 @@ window.PROGRAM = {
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
+              "date": "2026-08-19",
+              "decision": "increase",
+              "decisionScore": 338.58166666666665,
+              "decisionScoreRaw": 338.58166666666665,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "1c95db48-1b09-4a28-b993-5b31f437de12",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "increase",
+              "decisionScore": 359.20666666666665,
+              "decisionScoreRaw": 359.20666666666665,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-14",
+              "decision": "increase",
+              "decisionScore": 336.29,
+              "decisionScoreRaw": 336.29,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
+              "outcome": null
+            },
+            {
               "date": "2026-08-08",
               "decision": "increase",
               "decisionScore": 360.3177777777778,
@@ -1213,75 +1128,6 @@ window.PROGRAM = {
                 "actualReps": 12.0,
                 "loadDelta": 0,
                 "repDelta": -8,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "increase",
-              "decisionScore": 375.04,
-              "decisionScoreRaw": 375.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 275,
-                "prescribedReps": 15,
-                "prescribedRpe": 9,
-                "actualLoad": 250.0,
-                "actualReps": 20.0,
-                "loadDelta": -25,
-                "repDelta": 5,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-02",
-              "decision": "increase",
-              "decisionScore": 343.165,
-              "decisionScoreRaw": 343.165,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-              "outcome": {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 300,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 300.0,
-                "actualReps": 8.0,
-                "loadDelta": 0,
-                "repDelta": -12,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "increase",
-              "decisionScore": 333.37333333333333,
-              "decisionScoreRaw": 333.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "insufficient_data",
-                "prescribedLoad": null,
-                "prescribedReps": null,
-                "prescribedRpe": null,
-                "actualLoad": 200.0,
-                "actualReps": 20.0,
-                "loadDelta": null,
-                "repDelta": null,
                 "confidence": 0.75
               }
             }
@@ -1440,8 +1286,32 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 8 -> 7.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-19",
+              "decision": "hold",
+              "decisionScore": 158.59833333333333,
+              "decisionScoreRaw": 158.59833333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "1c95db48-1b09-4a28-b993-5b31f437de12",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-14",
+              "decision": "hold",
+              "decisionScore": 153.23466666666664,
+              "decisionScoreRaw": 153.23466666666664,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
+              "outcome": null
+            },
             {
               "date": "2026-08-07",
               "decision": "hold",
@@ -1508,52 +1378,6 @@ window.PROGRAM = {
                 "actualReps": 8.0,
                 "loadDelta": 0,
                 "repDelta": -2,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-21",
-              "decision": "hold",
-              "decisionScore": 140.83999999999997,
-              "decisionScoreRaw": 140.83999999999997,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "c8825d20-c30f-43d6-a5fd-29103e166001",
-              "outcome": {
-                "sessionId": "c8825d20-c30f-43d6-a5fd-29103e166001",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 121,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 121.0,
-                "actualReps": 8.0,
-                "loadDelta": 0,
-                "repDelta": -2,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-08",
-              "decision": "hold",
-              "decisionScore": 158.66916666666668,
-              "decisionScoreRaw": 158.66916666666668,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "c8dbc020-24f0-463c-9d8f-a3ad0011fbcf",
-              "outcome": {
-                "sessionId": "c8dbc020-24f0-463c-9d8f-a3ad0011fbcf",
-                "behaviorClass": "matched",
-                "prescribedLoad": 149,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 148.5,
-                "actualReps": 9.0,
-                "loadDelta": 0,
-                "repDelta": -1,
                 "confidence": 0.75
               }
             }
@@ -1674,8 +1498,32 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-19",
+              "decision": "hold",
+              "decisionScore": 46.04,
+              "decisionScoreRaw": 46.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "1c95db48-1b09-4a28-b993-5b31f437de12",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-14",
+              "decision": "hold",
+              "decisionScore": 49.15111111111111,
+              "decisionScoreRaw": 49.15111111111111,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
+              "outcome": null
+            },
             {
               "date": "2026-08-07",
               "decision": "hold",
@@ -1739,52 +1587,6 @@ window.PROGRAM = {
                 "prescribedReps": 15,
                 "prescribedRpe": 10,
                 "actualLoad": 40.0,
-                "actualReps": 10.0,
-                "loadDelta": 0,
-                "repDelta": -5,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-21",
-              "decision": "hold",
-              "decisionScore": 44.81777777777778,
-              "decisionScoreRaw": 44.81777777777778,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "c8825d20-c30f-43d6-a5fd-29103e166001",
-              "outcome": {
-                "sessionId": "c8825d20-c30f-43d6-a5fd-29103e166001",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 38,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 35.0,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 2,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-08",
-              "decision": "hold",
-              "decisionScore": 48.79,
-              "decisionScoreRaw": 48.79,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "c8dbc020-24f0-463c-9d8f-a3ad0011fbcf",
-              "outcome": {
-                "sessionId": "c8dbc020-24f0-463c-9d8f-a3ad0011fbcf",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 45,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 45.0,
                 "actualReps": 10.0,
                 "loadDelta": 0,
                 "repDelta": -5,
@@ -1909,8 +1711,32 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-19",
+              "decision": "hold",
+              "decisionScore": 77.59555555555556,
+              "decisionScoreRaw": 77.59555555555556,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "1c95db48-1b09-4a28-b993-5b31f437de12",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-14",
+              "decision": "hold",
+              "decisionScore": 79.26222222222222,
+              "decisionScoreRaw": 79.26222222222222,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
+              "outcome": null
+            },
             {
               "date": "2026-08-07",
               "decision": "hold",
@@ -1976,52 +1802,6 @@ window.PROGRAM = {
                 "actualLoad": 65.0,
                 "actualReps": 10.0,
                 "loadDelta": -10,
-                "repDelta": -10,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-21",
-              "decision": "hold",
-              "decisionScore": 77.70666666666668,
-              "decisionScoreRaw": 77.70666666666668,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "c8825d20-c30f-43d6-a5fd-29103e166001",
-              "outcome": {
-                "sessionId": "c8825d20-c30f-43d6-a5fd-29103e166001",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 50,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 60.0,
-                "actualReps": 10.0,
-                "loadDelta": 10,
-                "repDelta": -10,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-08",
-              "decision": "hold",
-              "decisionScore": 80.59555555555556,
-              "decisionScoreRaw": 80.59555555555556,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "c8dbc020-24f0-463c-9d8f-a3ad0011fbcf",
-              "outcome": {
-                "sessionId": "c8dbc020-24f0-463c-9d8f-a3ad0011fbcf",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 75,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 70.0,
-                "actualReps": 10.0,
-                "loadDelta": -5,
                 "repDelta": -10,
                 "confidence": 0.75
               }
@@ -2156,8 +1936,44 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-19",
+              "decision": "increase",
+              "decisionScore": 338.58166666666665,
+              "decisionScoreRaw": 338.58166666666665,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "1c95db48-1b09-4a28-b993-5b31f437de12",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "increase",
+              "decisionScore": 359.20666666666665,
+              "decisionScoreRaw": 359.20666666666665,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-14",
+              "decision": "increase",
+              "decisionScore": 336.29,
+              "decisionScoreRaw": 336.29,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
+              "outcome": null
+            },
             {
               "date": "2026-08-08",
               "decision": "increase",
@@ -2201,75 +2017,6 @@ window.PROGRAM = {
                 "actualReps": 12.0,
                 "loadDelta": 0,
                 "repDelta": -8,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "increase",
-              "decisionScore": 375.04,
-              "decisionScoreRaw": 375.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 275,
-                "prescribedReps": 15,
-                "prescribedRpe": 9,
-                "actualLoad": 250.0,
-                "actualReps": 20.0,
-                "loadDelta": -25,
-                "repDelta": 5,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-02",
-              "decision": "increase",
-              "decisionScore": 343.165,
-              "decisionScoreRaw": 343.165,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-              "outcome": {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 300,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 300.0,
-                "actualReps": 8.0,
-                "loadDelta": 0,
-                "repDelta": -12,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "increase",
-              "decisionScore": 333.37333333333333,
-              "decisionScoreRaw": 333.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "insufficient_data",
-                "prescribedLoad": null,
-                "prescribedReps": null,
-                "prescribedRpe": null,
-                "actualLoad": 200.0,
-                "actualReps": 20.0,
-                "loadDelta": null,
-                "repDelta": null,
                 "confidence": 0.75
               }
             }
@@ -2379,6 +2126,42 @@ window.PROGRAM = {
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
+              "date": "2026-08-21",
+              "decision": "hold",
+              "decisionScore": 31.1025,
+              "decisionScoreRaw": 31.1025,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 36.70666666666666,
+              "decisionScoreRaw": 36.70666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 30.27333333333333,
+              "decisionScoreRaw": 30.27333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
+            {
               "date": "2026-08-08",
               "decision": "hold",
               "decisionScore": 29.810833333333335,
@@ -2421,75 +2204,6 @@ window.PROGRAM = {
                 "actualReps": 15.0,
                 "loadDelta": null,
                 "repDelta": null,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "hold",
-              "decisionScore": 27.006666666666668,
-              "decisionScoreRaw": 27.006666666666668,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 25,
-                "prescribedReps": 8,
-                "prescribedRpe": 9,
-                "actualLoad": 22.5,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 4,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-02",
-              "decision": "hold",
-              "decisionScore": 20.87333333333333,
-              "decisionScoreRaw": 20.87333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-              "outcome": {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "behaviorClass": "insufficient_data",
-                "prescribedLoad": null,
-                "prescribedReps": null,
-                "prescribedRpe": null,
-                "actualLoad": 12.5,
-                "actualReps": 20.0,
-                "loadDelta": null,
-                "repDelta": null,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 22.04,
-              "decisionScoreRaw": 22.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 18,
-                "prescribedReps": 9,
-                "prescribedRpe": 10,
-                "actualLoad": 15.0,
-                "actualReps": 15.0,
-                "loadDelta": -2,
-                "repDelta": 6,
                 "confidence": 0.75
               }
             }
@@ -2681,6 +2395,54 @@ window.PROGRAM = {
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 38.87333333333333,
+              "decisionScoreRaw": 38.87333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 38.45666666666666,
+              "decisionScoreRaw": 38.45666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-14",
+              "decision": "hold",
+              "decisionScore": 28.04,
+              "decisionScoreRaw": 28.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-13",
+              "decision": "hold",
+              "decisionScore": 41.54,
+              "decisionScoreRaw": 41.54,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
+              "outcome": null
+            },
+            {
               "date": "2026-08-08",
               "decision": "hold",
               "decisionScore": 37.151111111111106,
@@ -2700,98 +2462,6 @@ window.PROGRAM = {
                 "actualReps": 10.0,
                 "loadDelta": 0,
                 "repDelta": -5,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-07",
-              "decision": "hold",
-              "decisionScore": 28.31777777777778,
-              "decisionScoreRaw": 28.31777777777778,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-              "outcome": {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 25,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 22.5,
-                "actualReps": 14.0,
-                "loadDelta": -2,
-                "repDelta": 4,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-06",
-              "decision": "hold",
-              "decisionScore": 35.151111111111106,
-              "decisionScoreRaw": 35.151111111111106,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-              "outcome": {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 32,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 30.0,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 3,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "hold",
-              "decisionScore": 36.59555555555555,
-              "decisionScoreRaw": 36.59555555555555,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 32,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 30.0,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 3,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 34.51222222222222,
-              "decisionScoreRaw": 34.51222222222222,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 30,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 30.0,
-                "actualReps": 11.0,
-                "loadDelta": 0,
-                "repDelta": -4,
                 "confidence": 0.75
               }
             }
@@ -2949,11 +2619,35 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "stale_ignored",
-          "gate_reason": "next_program: hold (stale, 2026-08-06) \u2014 ignored",
+          "gate_status": "confirmed",
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 8 -> 7.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 33.37333333333333,
+              "decisionScoreRaw": 33.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-13",
+              "decision": "hold",
+              "decisionScore": 33.165,
+              "decisionScoreRaw": 33.165,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
+              "outcome": null
+            },
             {
               "date": "2026-08-06",
               "decision": "hold",
@@ -3022,61 +2716,11 @@ window.PROGRAM = {
                 "repDelta": -7,
                 "confidence": 0.75
               }
-            },
-            {
-              "date": "2026-07-20",
-              "decision": "hold",
-              "decisionScore": 65.04,
-              "decisionScoreRaw": 65.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-              "outcome": {
-                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 175,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 175.0,
-                "actualReps": 10.0,
-                "loadDelta": 0,
-                "repDelta": -5,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-07",
-              "decision": "hold",
-              "decisionScore": 95.45666666666666,
-              "decisionScoreRaw": 95.45666666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-              "outcome": {
-                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 125,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 175.0,
-                "actualReps": 8.0,
-                "loadDelta": 50,
-                "repDelta": -7,
-                "confidence": 0.75
-              }
             }
           ],
           "increaseCutoff": 0.75,
           "reduceCutoff": -1.25,
-          "ignoredDecision": {
-            "date": "2026-08-06",
-            "decision": "hold",
-            "source": "program_builder_v2"
-          },
+          "ignoredDecision": null,
           "outcome": null,
           "effectiveness": {
             "window": [
@@ -3200,11 +2844,35 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "stale_ignored",
-          "gate_reason": "next_program: hold (stale, 2026-08-06) \u2014 ignored",
+          "gate_status": "confirmed",
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 8 -> 7.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 154.95666666666665,
+              "decisionScoreRaw": 154.95666666666665,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-13",
+              "decision": "hold",
+              "decisionScore": 155.32333333333332,
+              "decisionScoreRaw": 155.32333333333332,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
+              "outcome": null
+            },
             {
               "date": "2026-08-06",
               "decision": "hold",
@@ -3273,61 +2941,11 @@ window.PROGRAM = {
                 "repDelta": -1,
                 "confidence": 0.75
               }
-            },
-            {
-              "date": "2026-07-20",
-              "decision": "hold",
-              "decisionScore": 147.80666666666664,
-              "decisionScoreRaw": 147.80666666666664,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-              "outcome": {
-                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 132,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 132.0,
-                "actualReps": 8.0,
-                "loadDelta": 0,
-                "repDelta": -2,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-07",
-              "decision": "hold",
-              "decisionScore": 163.64666666666668,
-              "decisionScoreRaw": 163.64666666666668,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-              "outcome": {
-                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 154,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 154.0,
-                "actualReps": 7.0,
-                "loadDelta": 0,
-                "repDelta": -3,
-                "confidence": 0.75
-              }
             }
           ],
           "increaseCutoff": 0.75,
           "reduceCutoff": -1.25,
-          "ignoredDecision": {
-            "date": "2026-08-06",
-            "decision": "hold",
-            "source": "program_builder_v2"
-          },
+          "ignoredDecision": null,
           "outcome": null,
           "effectiveness": {
             "window": [
@@ -3454,8 +3072,56 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-19). This exercise's own recovery estimate (62h, stretch stimulus, high fatigue) extends to 2026-08-21, past that. Advisory only -- no volume was changed.",
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 38.87333333333333,
+              "decisionScoreRaw": 38.87333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 38.45666666666666,
+              "decisionScoreRaw": 38.45666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-14",
+              "decision": "hold",
+              "decisionScore": 28.04,
+              "decisionScoreRaw": 28.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-13",
+              "decision": "hold",
+              "decisionScore": 41.54,
+              "decisionScoreRaw": 41.54,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
+              "outcome": null
+            },
             {
               "date": "2026-08-08",
               "decision": "hold",
@@ -3476,98 +3142,6 @@ window.PROGRAM = {
                 "actualReps": 10.0,
                 "loadDelta": 0,
                 "repDelta": -5,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-07",
-              "decision": "hold",
-              "decisionScore": 28.31777777777778,
-              "decisionScoreRaw": 28.31777777777778,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-              "outcome": {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 25,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 22.5,
-                "actualReps": 14.0,
-                "loadDelta": -2,
-                "repDelta": 4,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-06",
-              "decision": "hold",
-              "decisionScore": 35.151111111111106,
-              "decisionScoreRaw": 35.151111111111106,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-              "outcome": {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 32,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 30.0,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 3,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "hold",
-              "decisionScore": 36.59555555555555,
-              "decisionScoreRaw": 36.59555555555555,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 32,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 30.0,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 3,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 34.51222222222222,
-              "decisionScoreRaw": 34.51222222222222,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 30,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 30.0,
-                "actualReps": 11.0,
-                "loadDelta": 0,
-                "repDelta": -4,
                 "confidence": 0.75
               }
             }
@@ -3698,11 +3272,35 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "stale_ignored",
-          "gate_reason": "next_program: hold (stale, 2026-08-06) \u2014 ignored",
+          "gate_status": "confirmed",
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 8 -> 7.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 81.20666666666668,
+              "decisionScoreRaw": 81.20666666666668,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-13",
+              "decision": "hold",
+              "decisionScore": 83.08166666666666,
+              "decisionScoreRaw": 83.08166666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
+              "outcome": null
+            },
             {
               "date": "2026-08-06",
               "decision": "hold",
@@ -3771,61 +3369,11 @@ window.PROGRAM = {
                 "repDelta": -1,
                 "confidence": 0.75
               }
-            },
-            {
-              "date": "2026-07-20",
-              "decision": "hold",
-              "decisionScore": 75.31777777777778,
-              "decisionScoreRaw": 75.31777777777778,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-              "outcome": {
-                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-                "behaviorClass": "load_undershoot",
-                "prescribedLoad": 62,
-                "prescribedReps": 11,
-                "prescribedRpe": 10,
-                "actualLoad": 60.0,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 1,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-07",
-              "decision": "hold",
-              "decisionScore": 84.8525,
-              "decisionScoreRaw": 84.8525,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-              "outcome": {
-                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 75,
-                "prescribedReps": 13,
-                "prescribedRpe": 10,
-                "actualLoad": 75.0,
-                "actualReps": 11.0,
-                "loadDelta": 0,
-                "repDelta": -2,
-                "confidence": 0.75
-              }
             }
           ],
           "increaseCutoff": 0.75,
           "reduceCutoff": -1.25,
-          "ignoredDecision": {
-            "date": "2026-08-06",
-            "decision": "hold",
-            "source": "program_builder_v2"
-          },
+          "ignoredDecision": null,
           "outcome": null,
           "effectiveness": {
             "window": [
@@ -3936,11 +3484,35 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "stale_ignored",
-          "gate_reason": "next_program: hold (stale, 2026-08-06) \u2014 ignored",
+          "gate_status": "confirmed",
+          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-19). This exercise's own recovery estimate (62h, stretch stimulus, high fatigue) extends to 2026-08-21, past that. Advisory only -- no volume was changed.",
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 36.26222222222222,
+              "decisionScoreRaw": 36.26222222222222,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-13",
+              "decision": "hold",
+              "decisionScore": 37.23444444444444,
+              "decisionScoreRaw": 37.23444444444444,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
+              "outcome": null
+            },
             {
               "date": "2026-08-06",
               "decision": "hold",
@@ -4009,61 +3581,11 @@ window.PROGRAM = {
                 "repDelta": -6,
                 "confidence": 0.75
               }
-            },
-            {
-              "date": "2026-07-20",
-              "decision": "hold",
-              "decisionScore": 39.54,
-              "decisionScoreRaw": 39.54,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-              "outcome": {
-                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 30,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 30.0,
-                "actualReps": 10.0,
-                "loadDelta": 0,
-                "repDelta": -5,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-07",
-              "decision": "hold",
-              "decisionScore": 41.54,
-              "decisionScoreRaw": 41.54,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-              "outcome": {
-                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 40,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 40.0,
-                "actualReps": 7.0,
-                "loadDelta": 0,
-                "repDelta": -8,
-                "confidence": 0.75
-              }
             }
           ],
           "increaseCutoff": 0.75,
           "reduceCutoff": -1.25,
-          "ignoredDecision": {
-            "date": "2026-08-06",
-            "decision": "hold",
-            "source": "program_builder_v2"
-          },
+          "ignoredDecision": null,
           "outcome": null,
           "effectiveness": {
             "window": [
@@ -4221,8 +3743,44 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-21",
+              "decision": "hold",
+              "decisionScore": 31.1025,
+              "decisionScoreRaw": 31.1025,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 36.70666666666666,
+              "decisionScoreRaw": 36.70666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 30.27333333333333,
+              "decisionScoreRaw": 30.27333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
             {
               "date": "2026-08-08",
               "decision": "hold",
@@ -4266,75 +3824,6 @@ window.PROGRAM = {
                 "actualReps": 15.0,
                 "loadDelta": null,
                 "repDelta": null,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "hold",
-              "decisionScore": 27.006666666666668,
-              "decisionScoreRaw": 27.006666666666668,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 25,
-                "prescribedReps": 8,
-                "prescribedRpe": 9,
-                "actualLoad": 22.5,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 4,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-02",
-              "decision": "hold",
-              "decisionScore": 20.87333333333333,
-              "decisionScoreRaw": 20.87333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-              "outcome": {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "behaviorClass": "insufficient_data",
-                "prescribedLoad": null,
-                "prescribedReps": null,
-                "prescribedRpe": null,
-                "actualLoad": 12.5,
-                "actualReps": 20.0,
-                "loadDelta": null,
-                "repDelta": null,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 22.04,
-              "decisionScoreRaw": 22.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 18,
-                "prescribedReps": 9,
-                "prescribedRpe": 10,
-                "actualLoad": 15.0,
-                "actualReps": 15.0,
-                "loadDelta": -2,
-                "repDelta": 6,
                 "confidence": 0.75
               }
             }
@@ -4463,6 +3952,42 @@ window.PROGRAM = {
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
+              "date": "2026-08-19",
+              "decision": "increase",
+              "decisionScore": 338.58166666666665,
+              "decisionScoreRaw": 338.58166666666665,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "1c95db48-1b09-4a28-b993-5b31f437de12",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "increase",
+              "decisionScore": 359.20666666666665,
+              "decisionScoreRaw": 359.20666666666665,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-14",
+              "decision": "increase",
+              "decisionScore": 336.29,
+              "decisionScoreRaw": 336.29,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
+              "outcome": null
+            },
+            {
               "date": "2026-08-08",
               "decision": "increase",
               "decisionScore": 360.3177777777778,
@@ -4505,75 +4030,6 @@ window.PROGRAM = {
                 "actualReps": 12.0,
                 "loadDelta": 0,
                 "repDelta": -8,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "increase",
-              "decisionScore": 375.04,
-              "decisionScoreRaw": 375.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 275,
-                "prescribedReps": 15,
-                "prescribedRpe": 9,
-                "actualLoad": 250.0,
-                "actualReps": 20.0,
-                "loadDelta": -25,
-                "repDelta": 5,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-02",
-              "decision": "increase",
-              "decisionScore": 343.165,
-              "decisionScoreRaw": 343.165,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-              "outcome": {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 300,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 300.0,
-                "actualReps": 8.0,
-                "loadDelta": 0,
-                "repDelta": -12,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "increase",
-              "decisionScore": 333.37333333333333,
-              "decisionScoreRaw": 333.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "insufficient_data",
-                "prescribedLoad": null,
-                "prescribedReps": null,
-                "prescribedRpe": null,
-                "actualLoad": 200.0,
-                "actualReps": 20.0,
-                "loadDelta": null,
-                "repDelta": null,
                 "confidence": 0.75
               }
             }
@@ -4745,8 +4201,44 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-21",
+              "decision": "hold",
+              "decisionScore": 31.1025,
+              "decisionScoreRaw": 31.1025,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 36.70666666666666,
+              "decisionScoreRaw": 36.70666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 30.27333333333333,
+              "decisionScoreRaw": 30.27333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
             {
               "date": "2026-08-08",
               "decision": "hold",
@@ -4790,75 +4282,6 @@ window.PROGRAM = {
                 "actualReps": 15.0,
                 "loadDelta": null,
                 "repDelta": null,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "hold",
-              "decisionScore": 27.006666666666668,
-              "decisionScoreRaw": 27.006666666666668,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 25,
-                "prescribedReps": 8,
-                "prescribedRpe": 9,
-                "actualLoad": 22.5,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 4,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-02",
-              "decision": "hold",
-              "decisionScore": 20.87333333333333,
-              "decisionScoreRaw": 20.87333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-              "outcome": {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "behaviorClass": "insufficient_data",
-                "prescribedLoad": null,
-                "prescribedReps": null,
-                "prescribedRpe": null,
-                "actualLoad": 12.5,
-                "actualReps": 20.0,
-                "loadDelta": null,
-                "repDelta": null,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 22.04,
-              "decisionScoreRaw": 22.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 18,
-                "prescribedReps": 9,
-                "prescribedRpe": 10,
-                "actualLoad": 15.0,
-                "actualReps": 15.0,
-                "loadDelta": -2,
-                "repDelta": 6,
                 "confidence": 0.75
               }
             }
@@ -4977,8 +4400,32 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-21",
+              "decision": "hold",
+              "decisionScore": 92.37333333333333,
+              "decisionScoreRaw": 92.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 93.37333333333333,
+              "decisionScoreRaw": 93.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
             {
               "date": "2026-08-08",
               "decision": "hold",
@@ -5045,52 +4492,6 @@ window.PROGRAM = {
                 "actualReps": 12.0,
                 "loadDelta": 0,
                 "repDelta": -8,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-25",
-              "decision": "hold",
-              "decisionScore": 87.37333333333333,
-              "decisionScoreRaw": 87.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "83713f49-b352-4815-baf4-0a7f4bba0aa3",
-              "outcome": {
-                "sessionId": "83713f49-b352-4815-baf4-0a7f4bba0aa3",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 65,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 65.0,
-                "actualReps": 10.0,
-                "loadDelta": 0,
-                "repDelta": -10,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-19",
-              "decision": "hold",
-              "decisionScore": 88.04,
-              "decisionScoreRaw": 88.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "d23c4815-40b8-457f-ad27-154f817249fd",
-              "outcome": {
-                "sessionId": "d23c4815-40b8-457f-ad27-154f817249fd",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 65,
-                "prescribedReps": 15,
-                "prescribedRpe": 9,
-                "actualLoad": 55.0,
-                "actualReps": 18.0,
-                "loadDelta": -10,
-                "repDelta": 3,
                 "confidence": 0.75
               }
             }
@@ -5224,8 +4625,32 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-21",
+              "decision": "hold",
+              "decisionScore": 26.8525,
+              "decisionScoreRaw": 26.8525,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 26.123333333333335,
+              "decisionScoreRaw": 26.123333333333335,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
             {
               "date": "2026-08-08",
               "decision": "hold",
@@ -5292,52 +4717,6 @@ window.PROGRAM = {
                 "actualReps": 10.0,
                 "loadDelta": 0,
                 "repDelta": -7,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-25",
-              "decision": "hold",
-              "decisionScore": 24.1025,
-              "decisionScoreRaw": 24.1025,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "83713f49-b352-4815-baf4-0a7f4bba0aa3",
-              "outcome": {
-                "sessionId": "83713f49-b352-4815-baf4-0a7f4bba0aa3",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 20,
-                "prescribedReps": 7,
-                "prescribedRpe": 10,
-                "actualLoad": 17.5,
-                "actualReps": 15.0,
-                "loadDelta": -2,
-                "repDelta": 8,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-19",
-              "decision": "hold",
-              "decisionScore": 22.43583333333333,
-              "decisionScoreRaw": 22.43583333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "d23c4815-40b8-457f-ad27-154f817249fd",
-              "outcome": {
-                "sessionId": "d23c4815-40b8-457f-ad27-154f817249fd",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 20,
-                "prescribedReps": 8,
-                "prescribedRpe": 10,
-                "actualLoad": 17.5,
-                "actualReps": 13.0,
-                "loadDelta": -2,
-                "repDelta": 5,
                 "confidence": 0.75
               }
             }
@@ -5458,8 +4837,56 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 38.87333333333333,
+              "decisionScoreRaw": 38.87333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 38.45666666666666,
+              "decisionScoreRaw": 38.45666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-14",
+              "decision": "hold",
+              "decisionScore": 28.04,
+              "decisionScoreRaw": 28.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-13",
+              "decision": "hold",
+              "decisionScore": 41.54,
+              "decisionScoreRaw": 41.54,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
+              "outcome": null
+            },
             {
               "date": "2026-08-08",
               "decision": "hold",
@@ -5480,98 +4907,6 @@ window.PROGRAM = {
                 "actualReps": 10.0,
                 "loadDelta": 0,
                 "repDelta": -5,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-07",
-              "decision": "hold",
-              "decisionScore": 28.31777777777778,
-              "decisionScoreRaw": 28.31777777777778,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-              "outcome": {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 25,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 22.5,
-                "actualReps": 14.0,
-                "loadDelta": -2,
-                "repDelta": 4,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-06",
-              "decision": "hold",
-              "decisionScore": 35.151111111111106,
-              "decisionScoreRaw": 35.151111111111106,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-              "outcome": {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 32,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 30.0,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 3,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "hold",
-              "decisionScore": 36.59555555555555,
-              "decisionScoreRaw": 36.59555555555555,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 32,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 30.0,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 3,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 34.51222222222222,
-              "decisionScoreRaw": 34.51222222222222,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 30,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 30.0,
-                "actualReps": 11.0,
-                "loadDelta": 0,
-                "repDelta": -4,
                 "confidence": 0.75
               }
             }
@@ -5718,7 +5053,7 @@ window.PROGRAM = {
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [],
           "increaseCutoff": null,
           "reduceCutoff": null,
@@ -5801,8 +5136,44 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
+            {
+              "date": "2026-08-19",
+              "decision": "increase",
+              "decisionScore": 338.58166666666665,
+              "decisionScoreRaw": 338.58166666666665,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "1c95db48-1b09-4a28-b993-5b31f437de12",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "increase",
+              "decisionScore": 359.20666666666665,
+              "decisionScoreRaw": 359.20666666666665,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-14",
+              "decision": "increase",
+              "decisionScore": 336.29,
+              "decisionScoreRaw": 336.29,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
+              "outcome": null
+            },
             {
               "date": "2026-08-08",
               "decision": "increase",
@@ -5846,75 +5217,6 @@ window.PROGRAM = {
                 "actualReps": 12.0,
                 "loadDelta": 0,
                 "repDelta": -8,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "increase",
-              "decisionScore": 375.04,
-              "decisionScoreRaw": 375.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 275,
-                "prescribedReps": 15,
-                "prescribedRpe": 9,
-                "actualLoad": 250.0,
-                "actualReps": 20.0,
-                "loadDelta": -25,
-                "repDelta": 5,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-02",
-              "decision": "increase",
-              "decisionScore": 343.165,
-              "decisionScoreRaw": 343.165,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-              "outcome": {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 300,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 300.0,
-                "actualReps": 8.0,
-                "loadDelta": 0,
-                "repDelta": -12,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "increase",
-              "decisionScore": 333.37333333333333,
-              "decisionScoreRaw": 333.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "insufficient_data",
-                "prescribedLoad": null,
-                "prescribedReps": null,
-                "prescribedRpe": null,
-                "actualLoad": 200.0,
-                "actualReps": 20.0,
-                "loadDelta": null,
-                "repDelta": null,
                 "confidence": 0.75
               }
             }

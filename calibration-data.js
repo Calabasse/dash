@@ -11,7 +11,7 @@ window.CALIBRATION = {
       "max": 0.2
     },
     "rpe_target_adjustment": {
-      "value": null,
+      "value": -0.4,
       "min": -1.0,
       "max": 1.0
     }
@@ -38,6 +38,54 @@ window.CALIBRATION = {
   },
   "history": [
     {
+      "paramName": "rpe_target_adjustment",
+      "previousValue": -0.2,
+      "newValue": -0.4,
+      "timestamp": "2026-08-22 10:04:24.015915",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "regression_sensitivity",
+      "previousValue": -0.2,
+      "newValue": -0.2,
+      "timestamp": "2026-08-22 10:04:24.015915",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "progression_bias",
+      "previousValue": 0.2,
+      "newValue": 0.2,
+      "timestamp": "2026-08-22 10:04:24.015915",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "rpe_target_adjustment",
+      "previousValue": 0.0,
+      "newValue": -0.2,
+      "timestamp": "2026-08-22 10:02:56.871965",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "regression_sensitivity",
+      "previousValue": -0.2,
+      "newValue": -0.2,
+      "timestamp": "2026-08-22 10:02:56.871965",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "progression_bias",
+      "previousValue": 0.2,
+      "newValue": 0.2,
+      "timestamp": "2026-08-22 10:02:56.871965",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
       "paramName": "regression_sensitivity",
       "previousValue": -0.2,
       "newValue": -0.2,
@@ -66,54 +114,6 @@ window.CALIBRATION = {
       "previousValue": 0.2,
       "newValue": 0.2,
       "timestamp": "2026-08-09 21:55:57.197868",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "regression_sensitivity",
-      "previousValue": -0.2,
-      "newValue": -0.2,
-      "timestamp": "2026-08-09 21:55:55.080787",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "progression_bias",
-      "previousValue": 0.2,
-      "newValue": 0.2,
-      "timestamp": "2026-08-09 21:55:55.080787",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "regression_sensitivity",
-      "previousValue": -0.175,
-      "newValue": -0.2,
-      "timestamp": "2026-08-08 23:29:02.669641",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "progression_bias",
-      "previousValue": 0.2,
-      "newValue": 0.2,
-      "timestamp": "2026-08-08 23:29:02.669641",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "regression_sensitivity",
-      "previousValue": -0.15,
-      "newValue": -0.175,
-      "timestamp": "2026-08-08 23:29:01.031990",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "progression_bias",
-      "previousValue": 0.2,
-      "newValue": 0.2,
-      "timestamp": "2026-08-08 23:29:01.031990",
       "controlState": "too_conservative",
       "controlReason": "increase_progression"
     }
@@ -159,5 +159,5 @@ window.CALIBRATION = {
       "note": "Declared in the control schema but never written by run_system_tuner() -- not auto-tuned."
     }
   },
-  "generated_at": "2026-08-21T22:04:34.957071+00:00"
+  "generated_at": "2026-08-22T10:30:13.923691+00:00"
 };
