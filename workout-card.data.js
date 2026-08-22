@@ -42,6 +42,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 27.5 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 27.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (25) for 10-12 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 15 clean reps at 27.5 lb at RPE 9 or lower; then increase to 30 lb.",
           "sets": [
             {
               "type": "W",
@@ -97,7 +98,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -254,6 +255,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 65 lb \u00d7 20 @ RPE 9 \u00b7 band_resisted_isolation \u00b7 anchor 20 reps.",
           "rationale": "<b>\u2717 QC fail: set_role_conflict(warmup_labeled_set_at_working_effort(set 1 @ RPE 8))</b> \u00b7 Hold 65 lb band \u2014 chase reps to ~20 at RPE 9. Bands available: 35/45/55/65 only. Back-off holds its own last load (55) for 12-14 \u2014 it has not reached the 20-rep anchor on its own performance yet.",
+          "when_to_add_load": "Already at the heaviest available resistance; progress reps, tempo and ROM before any new load.",
           "sets": [
             {
               "type": "W",
@@ -296,7 +298,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -466,6 +468,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 22.5 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 22.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (20) for 14-16 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 15 clean reps at 22.5 lb at RPE 9 or lower; then increase to 25 lb.",
           "sets": [
             {
               "type": "W",
@@ -521,7 +524,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -691,6 +694,7 @@ window.PROGRAM = {
           "action": "review_required",
           "assess": "Last top set: load and reps not recorded.",
           "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe: last session's load and reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -733,7 +737,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": "Day A (back/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-24, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
@@ -881,6 +885,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 0 lb \u00d7 10 @ RPE 9 \u00b7 bodyweight \u00b7 anchor 25 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Bodyweight \u2014 chase reps to \u226525 at RPE 9 before adding external load. Back-off holds its own last load (bodyweight) for 17-19 \u2014 it has not reached the 25-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 25 clean reps at bodyweight at RPE 9 or lower; then add 5 lb external load.",
           "sets": [
             {
               "type": "W",
@@ -990,6 +995,7 @@ window.PROGRAM = {
           "action": "review_required",
           "assess": "Last top set: load and reps not recorded.",
           "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe: last session's load and reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -1045,7 +1051,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
+          "gate_reason": "next_program: increase (fresh, cohort signal only \u2014 per-exercise gate governs the actual load)",
           "recoveryOverlapWarning": "Day A (back/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-23, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
@@ -1229,6 +1235,7 @@ window.PROGRAM = {
           "action": "hold",
           "assess": "Last top set: 148.5 lb \u00d7 12 @ RPE 10 \u00b7 barbell \u00b7 anchor 10 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 148.8 \u2014 backoffs not yet productive; chase reps to ~10 at RPE 8 before adding load. Back-off holds its own last load (132.3) for 8-10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 10 clean reps at 148.5 lb at RPE 9 or lower; then increase to 154.3 lb.",
           "sets": [
             {
               "type": "W",
@@ -1284,7 +1291,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 8 -> 7.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -1454,6 +1461,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 42.5 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 42.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (37.5) for 10-12 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 15 clean reps at 42.5 lb at RPE 9 or lower; then increase to 45 lb.",
           "sets": [
             {
               "type": "W",
@@ -1496,7 +1504,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -1667,6 +1675,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 65 lb \u00d7 10 @ RPE 9 \u00b7 band_combo \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 75 lb band stack \u2014 chase reps to ~15 at RPE 9 before adding a band. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350. Back-off holds its own last load (50) for 8-10 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 15 clean reps at 75 lb at RPE 9 or lower; then step up to 100 lb.",
           "sets": [
             {
               "type": "W",
@@ -1709,7 +1718,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -1879,6 +1888,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 300 lb \u00d7 8 @ RPE 9 \u00b7 band_combo \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 300 lb band stack \u2014 chase reps to ~15 at RPE 9 before adding a band. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350. Back-off holds its own last load (275) for 9-11 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 15 clean reps at 300 lb at RPE 9 or lower; then step up to 350 lb.",
           "sets": [
             {
               "type": "W",
@@ -1934,7 +1944,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
+          "gate_reason": "next_program: increase (fresh, cohort signal only \u2014 per-exercise gate governs the actual load)",
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -2092,6 +2102,7 @@ window.PROGRAM = {
           "action": "review_required",
           "assess": "Last top set: load and reps not recorded.",
           "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe: last session's load and reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -2121,7 +2132,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": "Day C (delts/abs) also trains delts (the logged Day C session on 2026-08-21). This exercise's own recovery estimate (52h, stretch stimulus, moderate fatigue) extends to 2026-08-22, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
@@ -2272,6 +2283,7 @@ window.PROGRAM = {
           "action": "review_required",
           "assess": "Last top set: reps not recorded.",
           "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps)</b> \u00b7 Cannot prescribe: last session's reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -2348,6 +2360,7 @@ window.PROGRAM = {
           "action": "review_required",
           "assess": "Last top set: load and reps not recorded.",
           "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe: last session's load and reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": 1,
@@ -2390,7 +2403,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
@@ -2565,6 +2578,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 175 assist \u00d7 11 @ RPE 10 \u00b7 band_assisted_bodyweight \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 175 lb assist \u2014 build toward 15 reps before reducing assistance. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350 (less assist = harder). Back-off holds its own last load (200) for 8-10 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 15 clean reps with 175 lb assistance at RPE 9 or lower; then reduce assistance to 150 lb.",
           "sets": [
             {
               "type": "W",
@@ -2620,7 +2634,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 8 -> 7.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -2790,6 +2804,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 143 lb \u00d7 9 @ RPE 10 \u00b7 barbell \u00b7 anchor 10 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 143.3 \u2014 reps below anchor; chase reps to ~10 at RPE 8 before adding load. Back-off holds its own last load (132.3) for 10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 10 clean reps at 143 lb at RPE 9 or lower; then increase to 148.8 lb.",
           "sets": [
             {
               "type": "W",
@@ -2845,7 +2860,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 8 -> 7.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -3015,6 +3030,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 35 lb \u00d7 11 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 35 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (32.5) for 10-12 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 15 clean reps at 35 lb at RPE 9 or lower; then increase to 37.5 lb.",
           "sets": [
             {
               "type": "W",
@@ -3070,7 +3086,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-19). This exercise's own recovery estimate (62h, stretch stimulus, high fatigue) extends to 2026-08-21, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -3218,6 +3234,7 @@ window.PROGRAM = {
           "action": "hold",
           "assess": "Last top set: 75 lb \u00d7 13 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 12 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 75 \u2014 backoffs not yet productive; chase reps to ~12 at RPE 8 before adding load. Back-off holds its own last load (67.5) for 12-14 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 12 clean reps at 75 lb at RPE 9 or lower; then increase to 80 lb.",
           "sets": [
             {
               "type": "W",
@@ -3273,7 +3290,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 8 -> 7.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -3443,6 +3460,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 32.5 lb \u00d7 12 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 32.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (30) for 11-13 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 15 clean reps at 32.5 lb at RPE 9 or lower; then increase to 35 lb.",
           "sets": [
             {
               "type": "W",
@@ -3485,7 +3503,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-19). This exercise's own recovery estimate (62h, stretch stimulus, high fatigue) extends to 2026-08-21, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -3649,6 +3667,7 @@ window.PROGRAM = {
           "action": "review_required",
           "assess": "Last top set: load and reps not recorded.",
           "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe: last session's load and reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": 1,
@@ -3686,6 +3705,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 27.5 lb \u00d7 10 \u00b7 dumbbell \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 27.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off 25 for 12-20 \u2014 derived from the top set; no matching performed back-off was logged.",
+          "when_to_add_load": "Reach 15 clean reps at 27.5 lb at RPE 9 or lower; then increase to 30 lb.",
           "sets": [
             {
               "type": "W",
@@ -3741,7 +3761,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -3892,6 +3912,7 @@ window.PROGRAM = {
           "action": "review_required",
           "assess": "Last top set: load and reps not recorded.",
           "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe: last session's load and reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -3947,7 +3968,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
+          "gate_reason": "next_program: increase (fresh, cohort signal only \u2014 per-exercise gate governs the actual load)",
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-19). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-20, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
@@ -4131,6 +4152,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 27.5 lb \u00d7 10 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 27.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (25) for 12-14 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 15 clean reps at 27.5 lb at RPE 9 or lower; then increase to 30 lb.",
           "sets": [
             {
               "type": "W",
@@ -4199,7 +4221,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -4356,6 +4378,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 65 lb \u00d7 18 @ RPE 9 \u00b7 band_resisted_isolation \u00b7 anchor 20 reps.",
           "rationale": "<b>\u2717 QC fail: set_role_conflict(warmup_labeled_set_at_working_effort(set 1 @ RPE 8))</b> \u00b7 Hold 65 lb band \u2014 chase reps to ~20 at RPE 9. Bands available: 35/45/55/65 only. Back-off holds its own last load (55) for 18-20 \u2014 it has not reached the 20-rep anchor on its own performance yet.",
+          "when_to_add_load": "Already at the heaviest available resistance; progress reps, tempo and ROM before any new load.",
           "sets": [
             {
               "type": "W",
@@ -4398,7 +4421,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -4568,6 +4591,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 22.5 lb \u00d7 10 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 22.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (20) for 13-15 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 15 clean reps at 22.5 lb at RPE 9 or lower; then increase to 25 lb.",
           "sets": [
             {
               "type": "W",
@@ -4623,7 +4647,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -4793,6 +4817,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 32.5 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 32.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (30) for 12-14 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 15 clean reps at 32.5 lb at RPE 9 or lower; then increase to 35 lb.",
           "sets": [
             {
               "type": "W",
@@ -4835,7 +4860,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: hold (fresh) \u2014 no change needed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -4983,6 +5008,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 0 lb \u00d7 19 @ RPE 9 \u00b7 bodyweight \u00b7 anchor 25 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Bodyweight \u2014 chase reps to \u226525 at RPE 9 before adding external load. Back-off holds its own last load (bodyweight) for 16-18 \u2014 it has not reached the 25-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 25 clean reps at bodyweight at RPE 9 or lower; then add 5 lb external load.",
           "sets": [
             {
               "type": "W",
@@ -5079,6 +5105,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 300 lb \u00d7 12 @ RPE 6 \u00b7 band_combo \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 300 lb band stack \u2014 chase reps to ~15 at RPE 9 before adding a band. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350. Back-off holds its own last load (300) for 10-12 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 15 clean reps at 300 lb at RPE 9 or lower; then step up to 350 lb.",
           "sets": [
             {
               "type": "W",
@@ -5134,7 +5161,7 @@ window.PROGRAM = {
             }
           ],
           "gate_status": "confirmed",
-          "gate_reason": "next_program: increase (fresh) \u2014 no change needed",
+          "gate_reason": "next_program: increase (fresh, cohort signal only \u2014 per-exercise gate governs the actual load)",
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
