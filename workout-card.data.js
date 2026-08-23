@@ -3,6 +3,1594 @@ window.PROGRAM = {
   "avatar": "",
   "sessions": [
     {
+      "day": "A",
+      "title": "DAY A \u2014 BACK / BICEPS (4-5 days)",
+      "date": "2026-08-22",
+      "prevDate": "2026-08-18",
+      "nextAvailable": {
+        "earliest": "2026-08-25",
+        "latest": "2026-08-26",
+        "fatigue_state": "elevated",
+        "driver": "back recovery (heavy stimulus, elevated fatigue, ~86h)"
+      },
+      "stats": [
+        "79m",
+        "17 sets",
+        "11.0k lbs"
+      ],
+      "summary": {
+        "status": "review",
+        "headline": "DAY A \u2014 BACK / BICEPS (4-5 days) \u2014 4 load\u2191 \u00b7 2 rep\u2191 \u00b7 0 hold.",
+        "assess": "8 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
+        "prescription": "QC: <b>6/8</b> prescriptions passed the validation gate; <b>2 flagged</b> \u2014 see the \u2717 tags below."
+      },
+      "exercises": [
+        {
+          "name": "Assisted Pull Up",
+          "icon": "\ud83d\udea3",
+          "rest": "3:00",
+          "cues": [
+            "Full ROM",
+            "Stretch at bottom",
+            "Chest up",
+            "Drive elbows down",
+            "No kipping",
+            "Reduce assistance before adding reps if reps stall"
+          ],
+          "noWeight": false,
+          "loading_type": "band_assisted_bodyweight",
+          "qc": "pass",
+          "action": "add_reps",
+          "assess": "Last top set: 175 assist \u00d7 12 @ RPE 9 \u00b7 band_assisted_bodyweight \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 175 lb assist \u2014 build toward 15 reps before reducing assistance. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350 (less assist = harder). Back-off holds its own last load (200) for 8-10 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 15 clean reps with 175 lb assistance at RPE 10 or lower; then reduce assistance to 150 lb.",
+          "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": 225,
+                "reps": 8,
+                "rpe": 5
+              },
+              "prop": {
+                "lbs": 225.0,
+                "reps": "8",
+                "rpe": 5.0
+              }
+            },
+            {
+              "type": "W",
+              "last": {
+                "lbs": 200,
+                "reps": 8,
+                "rpe": 6
+              },
+              "prop": {
+                "lbs": 200.0,
+                "reps": "8",
+                "rpe": 6.0
+              }
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": 175,
+                "reps": 12,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 175.0,
+                "reps": "12\u201315",
+                "rpe": 9.0
+              }
+            },
+            {
+              "type": 4,
+              "last": {
+                "lbs": 200,
+                "reps": 8,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 200.0,
+                "reps": "8\u201310",
+                "rpe": 9.0
+              }
+            }
+          ],
+          "gate_status": "confirmed",
+          "gate_reason": null,
+          "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "decisionHistory": [
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 33.37333333333333,
+              "decisionScoreRaw": 33.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-13",
+              "decision": "hold",
+              "decisionScore": 33.165,
+              "decisionScoreRaw": 33.165,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 32.95666666666666,
+              "decisionScoreRaw": 32.95666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+              "outcome": {
+                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+                "behaviorClass": "volume_undershoot",
+                "prescribedLoad": 175,
+                "prescribedReps": 15,
+                "prescribedRpe": 10,
+                "actualLoad": 225.0,
+                "actualReps": 8.0,
+                "loadDelta": 50,
+                "repDelta": -7,
+                "confidence": 0.75
+              }
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 33.37333333333333,
+              "decisionScoreRaw": 33.37333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+              "outcome": {
+                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+                "behaviorClass": "volume_undershoot",
+                "prescribedLoad": 175,
+                "prescribedReps": 15,
+                "prescribedRpe": 10,
+                "actualLoad": 225.0,
+                "actualReps": 8.0,
+                "loadDelta": 50,
+                "repDelta": -7,
+                "confidence": 0.75
+              }
+            },
+            {
+              "date": "2026-07-26",
+              "decision": "hold",
+              "decisionScore": 32.33166666666666,
+              "decisionScoreRaw": 32.33166666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
+              "outcome": {
+                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
+                "behaviorClass": "volume_undershoot",
+                "prescribedLoad": 175,
+                "prescribedReps": 15,
+                "prescribedRpe": 10,
+                "actualLoad": 225.0,
+                "actualReps": 8.0,
+                "loadDelta": 50,
+                "repDelta": -7,
+                "confidence": 0.75
+              }
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": {
+            "window": [
+              {
+                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+                "date": "2026-08-06",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+                "date": "2026-08-01",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
+                "date": "2026-07-26",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
+                "date": "2026-07-20",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
+                "date": "2026-07-07",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              }
+            ],
+            "validCount": 5,
+            "progressCount": 0,
+            "regressCount": 5,
+            "neutralCount": 0,
+            "scores": [
+              -1.0,
+              -1.0,
+              -1.0,
+              -1.0,
+              -1.0
+            ]
+          }
+        },
+        {
+          "name": "Barbell Bent Over Row",
+          "icon": "\ud83d\udea3",
+          "rest": "3:00",
+          "cues": [
+            "Stable torso",
+            "Pull to low chest / upper abs",
+            "No jerking",
+            "Control eccentric",
+            "Do not turn it into a hip hinge shrug"
+          ],
+          "noWeight": false,
+          "loading_type": "barbell",
+          "qc": "pass",
+          "action": "increase_load",
+          "assess": "Last top set: 143 lb \u00d7 11 @ RPE 9 \u00b7 barbell \u00b7 anchor 10 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 143\u00d711 at RPE 9 (\u2265 anchor 10), backoffs productive \u2014 top set 143\u2192148.8; +4.1% load costs ~1 rep, so the rep target drops 11\u219210 [range 5-10]. Back-off earned its own jump too \u2014 132.3 for 9-11, rebuilding to the reps it just produced.",
+          "when_to_add_load": "Reach 10 clean reps at 143 lb at RPE 10 or lower; then increase to 148.8 lb.",
+          "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": 88,
+                "reps": 8,
+                "rpe": 5
+              },
+              "prop": {
+                "lbs": 82.7,
+                "reps": "8",
+                "rpe": 5.0
+              }
+            },
+            {
+              "type": "W",
+              "last": {
+                "lbs": 115.5,
+                "reps": 6,
+                "rpe": 6
+              },
+              "prop": {
+                "lbs": 121.3,
+                "reps": "5",
+                "rpe": 6.5
+              }
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": 143,
+                "reps": 11,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 148.8,
+                "reps": "5\u201310",
+                "rpe": 9.0
+              }
+            },
+            {
+              "type": 4,
+              "last": {
+                "lbs": 132,
+                "reps": 11,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 132.3,
+                "reps": "9\u201311",
+                "rpe": 9.0
+              }
+            }
+          ],
+          "gate_status": "confirmed",
+          "gate_reason": null,
+          "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "decisionHistory": [
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 154.95666666666665,
+              "decisionScoreRaw": 154.95666666666665,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-13",
+              "decision": "hold",
+              "decisionScore": 155.32333333333332,
+              "decisionScoreRaw": 155.32333333333332,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 150.19,
+              "decisionScoreRaw": 150.19,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+              "outcome": {
+                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+                "behaviorClass": "volume_undershoot",
+                "prescribedLoad": 143,
+                "prescribedReps": 10,
+                "prescribedRpe": 10,
+                "actualLoad": 143.0,
+                "actualReps": 8.0,
+                "loadDelta": 0,
+                "repDelta": -2,
+                "confidence": 0.75
+              }
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 146.5233333333333,
+              "decisionScoreRaw": 146.5233333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+              "outcome": {
+                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+                "behaviorClass": "load_undershoot",
+                "prescribedLoad": 138,
+                "prescribedReps": 9,
+                "prescribedRpe": 9,
+                "actualLoad": 132.0,
+                "actualReps": 10.0,
+                "loadDelta": -6,
+                "repDelta": 1,
+                "confidence": 0.75
+              }
+            },
+            {
+              "date": "2026-07-26",
+              "decision": "hold",
+              "decisionScore": 145.42333333333332,
+              "decisionScoreRaw": 145.42333333333332,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
+              "outcome": {
+                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
+                "behaviorClass": "matched",
+                "prescribedLoad": 132,
+                "prescribedReps": 10,
+                "prescribedRpe": 10,
+                "actualLoad": 132.0,
+                "actualReps": 9.0,
+                "loadDelta": 0,
+                "repDelta": -1,
+                "confidence": 0.75
+              }
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": {
+            "window": [
+              {
+                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+                "date": "2026-08-06",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+                "date": "2026-08-01",
+                "behaviorClass": "load_undershoot",
+                "effectivenessScore": 0.0,
+                "valid": true
+              },
+              {
+                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
+                "date": "2026-07-26",
+                "behaviorClass": "matched",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
+                "date": "2026-07-20",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
+                "date": "2026-07-07",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              }
+            ],
+            "validCount": 5,
+            "progressCount": 1,
+            "regressCount": 3,
+            "neutralCount": 1,
+            "scores": [
+              -1.0,
+              0.0,
+              1.0,
+              -1.0,
+              -1.0
+            ]
+          }
+        },
+        {
+          "name": "Dumbbell Incline Bicep Curl",
+          "icon": "\ud83d\udcaa",
+          "rest": "2:00",
+          "cues": [
+            "Full stretch with shoulder extended",
+            "Elbows fixed",
+            "Supinate hard at top",
+            "2\u20133 sec eccentric",
+            "No shoulder movement"
+          ],
+          "noWeight": false,
+          "loading_type": "dumbbell",
+          "qc": "pass",
+          "action": "add_reps",
+          "assess": "Last top set: 35 lb \u00d7 11 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 35 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (32.5) for 11-13 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 12 clean reps at 35 lb at RPE 9.5 or lower; then increase to 37.5 lb.",
+          "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": 20,
+                "reps": 8,
+                "rpe": 5
+              },
+              "prop": {
+                "lbs": 20,
+                "reps": "8",
+                "rpe": 5.0
+              }
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null
+              },
+              "prop": {
+                "lbs": 35,
+                "reps": "11\u201315",
+                "rpe": 9.5
+              }
+            },
+            {
+              "type": 2,
+              "last": {
+                "lbs": 35,
+                "reps": 11,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 32.5,
+                "reps": "11\u201313",
+                "rpe": 9.0
+              }
+            },
+            {
+              "type": 3,
+              "last": {
+                "lbs": 32.5,
+                "reps": 11,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null
+              }
+            }
+          ],
+          "gate_status": "confirmed",
+          "gate_reason": null,
+          "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-25, past that. Advisory only -- no volume was changed.",
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9.5 -> 9.25 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "decisionHistory": [
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 38.87333333333333,
+              "decisionScoreRaw": 38.87333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 38.45666666666666,
+              "decisionScoreRaw": 38.45666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-14",
+              "decision": "hold",
+              "decisionScore": 28.04,
+              "decisionScoreRaw": 28.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-13",
+              "decision": "hold",
+              "decisionScore": 41.54,
+              "decisionScoreRaw": 41.54,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 37.151111111111106,
+              "decisionScoreRaw": 37.151111111111106,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
+              "outcome": {
+                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
+                "behaviorClass": "volume_undershoot",
+                "prescribedLoad": 32,
+                "prescribedReps": 15,
+                "prescribedRpe": 10,
+                "actualLoad": 32.5,
+                "actualReps": 10.0,
+                "loadDelta": 0,
+                "repDelta": -5,
+                "confidence": 0.75
+              }
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": {
+            "window": [
+              {
+                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
+                "date": "2026-08-08",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
+                "date": "2026-08-07",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+                "date": "2026-08-06",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
+                "date": "2026-08-04",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+                "date": "2026-08-01",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              }
+            ],
+            "validCount": 5,
+            "progressCount": 3,
+            "regressCount": 2,
+            "neutralCount": 0,
+            "scores": [
+              -1.0,
+              1.0,
+              1.0,
+              1.0,
+              -1.0
+            ]
+          }
+        },
+        {
+          "name": "Dumbbell One Arm Row",
+          "icon": "\ud83d\udea3",
+          "rest": "3:00",
+          "cues": [
+            "Stretch at bottom",
+            "Drive elbow back",
+            "No torso rotation",
+            "Keep ribcage locked",
+            "Control lowering"
+          ],
+          "noWeight": false,
+          "loading_type": "dumbbell",
+          "qc": "pass",
+          "action": "increase_load",
+          "assess": "Last top set: 75 lb \u00d7 14 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 75\u00d714 at RPE 9 (\u2265 anchor 12), backoffs productive \u2014 top set 75\u219280; +6.7% load costs ~2 reps, so the rep target drops 14\u219212 [range 6-12]. Back-off earned its own jump too \u2014 72.5 for 11-13, rebuilding to the reps it just produced.",
+          "when_to_add_load": "Reach 12 clean reps at 75 lb at RPE 10 or lower; then increase to 80 lb.",
+          "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": 40,
+                "reps": 8,
+                "rpe": 5
+              },
+              "prop": {
+                "lbs": 45,
+                "reps": "8",
+                "rpe": 5.0
+              }
+            },
+            {
+              "type": "W",
+              "last": {
+                "lbs": 60,
+                "reps": 5,
+                "rpe": 6
+              },
+              "prop": {
+                "lbs": 65,
+                "reps": "5",
+                "rpe": 6.5
+              }
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": 75,
+                "reps": 14,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 80,
+                "reps": "6\u201312",
+                "rpe": 9.0
+              }
+            },
+            {
+              "type": 4,
+              "last": {
+                "lbs": 67.5,
+                "reps": 13,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 72.5,
+                "reps": "11\u201313",
+                "rpe": 9.0
+              }
+            }
+          ],
+          "gate_status": "confirmed",
+          "gate_reason": null,
+          "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "decisionHistory": [
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 81.20666666666668,
+              "decisionScoreRaw": 81.20666666666668,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-13",
+              "decision": "hold",
+              "decisionScore": 83.08166666666666,
+              "decisionScoreRaw": 83.08166666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 74.70666666666666,
+              "decisionScoreRaw": 74.70666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+              "outcome": {
+                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+                "behaviorClass": "volume_overshoot",
+                "prescribedLoad": 75,
+                "prescribedReps": 11,
+                "prescribedRpe": 9,
+                "actualLoad": 70.0,
+                "actualReps": 13.0,
+                "loadDelta": -5,
+                "repDelta": 2,
+                "confidence": 0.75
+              }
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 72.04,
+              "decisionScoreRaw": 72.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+              "outcome": {
+                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+                "behaviorClass": "load_undershoot",
+                "prescribedLoad": 68,
+                "prescribedReps": 12,
+                "prescribedRpe": 9,
+                "actualLoad": 65.0,
+                "actualReps": 13.0,
+                "loadDelta": -2,
+                "repDelta": 1,
+                "confidence": 0.75
+              }
+            },
+            {
+              "date": "2026-07-26",
+              "decision": "hold",
+              "decisionScore": 69.58166666666666,
+              "decisionScoreRaw": 69.58166666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
+              "outcome": {
+                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
+                "behaviorClass": "matched",
+                "prescribedLoad": 65,
+                "prescribedReps": 12,
+                "prescribedRpe": 10,
+                "actualLoad": 65.0,
+                "actualReps": 11.0,
+                "loadDelta": 0,
+                "repDelta": -1,
+                "confidence": 0.75
+              }
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": {
+            "window": [
+              {
+                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+                "date": "2026-08-06",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+                "date": "2026-08-01",
+                "behaviorClass": "load_undershoot",
+                "effectivenessScore": 0.0,
+                "valid": true
+              },
+              {
+                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
+                "date": "2026-07-26",
+                "behaviorClass": "matched",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
+                "date": "2026-07-20",
+                "behaviorClass": "load_undershoot",
+                "effectivenessScore": 0.0,
+                "valid": true
+              },
+              {
+                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
+                "date": "2026-07-07",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              }
+            ],
+            "validCount": 5,
+            "progressCount": 2,
+            "regressCount": 1,
+            "neutralCount": 2,
+            "scores": [
+              1.0,
+              0.0,
+              1.0,
+              0.0,
+              -1.0
+            ]
+          }
+        },
+        {
+          "name": "Dumbbell Cross Body Hammer Curl",
+          "icon": "\ud83d\udcaa",
+          "rest": "2:00",
+          "cues": [
+            "Neutral grip fixed",
+            "Elbow slightly forward",
+            "No torso swing",
+            "Control eccentric",
+            "Keep tension on brachialis"
+          ],
+          "noWeight": false,
+          "loading_type": "dumbbell",
+          "qc": "pass",
+          "action": "increase_load",
+          "assess": "Last top set: 32.5 lb \u00d7 15 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (15/13) \u2014 earn the jump; top set 32.5\u219235; +7.7% load costs ~3 reps, so the rep target drops 15\u219212 [range 10-12]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 32.5 for 11-13, rebuilding to the reps it just produced.",
+          "when_to_add_load": "Reach 12 clean reps at 32.5 lb at RPE 9.5 or lower; then increase to 35 lb.",
+          "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": 17.5,
+                "reps": 8,
+                "rpe": 5
+              },
+              "prop": {
+                "lbs": 20,
+                "reps": "8",
+                "rpe": 5.0
+              }
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": 32.5,
+                "reps": 15,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 35,
+                "reps": "10\u201312",
+                "rpe": 9.0
+              }
+            },
+            {
+              "type": 3,
+              "last": {
+                "lbs": 30,
+                "reps": 13,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 32.5,
+                "reps": "11\u201313",
+                "rpe": 9.0
+              }
+            }
+          ],
+          "gate_status": "confirmed",
+          "gate_reason": null,
+          "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-25, past that. Advisory only -- no volume was changed.",
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "decisionHistory": [
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 36.26222222222222,
+              "decisionScoreRaw": 36.26222222222222,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-13",
+              "decision": "hold",
+              "decisionScore": 37.23444444444444,
+              "decisionScoreRaw": 37.23444444444444,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 34.428888888888885,
+              "decisionScoreRaw": 34.428888888888885,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+              "outcome": {
+                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+                "behaviorClass": "volume_overshoot",
+                "prescribedLoad": 30,
+                "prescribedReps": 9,
+                "prescribedRpe": 9,
+                "actualLoad": 27.5,
+                "actualReps": 12.0,
+                "loadDelta": -2,
+                "repDelta": 3,
+                "confidence": 0.75
+              }
+            },
+            {
+              "date": "2026-08-01",
+              "decision": "hold",
+              "decisionScore": 33.98444444444444,
+              "decisionScoreRaw": 33.98444444444444,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+              "outcome": {
+                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+                "behaviorClass": "volume_undershoot",
+                "prescribedLoad": 30,
+                "prescribedReps": 15,
+                "prescribedRpe": 10,
+                "actualLoad": 30.0,
+                "actualReps": 9.0,
+                "loadDelta": 0,
+                "repDelta": -6,
+                "confidence": 0.75
+              }
+            },
+            {
+              "date": "2026-07-26",
+              "decision": "hold",
+              "decisionScore": 34.59555555555555,
+              "decisionScoreRaw": 34.59555555555555,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
+              "outcome": {
+                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
+                "behaviorClass": "volume_undershoot",
+                "prescribedLoad": 30,
+                "prescribedReps": 15,
+                "prescribedRpe": 10,
+                "actualLoad": 30.0,
+                "actualReps": 9.0,
+                "loadDelta": 0,
+                "repDelta": -6,
+                "confidence": 0.75
+              }
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": {
+            "window": [
+              {
+                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+                "date": "2026-08-06",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+                "date": "2026-08-01",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
+                "date": "2026-07-26",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
+                "date": "2026-07-20",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
+                "date": "2026-07-07",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              }
+            ],
+            "validCount": 5,
+            "progressCount": 1,
+            "regressCount": 4,
+            "neutralCount": 0,
+            "scores": [
+              1.0,
+              -1.0,
+              -1.0,
+              -1.0,
+              -1.0
+            ]
+          }
+        },
+        {
+          "name": "Seated Lateral Raise",
+          "icon": "\ud83d\uded7",
+          "rest": "2:00",
+          "cues": [],
+          "noWeight": false,
+          "loading_type": "dumbbell",
+          "qc": "pass",
+          "action": "increase_load",
+          "assess": "Last top set: 27.5 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/10) \u2014 earn the jump; top set 27.5\u219230; +9.1% load costs ~3 reps, so the rep target drops 12\u21929 [range 7-9]. Isolation: only loaded once the whole cluster is productive. Back-off holds its own last load (25) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 12 clean reps at 27.5 lb at RPE 9.5 or lower; then increase to 30 lb.",
+          "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null
+              },
+              "prop": {
+                "lbs": 17.5,
+                "reps": "8",
+                "rpe": 5.0
+              }
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null
+              },
+              "prop": {
+                "lbs": 30,
+                "reps": "7\u20139",
+                "rpe": 9.0
+              }
+            },
+            {
+              "type": 1,
+              "last": {
+                "lbs": 15,
+                "reps": 8,
+                "rpe": null
+              },
+              "prop": {
+                "lbs": 25,
+                "reps": "10\u201312",
+                "rpe": 9.0
+              }
+            },
+            {
+              "type": 2,
+              "last": {
+                "lbs": 27.5,
+                "reps": 12,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null
+              }
+            },
+            {
+              "type": 3,
+              "last": {
+                "lbs": 25,
+                "reps": 10,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null
+              }
+            }
+          ],
+          "gate_status": "confirmed",
+          "gate_reason": null,
+          "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "decisionHistory": [
+            {
+              "date": "2026-08-21",
+              "decision": "hold",
+              "decisionScore": 31.1025,
+              "decisionScoreRaw": 31.1025,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-18",
+              "decision": "hold",
+              "decisionScore": 36.70666666666666,
+              "decisionScoreRaw": 36.70666666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "hold",
+              "decisionScore": 30.27333333333333,
+              "decisionScoreRaw": 30.27333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-08",
+              "decision": "hold",
+              "decisionScore": 29.810833333333335,
+              "decisionScoreRaw": 29.810833333333335,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
+              "outcome": {
+                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
+                "behaviorClass": "volume_overshoot",
+                "prescribedLoad": 28,
+                "prescribedReps": 9,
+                "prescribedRpe": 9,
+                "actualLoad": 25.0,
+                "actualReps": 12.0,
+                "loadDelta": -2,
+                "repDelta": 3,
+                "confidence": 0.75
+              }
+            },
+            {
+              "date": "2026-08-06",
+              "decision": "hold",
+              "decisionScore": 22.54,
+              "decisionScoreRaw": 22.54,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+              "outcome": {
+                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+                "behaviorClass": "insufficient_data",
+                "prescribedLoad": null,
+                "prescribedReps": null,
+                "prescribedRpe": null,
+                "actualLoad": 15.0,
+                "actualReps": 15.0,
+                "loadDelta": null,
+                "repDelta": null,
+                "confidence": 0.75
+              }
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": {
+            "window": [
+              {
+                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
+                "date": "2026-08-08",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
+                "date": "2026-08-06",
+                "behaviorClass": "insufficient_data",
+                "effectivenessScore": 0.0,
+                "valid": false
+              },
+              {
+                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
+                "date": "2026-08-04",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
+                "date": "2026-08-02",
+                "behaviorClass": "insufficient_data",
+                "effectivenessScore": 0.0,
+                "valid": false
+              },
+              {
+                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+                "date": "2026-08-01",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              }
+            ],
+            "validCount": 3,
+            "progressCount": 3,
+            "regressCount": 0,
+            "neutralCount": 0,
+            "scores": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        },
+        {
+          "name": "Cable Crunch",
+          "icon": "\ud83c\udf00",
+          "rest": "2:00",
+          "cues": [],
+          "noWeight": false,
+          "loading_type": "cable_or_machine",
+          "qc": "fail",
+          "action": "review_required",
+          "assess": "Last top set: load and reps not recorded.",
+          "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe: last session's load and reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "sets": [
+            {
+              "type": 1,
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null
+              }
+            }
+          ],
+          "gate_status": "no_signal",
+          "gate_reason": null,
+          "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": null
+        },
+        {
+          "name": "Triceps Pushdown",
+          "icon": "\ud83d\udd17",
+          "rest": "2:00",
+          "cues": [],
+          "noWeight": false,
+          "loading_type": "band_combo",
+          "qc": "fail",
+          "action": "review_required",
+          "assess": "Last top set: load and reps not recorded.",
+          "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe: last session's load and reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": 5
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null
+              }
+            },
+            {
+              "type": 2,
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null
+              }
+            },
+            {
+              "type": 3,
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null
+              }
+            },
+            {
+              "type": 4,
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null
+              }
+            }
+          ],
+          "gate_status": "confirmed",
+          "gate_reason": "next_program: increase (fresh, cohort signal only \u2014 per-exercise gate governs the actual load)",
+          "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-24, past that. Advisory only -- no volume was changed.",
+          "rpeAdjustmentAdvisory": null,
+          "decisionHistory": [
+            {
+              "date": "2026-08-19",
+              "decision": "increase",
+              "decisionScore": 338.58166666666665,
+              "decisionScoreRaw": 338.58166666666665,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "1c95db48-1b09-4a28-b993-5b31f437de12",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-15",
+              "decision": "increase",
+              "decisionScore": 359.20666666666665,
+              "decisionScoreRaw": 359.20666666666665,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-14",
+              "decision": "increase",
+              "decisionScore": 336.29,
+              "decisionScoreRaw": 336.29,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
+              "outcome": null
+            },
+            {
+              "date": "2026-08-08",
+              "decision": "increase",
+              "decisionScore": 360.3177777777778,
+              "decisionScoreRaw": 360.3177777777778,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
+              "outcome": {
+                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
+                "behaviorClass": "volume_overshoot",
+                "prescribedLoad": 300,
+                "prescribedReps": 15,
+                "prescribedRpe": 9,
+                "actualLoad": 275.0,
+                "actualReps": 17.0,
+                "loadDelta": -25,
+                "repDelta": 2,
+                "confidence": 0.75
+              }
+            },
+            {
+              "date": "2026-08-07",
+              "decision": "increase",
+              "decisionScore": 360.04,
+              "decisionScoreRaw": 360.04,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
+              "outcome": {
+                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
+                "behaviorClass": "volume_undershoot",
+                "prescribedLoad": 300,
+                "prescribedReps": 20,
+                "prescribedRpe": 9,
+                "actualLoad": 300.0,
+                "actualReps": 12.0,
+                "loadDelta": 0,
+                "repDelta": -8,
+                "confidence": 0.75
+              }
+            }
+          ],
+          "increaseCutoff": 0.75,
+          "reduceCutoff": -1.25,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": {
+            "window": [
+              {
+                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
+                "date": "2026-08-08",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
+                "date": "2026-08-07",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
+                "date": "2026-08-04",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
+                "date": "2026-08-02",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
+                "date": "2026-08-01",
+                "behaviorClass": "insufficient_data",
+                "effectivenessScore": 0.0,
+                "valid": false
+              }
+            ],
+            "validCount": 4,
+            "progressCount": 2,
+            "regressCount": 2,
+            "neutralCount": 0,
+            "scores": [
+              1.0,
+              -1.0,
+              1.0,
+              -1.0
+            ]
+          }
+        }
+      ],
+      "sequencingAdvisory": "\"Dumbbell Incline Bicep Curl\" (isolation/accessory) is displayed before \"Dumbbell One Arm Row\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
+    },
+    {
       "day": "C",
       "title": "DAY C \u2014 DELTS / ABS (3-4 days)",
       "date": "2026-08-21",
@@ -20,7 +1608,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY C \u2014 DELTS / ABS (3-4 days) \u2014 0 load\u2191 \u00b7 4 rep\u2191 \u00b7 0 hold.",
+        "headline": "DAY C \u2014 DELTS / ABS (3-4 days) \u2014 2 load\u2191 \u00b7 1 rep\u2191 \u00b7 0 hold.",
         "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>3/6</b> prescriptions passed the validation gate; <b>3 flagged</b> \u2014 see the \u2717 tags below."
       },
@@ -39,10 +1627,10 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 27.5 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 27.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (25) for 10-12 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps at 27.5 lb at RPE 9 or lower; then increase to 30 lb.",
+          "action": "increase_load",
+          "assess": "Last top set: 27.5 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (13/10/12) \u2014 earn the jump; top set 27.5\u219230; +9.1% load costs ~3 reps, so the rep target drops 13\u219210 [range 8-10]. Isolation: only loaded once the whole cluster is productive. Back-off holds its own last load (25) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 12 clean reps at 27.5 lb at RPE 9.5 or lower; then increase to 30 lb.",
           "sets": [
             {
               "type": "W",
@@ -52,7 +1640,7 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 15,
+                "lbs": 17.5,
                 "reps": "8",
                 "rpe": 5.0
               }
@@ -65,8 +1653,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 27.5,
-                "reps": "13\u201320",
+                "lbs": 30,
+                "reps": "8\u201310",
                 "rpe": 9.0
               }
             },
@@ -252,9 +1840,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "band_resisted_isolation",
           "qc": "fail",
-          "action": "add_reps",
-          "assess": "Last top set: 65 lb \u00d7 20 @ RPE 9 \u00b7 band_resisted_isolation \u00b7 anchor 20 reps.",
-          "rationale": "<b>\u2717 QC fail: set_role_conflict(warmup_labeled_set_at_working_effort(set 1 @ RPE 8))</b> \u00b7 Hold 65 lb band \u2014 chase reps to ~20 at RPE 9. Bands available: 35/45/55/65 only. Back-off holds its own last load (55) for 12-14 \u2014 it has not reached the 20-rep anchor on its own performance yet.",
+          "action": "progress_reps_tempo",
+          "assess": "Last top set: 65 lb \u00d7 20 @ RPE 9 \u00b7 band_resisted_isolation \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2717 QC fail: set_role_conflict(warmup_labeled_set_at_working_effort(set 1 @ RPE 8))</b> \u00b7 Already on the top band (65 lb). No heavier band in inventory \u2014 progress reps \u2192 tempo \u2192 pauses \u2192 ROM \u2192 volume before any new band. Back-off holds its own last load (55) for 12-14 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
           "when_to_add_load": "Already at the heaviest available resistance; progress reps, tempo and ROM before any new load.",
           "sets": [
             {
@@ -279,7 +1867,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 65.0,
-                "reps": "20\u201325",
+                "reps": "20",
                 "rpe": 9.0
               }
             },
@@ -465,10 +2053,10 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 22.5 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 22.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (20) for 14-16 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps at 22.5 lb at RPE 9 or lower; then increase to 25 lb.",
+          "action": "increase_load",
+          "assess": "Last top set: 22.5 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (13/14/14) \u2014 earn the jump; top set 22.5\u219225; +11.1% load costs ~4 reps, so the rep target drops 13\u21929 [range 7-9]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 22.5 for 12-14, rebuilding to the reps it just produced.",
+          "when_to_add_load": "Reach 12 clean reps at 22.5 lb at RPE 9.5 or lower; then increase to 25 lb.",
           "sets": [
             {
               "type": "W",
@@ -478,7 +2066,7 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 12.5,
+                "lbs": 15,
                 "reps": "8",
                 "rpe": 5.0
               }
@@ -491,8 +2079,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 22.5,
-                "reps": "13\u201320",
+                "lbs": 25,
+                "reps": "7\u20139",
                 "rpe": 9.0
               }
             },
@@ -504,8 +2092,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 20,
-                "reps": "14\u201316",
+                "lbs": 22.5,
+                "reps": "12\u201314",
                 "rpe": 9.0
               }
             },
@@ -738,7 +2326,7 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": null,
-          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-24, past that. Advisory only -- no volume was changed.",
+          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (the logged Day A session on 2026-08-22). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-24, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
@@ -883,9 +2471,9 @@ window.PROGRAM = {
           "loading_type": "bodyweight",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: 0 lb \u00d7 10 @ RPE 9 \u00b7 bodyweight \u00b7 anchor 25 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Bodyweight \u2014 chase reps to \u226525 at RPE 9 before adding external load. Back-off holds its own last load (bodyweight) for 17-19 \u2014 it has not reached the 25-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 25 clean reps at bodyweight at RPE 9 or lower; then add 5 lb external load.",
+          "assess": "Last top set: 0 lb \u00d7 10 @ RPE 9 \u00b7 bodyweight \u00b7 anchor 20 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Bodyweight \u2014 chase reps to \u226520 at RPE 9 before adding external load. Back-off holds its own last load (bodyweight) for 17-19 \u2014 it has not reached the 20-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 20 clean reps at bodyweight at RPE 9 or lower; then add 5 lb external load.",
           "sets": [
             {
               "type": "W",
@@ -909,7 +2497,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": null,
-                "reps": "10\u201330",
+                "reps": "10\u201325",
                 "rpe": 9.0
               }
             },
@@ -1052,7 +2640,7 @@ window.PROGRAM = {
           ],
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh, cohort signal only \u2014 per-exercise gate governs the actual load)",
-          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-23, past that. Advisory only -- no volume was changed.",
+          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (the logged Day A session on 2026-08-22). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-23, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
@@ -1203,8 +2791,8 @@ window.PROGRAM = {
       "nextAvailable": {
         "earliest": "2026-08-22",
         "latest": "2026-08-23",
-        "fatigue_state": "high",
-        "driver": "chest recovery (heavy stimulus, high fatigue, ~90h)"
+        "fatigue_state": "elevated",
+        "driver": "chest recovery (heavy stimulus, elevated fatigue, ~84h)"
       },
       "stats": [
         "40m",
@@ -1213,7 +2801,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY B - CHEST / TRICEPS  (5 days) \u2014 0 load\u2191 \u00b7 3 rep\u2191 \u00b7 1 hold.",
+        "headline": "DAY B - CHEST / TRICEPS  (5 days) \u2014 2 load\u2191 \u00b7 2 rep\u2191 \u00b7 0 hold.",
         "assess": "7 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>4/7</b> prescriptions passed the validation gate; <b>3 flagged</b> \u2014 see the \u2717 tags below."
       },
@@ -1232,10 +2820,10 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "barbell",
           "qc": "pass",
-          "action": "hold",
+          "action": "increase_load",
           "assess": "Last top set: 148.5 lb \u00d7 12 @ RPE 10 \u00b7 barbell \u00b7 anchor 10 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 148.8 \u2014 backoffs not yet productive; chase reps to ~10 at RPE 8 before adding load. Back-off holds its own last load (132.3) for 8-10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 10 clean reps at 148.5 lb at RPE 9 or lower; then increase to 154.3 lb.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 148.5\u00d712 at RPE 10 (\u2265 anchor 10), backoffs productive \u2014 top set 148.5\u2192154.3; +3.9% load costs ~1 rep, so the rep target drops 12\u219211 [range 5-11]. Back-off holds its own last load (132.3) for 8-10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 10 clean reps at 148.5 lb at RPE 10 or lower; then increase to 154.3 lb.",
           "sets": [
             {
               "type": "W",
@@ -1271,9 +2859,9 @@ window.PROGRAM = {
                 "rpe": 10
               },
               "prop": {
-                "lbs": 148.8,
-                "reps": "12",
-                "rpe": 8.0
+                "lbs": 154.3,
+                "reps": "5\u201311",
+                "rpe": 9.0
               }
             },
             {
@@ -1293,7 +2881,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 8 -> 7.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
             {
               "date": "2026-08-19",
@@ -1458,10 +3046,10 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 42.5 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 42.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (37.5) for 10-12 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps at 42.5 lb at RPE 9 or lower; then increase to 45 lb.",
+          "action": "increase_load",
+          "assess": "Last top set: 42.5 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/10) \u2014 earn the jump; top set 42.5\u219245; +5.9% load costs ~2 reps, so the rep target drops 12\u219210 [range 8-10]. Isolation: only loaded once the whole cluster is productive. Back-off holds its own last load (37.5) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 12 clean reps at 42.5 lb at RPE 9.5 or lower; then increase to 45 lb.",
           "sets": [
             {
               "type": "W",
@@ -1471,7 +3059,7 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 22.5,
+                "lbs": 25,
                 "reps": "8",
                 "rpe": 5.0
               }
@@ -1484,8 +3072,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 42.5,
-                "reps": "12\u201320",
+                "lbs": 45,
+                "reps": "8\u201310",
                 "rpe": 9.0
               }
             },
@@ -2555,7 +4143,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY A \u2014 BACK / BICEPS (4-5 days) \u2014 0 load\u2191 \u00b7 5 rep\u2191 \u00b7 1 hold.",
+        "headline": "DAY A \u2014 BACK / BICEPS (4-5 days) \u2014 1 load\u2191 \u00b7 4 rep\u2191 \u00b7 1 hold.",
         "assess": "8 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>6/8</b> prescriptions passed the validation gate; <b>2 flagged</b> \u2014 see the \u2717 tags below."
       },
@@ -2578,7 +4166,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 175 assist \u00d7 11 @ RPE 10 \u00b7 band_assisted_bodyweight \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 175 lb assist \u2014 build toward 15 reps before reducing assistance. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350 (less assist = harder). Back-off holds its own last load (200) for 8-10 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps with 175 lb assistance at RPE 9 or lower; then reduce assistance to 150 lb.",
+          "when_to_add_load": "Reach 15 clean reps with 175 lb assistance at RPE 10 or lower; then reduce assistance to 150 lb.",
           "sets": [
             {
               "type": "W",
@@ -2616,7 +4204,7 @@ window.PROGRAM = {
               "prop": {
                 "lbs": 175.0,
                 "reps": "11\u201315",
-                "rpe": 8.0
+                "rpe": 9.0
               }
             },
             {
@@ -2636,7 +4224,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 8 -> 7.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
             {
               "date": "2026-08-18",
@@ -2803,8 +4391,8 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 143 lb \u00d7 9 @ RPE 10 \u00b7 barbell \u00b7 anchor 10 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 143.3 \u2014 reps below anchor; chase reps to ~10 at RPE 8 before adding load. Back-off holds its own last load (132.3) for 10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 10 clean reps at 143 lb at RPE 9 or lower; then increase to 148.8 lb.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 143.3 \u2014 reps below anchor; chase reps to ~10 at RPE 9 before adding load. Back-off holds its own last load (132.3) for 10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 10 clean reps at 143 lb at RPE 10 or lower; then increase to 148.8 lb.",
           "sets": [
             {
               "type": "W",
@@ -2842,7 +4430,7 @@ window.PROGRAM = {
               "prop": {
                 "lbs": 143.3,
                 "reps": "9\u201310",
-                "rpe": 8.0
+                "rpe": 9.0
               }
             },
             {
@@ -2862,7 +4450,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 8 -> 7.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
             {
               "date": "2026-08-18",
@@ -3028,9 +4616,9 @@ window.PROGRAM = {
           "loading_type": "dumbbell",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: 35 lb \u00d7 11 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 35 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (32.5) for 10-12 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps at 35 lb at RPE 9 or lower; then increase to 37.5 lb.",
+          "assess": "Last top set: 35 lb \u00d7 11 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 35 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (32.5) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 12 clean reps at 35 lb at RPE 9.5 or lower; then increase to 37.5 lb.",
           "sets": [
             {
               "type": "W",
@@ -3054,8 +4642,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 35,
-                "reps": "11\u201320",
-                "rpe": 9.0
+                "reps": "11\u201315",
+                "rpe": 9.5
               }
             },
             {
@@ -3088,7 +4676,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": null,
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-19). This exercise's own recovery estimate (62h, stretch stimulus, high fatigue) extends to 2026-08-21, past that. Advisory only -- no volume was changed.",
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9.5 -> 9.25 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
             {
               "date": "2026-08-18",
@@ -3231,10 +4819,10 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "hold",
+          "action": "increase_load",
           "assess": "Last top set: 75 lb \u00d7 13 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 75 \u2014 backoffs not yet productive; chase reps to ~12 at RPE 8 before adding load. Back-off holds its own last load (67.5) for 12-14 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 12 clean reps at 75 lb at RPE 9 or lower; then increase to 80 lb.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 75\u00d713 at RPE 10 (\u2265 anchor 12), backoffs productive \u2014 top set 75\u219280; +6.7% load costs ~2 reps, so the rep target drops 13\u219211 [range 6-11]. Back-off earned its own jump too \u2014 72.5 for 10-12, rebuilding to the reps it just produced.",
+          "when_to_add_load": "Reach 12 clean reps at 75 lb at RPE 10 or lower; then increase to 80 lb.",
           "sets": [
             {
               "type": "W",
@@ -3244,7 +4832,7 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 40,
+                "lbs": 45,
                 "reps": "8",
                 "rpe": 5.0
               }
@@ -3257,7 +4845,7 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 60,
+                "lbs": 65,
                 "reps": "5",
                 "rpe": 6.5
               }
@@ -3270,9 +4858,9 @@ window.PROGRAM = {
                 "rpe": 10
               },
               "prop": {
-                "lbs": 75,
-                "reps": "13\u201315",
-                "rpe": 8.0
+                "lbs": 80,
+                "reps": "6\u201311",
+                "rpe": 9.0
               }
             },
             {
@@ -3283,8 +4871,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 67.5,
-                "reps": "12\u201314",
+                "lbs": 72.5,
+                "reps": "10\u201312",
                 "rpe": 9.0
               }
             }
@@ -3292,7 +4880,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 8 -> 7.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
             {
               "date": "2026-08-18",
@@ -3457,10 +5045,10 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 32.5 lb \u00d7 12 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 32.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (30) for 11-13 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps at 32.5 lb at RPE 9 or lower; then increase to 35 lb.",
+          "action": "hold",
+          "assess": "Last top set: 32.5 lb \u00d7 12 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 32.5 \u2014 backoffs not yet productive; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (30) for 11-13 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 12 clean reps at 32.5 lb at RPE 9.5 or lower; then increase to 35 lb.",
           "sets": [
             {
               "type": "W",
@@ -3484,8 +5072,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 32.5,
-                "reps": "12\u201320",
-                "rpe": 9.0
+                "reps": "12\u201315",
+                "rpe": 9.5
               }
             },
             {
@@ -3505,7 +5093,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": null,
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-19). This exercise's own recovery estimate (62h, stretch stimulus, high fatigue) extends to 2026-08-21, past that. Advisory only -- no volume was changed.",
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9.5 -> 9.25 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
             {
               "date": "2026-08-18",
@@ -3703,9 +5291,9 @@ window.PROGRAM = {
           "loading_type": "dumbbell",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: 27.5 lb \u00d7 10 \u00b7 dumbbell \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 27.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off 25 for 12-20 \u2014 derived from the top set; no matching performed back-off was logged.",
-          "when_to_add_load": "Reach 15 clean reps at 27.5 lb at RPE 9 or lower; then increase to 30 lb.",
+          "assess": "Last top set: 27.5 lb \u00d7 10 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 27.5 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off 25 for 12-15 \u2014 derived from the top set; no matching performed back-off was logged.",
+          "when_to_add_load": "Reach 12 clean reps at 27.5 lb at RPE 9.5 or lower; then increase to 30 lb.",
           "sets": [
             {
               "type": "W",
@@ -3729,8 +5317,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 27.5,
-                "reps": "10\u201320",
-                "rpe": 9.0
+                "reps": "10\u201315",
+                "rpe": 9.5
               }
             },
             {
@@ -3742,7 +5330,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 25,
-                "reps": "12\u201320",
+                "reps": "12\u201315",
                 "rpe": 9.0
               }
             },
@@ -3763,7 +5351,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9.5 -> 9.25 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
             {
               "date": "2026-08-21",
@@ -4111,1199 +5699,6 @@ window.PROGRAM = {
         }
       ],
       "sequencingAdvisory": "\"Dumbbell Incline Bicep Curl\" (isolation/accessory) is displayed before \"Dumbbell One Arm Row\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
-    },
-    {
-      "day": "C",
-      "title": "DAY C \u2014 DELTS / ABS (3-4 days)",
-      "date": "2026-08-15",
-      "prevDate": "2026-08-08",
-      "nextAvailable": {
-        "earliest": "2026-08-18",
-        "latest": "2026-08-19",
-        "fatigue_state": "elevated",
-        "driver": "delts recovery (heavy stimulus, elevated fatigue, ~82h)"
-      },
-      "stats": [
-        "70m",
-        "16 sets",
-        "11.4k lbs"
-      ],
-      "summary": {
-        "status": "review",
-        "headline": "DAY C \u2014 DELTS / ABS (3-4 days) \u2014 0 load\u2191 \u00b7 6 rep\u2191 \u00b7 0 hold.",
-        "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
-        "prescription": "QC: <b>5/6</b> prescriptions passed the validation gate; <b>1 flagged</b> \u2014 see the \u2717 tags below."
-      },
-      "exercises": [
-        {
-          "name": "Seated Lateral Raise",
-          "icon": "\ud83d\uded7",
-          "rest": "2:00",
-          "cues": [
-            "Lead with elbows",
-            "Stop if traps take over",
-            "2\u20133 sec eccentric",
-            "No tempo breaks",
-            "Constant tension"
-          ],
-          "noWeight": false,
-          "loading_type": "dumbbell",
-          "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 27.5 lb \u00d7 10 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 27.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (25) for 12-14 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps at 27.5 lb at RPE 9 or lower; then increase to 30 lb.",
-          "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": 15,
-                "reps": 10,
-                "rpe": 5
-              },
-              "prop": {
-                "lbs": 15,
-                "reps": "8",
-                "rpe": 5.0
-              }
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": 27.5,
-                "reps": 10,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 27.5,
-                "reps": "10\u201320",
-                "rpe": 9.0
-              }
-            },
-            {
-              "type": 3,
-              "last": {
-                "lbs": 25,
-                "reps": 12,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 25,
-                "reps": "12\u201314",
-                "rpe": 9.0
-              }
-            },
-            {
-              "type": 4,
-              "last": {
-                "lbs": 22.5,
-                "reps": 12,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null
-              }
-            },
-            {
-              "type": 5,
-              "last": {
-                "lbs": 20,
-                "reps": 12,
-                "rpe": null
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null
-              }
-            }
-          ],
-          "gate_status": "confirmed",
-          "gate_reason": null,
-          "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-21",
-              "decision": "hold",
-              "decisionScore": 31.1025,
-              "decisionScoreRaw": 31.1025,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 36.70666666666666,
-              "decisionScoreRaw": 36.70666666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-15",
-              "decision": "hold",
-              "decisionScore": 30.27333333333333,
-              "decisionScoreRaw": 30.27333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-08",
-              "decision": "hold",
-              "decisionScore": 29.810833333333335,
-              "decisionScoreRaw": 29.810833333333335,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-              "outcome": {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 28,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 25.0,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 3,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-06",
-              "decision": "hold",
-              "decisionScore": 22.54,
-              "decisionScoreRaw": 22.54,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-              "outcome": {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "behaviorClass": "insufficient_data",
-                "prescribedLoad": null,
-                "prescribedReps": null,
-                "prescribedRpe": null,
-                "actualLoad": 15.0,
-                "actualReps": 15.0,
-                "loadDelta": null,
-                "repDelta": null,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
-          "ignoredDecision": null,
-          "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "date": "2026-08-08",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "insufficient_data",
-                "effectivenessScore": 0.0,
-                "valid": false
-              },
-              {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "date": "2026-08-04",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "date": "2026-08-02",
-                "behaviorClass": "insufficient_data",
-                "effectivenessScore": 0.0,
-                "valid": false
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 3,
-            "progressCount": 3,
-            "regressCount": 0,
-            "neutralCount": 0,
-            "scores": [
-              1.0,
-              1.0,
-              1.0
-            ]
-          }
-        },
-        {
-          "name": "Band Lateral Raise",
-          "icon": "\ud83d\uded7",
-          "rest": "2:00",
-          "cues": [
-            "Step out to create bottom tension",
-            "Smooth tempo",
-            "No slack at bottom",
-            "No torso sway",
-            "Keep delts loaded throughout"
-          ],
-          "noWeight": false,
-          "loading_type": "band_resisted_isolation",
-          "qc": "fail",
-          "action": "add_reps",
-          "assess": "Last top set: 65 lb \u00d7 18 @ RPE 9 \u00b7 band_resisted_isolation \u00b7 anchor 20 reps.",
-          "rationale": "<b>\u2717 QC fail: set_role_conflict(warmup_labeled_set_at_working_effort(set 1 @ RPE 8))</b> \u00b7 Hold 65 lb band \u2014 chase reps to ~20 at RPE 9. Bands available: 35/45/55/65 only. Back-off holds its own last load (55) for 18-20 \u2014 it has not reached the 20-rep anchor on its own performance yet.",
-          "when_to_add_load": "Already at the heaviest available resistance; progress reps, tempo and ROM before any new load.",
-          "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": 55,
-                "reps": 18,
-                "rpe": 8
-              },
-              "prop": {
-                "lbs": 55.0,
-                "reps": "5",
-                "rpe": 6.0
-              }
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": 65,
-                "reps": 18,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 65.0,
-                "reps": "18\u201325",
-                "rpe": 9.0
-              }
-            },
-            {
-              "type": 3,
-              "last": {
-                "lbs": 55,
-                "reps": 18,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 55.0,
-                "reps": "18\u201320",
-                "rpe": 9.0
-              }
-            }
-          ],
-          "gate_status": "confirmed",
-          "gate_reason": null,
-          "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-21",
-              "decision": "hold",
-              "decisionScore": 92.37333333333333,
-              "decisionScoreRaw": 92.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-15",
-              "decision": "hold",
-              "decisionScore": 93.37333333333333,
-              "decisionScoreRaw": 93.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-08",
-              "decision": "hold",
-              "decisionScore": 94.37333333333333,
-              "decisionScoreRaw": 94.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-              "outcome": {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 65,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 65.0,
-                "actualReps": 16.0,
-                "loadDelta": 0,
-                "repDelta": -4,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "hold",
-              "decisionScore": 91.70666666666668,
-              "decisionScoreRaw": 91.70666666666668,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 65,
-                "prescribedReps": 21,
-                "prescribedRpe": 9,
-                "actualLoad": 65.0,
-                "actualReps": 14.0,
-                "loadDelta": 0,
-                "repDelta": -7,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-30",
-              "decision": "hold",
-              "decisionScore": 88.42888888888888,
-              "decisionScoreRaw": 88.42888888888888,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "c4994788-2c8c-4fdb-8220-2bbd54ad696f",
-              "outcome": {
-                "sessionId": "c4994788-2c8c-4fdb-8220-2bbd54ad696f",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 65,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 65.0,
-                "actualReps": 12.0,
-                "loadDelta": 0,
-                "repDelta": -8,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
-          "ignoredDecision": null,
-          "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "date": "2026-08-08",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "date": "2026-08-04",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "c4994788-2c8c-4fdb-8220-2bbd54ad696f",
-                "date": "2026-07-30",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "83713f49-b352-4815-baf4-0a7f4bba0aa3",
-                "date": "2026-07-25",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "d23c4815-40b8-457f-ad27-154f817249fd",
-                "date": "2026-07-19",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 1,
-            "regressCount": 4,
-            "neutralCount": 0,
-            "scores": [
-              -1.0,
-              -1.0,
-              -1.0,
-              -1.0,
-              1.0
-            ]
-          }
-        },
-        {
-          "name": "Rear Dumbbell Raise",
-          "icon": "\ud83d\uded7",
-          "rest": "2:00",
-          "cues": [
-            "Chest supported or hinged",
-            "No trap dominance",
-            "1-sec squeeze at top",
-            "Control lowering",
-            "Raise through rear delt, not hands"
-          ],
-          "noWeight": false,
-          "loading_type": "dumbbell",
-          "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 22.5 lb \u00d7 10 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 22.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (20) for 13-15 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps at 22.5 lb at RPE 9 or lower; then increase to 25 lb.",
-          "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": 15,
-                "reps": 10,
-                "rpe": 5
-              },
-              "prop": {
-                "lbs": 12.5,
-                "reps": "8",
-                "rpe": 5.0
-              }
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": 22.5,
-                "reps": 10,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 22.5,
-                "reps": "10\u201320",
-                "rpe": 9.0
-              }
-            },
-            {
-              "type": 3,
-              "last": {
-                "lbs": 20,
-                "reps": 13,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 20,
-                "reps": "13\u201315",
-                "rpe": 9.0
-              }
-            },
-            {
-              "type": 4,
-              "last": {
-                "lbs": 17.5,
-                "reps": 14,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null
-              }
-            }
-          ],
-          "gate_status": "confirmed",
-          "gate_reason": null,
-          "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-21",
-              "decision": "hold",
-              "decisionScore": 26.8525,
-              "decisionScoreRaw": 26.8525,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-15",
-              "decision": "hold",
-              "decisionScore": 26.123333333333335,
-              "decisionScoreRaw": 26.123333333333335,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-08",
-              "decision": "hold",
-              "decisionScore": 26.394166666666667,
-              "decisionScoreRaw": 26.394166666666667,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-              "outcome": {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 22,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 22.5,
-                "actualReps": 9.0,
-                "loadDelta": 0,
-                "repDelta": -6,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "hold",
-              "decisionScore": 25.29,
-              "decisionScoreRaw": 25.29,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 22,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 20.0,
-                "actualReps": 13.0,
-                "loadDelta": -2,
-                "repDelta": 4,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-30",
-              "decision": "hold",
-              "decisionScore": 25.081666666666663,
-              "decisionScoreRaw": 25.081666666666663,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "c4994788-2c8c-4fdb-8220-2bbd54ad696f",
-              "outcome": {
-                "sessionId": "c4994788-2c8c-4fdb-8220-2bbd54ad696f",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 20,
-                "prescribedReps": 17,
-                "prescribedRpe": 10,
-                "actualLoad": 20.0,
-                "actualReps": 10.0,
-                "loadDelta": 0,
-                "repDelta": -7,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
-          "ignoredDecision": null,
-          "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "date": "2026-08-08",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "date": "2026-08-04",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "c4994788-2c8c-4fdb-8220-2bbd54ad696f",
-                "date": "2026-07-30",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "83713f49-b352-4815-baf4-0a7f4bba0aa3",
-                "date": "2026-07-25",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "d23c4815-40b8-457f-ad27-154f817249fd",
-                "date": "2026-07-19",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 3,
-            "regressCount": 2,
-            "neutralCount": 0,
-            "scores": [
-              -1.0,
-              1.0,
-              -1.0,
-              1.0,
-              1.0
-            ]
-          }
-        },
-        {
-          "name": "Dumbbell Incline Bicep Curl",
-          "icon": "\ud83d\udcaa",
-          "rest": "2:00",
-          "cues": [
-            "Strict form only",
-            "No failure",
-            "Continuous tension",
-            "Pump and stretch focus",
-            "Do not create spillover fatigue"
-          ],
-          "noWeight": false,
-          "loading_type": "dumbbell",
-          "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 32.5 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 32.5 \u2014 reps below anchor; chase reps to ~15 at RPE 9 before adding load. Back-off holds its own last load (30) for 12-14 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps at 32.5 lb at RPE 9 or lower; then increase to 35 lb.",
-          "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": 20,
-                "reps": 10,
-                "rpe": 5
-              },
-              "prop": {
-                "lbs": 17.5,
-                "reps": "8",
-                "rpe": 5.0
-              }
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": 32.5,
-                "reps": 13,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 32.5,
-                "reps": "13\u201320",
-                "rpe": 9.0
-              }
-            },
-            {
-              "type": 3,
-              "last": {
-                "lbs": 30,
-                "reps": 12,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 30,
-                "reps": "12\u201314",
-                "rpe": 9.0
-              }
-            }
-          ],
-          "gate_status": "confirmed",
-          "gate_reason": null,
-          "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 38.87333333333333,
-              "decisionScoreRaw": 38.87333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-15",
-              "decision": "hold",
-              "decisionScore": 38.45666666666666,
-              "decisionScoreRaw": 38.45666666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-14",
-              "decision": "hold",
-              "decisionScore": 28.04,
-              "decisionScoreRaw": 28.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-13",
-              "decision": "hold",
-              "decisionScore": 41.54,
-              "decisionScoreRaw": 41.54,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-08",
-              "decision": "hold",
-              "decisionScore": 37.151111111111106,
-              "decisionScoreRaw": 37.151111111111106,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-              "outcome": {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 32,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 32.5,
-                "actualReps": 10.0,
-                "loadDelta": 0,
-                "repDelta": -5,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
-          "ignoredDecision": null,
-          "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "date": "2026-08-08",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "date": "2026-08-07",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "date": "2026-08-04",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 3,
-            "regressCount": 2,
-            "neutralCount": 0,
-            "scores": [
-              -1.0,
-              1.0,
-              1.0,
-              1.0,
-              -1.0
-            ]
-          }
-        },
-        {
-          "name": "Hanging Leg Raise",
-          "icon": "\ud83c\udf00",
-          "rest": "2:00",
-          "cues": [
-            "Posterior pelvic tilt at top",
-            "No swinging",
-            "Raise pelvis, not just knees",
-            "Lower under control",
-            "Keep abs loaded"
-          ],
-          "noWeight": true,
-          "loading_type": "bodyweight",
-          "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 0 lb \u00d7 19 @ RPE 9 \u00b7 bodyweight \u00b7 anchor 25 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Bodyweight \u2014 chase reps to \u226525 at RPE 9 before adding external load. Back-off holds its own last load (bodyweight) for 16-18 \u2014 it has not reached the 25-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 25 clean reps at bodyweight at RPE 9 or lower; then add 5 lb external load.",
-          "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null
-              },
-              "prop": {
-                "lbs": null,
-                "reps": "8",
-                "rpe": 6.0
-              }
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null
-              },
-              "prop": {
-                "lbs": null,
-                "reps": "19\u201330",
-                "rpe": 9.0
-              }
-            },
-            {
-              "type": 1,
-              "last": {
-                "lbs": 0,
-                "reps": 19,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": null,
-                "reps": "16\u201318",
-                "rpe": 9.0
-              }
-            },
-            {
-              "type": 2,
-              "last": {
-                "lbs": 0,
-                "reps": 16,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null
-              }
-            },
-            {
-              "type": 3,
-              "last": {
-                "lbs": 0,
-                "reps": 15,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null
-              }
-            }
-          ],
-          "gate_status": "no_signal",
-          "gate_reason": null,
-          "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [],
-          "increaseCutoff": null,
-          "reduceCutoff": null,
-          "ignoredDecision": null,
-          "outcome": null,
-          "effectiveness": null
-        },
-        {
-          "name": "Triceps Pushdown",
-          "icon": "\ud83d\udd17",
-          "rest": "2:00",
-          "cues": [
-            "Stay upright",
-            "Elbows close to body",
-            "Full lockout squeeze",
-            "Controlled eccentric",
-            "No bouncing",
-            "Stop before shoulder discomfort"
-          ],
-          "noWeight": false,
-          "loading_type": "band_combo",
-          "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 300 lb \u00d7 12 @ RPE 6 \u00b7 band_combo \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 300 lb band stack \u2014 chase reps to ~15 at RPE 9 before adding a band. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350. Back-off holds its own last load (300) for 10-12 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps at 300 lb at RPE 9 or lower; then step up to 350 lb.",
-          "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": 200,
-                "reps": 15,
-                "rpe": 5
-              },
-              "prop": {
-                "lbs": 275.0,
-                "reps": "4",
-                "rpe": 6.0
-              }
-            },
-            {
-              "type": "W",
-              "last": {
-                "lbs": 250,
-                "reps": 8,
-                "rpe": 5
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null
-              }
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": 300,
-                "reps": 12,
-                "rpe": 6
-              },
-              "prop": {
-                "lbs": 300.0,
-                "reps": "12\u201320",
-                "rpe": 9.0
-              }
-            },
-            {
-              "type": 4,
-              "last": {
-                "lbs": 300,
-                "reps": 10,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 300.0,
-                "reps": "10\u201312",
-                "rpe": 9.0
-              }
-            }
-          ],
-          "gate_status": "confirmed",
-          "gate_reason": "next_program: increase (fresh, cohort signal only \u2014 per-exercise gate governs the actual load)",
-          "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-19",
-              "decision": "increase",
-              "decisionScore": 338.58166666666665,
-              "decisionScoreRaw": 338.58166666666665,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "1c95db48-1b09-4a28-b993-5b31f437de12",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-15",
-              "decision": "increase",
-              "decisionScore": 359.20666666666665,
-              "decisionScoreRaw": 359.20666666666665,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-14",
-              "decision": "increase",
-              "decisionScore": 336.29,
-              "decisionScoreRaw": 336.29,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-08",
-              "decision": "increase",
-              "decisionScore": 360.3177777777778,
-              "decisionScoreRaw": 360.3177777777778,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-              "outcome": {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 300,
-                "prescribedReps": 15,
-                "prescribedRpe": 9,
-                "actualLoad": 275.0,
-                "actualReps": 17.0,
-                "loadDelta": -25,
-                "repDelta": 2,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-07",
-              "decision": "increase",
-              "decisionScore": 360.04,
-              "decisionScoreRaw": 360.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-              "outcome": {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 300,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 300.0,
-                "actualReps": 12.0,
-                "loadDelta": 0,
-                "repDelta": -8,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
-          "ignoredDecision": null,
-          "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "date": "2026-08-08",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "date": "2026-08-07",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "date": "2026-08-04",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "date": "2026-08-02",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "insufficient_data",
-                "effectivenessScore": 0.0,
-                "valid": false
-              }
-            ],
-            "validCount": 4,
-            "progressCount": 2,
-            "regressCount": 2,
-            "neutralCount": 0,
-            "scores": [
-              1.0,
-              -1.0,
-              1.0,
-              -1.0
-            ]
-          }
-        }
-      ],
-      "sequencingAdvisory": "\"Seated Lateral Raise\" (isolation/accessory) is displayed before \"Hanging Leg Raise\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
     }
   ]
 };
