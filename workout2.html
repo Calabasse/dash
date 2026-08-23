@@ -75,6 +75,9 @@
   .ex-rest { color: var(--muted); font-size: 12px; white-space: nowrap; }
   .ex-stale { color:#000; background:var(--gold); font-size:10px; font-weight:700;
     padding:2px 6px; border-radius:3px; white-space:nowrap; cursor:help; }
+  .ex-cohort { color:var(--dim); background:#12161c; border:1px solid var(--line);
+    font-size:10px; font-weight:600; padding:2px 6px; border-radius:3px;
+    white-space:nowrap; cursor:help; }
 
   /* volume bars */
   .vol { display:grid; grid-template-columns: 42px 1fr 70px; align-items:center;
@@ -378,7 +381,15 @@
       return `<div class="ex-stale" title="${gr}">⚠ stale decision ignored</div>`;
     if (ex.gate_status === 'no_signal')
       return `<div class="ex-nosignal" title="No decision has been computed for this exercise yet">No decision signal yet</div>`;
-    if (ex.gate_status === 'confirmed') return ''; // D-06: silent
+    if (ex.gate_status === 'confirmed') {
+      // D-06 partial reversal: still silent for a plain hold (gate_reason
+      // is None there), but a fresh cohort-level "increase" agreement now
+      // gets a small neutral chip -- muted, not a warning color, so it
+      // reads as informational rather than an exception (D-06's spirit
+      // preserved: badges still don't shout for the healthy case).
+      if (ex.gate_reason) return `<div class="ex-cohort" title="${gr}">↗ cohort agrees</div>`;
+      return '';
+    }
     if (ex.gate_status === 'gate_error')
       return `<div class="ex-stale" title="internal gate error — failed open">⚠ gate error</div>`;
     return ''; // overridden_reduce / overridden_deload — deferred per D-08
