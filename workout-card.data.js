@@ -20,7 +20,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY B - CHEST / TRICEPS  (5 days) \u2014 3 load\u2191 \u00b7 2 rep\u2191 \u00b7 0 hold.",
+        "headline": "DAY B - CHEST / TRICEPS  (5 days) \u2014 4 load\u2191 \u00b7 1 rep\u2191 \u00b7 0 hold.",
         "assess": "7 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>5/7</b> prescriptions passed the validation gate; <b>2 flagged</b> \u2014 see the \u2717 tags below."
       },
@@ -477,12 +477,12 @@ window.PROGRAM = {
             "Keep tension on triceps"
           ],
           "noWeight": false,
-          "loading_type": "band_combo",
+          "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 65 lb \u00d7 12 @ RPE 9 \u00b7 band_combo \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 75 lb band stack \u2014 chase reps to ~15 at RPE 9 before adding a band. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350. Back-off holds its own last load (50) for 10-12 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps at 75 lb at RPE 9 or lower; then step up to 100 lb.",
+          "action": "increase_load",
+          "assess": "Last top set: 65 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/10) \u2014 earn the jump; top set 65\u219267.5; +3.8% load costs ~1 rep, so the rep target drops 12\u219211 [range 9-11]. Isolation: only loaded once the whole cluster is productive. Back-off holds its own last load (60) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 12 clean reps at 65 lb at RPE 9.5 or lower; then increase to 67.5 lb.",
           "sets": [
             {
               "type": "W",
@@ -492,9 +492,9 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 50.0,
-                "reps": "6",
-                "rpe": 6.0
+                "lbs": 37.5,
+                "reps": "8",
+                "rpe": 5.0
               }
             },
             {
@@ -505,8 +505,8 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 75.0,
-                "reps": "12\u201320",
+                "lbs": 67.5,
+                "reps": "9\u201311",
                 "rpe": 9.0
               }
             },
@@ -518,7 +518,7 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 50.0,
+                "lbs": 60,
                 "reps": "10\u201312",
                 "rpe": 9.0
               }
@@ -695,7 +695,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 300 lb \u00d7 10 @ RPE 9 \u00b7 band_combo \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 300 lb band stack \u2014 chase reps to ~15 at RPE 9 before adding a band. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350. Back-off holds its own last load (275) for 10-12 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps at 300 lb at RPE 9 or lower; then step up to 350 lb.",
+          "when_to_add_load": "Reach 15 clean reps at 300 lb at RPE 9 or lower; then step up to 325 lb.",
           "sets": [
             {
               "type": "W",
@@ -4626,12 +4626,12 @@ window.PROGRAM = {
             "Keep tension on triceps"
           ],
           "noWeight": false,
-          "loading_type": "band_combo",
+          "loading_type": "dumbbell",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: 65 lb \u00d7 10 @ RPE 9 \u00b7 band_combo \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 75 lb band stack \u2014 chase reps to ~15 at RPE 9 before adding a band. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350. Back-off holds its own last load (50) for 8-10 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps at 75 lb at RPE 9 or lower; then step up to 100 lb.",
+          "assess": "Last top set: 65 lb \u00d7 10 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 65 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (60) for 8-10 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 12 clean reps at 65 lb at RPE 9.5 or lower; then increase to 67.5 lb.",
           "sets": [
             {
               "type": "W",
@@ -4641,9 +4641,9 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 50.0,
-                "reps": "6",
-                "rpe": 6.0
+                "lbs": 35,
+                "reps": "8",
+                "rpe": 5.0
               }
             },
             {
@@ -4654,9 +4654,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 75.0,
-                "reps": "10\u201320",
-                "rpe": 9.0
+                "lbs": 65,
+                "reps": "10\u201315",
+                "rpe": 9.5
               }
             },
             {
@@ -4667,7 +4667,7 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 50.0,
+                "lbs": 60,
                 "reps": "8\u201310",
                 "rpe": 9.0
               }
@@ -4676,7 +4676,7 @@ window.PROGRAM = {
           "gate_status": "confirmed",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 9.5 -> 9.25 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
             {
               "date": "2026-08-19",
@@ -4844,7 +4844,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 300 lb \u00d7 8 @ RPE 9 \u00b7 band_combo \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 300 lb band stack \u2014 chase reps to ~15 at RPE 9 before adding a band. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350. Back-off holds its own last load (275) for 9-11 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps at 300 lb at RPE 9 or lower; then step up to 350 lb.",
+          "when_to_add_load": "Reach 15 clean reps at 300 lb at RPE 9 or lower; then step up to 325 lb.",
           "sets": [
             {
               "type": "W",
