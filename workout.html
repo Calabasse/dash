@@ -154,6 +154,9 @@
   .when2 .next-est { color:var(--dim); }
   .when2 .next-est .est-badge { font-size:9px; font-weight:700; padding:1px 4px; border-radius:3px;
     border:1px solid var(--line); margin-left:4px; text-transform:uppercase; letter-spacing:.02em; }
+  .when2 .fatigue-adv { color:var(--dim); }
+  .when2 .fatigue-adv .adv-badge { font-size:9px; font-weight:700; padding:1px 4px; border-radius:3px;
+    border:1px solid #6b5a2e; color:#c9a94a; margin-left:4px; text-transform:uppercase; letter-spacing:.02em; }
 
   /* overall session summary */
   .summary { background:#0e0e0e; border:1px solid var(--line); border-radius:8px;
@@ -410,6 +413,24 @@
     ).reverse().join('');
   }
 
+  // Read-only advisory signal from app.services.analytics.fatigue_advisory.
+  // Deliberately not authoritative: no comparison against nextAvailable, no
+  // influence on scheduling — visibly labeled "advisory" per this capability's
+  // constitution (invariant 7), never rendered with next_program's visual weight.
+  function fatigueAdvisoryHTML(fa){
+    if(!fa || !fa.is_advisory) return '';
+    const cs = fa.component_status||{};
+    if(cs.fatigue_accumulation!=='ok') {
+      return `<div class="when2"><span class="fatigue-adv">Fatigue advisory: unavailable<span class="adv-badge">advisory</span></span></div>`;
+    }
+    const acc = fa.fatigue_accumulation||{};
+    const dl = fa.deload_state||{};
+    const score = typeof acc.global_fatigue_score==='number' ? acc.global_fatigue_score.toFixed(1) : '—';
+    const debt = typeof acc.recovery_debt==='number' ? acc.recovery_debt.toFixed(1) : '—';
+    const deloadNote = dl.deload_flag ? ` · Deload suggested (${esc(dl.trigger_type||'signal')})` : '';
+    return `<div class="when2"><span class="fatigue-adv">Fatigue signal: ${score} · recovery debt ${debt}${deloadNote}<span class="adv-badge">advisory</span></span></div>`;
+  }
+
   function summaryHTML(sm){
     if(!sm) return '';
     const cls = sm.status||'progress';
@@ -445,6 +466,7 @@
       <h1 class="title">${esc(s.title)}</h1>
       <div class="when2"><b>${formatDate(s.date)}</b>${s.prevDate?` · <span class="since">${ds} day${plural(ds)} since previous Day ${esc(s.day)}</span>`:''}${dsl!=null?` · <span class="since">${dsl<=0?`last Day ${esc(s.day)} today`:`${dsl} day${plural(dsl)} since last Day ${esc(s.day)}`}</span>`:''}</div>
       ${s.nextAvailable && parseD(s.nextAvailable.latest) >= startOfToday() ? `<div class="when2"><span class="next-est">Est. next Day ${esc(s.day)}: ${formatShort(s.nextAvailable.earliest)}–${formatShort(s.nextAvailable.latest)} · ${esc(s.nextAvailable.driver)}<span class="est-badge">estimate</span></span></div>` : ''}
+      ${fatigueAdvisoryHTML(s.fatigueAdvisory)}
       <div class="stats">${s.stats.map((x,i)=>(i?'<span class="dot">·</span>':'')+`<span>${esc(x)}</span>`).join('')}</div>
       ${summaryHTML(s.summary)}
       <div class="legend">
