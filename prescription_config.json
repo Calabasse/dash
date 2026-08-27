@@ -1199,6 +1199,76 @@
       "note": "CR-01 (05.3-REVIEW.md): registered here so the ratification-supersession gate (warning banner + mandatory second confirmation) actually fires for this field, matching the ratification already cited in tools/prescribe_hypertrophy.py's _FALLBACK_ENGINE_CONSTANTS comment. A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
     }
   },
+  "occurrence_classification": {
+    "primary_owner_days": {},
+    "manual_overrides": {},
+    "recovery_windows": {},
+    "owner_inference": {},
+    "bloodflow_profile": {
+      "warmup_pct_of_primary_top": 0.5,
+      "warmup_reps": 8,
+      "warmup_rpe": 5.0,
+      "working_pct_of_primary_top": 0.667,
+      "working_reps": 20,
+      "working_rpe_cap": 7.0,
+      "working_set_count": 2,
+      "second_set_step_down": "one_equipment_increment"
+    },
+    "supplemental_profile": {},
+    "skip_overlap": {},
+    "category_overrides": {},
+    "fatigue_volume_weighting": {}
+  },
+  "occurrence_classification_meta": {
+    "bloodflow_profile.warmup_pct_of_primary_top": {
+      "ratified_date": "2026-08-26",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "06.1-FEATURE-SPEC.md 'Prescription Profiles' + Golden Test Case 1 exact expected prescription (user-authored spec, values pinned by an exact acceptance test)",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "bloodflow_profile.warmup_reps": {
+      "ratified_date": "2026-08-26",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "06.1-FEATURE-SPEC.md 'Prescription Profiles' + Golden Test Case 1 exact expected prescription (user-authored spec, values pinned by an exact acceptance test)",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "bloodflow_profile.warmup_rpe": {
+      "ratified_date": "2026-08-26",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "06.1-FEATURE-SPEC.md 'Prescription Profiles' + Golden Test Case 1 exact expected prescription (user-authored spec, values pinned by an exact acceptance test)",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "bloodflow_profile.working_pct_of_primary_top": {
+      "ratified_date": "2026-08-26",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "06.1-FEATURE-SPEC.md 'Prescription Profiles' + Golden Test Case 1 exact expected prescription (user-authored spec, values pinned by an exact acceptance test)",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "bloodflow_profile.working_reps": {
+      "ratified_date": "2026-08-26",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "06.1-FEATURE-SPEC.md 'Prescription Profiles' + Golden Test Case 1 exact expected prescription (user-authored spec, values pinned by an exact acceptance test)",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "bloodflow_profile.working_rpe_cap": {
+      "ratified_date": "2026-08-26",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "06.1-FEATURE-SPEC.md 'Prescription Profiles' + Golden Test Case 1 exact expected prescription (user-authored spec, values pinned by an exact acceptance test)",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "bloodflow_profile.working_set_count": {
+      "ratified_date": "2026-08-26",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "06.1-FEATURE-SPEC.md 'Prescription Profiles' + Golden Test Case 1 exact expected prescription (user-authored spec, values pinned by an exact acceptance test)",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "bloodflow_profile.second_set_step_down": {
+      "ratified_date": "2026-08-26",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "06.1-FEATURE-SPEC.md 'Prescription Profiles' + Golden Test Case 1 exact expected prescription (user-authored spec, values pinned by an exact acceptance test)",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    }
+  },
   "profiles_meta": {
     "5_3_1": {
       "ratified_date": "2026-08-17",

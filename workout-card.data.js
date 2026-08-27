@@ -47,40 +47,40 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-08-26T06:30:17.517793",
+        "generated_at": "2026-08-27T06:30:17.713902",
         "fatigue_signal": {
           "assisted_chest_dip": 0.9375,
-          "assisted_pull_up": 0.549994615356511,
+          "assisted_pull_up": 0.5621006266824446,
           "band_lateral_raise": 1.1827878018414533,
-          "barbell_bent_over_row": 1.4122952314859154,
+          "barbell_bent_over_row": 1.4772269376808445,
           "barbell_incline_bench_press": 1.6179993072553596,
-          "dumbbell_cross_body_hammer_curl": 0.4233637913596644,
+          "dumbbell_cross_body_hammer_curl": 0.43099854511344077,
           "dumbbell_fly": 0.5169774553559345,
-          "dumbbell_incline_bicep_curl": 0.6276938351629343,
+          "dumbbell_incline_bicep_curl": 0.595482476519437,
           "dumbbell_lateral_raise": 0.09,
-          "dumbbell_one_arm_row": 0.9494289988558307,
+          "dumbbell_one_arm_row": 0.9456078713339864,
           "dumbbell_triceps_extension": 0.768638051992814,
           "rear_dumbbell_raise": 0.3075557113106938,
           "reverse_fly": 0.09,
-          "seated_lateral_raise": 0.5298067023196593,
+          "seated_lateral_raise": 0.6503356969717105,
           "triceps_pushdown": 5.533702580119798
         },
         "fatigue_accumulation": {
           "session_id": "f31c8909-17b0-4360-b6ef-b929e08bbf7f",
           "session_date": "2026-08-26",
-          "global_fatigue_score": 0.0,
-          "upper_fatigue": 0.0,
-          "lower_fatigue": 0.0,
-          "fatigue_trend_3": 5.210026170422801,
-          "fatigue_trend_5": 4.3331614600003245,
-          "recovery_debt": 1.9188966382398336
+          "global_fatigue_score": 4.661752154301864,
+          "upper_fatigue": 2.330876077150932,
+          "lower_fatigue": 2.330876077150932,
+          "fatigue_trend_3": 6.763943555190089,
+          "fatigue_trend_5": 5.265511890860698,
+          "recovery_debt": 6.580648792541697
         },
         "deload_state": {
-          "snapshot_date": "2026-08-26",
+          "snapshot_date": "2026-08-27",
           "deload_flag": true,
           "pre_deload_flag": false,
-          "trigger_type": "regression",
-          "fatigue_trigger": 0.0,
+          "trigger_type": "debt",
+          "fatigue_trigger": 4.661752154301864,
           "regression_trigger": 0.7333333333333333,
           "cooldown_sessions": 3
         },
@@ -104,13 +104,13 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY A \u2014 BACK / BICEPS (4-5 days) \u2014 2 load\u2191 \u00b7 2 rep\u2191 \u00b7 2 hold.",
+        "headline": "DAY A \u2014 BACK / BICEPS (4-5 days) \u2014 1 load\u2191 \u00b7 2 rep\u2191 \u00b7 2 hold.",
         "assess": "8 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>6/8</b> prescriptions passed the validation gate; <b>2 flagged</b> \u2014 see the \u2717 tags below."
       },
       "exercises": [
         {
-          "name": "Assisted Pull Up",
+          "name": "Pull Up (Assisted)",
           "icon": "\ud83d\udea3",
           "rest": "3:00",
           "cues": [
@@ -182,162 +182,29 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 33.37333333333333,
-              "decisionScoreRaw": 33.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-13",
-              "decision": "hold",
-              "decisionScore": 33.165,
-              "decisionScoreRaw": 33.165,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-06",
-              "decision": "hold",
-              "decisionScore": 32.95666666666666,
-              "decisionScoreRaw": 32.95666666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-              "outcome": {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 175,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 225.0,
-                "actualReps": 8.0,
-                "loadDelta": 50,
-                "repDelta": -7,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 33.37333333333333,
-              "decisionScoreRaw": 33.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 175,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 225.0,
-                "actualReps": 8.0,
-                "loadDelta": 50,
-                "repDelta": -7,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-26",
-              "decision": "hold",
-              "decisionScore": 32.33166666666666,
-              "decisionScoreRaw": 32.33166666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-              "outcome": {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 175,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 225.0,
-                "actualReps": 8.0,
-                "loadDelta": 50,
-                "repDelta": -7,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "date": "2026-07-26",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-                "date": "2026-07-20",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-                "date": "2026-07-07",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 0,
-            "regressCount": 5,
-            "neutralCount": 0,
-            "scores": [
-              -1.0,
-              -1.0,
-              -1.0,
-              -1.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
-          "name": "Barbell Bent Over Row",
+          "name": "Bent Over Row (Barbell)",
           "icon": "\ud83d\udea3",
           "rest": "3:00",
           "cues": [
@@ -408,162 +275,29 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 154.95666666666665,
-              "decisionScoreRaw": 154.95666666666665,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-13",
-              "decision": "hold",
-              "decisionScore": 155.32333333333332,
-              "decisionScoreRaw": 155.32333333333332,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-06",
-              "decision": "hold",
-              "decisionScore": 150.19,
-              "decisionScoreRaw": 150.19,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-              "outcome": {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 143,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 143.0,
-                "actualReps": 8.0,
-                "loadDelta": 0,
-                "repDelta": -2,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 146.5233333333333,
-              "decisionScoreRaw": 146.5233333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "load_undershoot",
-                "prescribedLoad": 138,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 132.0,
-                "actualReps": 10.0,
-                "loadDelta": -6,
-                "repDelta": 1,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-26",
-              "decision": "hold",
-              "decisionScore": 145.42333333333332,
-              "decisionScoreRaw": 145.42333333333332,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-              "outcome": {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "behaviorClass": "matched",
-                "prescribedLoad": 132,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 132.0,
-                "actualReps": 9.0,
-                "loadDelta": 0,
-                "repDelta": -1,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "load_undershoot",
-                "effectivenessScore": 0.0,
-                "valid": true
-              },
-              {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "date": "2026-07-26",
-                "behaviorClass": "matched",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-                "date": "2026-07-20",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-                "date": "2026-07-07",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 1,
-            "regressCount": 3,
-            "neutralCount": 1,
-            "scores": [
-              -1.0,
-              0.0,
-              1.0,
-              -1.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
-          "name": "Dumbbell Incline Bicep Curl",
+          "name": "Incline Bicep Curl (Dumbbell)",
           "icon": "\ud83d\udcaa",
           "rest": "2:00",
           "cues": [
@@ -621,140 +355,29 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-29, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 38.87333333333333,
-              "decisionScoreRaw": 38.87333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-15",
-              "decision": "hold",
-              "decisionScore": 38.45666666666666,
-              "decisionScoreRaw": 38.45666666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-14",
-              "decision": "hold",
-              "decisionScore": 28.04,
-              "decisionScoreRaw": 28.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-13",
-              "decision": "hold",
-              "decisionScore": 41.54,
-              "decisionScoreRaw": 41.54,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-08",
-              "decision": "hold",
-              "decisionScore": 37.151111111111106,
-              "decisionScoreRaw": 37.151111111111106,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-              "outcome": {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 32,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 32.5,
-                "actualReps": 10.0,
-                "loadDelta": 0,
-                "repDelta": -5,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "date": "2026-08-08",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "date": "2026-08-07",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "date": "2026-08-04",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 3,
-            "regressCount": 2,
-            "neutralCount": 0,
-            "scores": [
-              -1.0,
-              1.0,
-              1.0,
-              1.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
-          "name": "Dumbbell One Arm Row",
+          "name": "One Arm Row (Dumbbell)",
           "icon": "\ud83d\udea3",
           "rest": "3:00",
           "cues": [
@@ -825,162 +448,29 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 81.20666666666668,
-              "decisionScoreRaw": 81.20666666666668,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-13",
-              "decision": "hold",
-              "decisionScore": 83.08166666666666,
-              "decisionScoreRaw": 83.08166666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-06",
-              "decision": "hold",
-              "decisionScore": 74.70666666666666,
-              "decisionScoreRaw": 74.70666666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-              "outcome": {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 75,
-                "prescribedReps": 11,
-                "prescribedRpe": 9,
-                "actualLoad": 70.0,
-                "actualReps": 13.0,
-                "loadDelta": -5,
-                "repDelta": 2,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 72.04,
-              "decisionScoreRaw": 72.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "load_undershoot",
-                "prescribedLoad": 68,
-                "prescribedReps": 12,
-                "prescribedRpe": 9,
-                "actualLoad": 65.0,
-                "actualReps": 13.0,
-                "loadDelta": -2,
-                "repDelta": 1,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-26",
-              "decision": "hold",
-              "decisionScore": 69.58166666666666,
-              "decisionScoreRaw": 69.58166666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-              "outcome": {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "behaviorClass": "matched",
-                "prescribedLoad": 65,
-                "prescribedReps": 12,
-                "prescribedRpe": 10,
-                "actualLoad": 65.0,
-                "actualReps": 11.0,
-                "loadDelta": 0,
-                "repDelta": -1,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "load_undershoot",
-                "effectivenessScore": 0.0,
-                "valid": true
-              },
-              {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "date": "2026-07-26",
-                "behaviorClass": "matched",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-                "date": "2026-07-20",
-                "behaviorClass": "load_undershoot",
-                "effectivenessScore": 0.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-                "date": "2026-07-07",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 2,
-            "regressCount": 1,
-            "neutralCount": 2,
-            "scores": [
-              1.0,
-              0.0,
-              1.0,
-              0.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
-          "name": "Dumbbell Cross Body Hammer Curl",
+          "name": "Cross Body Hammer Curl (Dumbbell)",
           "icon": "\ud83d\udcaa",
           "rest": "2:00",
           "cues": [
@@ -1038,159 +528,26 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-29, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9.5 -> 9.25 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 36.26222222222222,
-              "decisionScoreRaw": 36.26222222222222,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-13",
-              "decision": "hold",
-              "decisionScore": 37.23444444444444,
-              "decisionScoreRaw": 37.23444444444444,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-06",
-              "decision": "hold",
-              "decisionScore": 34.428888888888885,
-              "decisionScoreRaw": 34.428888888888885,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-              "outcome": {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 30,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 27.5,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 3,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 33.98444444444444,
-              "decisionScoreRaw": 33.98444444444444,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 30,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 30.0,
-                "actualReps": 9.0,
-                "loadDelta": 0,
-                "repDelta": -6,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-26",
-              "decision": "hold",
-              "decisionScore": 34.59555555555555,
-              "decisionScoreRaw": 34.59555555555555,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-              "outcome": {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 30,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 30.0,
-                "actualReps": 9.0,
-                "loadDelta": 0,
-                "repDelta": -6,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "date": "2026-07-26",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-                "date": "2026-07-20",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-                "date": "2026-07-07",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 1,
-            "regressCount": 4,
-            "neutralCount": 0,
-            "scores": [
-              1.0,
-              -1.0,
-              -1.0,
-              -1.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
           "name": "Seated Lateral Raise",
@@ -1200,10 +557,10 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "increase_load",
-          "assess": "Last top set: 20 lb \u00d7 20 @ RPE 7 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (20/15) \u2014 earn the jump; top set 20\u219222.5; +12.5% load costs ~4 reps, so the rep target drops 20\u219216 [range 10-16]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 20 for 13-15, rebuilding to the reps it just produced.",
-          "when_to_add_load": "Reach 12 clean reps at 20 lb at RPE 9.5 or lower; then increase to 22.5 lb.",
+          "action": "bloodflow",
+          "assess": "Most recent primary session: 30 lb \u00d7 11 @ RPE 9, 25 lb \u00d7 13 @ RPE 9, and 22.5 lb \u00d7 15 @ RPE 9 on 2026-08-25. Today's Day A occurrence is classified as a blood-flow/recovery exposure.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Blood-flow/recovery exposure \u2014 Seated Lateral Raise received its primary progression work on 2026-08-25. Prescribe 15 lb \u00d7 8 @ RPE 5, 20 lb \u00d7 20 @ RPE 7 maximum, and 17.5 lb \u00d7 20 @ RPE 7 maximum. Stop each working set at 20 reps or RPE 7, whichever occurs first. Today's performance is excluded from primary progression decisions. The primary progression remains 30 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 32.5 lb.",
+          "when_to_add_load": "Reach 12 clean reps at 30 lb at RPE 9.5 or lower; then increase to 32.5 lb.",
           "sets": [
             {
               "type": "W",
@@ -1213,7 +570,7 @@ window.PROGRAM = {
                 "rpe": null
               },
               "prop": {
-                "lbs": 12.5,
+                "lbs": 15,
                 "reps": "8",
                 "rpe": 5.0
               }
@@ -1226,9 +583,9 @@ window.PROGRAM = {
                 "rpe": null
               },
               "prop": {
-                "lbs": 22.5,
-                "reps": "10\u201316",
-                "rpe": 9.5
+                "lbs": 20,
+                "reps": "20",
+                "rpe": 7.0
               }
             },
             {
@@ -1239,9 +596,9 @@ window.PROGRAM = {
                 "rpe": null
               },
               "prop": {
-                "lbs": 20,
-                "reps": "13\u201315",
-                "rpe": 9.0
+                "lbs": 17.5,
+                "reps": "20",
+                "rpe": 7.0
               }
             },
             {
@@ -1271,10 +628,10 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "not_gated",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9.5 -> 9.25 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 7 -> 6.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
             {
               "date": "2026-08-21",
@@ -1410,10 +767,45 @@ window.PROGRAM = {
               1.0,
               1.0
             ]
-          }
+          },
+          "occurrenceRole": "bloodflow_recovery",
+          "roleSource": "history_inference",
+          "roleConfidence": "high",
+          "primaryReference": {
+            "sessionId": "f308cefb-9b0e-4481-acbd-1617a58bac3e",
+            "date": "2026-08-25",
+            "sets": [
+              {
+                "lbs": 15.0,
+                "reps": 8,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 30.0,
+                "reps": 11,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 25.0,
+                "reps": 13,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 22.5,
+                "reps": 15,
+                "rpe": 9.0
+              }
+            ]
+          },
+          "progressionEligible": false,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "Most recent primary-shaped exposure was 2026-08-25 (24h ago) -- within the 48h blood-flow window."
+          ]
         },
         {
-          "name": "Cable Crunch",
+          "name": "Crunch (Cable)",
           "icon": "\ud83c\udf00",
           "rest": "2:00",
           "cues": [],
@@ -1448,7 +840,17 @@ window.PROGRAM = {
           "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": null
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
           "name": "Triceps Pushdown",
@@ -1656,10 +1058,20 @@ window.PROGRAM = {
               1.0,
               -1.0
             ]
-          }
+          },
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         }
       ],
-      "sequencingAdvisory": "\"Dumbbell Incline Bicep Curl\" (isolation/accessory) is displayed before \"Dumbbell One Arm Row\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
+      "sequencingAdvisory": "\"Incline Bicep Curl (Dumbbell)\" (isolation/accessory) is displayed before \"One Arm Row (Dumbbell)\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
     },
     {
       "day": "C",
@@ -1706,40 +1118,40 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-08-26T06:30:17.517793",
+        "generated_at": "2026-08-27T06:30:17.713902",
         "fatigue_signal": {
           "assisted_chest_dip": 0.9375,
-          "assisted_pull_up": 0.549994615356511,
+          "assisted_pull_up": 0.5621006266824446,
           "band_lateral_raise": 1.1827878018414533,
-          "barbell_bent_over_row": 1.4122952314859154,
+          "barbell_bent_over_row": 1.4772269376808445,
           "barbell_incline_bench_press": 1.6179993072553596,
-          "dumbbell_cross_body_hammer_curl": 0.4233637913596644,
+          "dumbbell_cross_body_hammer_curl": 0.43099854511344077,
           "dumbbell_fly": 0.5169774553559345,
-          "dumbbell_incline_bicep_curl": 0.6276938351629343,
+          "dumbbell_incline_bicep_curl": 0.595482476519437,
           "dumbbell_lateral_raise": 0.09,
-          "dumbbell_one_arm_row": 0.9494289988558307,
+          "dumbbell_one_arm_row": 0.9456078713339864,
           "dumbbell_triceps_extension": 0.768638051992814,
           "rear_dumbbell_raise": 0.3075557113106938,
           "reverse_fly": 0.09,
-          "seated_lateral_raise": 0.5298067023196593,
+          "seated_lateral_raise": 0.6503356969717105,
           "triceps_pushdown": 5.533702580119798
         },
         "fatigue_accumulation": {
           "session_id": "f31c8909-17b0-4360-b6ef-b929e08bbf7f",
           "session_date": "2026-08-26",
-          "global_fatigue_score": 0.0,
-          "upper_fatigue": 0.0,
-          "lower_fatigue": 0.0,
-          "fatigue_trend_3": 5.210026170422801,
-          "fatigue_trend_5": 4.3331614600003245,
-          "recovery_debt": 1.9188966382398336
+          "global_fatigue_score": 4.661752154301864,
+          "upper_fatigue": 2.330876077150932,
+          "lower_fatigue": 2.330876077150932,
+          "fatigue_trend_3": 6.763943555190089,
+          "fatigue_trend_5": 5.265511890860698,
+          "recovery_debt": 6.580648792541697
         },
         "deload_state": {
-          "snapshot_date": "2026-08-26",
+          "snapshot_date": "2026-08-27",
           "deload_flag": true,
           "pre_deload_flag": false,
-          "trigger_type": "regression",
-          "fatigue_trigger": 0.0,
+          "trigger_type": "debt",
+          "fatigue_trigger": 4.661752154301864,
           "regression_trigger": 0.7333333333333333,
           "cooldown_sessions": 3
         },
@@ -1763,7 +1175,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY C \u2014 DELTS / ABS (3-4 days) \u2014 1 load\u2191 \u00b7 3 rep\u2191 \u00b7 0 hold.",
+        "headline": "DAY C \u2014 DELTS / ABS (3-4 days) \u2014 1 load\u2191 \u00b7 2 rep\u2191 \u00b7 0 hold.",
         "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>5/6</b> prescriptions passed the validation gate; <b>1 flagged</b> \u2014 see the \u2717 tags below."
       },
@@ -1979,10 +1391,20 @@ window.PROGRAM = {
               1.0,
               1.0
             ]
-          }
+          },
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
-          "name": "Band Lateral Raise",
+          "name": "Lateral Raise (Band)",
           "icon": "\ud83d\uded7",
           "rest": "2:00",
           "cues": [
@@ -2053,159 +1475,26 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-21",
-              "decision": "hold",
-              "decisionScore": 92.37333333333333,
-              "decisionScoreRaw": 92.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-15",
-              "decision": "hold",
-              "decisionScore": 93.37333333333333,
-              "decisionScoreRaw": 93.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-08",
-              "decision": "hold",
-              "decisionScore": 94.37333333333333,
-              "decisionScoreRaw": 94.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-              "outcome": {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 65,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 65.0,
-                "actualReps": 16.0,
-                "loadDelta": 0,
-                "repDelta": -4,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-04",
-              "decision": "hold",
-              "decisionScore": 91.70666666666668,
-              "decisionScoreRaw": 91.70666666666668,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-              "outcome": {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 65,
-                "prescribedReps": 21,
-                "prescribedRpe": 9,
-                "actualLoad": 65.0,
-                "actualReps": 14.0,
-                "loadDelta": 0,
-                "repDelta": -7,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-30",
-              "decision": "hold",
-              "decisionScore": 88.42888888888888,
-              "decisionScoreRaw": 88.42888888888888,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "c4994788-2c8c-4fdb-8220-2bbd54ad696f",
-              "outcome": {
-                "sessionId": "c4994788-2c8c-4fdb-8220-2bbd54ad696f",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 65,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 65.0,
-                "actualReps": 12.0,
-                "loadDelta": 0,
-                "repDelta": -8,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "date": "2026-08-08",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "date": "2026-08-04",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "c4994788-2c8c-4fdb-8220-2bbd54ad696f",
-                "date": "2026-07-30",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "83713f49-b352-4815-baf4-0a7f4bba0aa3",
-                "date": "2026-07-25",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "d23c4815-40b8-457f-ad27-154f817249fd",
-                "date": "2026-07-19",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 1,
-            "regressCount": 4,
-            "neutralCount": 0,
-            "scores": [
-              -1.0,
-              -1.0,
-              -1.0,
-              -1.0,
-              1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
           "name": "Rear Dumbbell Raise",
@@ -2431,7 +1720,17 @@ window.PROGRAM = {
               1.0,
               1.0
             ]
-          }
+          },
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
           "name": "Hanging Leg Raise",
@@ -2527,7 +1826,17 @@ window.PROGRAM = {
           "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": null
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
           "name": "Triceps Pushdown",
@@ -2544,9 +1853,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "band_combo",
           "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 300 lb \u00d7 10 @ RPE 6 \u00b7 band_combo \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 300 lb band stack \u2014 chase reps to ~15 at RPE 9 before adding a band. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350. Back-off holds its own last load (300) for 10-12 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "action": "bloodflow",
+          "assess": "Most recent primary session: 300 lb \u00d7 10 @ RPE 9 and 275 lb \u00d7 10 @ RPE 9 on 2026-08-23. Today's Day C occurrence is classified as a blood-flow/recovery exposure.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Blood-flow/recovery exposure \u2014 Triceps Pushdown received its primary progression work on 2026-08-23. Prescribe 150 lb \u00d7 8 @ RPE 5, 200 lb \u00d7 20 @ RPE 7 maximum, and 175 lb \u00d7 20 @ RPE 7 maximum. Stop each working set at 20 reps or RPE 7, whichever occurs first. Today's performance is excluded from primary progression decisions. The primary progression remains 300 lb \u00d7 15 clean reps at RPE 9 or lower before increasing to 300 lb.",
           "when_to_add_load": "Reach 15 clean reps at 300 lb at RPE 9 or lower; then step up to 325 lb.",
           "sets": [
             {
@@ -2557,9 +1866,9 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 275.0,
-                "reps": "4",
-                "rpe": 6.0
+                "lbs": 150.0,
+                "reps": "8",
+                "rpe": 5.0
               }
             },
             {
@@ -2583,9 +1892,9 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 300.0,
-                "reps": "10\u201320",
-                "rpe": 9.0
+                "lbs": 200.0,
+                "reps": "20",
+                "rpe": 7.0
               }
             },
             {
@@ -2596,16 +1905,16 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 300.0,
-                "reps": "10\u201312",
-                "rpe": 9.0
+                "lbs": 175.0,
+                "reps": "20",
+                "rpe": 7.0
               }
             }
           ],
-          "gate_status": "confirmed",
-          "gate_reason": "next_program: increase (fresh, cohort signal only \u2014 per-exercise gate governs the actual load)",
-          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (the logged Day A session on 2026-08-26). This exercise's own recovery estimate (44h, volume stimulus, elevated fatigue) extends to 2026-08-27, past that. Advisory only -- no volume was changed.",
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "gate_status": "not_gated",
+          "gate_reason": null,
+          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (the logged Day A session on 2026-08-26). This exercise's own recovery estimate (32h, volume stimulus, low fatigue) extends to 2026-08-27, past that. Advisory only -- no volume was changed.",
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 7 -> 6.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
             {
               "date": "2026-08-19",
@@ -2742,10 +2051,45 @@ window.PROGRAM = {
               1.0,
               -1.0
             ]
-          }
+          },
+          "occurrenceRole": "bloodflow_recovery",
+          "roleSource": "history_inference",
+          "roleConfidence": "high",
+          "primaryReference": {
+            "sessionId": "1bf16873-8ade-4b02-8964-f6bb55600cef",
+            "date": "2026-08-23",
+            "sets": [
+              {
+                "lbs": 200.0,
+                "reps": 10,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 250.0,
+                "reps": 5,
+                "rpe": 6.0
+              },
+              {
+                "lbs": 300.0,
+                "reps": 10,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 275.0,
+                "reps": 10,
+                "rpe": 9.0
+              }
+            ]
+          },
+          "progressionEligible": false,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "Most recent primary-shaped exposure was 2026-08-23 (48h ago) -- within the 48h blood-flow window."
+          ]
         },
         {
-          "name": "Dumbbell Incline Bicep Curl",
+          "name": "Incline Bicep Curl (Dumbbell)",
           "icon": "\ud83d\udcaa",
           "rest": "2:00",
           "cues": [
@@ -2803,137 +2147,26 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": "Day A (back/arms) also trains arms (the logged Day A session on 2026-08-26). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-28, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": null,
-          "decisionHistory": [
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 38.87333333333333,
-              "decisionScoreRaw": 38.87333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-15",
-              "decision": "hold",
-              "decisionScore": 38.45666666666666,
-              "decisionScoreRaw": 38.45666666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-14",
-              "decision": "hold",
-              "decisionScore": 28.04,
-              "decisionScoreRaw": 28.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-13",
-              "decision": "hold",
-              "decisionScore": 41.54,
-              "decisionScoreRaw": 41.54,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-08",
-              "decision": "hold",
-              "decisionScore": 37.151111111111106,
-              "decisionScoreRaw": 37.151111111111106,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-              "outcome": {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 32,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 32.5,
-                "actualReps": 10.0,
-                "loadDelta": 0,
-                "repDelta": -5,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "date": "2026-08-08",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "date": "2026-08-07",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "date": "2026-08-04",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 3,
-            "regressCount": 2,
-            "neutralCount": 0,
-            "scores": [
-              -1.0,
-              1.0,
-              1.0,
-              1.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         }
       ],
       "sequencingAdvisory": "\"Seated Lateral Raise\" (isolation/accessory) is displayed before \"Hanging Leg Raise\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
@@ -2983,40 +2216,40 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-08-26T06:30:17.517793",
+        "generated_at": "2026-08-27T06:30:17.713902",
         "fatigue_signal": {
           "assisted_chest_dip": 0.9375,
-          "assisted_pull_up": 0.549994615356511,
+          "assisted_pull_up": 0.5621006266824446,
           "band_lateral_raise": 1.1827878018414533,
-          "barbell_bent_over_row": 1.4122952314859154,
+          "barbell_bent_over_row": 1.4772269376808445,
           "barbell_incline_bench_press": 1.6179993072553596,
-          "dumbbell_cross_body_hammer_curl": 0.4233637913596644,
+          "dumbbell_cross_body_hammer_curl": 0.43099854511344077,
           "dumbbell_fly": 0.5169774553559345,
-          "dumbbell_incline_bicep_curl": 0.6276938351629343,
+          "dumbbell_incline_bicep_curl": 0.595482476519437,
           "dumbbell_lateral_raise": 0.09,
-          "dumbbell_one_arm_row": 0.9494289988558307,
+          "dumbbell_one_arm_row": 0.9456078713339864,
           "dumbbell_triceps_extension": 0.768638051992814,
           "rear_dumbbell_raise": 0.3075557113106938,
           "reverse_fly": 0.09,
-          "seated_lateral_raise": 0.5298067023196593,
+          "seated_lateral_raise": 0.6503356969717105,
           "triceps_pushdown": 5.533702580119798
         },
         "fatigue_accumulation": {
           "session_id": "f31c8909-17b0-4360-b6ef-b929e08bbf7f",
           "session_date": "2026-08-26",
-          "global_fatigue_score": 0.0,
-          "upper_fatigue": 0.0,
-          "lower_fatigue": 0.0,
-          "fatigue_trend_3": 5.210026170422801,
-          "fatigue_trend_5": 4.3331614600003245,
-          "recovery_debt": 1.9188966382398336
+          "global_fatigue_score": 4.661752154301864,
+          "upper_fatigue": 2.330876077150932,
+          "lower_fatigue": 2.330876077150932,
+          "fatigue_trend_3": 6.763943555190089,
+          "fatigue_trend_5": 5.265511890860698,
+          "recovery_debt": 6.580648792541697
         },
         "deload_state": {
-          "snapshot_date": "2026-08-26",
+          "snapshot_date": "2026-08-27",
           "deload_flag": true,
           "pre_deload_flag": false,
-          "trigger_type": "regression",
-          "fatigue_trigger": 0.0,
+          "trigger_type": "debt",
+          "fatigue_trigger": 4.661752154301864,
           "regression_trigger": 0.7333333333333333,
           "cooldown_sessions": 3
         },
@@ -3046,7 +2279,7 @@ window.PROGRAM = {
       },
       "exercises": [
         {
-          "name": "Barbell Incline Bench Press",
+          "name": "Incline Bench Press (Barbell)",
           "icon": "\ud83c\udfcb\ufe0f",
           "rest": "3:00",
           "cues": [
@@ -3117,162 +2350,29 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-19",
-              "decision": "hold",
-              "decisionScore": 158.59833333333333,
-              "decisionScoreRaw": 158.59833333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "1c95db48-1b09-4a28-b993-5b31f437de12",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-14",
-              "decision": "hold",
-              "decisionScore": 153.23466666666664,
-              "decisionScoreRaw": 153.23466666666664,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-07",
-              "decision": "hold",
-              "decisionScore": 152.86666666666665,
-              "decisionScoreRaw": 152.86666666666665,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-              "outcome": {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "behaviorClass": "load_undershoot",
-                "prescribedLoad": 149,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 143.0,
-                "actualReps": 10.0,
-                "loadDelta": -6,
-                "repDelta": 1,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-02",
-              "decision": "hold",
-              "decisionScore": 152.5,
-              "decisionScoreRaw": 152.5,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-              "outcome": {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "behaviorClass": "matched",
-                "prescribedLoad": 143,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 143.0,
-                "actualReps": 9.0,
-                "loadDelta": 0,
-                "repDelta": -1,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-28",
-              "decision": "hold",
-              "decisionScore": 146.33999999999997,
-              "decisionScoreRaw": 146.33999999999997,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "57e204c2-3cd9-433c-b8e0-e446777e5450",
-              "outcome": {
-                "sessionId": "57e204c2-3cd9-433c-b8e0-e446777e5450",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 132,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 132.0,
-                "actualReps": 8.0,
-                "loadDelta": 0,
-                "repDelta": -2,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "date": "2026-08-07",
-                "behaviorClass": "load_undershoot",
-                "effectivenessScore": 0.0,
-                "valid": true
-              },
-              {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "date": "2026-08-02",
-                "behaviorClass": "matched",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "57e204c2-3cd9-433c-b8e0-e446777e5450",
-                "date": "2026-07-28",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "c8825d20-c30f-43d6-a5fd-29103e166001",
-                "date": "2026-07-21",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "c8dbc020-24f0-463c-9d8f-a3ad0011fbcf",
-                "date": "2026-07-08",
-                "behaviorClass": "matched",
-                "effectivenessScore": 1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 2,
-            "regressCount": 2,
-            "neutralCount": 1,
-            "scores": [
-              0.0,
-              1.0,
-              -1.0,
-              -1.0,
-              1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
-          "name": "Dumbbell Fly",
+          "name": "Chest Fly (Dumbbell)",
           "icon": "\ud83c\udfcb\ufe0f",
           "rest": "1:30",
           "cues": [
@@ -3330,162 +2430,29 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-19",
-              "decision": "hold",
-              "decisionScore": 46.04,
-              "decisionScoreRaw": 46.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "1c95db48-1b09-4a28-b993-5b31f437de12",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-14",
-              "decision": "hold",
-              "decisionScore": 49.15111111111111,
-              "decisionScoreRaw": 49.15111111111111,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-07",
-              "decision": "hold",
-              "decisionScore": 47.54,
-              "decisionScoreRaw": 47.54,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-              "outcome": {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 42,
-                "prescribedReps": 10,
-                "prescribedRpe": 9,
-                "actualLoad": 40.0,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 2,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-02",
-              "decision": "hold",
-              "decisionScore": 44.12333333333333,
-              "decisionScoreRaw": 44.12333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-              "outcome": {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 40,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 40.0,
-                "actualReps": 8.0,
-                "loadDelta": 0,
-                "repDelta": -7,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-28",
-              "decision": "hold",
-              "decisionScore": 47.04,
-              "decisionScoreRaw": 47.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "57e204c2-3cd9-433c-b8e0-e446777e5450",
-              "outcome": {
-                "sessionId": "57e204c2-3cd9-433c-b8e0-e446777e5450",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 40,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 40.0,
-                "actualReps": 10.0,
-                "loadDelta": 0,
-                "repDelta": -5,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "date": "2026-08-07",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "date": "2026-08-02",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "57e204c2-3cd9-433c-b8e0-e446777e5450",
-                "date": "2026-07-28",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "c8825d20-c30f-43d6-a5fd-29103e166001",
-                "date": "2026-07-21",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "c8dbc020-24f0-463c-9d8f-a3ad0011fbcf",
-                "date": "2026-07-08",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 2,
-            "regressCount": 3,
-            "neutralCount": 0,
-            "scores": [
-              1.0,
-              -1.0,
-              -1.0,
-              1.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
-          "name": "Dumbbell Triceps Extension",
+          "name": "Triceps Extension (Dumbbell)",
           "icon": "\ud83d\udd17",
           "rest": "2:00",
           "cues": [
@@ -3544,159 +2511,26 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-19",
-              "decision": "hold",
-              "decisionScore": 77.59555555555556,
-              "decisionScoreRaw": 77.59555555555556,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "1c95db48-1b09-4a28-b993-5b31f437de12",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-14",
-              "decision": "hold",
-              "decisionScore": 79.26222222222222,
-              "decisionScoreRaw": 79.26222222222222,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-07",
-              "decision": "hold",
-              "decisionScore": 80.70666666666668,
-              "decisionScoreRaw": 80.70666666666668,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-              "outcome": {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 75,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 65.0,
-                "actualReps": 12.0,
-                "loadDelta": -10,
-                "repDelta": -8,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-02",
-              "decision": "hold",
-              "decisionScore": 77.81777777777778,
-              "decisionScoreRaw": 77.81777777777778,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-              "outcome": {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 75,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 65.0,
-                "actualReps": 8.0,
-                "loadDelta": -10,
-                "repDelta": -12,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-28",
-              "decision": "hold",
-              "decisionScore": 80.59555555555556,
-              "decisionScoreRaw": 80.59555555555556,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "57e204c2-3cd9-433c-b8e0-e446777e5450",
-              "outcome": {
-                "sessionId": "57e204c2-3cd9-433c-b8e0-e446777e5450",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 75,
-                "prescribedReps": 20,
-                "prescribedRpe": 9,
-                "actualLoad": 65.0,
-                "actualReps": 10.0,
-                "loadDelta": -10,
-                "repDelta": -10,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "date": "2026-08-07",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "3226c4ae-fc59-404a-8d28-2a6cf4de09e5",
-                "date": "2026-08-02",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "57e204c2-3cd9-433c-b8e0-e446777e5450",
-                "date": "2026-07-28",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "c8825d20-c30f-43d6-a5fd-29103e166001",
-                "date": "2026-07-21",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "c8dbc020-24f0-463c-9d8f-a3ad0011fbcf",
-                "date": "2026-07-08",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 0,
-            "regressCount": 5,
-            "neutralCount": 0,
-            "scores": [
-              -1.0,
-              -1.0,
-              -1.0,
-              -1.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
           "name": "Triceps Pushdown",
@@ -3910,10 +2744,20 @@ window.PROGRAM = {
               1.0,
               -1.0
             ]
-          }
+          },
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
-          "name": "Dumbbell Incline Bicep Curl",
+          "name": "Incline Bicep Curl (Dumbbell)",
           "icon": "\ud83d\udcaa",
           "rest": "2:00",
           "cues": [],
@@ -3991,137 +2835,26 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9.5 -> 9.25 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 38.87333333333333,
-              "decisionScoreRaw": 38.87333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-15",
-              "decision": "hold",
-              "decisionScore": 38.45666666666666,
-              "decisionScoreRaw": 38.45666666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-14",
-              "decision": "hold",
-              "decisionScore": 28.04,
-              "decisionScoreRaw": 28.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-13",
-              "decision": "hold",
-              "decisionScore": 41.54,
-              "decisionScoreRaw": 41.54,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-08",
-              "decision": "hold",
-              "decisionScore": 37.151111111111106,
-              "decisionScoreRaw": 37.151111111111106,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-              "outcome": {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 32,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 32.5,
-                "actualReps": 10.0,
-                "loadDelta": 0,
-                "repDelta": -5,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "date": "2026-08-08",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "date": "2026-08-07",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "date": "2026-08-04",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 3,
-            "regressCount": 2,
-            "neutralCount": 0,
-            "scores": [
-              -1.0,
-              1.0,
-              1.0,
-              1.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
           "name": "Chest Dip",
@@ -4198,10 +2931,20 @@ window.PROGRAM = {
           "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": null
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         }
       ],
-      "sequencingAdvisory": "\"Dumbbell Fly\" (isolation/accessory) is displayed before \"Chest Dip\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
+      "sequencingAdvisory": "\"Chest Fly (Dumbbell)\" (isolation/accessory) is displayed before \"Chest Dip\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
     },
     {
       "day": "A",
@@ -4248,40 +2991,40 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-08-26T06:30:17.517793",
+        "generated_at": "2026-08-27T06:30:17.713902",
         "fatigue_signal": {
           "assisted_chest_dip": 0.9375,
-          "assisted_pull_up": 0.549994615356511,
+          "assisted_pull_up": 0.5621006266824446,
           "band_lateral_raise": 1.1827878018414533,
-          "barbell_bent_over_row": 1.4122952314859154,
+          "barbell_bent_over_row": 1.4772269376808445,
           "barbell_incline_bench_press": 1.6179993072553596,
-          "dumbbell_cross_body_hammer_curl": 0.4233637913596644,
+          "dumbbell_cross_body_hammer_curl": 0.43099854511344077,
           "dumbbell_fly": 0.5169774553559345,
-          "dumbbell_incline_bicep_curl": 0.6276938351629343,
+          "dumbbell_incline_bicep_curl": 0.595482476519437,
           "dumbbell_lateral_raise": 0.09,
-          "dumbbell_one_arm_row": 0.9494289988558307,
+          "dumbbell_one_arm_row": 0.9456078713339864,
           "dumbbell_triceps_extension": 0.768638051992814,
           "rear_dumbbell_raise": 0.3075557113106938,
           "reverse_fly": 0.09,
-          "seated_lateral_raise": 0.5298067023196593,
+          "seated_lateral_raise": 0.6503356969717105,
           "triceps_pushdown": 5.533702580119798
         },
         "fatigue_accumulation": {
           "session_id": "f31c8909-17b0-4360-b6ef-b929e08bbf7f",
           "session_date": "2026-08-26",
-          "global_fatigue_score": 0.0,
-          "upper_fatigue": 0.0,
-          "lower_fatigue": 0.0,
-          "fatigue_trend_3": 5.210026170422801,
-          "fatigue_trend_5": 4.3331614600003245,
-          "recovery_debt": 1.9188966382398336
+          "global_fatigue_score": 4.661752154301864,
+          "upper_fatigue": 2.330876077150932,
+          "lower_fatigue": 2.330876077150932,
+          "fatigue_trend_3": 6.763943555190089,
+          "fatigue_trend_5": 5.265511890860698,
+          "recovery_debt": 6.580648792541697
         },
         "deload_state": {
-          "snapshot_date": "2026-08-26",
+          "snapshot_date": "2026-08-27",
           "deload_flag": true,
           "pre_deload_flag": false,
-          "trigger_type": "regression",
-          "fatigue_trigger": 0.0,
+          "trigger_type": "debt",
+          "fatigue_trigger": 4.661752154301864,
           "regression_trigger": 0.7333333333333333,
           "cooldown_sessions": 3
         },
@@ -4305,13 +3048,13 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY A \u2014 BACK / BICEPS (4-5 days) \u2014 4 load\u2191 \u00b7 2 rep\u2191 \u00b7 0 hold.",
+        "headline": "DAY A \u2014 BACK / BICEPS (4-5 days) \u2014 3 load\u2191 \u00b7 2 rep\u2191 \u00b7 0 hold.",
         "assess": "7 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>6/7</b> prescriptions passed the validation gate; <b>1 flagged</b> \u2014 see the \u2717 tags below."
       },
       "exercises": [
         {
-          "name": "Assisted Pull Up",
+          "name": "Pull Up (Assisted)",
           "icon": "\ud83d\udea3",
           "rest": "3:00",
           "cues": [
@@ -4383,162 +3126,29 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 33.37333333333333,
-              "decisionScoreRaw": 33.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-13",
-              "decision": "hold",
-              "decisionScore": 33.165,
-              "decisionScoreRaw": 33.165,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-06",
-              "decision": "hold",
-              "decisionScore": 32.95666666666666,
-              "decisionScoreRaw": 32.95666666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-              "outcome": {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 175,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 225.0,
-                "actualReps": 8.0,
-                "loadDelta": 50,
-                "repDelta": -7,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 33.37333333333333,
-              "decisionScoreRaw": 33.37333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 175,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 225.0,
-                "actualReps": 8.0,
-                "loadDelta": 50,
-                "repDelta": -7,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-26",
-              "decision": "hold",
-              "decisionScore": 32.33166666666666,
-              "decisionScoreRaw": 32.33166666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-              "outcome": {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 175,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 225.0,
-                "actualReps": 8.0,
-                "loadDelta": 50,
-                "repDelta": -7,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "date": "2026-07-26",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-                "date": "2026-07-20",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-                "date": "2026-07-07",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 0,
-            "regressCount": 5,
-            "neutralCount": 0,
-            "scores": [
-              -1.0,
-              -1.0,
-              -1.0,
-              -1.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
-          "name": "Barbell Bent Over Row",
+          "name": "Bent Over Row (Barbell)",
           "icon": "\ud83d\udea3",
           "rest": "3:00",
           "cues": [
@@ -4609,162 +3219,29 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 154.95666666666665,
-              "decisionScoreRaw": 154.95666666666665,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-13",
-              "decision": "hold",
-              "decisionScore": 155.32333333333332,
-              "decisionScoreRaw": 155.32333333333332,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-06",
-              "decision": "hold",
-              "decisionScore": 150.19,
-              "decisionScoreRaw": 150.19,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-              "outcome": {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 143,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 143.0,
-                "actualReps": 8.0,
-                "loadDelta": 0,
-                "repDelta": -2,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 146.5233333333333,
-              "decisionScoreRaw": 146.5233333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "load_undershoot",
-                "prescribedLoad": 138,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 132.0,
-                "actualReps": 10.0,
-                "loadDelta": -6,
-                "repDelta": 1,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-26",
-              "decision": "hold",
-              "decisionScore": 145.42333333333332,
-              "decisionScoreRaw": 145.42333333333332,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-              "outcome": {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "behaviorClass": "matched",
-                "prescribedLoad": 132,
-                "prescribedReps": 10,
-                "prescribedRpe": 10,
-                "actualLoad": 132.0,
-                "actualReps": 9.0,
-                "loadDelta": 0,
-                "repDelta": -1,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "load_undershoot",
-                "effectivenessScore": 0.0,
-                "valid": true
-              },
-              {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "date": "2026-07-26",
-                "behaviorClass": "matched",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-                "date": "2026-07-20",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-                "date": "2026-07-07",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 1,
-            "regressCount": 3,
-            "neutralCount": 1,
-            "scores": [
-              -1.0,
-              0.0,
-              1.0,
-              -1.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
-          "name": "Dumbbell Incline Bicep Curl",
+          "name": "Incline Bicep Curl (Dumbbell)",
           "icon": "\ud83d\udcaa",
           "rest": "2:00",
           "cues": [
@@ -4835,140 +3312,29 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-23). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-25, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9.5 -> 9.25 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 38.87333333333333,
-              "decisionScoreRaw": 38.87333333333333,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-15",
-              "decision": "hold",
-              "decisionScore": 38.45666666666666,
-              "decisionScoreRaw": 38.45666666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-14",
-              "decision": "hold",
-              "decisionScore": 28.04,
-              "decisionScoreRaw": 28.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "015cf079-c86d-43d0-b9d1-005d9e98f0a2",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-13",
-              "decision": "hold",
-              "decisionScore": 41.54,
-              "decisionScoreRaw": 41.54,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-08",
-              "decision": "hold",
-              "decisionScore": 37.151111111111106,
-              "decisionScoreRaw": 37.151111111111106,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-              "outcome": {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 32,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 32.5,
-                "actualReps": 10.0,
-                "loadDelta": 0,
-                "repDelta": -5,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
-                "date": "2026-08-08",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "08281521-4301-4e9f-a87c-66239a23ca27",
-                "date": "2026-08-07",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
-                "date": "2026-08-04",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 3,
-            "regressCount": 2,
-            "neutralCount": 0,
-            "scores": [
-              -1.0,
-              1.0,
-              1.0,
-              1.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
-          "name": "Dumbbell One Arm Row",
+          "name": "One Arm Row (Dumbbell)",
           "icon": "\ud83d\udea3",
           "rest": "3:00",
           "cues": [
@@ -5039,162 +3405,29 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 81.20666666666668,
-              "decisionScoreRaw": 81.20666666666668,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-13",
-              "decision": "hold",
-              "decisionScore": 83.08166666666666,
-              "decisionScoreRaw": 83.08166666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-06",
-              "decision": "hold",
-              "decisionScore": 74.70666666666666,
-              "decisionScoreRaw": 74.70666666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-              "outcome": {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 75,
-                "prescribedReps": 11,
-                "prescribedRpe": 9,
-                "actualLoad": 70.0,
-                "actualReps": 13.0,
-                "loadDelta": -5,
-                "repDelta": 2,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 72.04,
-              "decisionScoreRaw": 72.04,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "load_undershoot",
-                "prescribedLoad": 68,
-                "prescribedReps": 12,
-                "prescribedRpe": 9,
-                "actualLoad": 65.0,
-                "actualReps": 13.0,
-                "loadDelta": -2,
-                "repDelta": 1,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-26",
-              "decision": "hold",
-              "decisionScore": 69.58166666666666,
-              "decisionScoreRaw": 69.58166666666666,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-              "outcome": {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "behaviorClass": "matched",
-                "prescribedLoad": 65,
-                "prescribedReps": 12,
-                "prescribedRpe": 10,
-                "actualLoad": 65.0,
-                "actualReps": 11.0,
-                "loadDelta": 0,
-                "repDelta": -1,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "load_undershoot",
-                "effectivenessScore": 0.0,
-                "valid": true
-              },
-              {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "date": "2026-07-26",
-                "behaviorClass": "matched",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-                "date": "2026-07-20",
-                "behaviorClass": "load_undershoot",
-                "effectivenessScore": 0.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-                "date": "2026-07-07",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 2,
-            "regressCount": 1,
-            "neutralCount": 2,
-            "scores": [
-              1.0,
-              0.0,
-              1.0,
-              0.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
-          "name": "Dumbbell Cross Body Hammer Curl",
+          "name": "Cross Body Hammer Curl (Dumbbell)",
           "icon": "\ud83d\udcaa",
           "rest": "2:00",
           "cues": [
@@ -5252,159 +3485,26 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-23). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-25, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
-          "decisionHistory": [
-            {
-              "date": "2026-08-18",
-              "decision": "hold",
-              "decisionScore": 36.26222222222222,
-              "decisionScoreRaw": 36.26222222222222,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "cc38656e-1a35-4716-836a-223db66a862e",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-13",
-              "decision": "hold",
-              "decisionScore": 37.23444444444444,
-              "decisionScoreRaw": 37.23444444444444,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "54aeaecf-4d1e-4ca7-bd62-2538f0f71056",
-              "outcome": null
-            },
-            {
-              "date": "2026-08-06",
-              "decision": "hold",
-              "decisionScore": 34.428888888888885,
-              "decisionScoreRaw": 34.428888888888885,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-              "outcome": {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "behaviorClass": "volume_overshoot",
-                "prescribedLoad": 30,
-                "prescribedReps": 9,
-                "prescribedRpe": 9,
-                "actualLoad": 27.5,
-                "actualReps": 12.0,
-                "loadDelta": -2,
-                "repDelta": 3,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-08-01",
-              "decision": "hold",
-              "decisionScore": 33.98444444444444,
-              "decisionScoreRaw": 33.98444444444444,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-              "outcome": {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 30,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 30.0,
-                "actualReps": 9.0,
-                "loadDelta": 0,
-                "repDelta": -6,
-                "confidence": 0.75
-              }
-            },
-            {
-              "date": "2026-07-26",
-              "decision": "hold",
-              "decisionScore": 34.59555555555555,
-              "decisionScoreRaw": 34.59555555555555,
-              "controlProgressionBias": 0.2,
-              "controlRegressionSensitivity": -0.2,
-              "controlState": "in_band",
-              "decisionSource": "program_builder_v2",
-              "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-              "outcome": {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "behaviorClass": "volume_undershoot",
-                "prescribedLoad": 30,
-                "prescribedReps": 15,
-                "prescribedRpe": 10,
-                "actualLoad": 30.0,
-                "actualReps": 9.0,
-                "loadDelta": 0,
-                "repDelta": -6,
-                "confidence": 0.75
-              }
-            }
-          ],
-          "increaseCutoff": 0.75,
-          "reduceCutoff": -1.25,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": {
-            "window": [
-              {
-                "sessionId": "b94c8f20-783f-459f-a7b8-de3d6aa12f4e",
-                "date": "2026-08-06",
-                "behaviorClass": "volume_overshoot",
-                "effectivenessScore": 1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "552fcbb2-d6ea-477b-bada-fd2a6a8c2946",
-                "date": "2026-08-01",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "70b9c6ee-293e-4eba-9421-ca3002988cd8",
-                "date": "2026-07-26",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "3c08afdb-62a6-42ed-b41c-79e3df8b43a9",
-                "date": "2026-07-20",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              },
-              {
-                "sessionId": "b3d2830d-353e-4574-a55f-73a81a60c08e",
-                "date": "2026-07-07",
-                "behaviorClass": "volume_undershoot",
-                "effectivenessScore": -1.0,
-                "valid": true
-              }
-            ],
-            "validCount": 5,
-            "progressCount": 1,
-            "regressCount": 4,
-            "neutralCount": 0,
-            "scores": [
-              1.0,
-              -1.0,
-              -1.0,
-              -1.0,
-              -1.0
-            ]
-          }
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         },
         {
           "name": "Seated Lateral Raise",
@@ -5414,9 +3514,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "dumbbell",
           "qc": "pass",
-          "action": "increase_load",
-          "assess": "Last top set: 27.5 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/10) \u2014 earn the jump; top set 27.5\u219230; +9.1% load costs ~3 reps, so the rep target drops 12\u21929 [range 7-9]. Isolation: only loaded once the whole cluster is productive. Back-off holds its own last load (25) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "action": "bloodflow",
+          "assess": "Most recent primary session: 27.5 lb \u00d7 13 @ RPE 9, 25 lb \u00d7 10 @ RPE 9, and 22.5 lb \u00d7 12 @ RPE 9 on 2026-08-21. Today's Day A occurrence is classified as a blood-flow/recovery exposure.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Blood-flow/recovery exposure \u2014 Seated Lateral Raise received its primary progression work on 2026-08-21. Prescribe 15 lb \u00d7 8 @ RPE 5, 17.5 lb \u00d7 20 @ RPE 7 maximum, and 15 lb \u00d7 20 @ RPE 7 maximum. Stop each working set at 20 reps or RPE 7, whichever occurs first. Today's performance is excluded from primary progression decisions. The primary progression remains 27.5 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 30 lb.",
           "when_to_add_load": "Reach 12 clean reps at 27.5 lb at RPE 9.5 or lower; then increase to 30 lb.",
           "sets": [
             {
@@ -5427,7 +3527,7 @@ window.PROGRAM = {
                 "rpe": null
               },
               "prop": {
-                "lbs": 17.5,
+                "lbs": 15,
                 "reps": "8",
                 "rpe": 5.0
               }
@@ -5440,9 +3540,9 @@ window.PROGRAM = {
                 "rpe": null
               },
               "prop": {
-                "lbs": 30,
-                "reps": "7\u20139",
-                "rpe": 9.0
+                "lbs": 17.5,
+                "reps": "20",
+                "rpe": 7.0
               }
             },
             {
@@ -5453,9 +3553,9 @@ window.PROGRAM = {
                 "rpe": null
               },
               "prop": {
-                "lbs": 25,
-                "reps": "10\u201312",
-                "rpe": 9.0
+                "lbs": 15,
+                "reps": "20",
+                "rpe": 7.0
               }
             },
             {
@@ -5485,10 +3585,10 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "confirmed",
+          "gate_status": "not_gated",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "rpeAdjustmentAdvisory": "Would lower top RPE target 7 -> 6.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
             {
               "date": "2026-08-21",
@@ -5624,7 +3724,42 @@ window.PROGRAM = {
               1.0,
               1.0
             ]
-          }
+          },
+          "occurrenceRole": "bloodflow_recovery",
+          "roleSource": "history_inference",
+          "roleConfidence": "high",
+          "primaryReference": {
+            "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
+            "date": "2026-08-21",
+            "sets": [
+              {
+                "lbs": 15.0,
+                "reps": 10,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 27.5,
+                "reps": 13,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 25.0,
+                "reps": 10,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 22.5,
+                "reps": 12,
+                "rpe": 9.0
+              }
+            ]
+          },
+          "progressionEligible": false,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "Most recent primary-shaped exposure was 2026-08-21 (24h ago) -- within the 48h blood-flow window."
+          ]
         },
         {
           "name": "Triceps Pushdown",
@@ -5832,10 +3967,20 @@ window.PROGRAM = {
               1.0,
               -1.0
             ]
-          }
+          },
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+          ]
         }
       ],
-      "sequencingAdvisory": "\"Dumbbell Incline Bicep Curl\" (isolation/accessory) is displayed before \"Dumbbell One Arm Row\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
+      "sequencingAdvisory": "\"Incline Bicep Curl (Dumbbell)\" (isolation/accessory) is displayed before \"One Arm Row (Dumbbell)\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
     }
   ]
 };
