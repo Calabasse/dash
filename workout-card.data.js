@@ -47,7 +47,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-08-27T20:34:03.795498",
+        "generated_at": "2026-08-28T04:55:11.826885",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -78,7 +78,7 @@ window.PROGRAM = {
           "recovery_debt": 13.230720336848501
         },
         "deload_state": {
-          "snapshot_date": "2026-08-27",
+          "snapshot_date": "2026-08-28",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -1120,7 +1120,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-08-27T20:34:03.795498",
+        "generated_at": "2026-08-28T04:55:11.826885",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -1151,7 +1151,7 @@ window.PROGRAM = {
           "recovery_debt": 13.230720336848501
         },
         "deload_state": {
-          "snapshot_date": "2026-08-27",
+          "snapshot_date": "2026-08-28",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -2220,7 +2220,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-08-27T20:34:03.795498",
+        "generated_at": "2026-08-28T04:55:11.826885",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -2251,7 +2251,7 @@ window.PROGRAM = {
           "recovery_debt": 13.230720336848501
         },
         "deload_state": {
-          "snapshot_date": "2026-08-27",
+          "snapshot_date": "2026-08-28",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -2997,7 +2997,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-08-27T20:34:03.795498",
+        "generated_at": "2026-08-28T04:55:11.826885",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -3028,7 +3028,7 @@ window.PROGRAM = {
           "recovery_debt": 13.230720336848501
         },
         "deload_state": {
-          "snapshot_date": "2026-08-27",
+          "snapshot_date": "2026-08-28",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
