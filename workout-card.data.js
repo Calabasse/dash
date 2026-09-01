@@ -47,7 +47,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T06:30:07.817806",
+        "generated_at": "2026-09-01T15:18:17.634046",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -96,6 +96,25 @@ window.PROGRAM = {
           "fatigue_signal": "ok",
           "exercise_response_state": "ok",
           "deload_state": "ok"
+        },
+        "thresholds": {
+          "global_fatigue_score": {
+            "scale": "unbounded_sum",
+            "med": 4.5,
+            "high": 5.5
+          },
+          "recovery_debt": {
+            "scale": "unbounded_decaying_accumulator",
+            "med": 1.5,
+            "high": 2.5,
+            "baseline": 4.0,
+            "decay": 0.7
+          },
+          "regress_ratio": {
+            "scale": "ratio_0_1",
+            "med": 0.3,
+            "high": 0.5
+          }
         },
         "is_advisory": true
       },
@@ -1120,7 +1139,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T06:30:07.817806",
+        "generated_at": "2026-09-01T15:18:17.634046",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -1169,6 +1188,25 @@ window.PROGRAM = {
           "fatigue_signal": "ok",
           "exercise_response_state": "ok",
           "deload_state": "ok"
+        },
+        "thresholds": {
+          "global_fatigue_score": {
+            "scale": "unbounded_sum",
+            "med": 4.5,
+            "high": 5.5
+          },
+          "recovery_debt": {
+            "scale": "unbounded_decaying_accumulator",
+            "med": 1.5,
+            "high": 2.5,
+            "baseline": 4.0,
+            "decay": 0.7
+          },
+          "regress_ratio": {
+            "scale": "ratio_0_1",
+            "med": 0.3,
+            "high": 0.5
+          }
         },
         "is_advisory": true
       },
@@ -2272,7 +2310,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T06:30:07.817806",
+        "generated_at": "2026-09-01T15:18:17.634046",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -2321,6 +2359,25 @@ window.PROGRAM = {
           "fatigue_signal": "ok",
           "exercise_response_state": "ok",
           "deload_state": "ok"
+        },
+        "thresholds": {
+          "global_fatigue_score": {
+            "scale": "unbounded_sum",
+            "med": 4.5,
+            "high": 5.5
+          },
+          "recovery_debt": {
+            "scale": "unbounded_decaying_accumulator",
+            "med": 1.5,
+            "high": 2.5,
+            "baseline": 4.0,
+            "decay": 0.7
+          },
+          "regress_ratio": {
+            "scale": "ratio_0_1",
+            "med": 0.3,
+            "high": 0.5
+          }
         },
         "is_advisory": true
       },
@@ -3049,7 +3106,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T06:30:07.817806",
+        "generated_at": "2026-09-01T15:18:17.634046",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -3098,6 +3155,25 @@ window.PROGRAM = {
           "fatigue_signal": "ok",
           "exercise_response_state": "ok",
           "deload_state": "ok"
+        },
+        "thresholds": {
+          "global_fatigue_score": {
+            "scale": "unbounded_sum",
+            "med": 4.5,
+            "high": 5.5
+          },
+          "recovery_debt": {
+            "scale": "unbounded_decaying_accumulator",
+            "med": 1.5,
+            "high": 2.5,
+            "baseline": 4.0,
+            "decay": 0.7
+          },
+          "regress_ratio": {
+            "scale": "ratio_0_1",
+            "med": 0.3,
+            "high": 0.5
+          }
         },
         "is_advisory": true
       },

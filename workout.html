@@ -207,11 +207,11 @@
   <div class="card" id="card"></div>
   <div id="analysis"></div>
 
-  <script src="workout-card.data.js?v=20260901063007"></script>
+  <script src="workout-card.data.js?v=20260901151818"></script>
   <script>
   // ---- APE live-data config (Option A) ----
   // Set to the deployed APE API base URL (e.g. "https://<api>.up.railway.app") to serve
-  // live data from Postgres. Empty string = use the baked workout-card.data.js?v=20260901063007 (current).
+  // live data from Postgres. Empty string = use the baked workout-card.data.js?v=20260901151818 (current).
   // Baked-only: the Mac deploy pipeline (VOLM→duckdb→data.js) is the fresh source of truth.
   // The Railway API held stale data and was clobbering the freshly-baked card on load (the
   // "flashes back to old" bug). Re-enable ONLY after that instance is kept in sync.
@@ -219,7 +219,7 @@
 
   // ---- data: proposed values + LLM rationale are produced by an LLM from the last workout ----
   const program = window.PROGRAM;
-  if(!program || !program.sessions){ document.getElementById('card').innerHTML='<p style="padding:20px;color:#f87171">workout-card.data.js?v=20260901063007 not loaded — run tools/build_card_data.py</p>'; throw new Error('no PROGRAM'); }
+  if(!program || !program.sessions){ document.getElementById('card').innerHTML='<p style="padding:20px;color:#f87171">workout-card.data.js?v=20260901151818 not loaded — run tools/build_card_data.py</p>'; throw new Error('no PROGRAM'); }
 
   // WR-03: gateBadge() below is ported verbatim from workout2.html and must
   // stay byte-identical to that copy (tests/tools/test_build_card_data_history_panel.py::
@@ -464,7 +464,7 @@
         <button onclick="goTo(${idx-1})" ${idx<=0?'disabled':''}>Newer ▶</button>
       </div>
       <h1 class="title">${esc(s.title)}</h1>
-      <div class="when2"><b>${formatDate(s.date)}</b>${s.prevDate?` · <span class="since">${ds} day${plural(ds)} since previous Day ${esc(s.day)}</span>`:''}${dsl!=null?` · <span class="since">${dsl<=0?`last Day ${esc(s.day)} today`:`${dsl} day${plural(dsl)} since last Day ${esc(s.day)}`}</span>`:''}</div>
+      <div class="when2"><b>${formatDate(s.date)}</b>${s.prevDate?` · <span class="since">${ds} day${plural(ds)} rest before this session</span>`:''}${dsl!=null?` · <span class="since">${dsl<=0?`this was today`:`${dsl} day${plural(dsl)} ago`}</span>`:''}</div>
       ${s.nextAvailable && parseD(s.nextAvailable.latest) >= startOfToday() ? `<div class="when2"><span class="next-est">Est. next Day ${esc(s.day)}: ${formatShort(s.nextAvailable.earliest)}–${formatShort(s.nextAvailable.latest)} · ${esc(s.nextAvailable.driver)}<span class="est-badge">estimate</span></span></div>` : ''}
       ${fatigueAdvisoryHTML(s.fatigueAdvisory)}
       <div class="stats">${s.stats.map((x,i)=>(i?'<span class="dot">·</span>':'')+`<span>${esc(x)}</span>`).join('')}</div>
@@ -598,7 +598,7 @@
   // ---- Option A: live data from the deployed APE API ----
   // Non-breaking + opt-in: inert unless window.APE_API_BASE is set (the baked data
   // renders instantly). On success, swaps in live data and re-renders via the existing
-  // draw(); on any error/offline, the baked workout-card.data.js?v=20260901063007 stays.
+  // draw(); on any error/offline, the baked workout-card.data.js?v=20260901151818 stays.
   (async () => {
     const api = window.APE_API_BASE;
     if (!api) return;
