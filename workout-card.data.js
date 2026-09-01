@@ -47,7 +47,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T18:27:36.312892",
+        "generated_at": "2026-09-01T19:19:04.538547",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -71,8 +71,6 @@ window.PROGRAM = {
           "session_id": "ba2a74fa-60ca-4ab2-b529-fc6ad41d62a7",
           "session_date": "2026-08-30",
           "global_fatigue_score": 9.41707065014602,
-          "upper_fatigue": 4.70853532507301,
-          "lower_fatigue": 4.70853532507301,
           "fatigue_trend_3": 6.806963996185054,
           "fatigue_trend_5": 7.420765048646652,
           "recovery_debt": 11.05272494957271
@@ -133,6 +131,7 @@ window.PROGRAM = {
         {
           "name": "Pull Up (Assisted)",
           "icon": "\ud83d\udea3",
+          "muscleGroup": "lats",
           "rest": "3:00",
           "cues": [
             "Full ROM",
@@ -203,6 +202,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 3150.0,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -238,6 +238,7 @@ window.PROGRAM = {
         {
           "name": "Bent Over Row (Barbell)",
           "icon": "\ud83d\udea3",
+          "muscleGroup": "upperback",
           "rest": "3:00",
           "cues": [
             "Stable torso",
@@ -307,6 +308,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 2937.0,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -342,6 +344,7 @@ window.PROGRAM = {
         {
           "name": "Incline Bicep Curl (Dumbbell)",
           "icon": "\ud83d\udcaa",
+          "muscleGroup": "biceps",
           "rest": "2:00",
           "cues": [
             "Full stretch with shoulder extended",
@@ -398,6 +401,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 677.5,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-09-02, past that. Advisory only -- no volume was changed.",
@@ -433,6 +437,7 @@ window.PROGRAM = {
         {
           "name": "One Arm Row (Dumbbell)",
           "icon": "\ud83d\udea3",
+          "muscleGroup": "upperback",
           "rest": "3:00",
           "cues": [
             "Stretch at bottom",
@@ -502,6 +507,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 1700.0,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -537,6 +543,7 @@ window.PROGRAM = {
         {
           "name": "Cross Body Hammer Curl (Dumbbell)",
           "icon": "\ud83d\udcaa",
+          "muscleGroup": "biceps",
           "rest": "2:00",
           "cues": [
             "Neutral grip fixed",
@@ -593,6 +600,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 712.5,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-09-02, past that. Advisory only -- no volume was changed.",
@@ -628,6 +636,7 @@ window.PROGRAM = {
         {
           "name": "Seated Lateral Raise",
           "icon": "\ud83d\uded7",
+          "muscleGroup": "shoulders",
           "rest": "2:00",
           "cues": [],
           "noWeight": false,
@@ -704,6 +713,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 725.0,
           "gate_status": "not_gated",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -895,6 +905,7 @@ window.PROGRAM = {
         {
           "name": "Crunch (Cable)",
           "icon": "\ud83c\udf00",
+          "muscleGroup": "abdominals",
           "rest": "2:00",
           "cues": [],
           "noWeight": false,
@@ -919,6 +930,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 0.0,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -949,6 +961,7 @@ window.PROGRAM = {
         {
           "name": "Triceps Pushdown",
           "icon": "\ud83d\udd17",
+          "muscleGroup": "triceps",
           "rest": "2:00",
           "cues": [],
           "noWeight": false,
@@ -1012,6 +1025,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 0.0,
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh, cohort signal only \u2014 per-exercise gate governs the actual load)",
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-09-01, past that. Advisory only -- no volume was changed.",
@@ -1249,7 +1263,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T18:27:36.312892",
+        "generated_at": "2026-09-01T19:19:04.538547",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -1273,8 +1287,6 @@ window.PROGRAM = {
           "session_id": "ba2a74fa-60ca-4ab2-b529-fc6ad41d62a7",
           "session_date": "2026-08-30",
           "global_fatigue_score": 9.41707065014602,
-          "upper_fatigue": 4.70853532507301,
-          "lower_fatigue": 4.70853532507301,
           "fatigue_trend_3": 6.806963996185054,
           "fatigue_trend_5": 7.420765048646652,
           "recovery_debt": 11.05272494957271
@@ -1335,6 +1347,7 @@ window.PROGRAM = {
         {
           "name": "Seated Lateral Raise",
           "icon": "\ud83d\uded7",
+          "muscleGroup": "shoulders",
           "rest": "2:00",
           "cues": [
             "Lead with elbows",
@@ -1404,6 +1417,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 917.5,
           "gate_status": "confirmed",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -1594,6 +1608,7 @@ window.PROGRAM = {
         {
           "name": "Lateral Raise (Band)",
           "icon": "\ud83d\uded7",
+          "muscleGroup": "shoulders",
           "rest": "1:30",
           "cues": [
             "Step out to create bottom tension",
@@ -1702,6 +1717,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 3580.0,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -1737,6 +1753,7 @@ window.PROGRAM = {
         {
           "name": "Rear Dumbbell Raise",
           "icon": "\ud83d\uded7",
+          "muscleGroup": "shoulders",
           "rest": "2:00",
           "cues": [
             "Chest supported or hinged",
@@ -1806,6 +1823,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 800.0,
           "gate_status": "confirmed",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -2009,6 +2027,7 @@ window.PROGRAM = {
         {
           "name": "Hanging Leg Raise",
           "icon": "\ud83c\udf00",
+          "muscleGroup": "abdominals",
           "rest": "1:30",
           "cues": [
             "Posterior pelvic tilt at top",
@@ -2104,6 +2123,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 0.0,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -2157,6 +2177,7 @@ window.PROGRAM = {
         {
           "name": "Incline Bicep Curl (Dumbbell)",
           "icon": "\ud83d\udcaa",
+          "muscleGroup": "biceps",
           "rest": "2:00",
           "cues": [
             "Strict form only",
@@ -2213,6 +2234,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 0.0,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": "Day A (back/arms) also trains arms (the logged Day A session on 2026-08-30). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-09-01, past that. Advisory only -- no volume was changed.",
@@ -2248,6 +2270,7 @@ window.PROGRAM = {
         {
           "name": "Triceps Pushdown",
           "icon": "\ud83d\udd17",
+          "muscleGroup": "triceps",
           "rest": "2:00",
           "cues": [
             "Stay upright",
@@ -2318,6 +2341,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 0.0,
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh, cohort signal only \u2014 per-exercise gate governs the actual load)",
           "recoveryOverlapWarning": "Day A (back/arms) also trains arms (the logged Day A session on 2026-08-30). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-31, past that. Advisory only -- no volume was changed.",
@@ -2556,7 +2580,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T18:27:36.312892",
+        "generated_at": "2026-09-01T19:19:04.538547",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -2580,8 +2604,6 @@ window.PROGRAM = {
           "session_id": "ba2a74fa-60ca-4ab2-b529-fc6ad41d62a7",
           "session_date": "2026-08-30",
           "global_fatigue_score": 9.41707065014602,
-          "upper_fatigue": 4.70853532507301,
-          "lower_fatigue": 4.70853532507301,
           "fatigue_trend_3": 6.806963996185054,
           "fatigue_trend_5": 7.420765048646652,
           "recovery_debt": 11.05272494957271
@@ -2642,6 +2664,7 @@ window.PROGRAM = {
         {
           "name": "Incline Bench Press (Barbell)",
           "icon": "\ud83c\udfcb\ufe0f",
+          "muscleGroup": "chest",
           "rest": "3:00",
           "cues": [
             "Shoulder blades set",
@@ -2711,6 +2734,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 2623.5,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -2746,6 +2770,7 @@ window.PROGRAM = {
         {
           "name": "Chest Fly (Dumbbell)",
           "icon": "\ud83c\udfcb\ufe0f",
+          "muscleGroup": "chest",
           "rest": "2:00",
           "cues": [
             "Stretch focus",
@@ -2802,6 +2827,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 787.5,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -2837,6 +2863,7 @@ window.PROGRAM = {
         {
           "name": "Triceps Extension (Dumbbell)",
           "icon": "\ud83d\udd17",
+          "muscleGroup": "triceps",
           "rest": "2:00",
           "cues": [
             "Elbows fixed slightly in",
@@ -2894,6 +2921,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 1462.5,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -2929,6 +2957,7 @@ window.PROGRAM = {
         {
           "name": "Triceps Pushdown",
           "icon": "\ud83d\udd17",
+          "muscleGroup": "triceps",
           "rest": "1:30",
           "cues": [
             "Elbows pinned",
@@ -2998,6 +3027,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 3200.0,
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh, cohort signal only \u2014 per-exercise gate governs the actual load)",
           "recoveryOverlapWarning": null,
@@ -3187,6 +3217,7 @@ window.PROGRAM = {
         {
           "name": "Incline Bicep Curl (Dumbbell)",
           "icon": "\ud83d\udcaa",
+          "muscleGroup": "biceps",
           "rest": "2:00",
           "cues": [],
           "noWeight": false,
@@ -3237,6 +3268,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 825.0,
           "gate_status": "not_gated",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -3271,6 +3303,7 @@ window.PROGRAM = {
         {
           "name": "Chest Dip",
           "icon": "\ud83c\udfcb\ufe0f",
+          "muscleGroup": "chest",
           "rest": "2:00",
           "cues": [],
           "noWeight": true,
@@ -3334,6 +3367,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 0.0,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -3416,7 +3450,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T18:27:36.312892",
+        "generated_at": "2026-09-01T19:19:04.538547",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -3440,8 +3474,6 @@ window.PROGRAM = {
           "session_id": "ba2a74fa-60ca-4ab2-b529-fc6ad41d62a7",
           "session_date": "2026-08-30",
           "global_fatigue_score": 9.41707065014602,
-          "upper_fatigue": 4.70853532507301,
-          "lower_fatigue": 4.70853532507301,
           "fatigue_trend_3": 6.806963996185054,
           "fatigue_trend_5": 7.420765048646652,
           "recovery_debt": 11.05272494957271
@@ -3502,6 +3534,7 @@ window.PROGRAM = {
         {
           "name": "Pull Up (Assisted)",
           "icon": "\ud83d\udea3",
+          "muscleGroup": "lats",
           "rest": "3:00",
           "cues": [
             "Full ROM",
@@ -3572,6 +3605,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 3325.0,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -3607,6 +3641,7 @@ window.PROGRAM = {
         {
           "name": "Bent Over Row (Barbell)",
           "icon": "\ud83d\udea3",
+          "muscleGroup": "upperback",
           "rest": "3:00",
           "cues": [
             "Stable torso",
@@ -3676,6 +3711,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 2504.0,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -3711,6 +3747,7 @@ window.PROGRAM = {
         {
           "name": "Incline Bicep Curl (Dumbbell)",
           "icon": "\ud83d\udcaa",
+          "muscleGroup": "biceps",
           "rest": "2:00",
           "cues": [
             "Full stretch with shoulder extended",
@@ -3767,6 +3804,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 745.0,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-27). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-29, past that. Advisory only -- no volume was changed.",
@@ -3802,6 +3840,7 @@ window.PROGRAM = {
         {
           "name": "One Arm Row (Dumbbell)",
           "icon": "\ud83d\udea3",
+          "muscleGroup": "upperback",
           "rest": "3:00",
           "cues": [
             "Stretch at bottom",
@@ -3871,6 +3910,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 1625.0,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -3906,6 +3946,7 @@ window.PROGRAM = {
         {
           "name": "Cross Body Hammer Curl (Dumbbell)",
           "icon": "\ud83d\udcaa",
+          "muscleGroup": "biceps",
           "rest": "2:00",
           "cues": [
             "Neutral grip fixed",
@@ -3962,6 +4003,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 712.5,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-27). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-08-29, past that. Advisory only -- no volume was changed.",
@@ -3997,6 +4039,7 @@ window.PROGRAM = {
         {
           "name": "Seated Lateral Raise",
           "icon": "\ud83d\uded7",
+          "muscleGroup": "shoulders",
           "rest": "2:00",
           "cues": [],
           "noWeight": false,
@@ -4073,6 +4116,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 782.5,
           "gate_status": "not_gated",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -4264,6 +4308,7 @@ window.PROGRAM = {
         {
           "name": "Crunch (Cable)",
           "icon": "\ud83c\udf00",
+          "muscleGroup": "abdominals",
           "rest": "2:00",
           "cues": [],
           "noWeight": false,
@@ -4288,6 +4333,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 0.0,
           "gate_status": "no_signal",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
@@ -4318,6 +4364,7 @@ window.PROGRAM = {
         {
           "name": "Triceps Pushdown",
           "icon": "\ud83d\udd17",
+          "muscleGroup": "triceps",
           "rest": "2:00",
           "cues": [],
           "noWeight": false,
@@ -4381,6 +4428,7 @@ window.PROGRAM = {
               }
             }
           ],
+          "volumeLbs": 0.0,
           "gate_status": "confirmed",
           "gate_reason": "next_program: increase (fresh, cohort signal only \u2014 per-exercise gate governs the actual load)",
           "recoveryOverlapWarning": "Day B (chest/arms) also trains arms (the logged Day B session on 2026-08-27). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-28, past that. Advisory only -- no volume was changed.",
