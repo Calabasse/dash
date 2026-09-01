@@ -47,7 +47,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T15:26:55.023142",
+        "generated_at": "2026-09-01T18:27:36.312892",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -148,7 +148,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 175 assist \u00d7 10 @ RPE 9 \u00b7 band_assisted_bodyweight \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 175 lb assist \u2014 build toward 15 reps before reducing assistance. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350 (less assist = harder). Back-off holds its own last load (175) for 8-10 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps with 175 lb assistance at RPE 10 or lower; then reduce assistance to 150 lb.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -213,15 +213,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "d764d3ea-3ea5-405c-a904-17ff28021091",
+            "date": "2026-05-13",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying pull_vertical cluster exposure: 2026-05-13 (2616h ago).",
+            "Fatigue state for this occurrence: 'elevated'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: pull_vertical cluster exposure 2616h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -241,7 +252,7 @@ window.PROGRAM = {
           "action": "increase_load",
           "assess": "Last top set: 148.5 lb \u00d7 10 @ RPE 9 \u00b7 barbell \u00b7 anchor 10 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 148.5\u00d710 at RPE 9 (\u2265 anchor 10), backoffs productive \u2014 top set 148.5\u2192154.3; +3.9% load costs ~1 rep, so the rep target drops 10\u21929 [range 5-9]. Back-off earned its own jump too \u2014 137.8 for 9-11, rebuilding to the reps it just produced.",
-          "when_to_add_load": "Reach 10 clean reps at 148.5 lb at RPE 10 or lower; then increase to 154.3 lb.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -306,15 +317,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "f31c8909-17b0-4360-b6ef-b929e08bbf7f",
+            "date": "2026-08-26",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying pull_horizontal cluster exposure: 2026-08-26 (96h ago).",
+            "Fatigue state for this occurrence: 'moderate'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: pull_horizontal cluster exposure 96h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -334,7 +356,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 35 lb \u00d7 11 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 35 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (32.5) for 9-11 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 12 clean reps at 35 lb at RPE 9.5 or lower; then increase to 37.5 lb.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -386,15 +408,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "f31c8909-17b0-4360-b6ef-b929e08bbf7f",
+            "date": "2026-08-26",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying elbow_flexion_primary cluster exposure: 2026-08-26 (96h ago).",
+            "Fatigue state for this occurrence: 'moderate'.",
+            "Recovery-hours band width for this occurrence (stretch stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: elbow_flexion_primary cluster exposure 96h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -414,7 +447,7 @@ window.PROGRAM = {
           "action": "hold",
           "assess": "Last top set: 75 lb \u00d7 13 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 75 \u2014 backoffs not yet productive; chase reps to ~12 at RPE 9 before adding load. Back-off holds its own last load (72.5) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 12 clean reps at 75 lb at RPE 10 or lower; then increase to 80 lb.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -479,15 +512,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "f31c8909-17b0-4360-b6ef-b929e08bbf7f",
+            "date": "2026-08-26",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying pull_horizontal cluster exposure: 2026-08-26 (96h ago).",
+            "Fatigue state for this occurrence: 'elevated'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: pull_horizontal cluster exposure 96h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -507,7 +551,7 @@ window.PROGRAM = {
           "action": "hold",
           "assess": "Last top set: 35 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 35 \u2014 backoffs not yet productive; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (32.5) for 9-11 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 12 clean reps at 35 lb at RPE 9.5 or lower; then increase to 37.5 lb.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -559,15 +603,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "f31c8909-17b0-4360-b6ef-b929e08bbf7f",
+            "date": "2026-08-26",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying elbow_flexion_primary cluster exposure: 2026-08-26 (96h ago).",
+            "Fatigue state for this occurrence: 'moderate'.",
+            "Recovery-hours band width for this occurrence (stretch stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: elbow_flexion_primary cluster exposure 96h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -822,7 +877,19 @@ window.PROGRAM = {
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "Most recent primary-shaped exposure was 2026-08-29 (24h ago) -- within the 48h blood-flow window."
+            "Day C inferred as primary owner: won 5/6 ownership signals over the runner-up (0).",
+            "Day C wins 'highest top-set effort (RPE)'.",
+            "Day C wins 'highest relative load'.",
+            "Day C wins 'greatest qualifying working-set count'.",
+            "Day C wins 'consistent top-set-plus-backoff structure'.",
+            "Day C wins 'rotation frequency (most appearances)'.",
+            "Most recent qualifying exact-exercise exposure: 2026-08-29 (24h ago).",
+            "Most recent qualifying shoulder_lateral cluster exposure: 2026-08-29 (24h ago).",
+            "Fatigue state for this occurrence: 'low'.",
+            "Recovery-hours band width for this occurrence (stretch stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+            "Upcoming primary exposure expected on day C (2026-09-01, 48h away).",
+            "Level 3: resolved primary-owner day is C, not today's A; continuing to history/recovery evidence.",
+            "Level 4 decided: exact-exercise exposure 24h ago against a 48h recovery window -> bloodflow_recovery."
           ]
         },
         {
@@ -870,7 +937,13 @@ window.PROGRAM = {
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Fatigue state for this occurrence: None.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
+            "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day)."
           ]
         },
         {
@@ -884,7 +957,7 @@ window.PROGRAM = {
           "action": "review_required",
           "assess": "Last top set: load and reps not recorded.",
           "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe: last session's load and reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "when_to_add_load": "Reach 15 clean reps at 250 lb at RPE 9 or lower; then step up to 275 lb.",
           "sets": [
             {
               "type": "W",
@@ -1080,15 +1153,52 @@ window.PROGRAM = {
               -1.0
             ]
           },
-          "occurrenceRole": "primary_progression",
-          "roleSource": "fallback",
-          "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
-          "fatigueVolumeEligible": true,
+          "occurrenceRole": "skip_overlap",
+          "roleSource": "schedule_override",
+          "roleConfidence": "medium",
+          "primaryReference": {
+            "sessionId": "210c8b25-4169-4ae2-8436-8c58e5fb1b0a",
+            "date": "2026-08-27",
+            "sets": [
+              {
+                "lbs": 200.0,
+                "reps": 10,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 250.0,
+                "reps": 6,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 200.0,
+                "reps": 9,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 200.0,
+                "reps": 7,
+                "rpe": 9.0
+              }
+            ]
+          },
+          "progressionEligible": false,
+          "fatigueVolumeEligible": false,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "Day B inferred as primary owner: won 4/6 ownership signals over the runner-up (0).",
+            "Day B wins 'highest top-set effort (RPE)'.",
+            "Day B wins 'greatest qualifying working-set count'.",
+            "Day B wins 'consistent top-set-plus-backoff structure'.",
+            "Day B wins 'rotation frequency (most appearances)'.",
+            "Most recent qualifying exact-exercise exposure: 2026-08-27 (72h ago).",
+            "Most recent qualifying elbow_extension_primary cluster exposure: 2026-08-27 (72h ago).",
+            "Fatigue state for this occurrence: None.",
+            "Recovery-hours band width for this occurrence (volume stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 36h.",
+            "Upcoming primary exposure expected on day B (2026-08-31, 24h away).",
+            "Level 3: resolved primary-owner day is B, not today's A; continuing to history/recovery evidence.",
+            "Level 4: exact-exercise exposure 72h ago is at or past full recovery (36h); not deciding.",
+            "Level 7 decided: upcoming primary exposure on day B in 24h, inside the 27h schedule window -> skip_overlap."
           ]
         }
       ],
@@ -1139,7 +1249,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T15:26:55.023142",
+        "generated_at": "2026-09-01T18:27:36.312892",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -1219,7 +1329,7 @@ window.PROGRAM = {
         "status": "review",
         "headline": "DAY C \u2014 DELTS / ABS (3-4 days) \u2014 0 load\u2191 \u00b7 4 rep\u2191 \u00b7 0 hold.",
         "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
-        "prescription": "QC: <b>5/6</b> prescriptions passed the validation gate; <b>1 flagged</b> \u2014 see the \u2717 tags below."
+        "prescription": "QC: <b>4/6</b> prescriptions passed the validation gate; <b>2 flagged</b> \u2014 see the \u2717 tags below."
       },
       "exercises": [
         {
@@ -1434,15 +1544,51 @@ window.PROGRAM = {
               1.0
             ]
           },
-          "occurrenceRole": "primary_progression",
-          "roleSource": "fallback",
-          "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
-          "fatigueVolumeEligible": true,
+          "occurrenceRole": "skip_overlap",
+          "roleSource": "recovery_override",
+          "roleConfidence": "medium",
+          "primaryReference": {
+            "sessionId": "f308cefb-9b0e-4481-acbd-1617a58bac3e",
+            "date": "2026-08-25",
+            "sets": [
+              {
+                "lbs": 15.0,
+                "reps": 8,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 30.0,
+                "reps": 11,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 25.0,
+                "reps": 13,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 22.5,
+                "reps": 15,
+                "rpe": 9.0
+              }
+            ]
+          },
+          "progressionEligible": false,
+          "fatigueVolumeEligible": false,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "Day C inferred as primary owner: won 5/6 ownership signals over the runner-up (0).",
+            "Day C wins 'highest top-set effort (RPE)'.",
+            "Day C wins 'highest relative load'.",
+            "Day C wins 'greatest qualifying working-set count'.",
+            "Day C wins 'consistent top-set-plus-backoff structure'.",
+            "Day C wins 'rotation frequency (most appearances)'.",
+            "Most recent qualifying exact-exercise exposure: 2026-08-25 (96h ago).",
+            "Most recent qualifying shoulder_lateral cluster exposure: 2026-08-25 (96h ago).",
+            "Fatigue state for this occurrence: 'high'.",
+            "Recovery-hours band width for this occurrence (stretch stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+            "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+            "Escalation: fatigue_state=high overrides the history_inference-decided primary_progression result -> skip_overlap (bounded post-resolution escalation; single destination, cannot override a manual override)."
           ]
         },
         {
@@ -1462,7 +1608,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 65 lb \u00d7 20 @ RPE 9 \u00b7 band_resisted_isolation \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 65 lb band \u2014 chase reps to ~15 at RPE 9. Bands available: 35/45/55/65 only. Back-off holds its own last load (65) for 12-14 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Already at the heaviest available resistance; progress reps, tempo and ROM before any new load.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -1566,15 +1712,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "f308cefb-9b0e-4481-acbd-1617a58bac3e",
+            "date": "2026-08-25",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying shoulder_lateral cluster exposure: 2026-08-25 (96h ago).",
+            "Fatigue state for this occurrence: 'elevated'.",
+            "Recovery-hours band width for this occurrence (volume stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 36h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: shoulder_lateral cluster exposure 96h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -1803,14 +1960,50 @@ window.PROGRAM = {
             ]
           },
           "occurrenceRole": "primary_progression",
-          "roleSource": "fallback",
-          "roleConfidence": "low",
-          "primaryReference": null,
+          "roleSource": "history_inference",
+          "roleConfidence": "high",
+          "primaryReference": {
+            "sessionId": "f308cefb-9b0e-4481-acbd-1617a58bac3e",
+            "date": "2026-08-25",
+            "sets": [
+              {
+                "lbs": 15.0,
+                "reps": 8,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 25.0,
+                "reps": 12,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 22.5,
+                "reps": 14,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 20.0,
+                "reps": 14,
+                "rpe": 9.0
+              }
+            ]
+          },
           "progressionEligible": true,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "Day C inferred as primary owner: won 6/6 ownership signals over the runner-up (-1).",
+            "Day C wins 'highest top-set effort (RPE)'.",
+            "Day C wins 'highest relative load'.",
+            "Day C wins 'greatest qualifying working-set count'.",
+            "Day C wins 'consistent top-set-plus-backoff structure'.",
+            "Day C wins 'rotation frequency (most appearances)'.",
+            "Day C wins 'existing progression history'.",
+            "Most recent qualifying exact-exercise exposure: 2026-08-25 (96h ago).",
+            "Most recent qualifying shoulder_rear cluster exposure: 2026-08-25 (96h ago).",
+            "Fatigue state for this occurrence: 'moderate'.",
+            "Recovery-hours band width for this occurrence (stretch stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+            "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression."
           ]
         },
         {
@@ -1922,14 +2115,43 @@ window.PROGRAM = {
           "outcome": null,
           "effectiveness": null,
           "occurrenceRole": "primary_progression",
-          "roleSource": "fallback",
-          "roleConfidence": "low",
-          "primaryReference": null,
+          "roleSource": "history_inference",
+          "roleConfidence": "high",
+          "primaryReference": {
+            "sessionId": "f308cefb-9b0e-4481-acbd-1617a58bac3e",
+            "date": "2026-08-25",
+            "sets": [
+              {
+                "lbs": null,
+                "reps": 15,
+                "rpe": 9.0
+              },
+              {
+                "lbs": null,
+                "reps": 15,
+                "rpe": 9.0
+              },
+              {
+                "lbs": null,
+                "reps": 15,
+                "rpe": 9.0
+              }
+            ]
+          },
           "progressionEligible": true,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "Day C inferred as primary owner: won 4/6 ownership signals over the runner-up (-1).",
+            "Day C wins 'highest top-set effort (RPE)'.",
+            "Day C wins 'greatest qualifying working-set count'.",
+            "Day C wins 'consistent top-set-plus-backoff structure'.",
+            "Day C wins 'rotation frequency (most appearances)'.",
+            "Most recent qualifying exact-exercise exposure: 2026-08-25 (96h ago).",
+            "Most recent qualifying core_hip_flexion cluster exposure: 2026-08-25 (96h ago).",
+            "Fatigue state for this occurrence: 'elevated'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression."
           ]
         },
         {
@@ -2001,15 +2223,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "f31c8909-17b0-4360-b6ef-b929e08bbf7f",
+            "date": "2026-08-26",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying elbow_flexion_primary cluster exposure: 2026-08-26 (72h ago).",
+            "Fatigue state for this occurrence: None.",
+            "Recovery-hours band width for this occurrence (stretch stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: elbow_flexion_primary cluster exposure 72h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -2026,10 +2259,10 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "band_combo",
-          "qc": "pass",
-          "action": "bloodflow",
-          "assess": "Most recent primary session: 250 lb \u00d7 6 @ RPE 9, 200 lb \u00d7 9 @ RPE 9, and 200 lb \u00d7 7 @ RPE 9 on 2026-08-27. Today's Day C occurrence is classified as a blood-flow/recovery exposure.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Blood-flow/recovery exposure \u2014 Triceps Pushdown received its primary progression work on 2026-08-27. Prescribe 125 lb \u00d7 8 @ RPE 5, 175 lb \u00d7 20 @ RPE 7 maximum, and 150 lb \u00d7 20 @ RPE 7 maximum. Stop each working set at 20 reps or RPE 7, whichever occurs first. Today's performance is excluded from primary progression decisions. The primary progression remains 250 lb \u00d7 15 clean reps at RPE 9 or lower before increasing to 250 lb.",
+          "qc": "fail",
+          "action": "review_required",
+          "assess": "Last top set: load and reps not recorded.",
+          "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe: last session's load and reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
           "when_to_add_load": "Reach 15 clean reps at 250 lb at RPE 9 or lower; then step up to 275 lb.",
           "sets": [
             {
@@ -2040,9 +2273,9 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 125.0,
-                "reps": "8",
-                "rpe": 5.0
+                "lbs": null,
+                "reps": null,
+                "rpe": null
               }
             },
             {
@@ -2066,9 +2299,9 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 175.0,
-                "reps": "20",
-                "rpe": 7.0
+                "lbs": null,
+                "reps": null,
+                "rpe": null
               }
             },
             {
@@ -2079,16 +2312,16 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 150.0,
-                "reps": "20",
-                "rpe": 7.0
+                "lbs": null,
+                "reps": null,
+                "rpe": null
               }
             }
           ],
-          "gate_status": "not_gated",
-          "gate_reason": null,
-          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (the logged Day A session on 2026-08-30). This exercise's own recovery estimate (32h, volume stimulus, low fatigue) extends to 2026-08-31, past that. Advisory only -- no volume was changed.",
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 7 -> 6.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "gate_status": "confirmed",
+          "gate_reason": "next_program: increase (fresh, cohort signal only \u2014 per-exercise gate governs the actual load)",
+          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (the logged Day A session on 2026-08-30). This exercise's own recovery estimate (38h, volume stimulus, moderate fatigue) extends to 2026-08-31, past that. Advisory only -- no volume was changed.",
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [
             {
               "date": "2026-08-19",
@@ -2226,9 +2459,9 @@ window.PROGRAM = {
               -1.0
             ]
           },
-          "occurrenceRole": "bloodflow_recovery",
-          "roleSource": "history_inference",
-          "roleConfidence": "high",
+          "occurrenceRole": "supplemental_volume",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
           "primaryReference": {
             "sessionId": "210c8b25-4169-4ae2-8436-8c58e5fb1b0a",
             "date": "2026-08-27",
@@ -2259,7 +2492,20 @@ window.PROGRAM = {
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "Most recent primary-shaped exposure was 2026-08-27 (48h ago) -- within the 48h blood-flow window."
+            "Day B inferred as primary owner: won 4/6 ownership signals over the runner-up (0).",
+            "Day B wins 'highest top-set effort (RPE)'.",
+            "Day B wins 'greatest qualifying working-set count'.",
+            "Day B wins 'consistent top-set-plus-backoff structure'.",
+            "Day B wins 'rotation frequency (most appearances)'.",
+            "Most recent qualifying exact-exercise exposure: 2026-08-27 (48h ago).",
+            "Most recent qualifying elbow_extension_primary cluster exposure: 2026-08-27 (48h ago).",
+            "Fatigue state for this occurrence: None.",
+            "Recovery-hours band width for this occurrence (volume stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 36h.",
+            "Upcoming primary exposure expected on day B (2026-08-31, 48h away).",
+            "Level 3: resolved primary-owner day is B, not today's C; continuing to history/recovery evidence.",
+            "Level 4: exact-exercise exposure 48h ago is at or past full recovery (36h); not deciding.",
+            "Level 7: upcoming primary exposure on day B in 48h is outside the 27h schedule window; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         }
       ],
@@ -2310,7 +2556,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T15:26:55.023142",
+        "generated_at": "2026-09-01T18:27:36.312892",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -2388,9 +2634,9 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY B - CHEST / TRICEPS  (5 days) \u2014 1 load\u2191 \u00b7 4 rep\u2191 \u00b7 0 hold.",
+        "headline": "DAY B - CHEST / TRICEPS  (5 days) \u2014 0 load\u2191 \u00b7 4 rep\u2191 \u00b7 0 hold.",
         "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
-        "prescription": "QC: <b>4/6</b> prescriptions passed the validation gate; <b>2 flagged</b> \u2014 see the \u2717 tags below."
+        "prescription": "QC: <b>3/6</b> prescriptions passed the validation gate; <b>3 flagged</b> \u2014 see the \u2717 tags below."
       },
       "exercises": [
         {
@@ -2410,7 +2656,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 159.5 lb \u00d7 9 @ RPE 10 \u00b7 barbell \u00b7 anchor 10 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 159.8 \u2014 reps below anchor; chase reps to ~10 at RPE 9 before adding load. Back-off holds its own last load (132.3) for 9-10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 10 clean reps at 159.5 lb at RPE 10 or lower; then increase to 165.3 lb.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -2475,15 +2721,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "1bf16873-8ade-4b02-8964-f6bb55600cef",
+            "date": "2026-08-23",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying push_horizontal cluster exposure: 2026-08-23 (96h ago).",
+            "Fatigue state for this occurrence: 'high'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: push_horizontal cluster exposure 96h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -2503,7 +2760,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 45 lb \u00d7 10 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 45 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (37.5) for 9-11 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 12 clean reps at 45 lb at RPE 9.5 or lower; then increase to 47.5 lb.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -2555,15 +2812,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "1bf16873-8ade-4b02-8964-f6bb55600cef",
+            "date": "2026-08-23",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying chest_isolation cluster exposure: 2026-08-23 (96h ago).",
+            "Fatigue state for this occurrence: 'moderate'.",
+            "Recovery-hours band width for this occurrence (stretch stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: chest_isolation cluster exposure 96h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -2584,7 +2852,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 67.5 lb \u00d7 11 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 67.5 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (60) for 12-14 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 12 clean reps at 67.5 lb at RPE 9.5 or lower; then increase to 72.5 lb.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -2636,15 +2904,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "1bf16873-8ade-4b02-8964-f6bb55600cef",
+            "date": "2026-08-23",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying elbow_extension_primary cluster exposure: 2026-08-23 (96h ago).",
+            "Fatigue state for this occurrence: 'moderate'.",
+            "Recovery-hours band width for this occurrence (stretch stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: elbow_extension_primary cluster exposure 96h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -2861,14 +3140,48 @@ window.PROGRAM = {
             ]
           },
           "occurrenceRole": "primary_progression",
-          "roleSource": "fallback",
-          "roleConfidence": "low",
-          "primaryReference": null,
+          "roleSource": "history_inference",
+          "roleConfidence": "high",
+          "primaryReference": {
+            "sessionId": "1bf16873-8ade-4b02-8964-f6bb55600cef",
+            "date": "2026-08-23",
+            "sets": [
+              {
+                "lbs": 200.0,
+                "reps": 10,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 250.0,
+                "reps": 5,
+                "rpe": 6.0
+              },
+              {
+                "lbs": 300.0,
+                "reps": 10,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 275.0,
+                "reps": 10,
+                "rpe": 9.0
+              }
+            ]
+          },
           "progressionEligible": true,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "Day B inferred as primary owner: won 4/6 ownership signals over the runner-up (0).",
+            "Day B wins 'highest top-set effort (RPE)'.",
+            "Day B wins 'greatest qualifying working-set count'.",
+            "Day B wins 'consistent top-set-plus-backoff structure'.",
+            "Day B wins 'rotation frequency (most appearances)'.",
+            "Most recent qualifying exact-exercise exposure: 2026-08-23 (96h ago).",
+            "Most recent qualifying elbow_extension_primary cluster exposure: 2026-08-23 (96h ago).",
+            "Fatigue state for this occurrence: 'elevated'.",
+            "Recovery-hours band width for this occurrence (volume stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 36h.",
+            "Level 3 decided: today's day (B) is the resolved primary-owner day (source=inferred) -> primary_progression."
           ]
         },
         {
@@ -2878,38 +3191,12 @@ window.PROGRAM = {
           "cues": [],
           "noWeight": false,
           "loading_type": "dumbbell",
-          "qc": "pass",
-          "action": "increase_load",
-          "assess": "Last top set: 22.5 lb \u00d7 15 @ RPE 6 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (15/15) \u2014 earn the jump; top set 22.5\u219225; +11.1% load costs ~4 reps, so the rep target drops 15\u219211 [range 9-11]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 22.5 for 13-15, rebuilding to the reps it just produced.",
-          "when_to_add_load": "Reach 12 clean reps at 22.5 lb at RPE 9.5 or lower; then increase to 25 lb.",
+          "qc": "fail",
+          "action": "bloodflow",
+          "assess": "Most recent primary session: load and reps not recorded.",
+          "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe blood-flow work: the primary reference session's load and reps were not logged for this exercise. No load or rep target is being asserted from missing data.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null
-              },
-              "prop": {
-                "lbs": 15,
-                "reps": "8",
-                "rpe": 5.0
-              }
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null
-              },
-              "prop": {
-                "lbs": 25,
-                "reps": "9\u201311",
-                "rpe": 9.5
-              }
-            },
             {
               "type": 1,
               "last": {
@@ -2918,9 +3205,9 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 22.5,
-                "reps": "13\u201315",
-                "rpe": 9.0
+                "lbs": null,
+                "reps": null,
+                "rpe": null
               }
             },
             {
@@ -2950,25 +3237,35 @@ window.PROGRAM = {
               }
             }
           ],
-          "gate_status": "no_signal",
+          "gate_status": "not_gated",
           "gate_reason": null,
           "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": "Would lower top RPE target 9.5 -> 9.25 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
+          "rpeAdjustmentAdvisory": null,
           "decisionHistory": [],
           "increaseCutoff": null,
           "reduceCutoff": null,
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
-          "roleSource": "fallback",
-          "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "occurrenceRole": "bloodflow_recovery",
+          "roleSource": "history_inference",
+          "roleConfidence": "high",
+          "primaryReference": {
+            "sessionId": "f31c8909-17b0-4360-b6ef-b929e08bbf7f",
+            "date": "2026-08-26",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying elbow_flexion_primary cluster exposure: 2026-08-26 (24h ago).",
+            "Fatigue state for this occurrence: 'low'.",
+            "Recovery-hours band width for this occurrence (stretch stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5 decided: elbow_flexion_primary cluster exposure 24h ago against a 48h recovery window -> bloodflow_recovery."
           ]
         },
         {
@@ -3048,14 +3345,27 @@ window.PROGRAM = {
           "outcome": null,
           "effectiveness": null,
           "occurrenceRole": "primary_progression",
-          "roleSource": "fallback",
-          "roleConfidence": "low",
-          "primaryReference": null,
+          "roleSource": "history_inference",
+          "roleConfidence": "high",
+          "primaryReference": {
+            "sessionId": "c6dc4666-b5d5-4ff1-a896-db24b0e306d7",
+            "date": "2026-06-10",
+            "sets": []
+          },
           "progressionEligible": true,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "Day B inferred as primary owner: won 4/6 ownership signals over the runner-up (-1).",
+            "Day B wins 'highest top-set effort (RPE)'.",
+            "Day B wins 'greatest qualifying working-set count'.",
+            "Day B wins 'consistent top-set-plus-backoff structure'.",
+            "Day B wins 'rotation frequency (most appearances)'.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying dip_compound cluster exposure: 2026-06-10 (1872h ago).",
+            "Fatigue state for this occurrence: None.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3 decided: today's day (B) is the resolved primary-owner day (source=inferred) -> primary_progression."
           ]
         }
       ],
@@ -3106,7 +3416,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T15:26:55.023142",
+        "generated_at": "2026-09-01T18:27:36.312892",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -3207,7 +3517,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 175 assist \u00d7 11 @ RPE 9 \u00b7 band_assisted_bodyweight \u00b7 anchor 15 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 175 lb assist \u2014 build toward 15 reps before reducing assistance. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350 (less assist = harder). Back-off holds its own last load (200) for 8-10 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 15 clean reps with 175 lb assistance at RPE 10 or lower; then reduce assistance to 150 lb.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -3272,15 +3582,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "d764d3ea-3ea5-405c-a904-17ff28021091",
+            "date": "2026-05-13",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying pull_vertical cluster exposure: 2026-05-13 (2520h ago).",
+            "Fatigue state for this occurrence: 'elevated'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: pull_vertical cluster exposure 2520h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -3300,7 +3621,7 @@ window.PROGRAM = {
           "action": "add_reps",
           "assess": "Last top set: 148 lb \u00d7 8 @ RPE 9 \u00b7 barbell \u00b7 anchor 10 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 148.8 \u2014 reps below anchor; chase reps to ~10 at RPE 9 before adding load. Back-off holds its own last load (132.3) for 10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 10 clean reps at 148 lb at RPE 10 or lower; then increase to 154.3 lb.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -3365,15 +3686,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "6b252e00-aa95-46eb-9156-90d868e1028f",
+            "date": "2026-08-22",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying pull_horizontal cluster exposure: 2026-08-22 (96h ago).",
+            "Fatigue state for this occurrence: 'moderate'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: pull_horizontal cluster exposure 96h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -3393,7 +3725,7 @@ window.PROGRAM = {
           "action": "increase_load",
           "assess": "Last top set: 35 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (12/10) \u2014 earn the jump; top set 35\u219237.5; +7.1% load costs ~2 reps, so the rep target drops 12\u219210 [range 8-10]. Isolation: only loaded once the whole cluster is productive. Back-off holds its own last load (32.5) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 12 clean reps at 35 lb at RPE 9.5 or lower; then increase to 37.5 lb.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -3445,15 +3777,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "6b252e00-aa95-46eb-9156-90d868e1028f",
+            "date": "2026-08-22",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying elbow_flexion_primary cluster exposure: 2026-08-22 (96h ago).",
+            "Fatigue state for this occurrence: 'moderate'.",
+            "Recovery-hours band width for this occurrence (stretch stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: elbow_flexion_primary cluster exposure 96h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -3473,7 +3816,7 @@ window.PROGRAM = {
           "action": "hold",
           "assess": "Last top set: 75 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 75 \u2014 backoffs not yet productive; chase reps to ~12 at RPE 9 before adding load. Back-off holds its own last load (72.5) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 12 clean reps at 75 lb at RPE 10 or lower; then increase to 80 lb.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -3538,15 +3881,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "6b252e00-aa95-46eb-9156-90d868e1028f",
+            "date": "2026-08-22",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying pull_horizontal cluster exposure: 2026-08-22 (96h ago).",
+            "Fatigue state for this occurrence: 'elevated'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: pull_horizontal cluster exposure 96h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -3566,7 +3920,7 @@ window.PROGRAM = {
           "action": "hold",
           "assess": "Last top set: 35 lb \u00d7 12 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
           "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 35 \u2014 backoffs not yet productive; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (32.5) for 9-11 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
-          "when_to_add_load": "Reach 12 clean reps at 35 lb at RPE 9.5 or lower; then increase to 37.5 lb.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
               "type": "W",
@@ -3618,15 +3972,26 @@ window.PROGRAM = {
           "ignoredDecision": null,
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "primary_progression",
+          "occurrenceRole": "supplemental_volume",
           "roleSource": "fallback",
           "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
+          "primaryReference": {
+            "sessionId": "6b252e00-aa95-46eb-9156-90d868e1028f",
+            "date": "2026-08-22",
+            "sets": []
+          },
+          "progressionEligible": false,
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Most recent qualifying elbow_flexion_primary cluster exposure: 2026-08-22 (96h ago).",
+            "Fatigue state for this occurrence: 'moderate'.",
+            "Recovery-hours band width for this occurrence (stretch stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 5: elbow_flexion_primary cluster exposure 96h ago is at or past full recovery; not deciding.",
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
           ]
         },
         {
@@ -3881,7 +4246,19 @@ window.PROGRAM = {
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "Most recent primary-shaped exposure was 2026-08-25 (24h ago) -- within the 48h blood-flow window."
+            "Day C inferred as primary owner: won 5/6 ownership signals over the runner-up (0).",
+            "Day C wins 'highest top-set effort (RPE)'.",
+            "Day C wins 'highest relative load'.",
+            "Day C wins 'greatest qualifying working-set count'.",
+            "Day C wins 'consistent top-set-plus-backoff structure'.",
+            "Day C wins 'rotation frequency (most appearances)'.",
+            "Most recent qualifying exact-exercise exposure: 2026-08-25 (24h ago).",
+            "Most recent qualifying shoulder_lateral cluster exposure: 2026-08-25 (24h ago).",
+            "Fatigue state for this occurrence: 'low'.",
+            "Recovery-hours band width for this occurrence (stretch stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+            "Upcoming primary exposure expected on day C (2026-08-29, 72h away).",
+            "Level 3: resolved primary-owner day is C, not today's A; continuing to history/recovery evidence.",
+            "Level 4 decided: exact-exercise exposure 24h ago against a 48h recovery window -> bloodflow_recovery."
           ]
         },
         {
@@ -3929,7 +4306,13 @@ window.PROGRAM = {
           "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Fatigue state for this occurrence: None.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
+            "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day)."
           ]
         },
         {
@@ -3943,7 +4326,7 @@ window.PROGRAM = {
           "action": "review_required",
           "assess": "Last top set: load and reps not recorded.",
           "rationale": "<b>\u2717 QC fail: insufficient_performed_input, missing(performed_reps), missing(performed_load)</b> \u00b7 Cannot prescribe: last session's load and reps were not logged for this exercise. Record them and the engine resumes \u2014 no load or rep target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "when_to_add_load": "Reach 15 clean reps at 300 lb at RPE 9 or lower; then step up to 325 lb.",
           "sets": [
             {
               "type": "W",
@@ -4139,15 +4522,52 @@ window.PROGRAM = {
               -1.0
             ]
           },
-          "occurrenceRole": "primary_progression",
-          "roleSource": "fallback",
-          "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
-          "fatigueVolumeEligible": true,
+          "occurrenceRole": "skip_overlap",
+          "roleSource": "schedule_override",
+          "roleConfidence": "medium",
+          "primaryReference": {
+            "sessionId": "1bf16873-8ade-4b02-8964-f6bb55600cef",
+            "date": "2026-08-23",
+            "sets": [
+              {
+                "lbs": 200.0,
+                "reps": 10,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 250.0,
+                "reps": 5,
+                "rpe": 6.0
+              },
+              {
+                "lbs": 300.0,
+                "reps": 10,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 275.0,
+                "reps": 10,
+                "rpe": 9.0
+              }
+            ]
+          },
+          "progressionEligible": false,
+          "fatigueVolumeEligible": false,
           "classificationReasons": [
             "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No qualifying recent primary exposure found within the blood-flow window; defaulting to primary progression."
+            "Day B inferred as primary owner: won 4/6 ownership signals over the runner-up (0).",
+            "Day B wins 'highest top-set effort (RPE)'.",
+            "Day B wins 'greatest qualifying working-set count'.",
+            "Day B wins 'consistent top-set-plus-backoff structure'.",
+            "Day B wins 'rotation frequency (most appearances)'.",
+            "Most recent qualifying exact-exercise exposure: 2026-08-23 (72h ago).",
+            "Most recent qualifying elbow_extension_primary cluster exposure: 2026-08-23 (72h ago).",
+            "Fatigue state for this occurrence: None.",
+            "Recovery-hours band width for this occurrence (volume stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 36h.",
+            "Upcoming primary exposure expected on day B (2026-08-27, 24h away).",
+            "Level 3: resolved primary-owner day is B, not today's A; continuing to history/recovery evidence.",
+            "Level 4: exact-exercise exposure 72h ago is at or past full recovery (36h); not deciding.",
+            "Level 7 decided: upcoming primary exposure on day B in 24h, inside the 27h schedule window -> skip_overlap."
           ]
         }
       ],

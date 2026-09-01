@@ -1202,8 +1202,21 @@
   "occurrence_classification": {
     "primary_owner_days": {},
     "manual_overrides": {},
-    "recovery_windows": {},
-    "owner_inference": {},
+    "recovery_windows": {
+      "bloodflow_fraction_of_recovery_hours": 0.5,
+      "full_recovery_fraction_of_recovery_hours": 1.0,
+      "upcoming_primary_window_fraction_of_recovery_hours": 0.75,
+      "default_non_primary_role": "supplemental_volume"
+    },
+    "skip_overlap": {
+      "skip_fraction_of_recovery_hours": 0.25
+    },
+    "owner_inference": {
+      "total_signals": 6,
+      "high_confidence_min_signals": 4,
+      "medium_confidence_min_signals": 3,
+      "ambiguity_condition": "the leading day's signal win-count is tied with the runner-up's win-count (including the degenerate 0-0 case where every signal ties); resolve_primary_owner() then reports no owner day at low confidence rather than an arbitrary winner"
+    },
     "bloodflow_profile": {
       "warmup_pct_of_primary_top": 0.5,
       "warmup_reps": 8,
@@ -1215,11 +1228,64 @@
       "second_set_step_down": "one_equipment_increment"
     },
     "supplemental_profile": {},
-    "skip_overlap": {},
     "category_overrides": {},
     "fatigue_volume_weighting": {}
   },
   "occurrence_classification_meta": {
+    "recovery_windows.bloodflow_fraction_of_recovery_hours": {
+      "ratified_date": "2026-09-01",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-03 Task 1 checkpoint:decision (gate=blocking), option-a: 'Recovery-model-relative bands, conservative cutoffs' -- pre-write verification recorded get_recovery_hours('stretch','delts','moderate')=52h for the Golden Test Case 1 fixture; 0.5x52=26h exceeds the fixture's real 24h gap, so the bloodflow_recovery downgrade fires as already proven by the 06.1-01 tracer.",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "recovery_windows.full_recovery_fraction_of_recovery_hours": {
+      "ratified_date": "2026-09-01",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-03 Task 1 checkpoint:decision (gate=blocking), option-a: 'Recovery-model-relative bands, conservative cutoffs'",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "recovery_windows.upcoming_primary_window_fraction_of_recovery_hours": {
+      "ratified_date": "2026-09-01",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-03 Task 1 checkpoint:decision (gate=blocking), option-a: 'Recovery-model-relative bands, conservative cutoffs'",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "recovery_windows.default_non_primary_role": {
+      "ratified_date": "2026-09-01",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-03 Task 1 checkpoint:decision (gate=blocking), option-a -- 06.1-FEATURE-SPEC.md 'Configurable timing bands': partially recovered -> supplemental volume if fatigue acceptable",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "skip_overlap.skip_fraction_of_recovery_hours": {
+      "ratified_date": "2026-09-01",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-03 Task 1 checkpoint:decision (gate=blocking), option-a: 'Recovery-model-relative bands, conservative cutoffs'",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "owner_inference.total_signals": {
+      "ratified_date": "2026-09-01",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-03 Task 1 checkpoint:decision (gate=blocking), option-a -- the six ownership signals named in 06.1-FEATURE-SPEC.md 'Primary-Exposure Ownership'",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "owner_inference.high_confidence_min_signals": {
+      "ratified_date": "2026-09-01",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-03 Task 1 checkpoint:decision (gate=blocking), option-a: 'high confidence at >=4/6 signals'",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "owner_inference.medium_confidence_min_signals": {
+      "ratified_date": "2026-09-01",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-03 Task 1 checkpoint:decision (gate=blocking), option-a: 'medium confidence at 3/6 signals'",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "owner_inference.ambiguity_condition": {
+      "ratified_date": "2026-09-01",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-03 Task 1 checkpoint:decision (gate=blocking), option-a: 'low/no-owner ... on a tie'; executor-clarified against 06.1-03-PLAN.md Task 2's Test 9/10/11 acceptance behavior to mean a tie in win-count between the leading and runner-up day specifically (not merely fewer than the confidence thresholds), so a uniquely-leading day with 1-2 signal wins is still reported at low confidence rather than withheld -- see 06.1-03-SUMMARY.md for the full reconciliation note.",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
     "bloodflow_profile.warmup_pct_of_primary_top": {
       "ratified_date": "2026-08-26",
       "ratified_by": "Chad Crawford (Program Director)",

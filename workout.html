@@ -207,11 +207,11 @@
   <div class="card" id="card"></div>
   <div id="analysis"></div>
 
-  <script src="workout-card.data.js?v=20260901152655"></script>
+  <script src="workout-card.data.js?v=20260901182736"></script>
   <script>
   // ---- APE live-data config (Option A) ----
   // Set to the deployed APE API base URL (e.g. "https://<api>.up.railway.app") to serve
-  // live data from Postgres. Empty string = use the baked workout-card.data.js?v=20260901152655 (current).
+  // live data from Postgres. Empty string = use the baked workout-card.data.js?v=20260901182736 (current).
   // Baked-only: the Mac deploy pipeline (VOLM→duckdb→data.js) is the fresh source of truth.
   // The Railway API held stale data and was clobbering the freshly-baked card on load (the
   // "flashes back to old" bug). Re-enable ONLY after that instance is kept in sync.
@@ -219,7 +219,7 @@
 
   // ---- data: proposed values + LLM rationale are produced by an LLM from the last workout ----
   const program = window.PROGRAM;
-  if(!program || !program.sessions){ document.getElementById('card').innerHTML='<p style="padding:20px;color:#f87171">workout-card.data.js?v=20260901152655 not loaded — run tools/build_card_data.py</p>'; throw new Error('no PROGRAM'); }
+  if(!program || !program.sessions){ document.getElementById('card').innerHTML='<p style="padding:20px;color:#f87171">workout-card.data.js?v=20260901182736 not loaded — run tools/build_card_data.py</p>'; throw new Error('no PROGRAM'); }
 
   // WR-03: gateBadge() below is ported verbatim from workout2.html and must
   // stay byte-identical to that copy (tests/tools/test_build_card_data_history_panel.py::
@@ -603,7 +603,7 @@
   // ---- Option A: live data from the deployed APE API ----
   // Non-breaking + opt-in: inert unless window.APE_API_BASE is set (the baked data
   // renders instantly). On success, swaps in live data and re-renders via the existing
-  // draw(); on any error/offline, the baked workout-card.data.js?v=20260901152655 stays.
+  // draw(); on any error/offline, the baked workout-card.data.js?v=20260901182736 stays.
   (async () => {
     const api = window.APE_API_BASE;
     if (!api) return;
