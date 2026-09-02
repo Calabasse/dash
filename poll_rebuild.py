@@ -47,7 +47,8 @@ def load_cfg() -> dict:
 
 def log(msg: str) -> None:
     line = f"[{datetime.now():%Y-%m-%d %H:%M:%S}] {msg}"
-    print(line)
+    # Both launchd (StandardOutPath -> LOG) and the explicit write below used to
+    # target the same file, duplicating every entry. Explicit write only now.
     try:
         with LOG.open("a") as f:
             f.write(line + "\n")

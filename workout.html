@@ -227,11 +227,11 @@
   <div class="card" id="card"></div>
   <div id="analysis"></div>
 
-  <script src="workout-card.data.js?v=20260902175523"></script>
+  <script src="workout-card.data.js?v=20260902181343"></script>
   <script>
   // ---- APE live-data config (Option A) ----
   // Set to the deployed APE API base URL (e.g. "https://<api>.up.railway.app") to serve
-  // live data from Postgres. Empty string = use the baked workout-card.data.js?v=20260902175523 (current).
+  // live data from Postgres. Empty string = use the baked workout-card.data.js?v=20260902181343 (current).
   // Baked-only: the Mac deploy pipeline (VOLM→duckdb→data.js) is the fresh source of truth.
   // The Railway API held stale data and was clobbering the freshly-baked card on load (the
   // "flashes back to old" bug). Re-enable ONLY after that instance is kept in sync.
@@ -239,7 +239,7 @@
 
   // ---- data: proposed values + LLM rationale are produced by an LLM from the last workout ----
   const program = window.PROGRAM;
-  if(!program || !program.sessions){ document.getElementById('card').innerHTML='<p style="padding:20px;color:#f87171">workout-card.data.js?v=20260902175523 not loaded — run tools/build_card_data.py</p>'; throw new Error('no PROGRAM'); }
+  if(!program || !program.sessions){ document.getElementById('card').innerHTML='<p style="padding:20px;color:#f87171">workout-card.data.js?v=20260902181343 not loaded — run tools/build_card_data.py</p>'; throw new Error('no PROGRAM'); }
 
   // WR-03: gateBadge() below is ported verbatim from workout2.html and must
   // stay byte-identical to that copy (tests/tools/test_build_card_data_history_panel.py::
@@ -576,7 +576,12 @@
           : 'rebuild refused: '+(j.error||'unknown'));
         b.disabled=false; return;
       }
-      tb('queued — the Mac will refresh within ~2 min…');
+      // Honest framing: the Mac only picks this up on its next poll IF it's
+      // awake and online — that's usually ~2 min, but the poller is pull-only
+      // and does nothing while the Mac sleeps, so this can silently sit queued
+      // for hours. Say so up front instead of promising a timeline the system
+      // can't back up (found via poller.log: multi-hour gaps are real, not rare).
+      tb('queued — picked up within ~2 min once your Mac is awake');
       pollRebuild(b);
     }catch(e){ tb('rebuild error: '+e.message); b.disabled=false; }
   };
@@ -591,10 +596,31 @@
         else if(sawActive && s.status==='done'){ tb('deployed ✓ '+(s.sessions!=null?s.sessions+' sessions — ':'')+'reloading'); setTimeout(()=>location.reload(),1500); return; }
         else if(sawActive && s.status==='error'){ tb('rebuild failed on the Mac (see poller.log)'); b.disabled=false; return; }
       }catch(e){/* transient — keep polling */}
-      if(Date.now()-started>TIMEOUT){ tb('still working — reload in a minute'); b.disabled=false; return; }
+      if(Date.now()-started>TIMEOUT){
+        // Was NOT "almost done" — this page just stopped watching. The request
+        // is still queued Worker-side and completes whenever the Mac next wakes
+        // (could be minutes or hours), not "in a minute." Re-enable the button
+        // so a fresh click/status-check works instead of staying locked out.
+        tb('still queued — your Mac hasn’t picked it up yet (asleep/offline?); will finish whenever it wakes, reload later to check');
+        b.disabled=false; return;
+      }
       setTimeout(tick,5000);
     };
     setTimeout(tick,4000);
+  }
+  // On page load (public page only), reflect whatever the Worker's real state
+  // is instead of defaulting to "ready" when a rebuild from an earlier click
+  // (possibly on another device, or a closed tab) may still be in flight.
+  async function checkRebuildStatusOnLoad(){
+    if(SERVED || !REBUILD_API) return;
+    try{
+      const s=await (await fetch(rbase()+'/api/rebuild-status')).json();
+      if(s.status==='queued'||s.status==='building'){
+        tb(s.status==='building'?'building on the Mac… (started earlier)':'queued — waiting for your Mac to wake up');
+        const b=document.getElementById('btnSync');
+        if(b){ b.disabled=true; pollRebuild(b); }
+      }
+    }catch(e){/* fall through to the default "ready" message below */}
   }
   // Build a handoff prompt from the CURRENT session (last vs proposed).
   function handoffPrompt(){
@@ -634,14 +660,17 @@
       .catch(()=>{});
     tb(blocked?'popup blocked — context is in the box below':'handed off to '+(provider==='chatgpt'?'ChatGPT':'Claude'));
   };
-  if(!SERVED) tb(REBUILD_API
-    ? 'ready — "Load from VOLM" refreshes from anywhere (rebuilds on the Mac)'
-    : 'static mode — set REBUILD_API to enable remote refresh; handoff works here');
+  if(!SERVED){
+    tb(REBUILD_API
+      ? 'ready — "Load from VOLM" refreshes from anywhere (rebuilds on the Mac)'
+      : 'static mode — set REBUILD_API to enable remote refresh; handoff works here');
+    checkRebuildStatusOnLoad();  // overwrite "ready" if a rebuild is genuinely still in flight
+  }
 
   // ---- Option A: live data from the deployed APE API ----
   // Non-breaking + opt-in: inert unless window.APE_API_BASE is set (the baked data
   // renders instantly). On success, swaps in live data and re-renders via the existing
-  // draw(); on any error/offline, the baked workout-card.data.js?v=20260902175523 stays.
+  // draw(); on any error/offline, the baked workout-card.data.js?v=20260902181343 stays.
   (async () => {
     const api = window.APE_API_BASE;
     if (!api) return;
