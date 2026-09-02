@@ -47,7 +47,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T19:19:04.538547",
+        "generated_at": "2026-09-01T20:29:11.797248",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -252,7 +252,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "increase_load",
           "assess": "Last top set: 148.5 lb \u00d7 10 @ RPE 9 \u00b7 barbell \u00b7 anchor 10 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 148.5\u00d710 at RPE 9 (\u2265 anchor 10), backoffs productive \u2014 top set 148.5\u2192154.3; +3.9% load costs ~1 rep, so the rep target drops 10\u21929 [range 5-9]. Back-off earned its own jump too \u2014 137.8 for 9-11, rebuilding to the reps it just produced.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 148.5\u00d710 at RPE 9 (\u2265 anchor 10), backoffs productive \u2014 top set 148.5\u2192154; +3.7% load costs ~1 rep, so the rep target drops 10\u21929 [range 5-9]. Back-off earned its own jump too \u2014 137.5 for 9-11, rebuilding to the reps it just produced.",
           "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
@@ -263,8 +263,8 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 82.7,
-                "reps": "8",
+                "lbs": 88,
+                "reps": "7",
                 "rpe": 5.0
               }
             },
@@ -276,7 +276,7 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 121.3,
+                "lbs": 121,
                 "reps": "5",
                 "rpe": 6.5
               }
@@ -289,7 +289,7 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 154.3,
+                "lbs": 154,
                 "reps": "5\u20139",
                 "rpe": 9.0
               }
@@ -302,7 +302,7 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 137.8,
+                "lbs": 137.5,
                 "reps": "9\u201311",
                 "rpe": 9.0
               }
@@ -1263,7 +1263,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T19:19:04.538547",
+        "generated_at": "2026-09-01T20:29:11.797248",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -2580,7 +2580,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T19:19:04.538547",
+        "generated_at": "2026-09-01T20:29:11.797248",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -2678,7 +2678,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 159.5 lb \u00d7 9 @ RPE 10 \u00b7 barbell \u00b7 anchor 10 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 159.8 \u2014 reps below anchor; chase reps to ~10 at RPE 9 before adding load. Back-off holds its own last load (132.3) for 9-10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 159.5 \u2014 reps below anchor; chase reps to ~10 at RPE 9 before adding load. Back-off holds its own last load (132) for 9-10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
           "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
@@ -2689,7 +2689,7 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 88.2,
+                "lbs": 88,
                 "reps": "8",
                 "rpe": 5.0
               }
@@ -2702,7 +2702,7 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 126.8,
+                "lbs": 126.5,
                 "reps": "5",
                 "rpe": 6.5
               }
@@ -2715,7 +2715,7 @@ window.PROGRAM = {
                 "rpe": 10
               },
               "prop": {
-                "lbs": 159.8,
+                "lbs": 159.5,
                 "reps": "9\u201310",
                 "rpe": 9.0
               }
@@ -2728,7 +2728,7 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 132.3,
+                "lbs": 132,
                 "reps": "9\u201310",
                 "rpe": 9.0
               }
@@ -3450,7 +3450,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-01T19:19:04.538547",
+        "generated_at": "2026-09-01T20:29:11.797248",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -3655,7 +3655,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 148 lb \u00d7 8 @ RPE 9 \u00b7 barbell \u00b7 anchor 10 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 148.8 \u2014 reps below anchor; chase reps to ~10 at RPE 9 before adding load. Back-off holds its own last load (132.3) for 10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 148.5 \u2014 reps below anchor; chase reps to ~10 at RPE 9 before adding load. Back-off holds its own last load (132) for 10 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
           "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
@@ -3666,8 +3666,8 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 82.7,
-                "reps": "8",
+                "lbs": 88,
+                "reps": "7",
                 "rpe": 5.0
               }
             },
@@ -3679,7 +3679,7 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 121.3,
+                "lbs": 121,
                 "reps": "5",
                 "rpe": 6.5
               }
@@ -3692,7 +3692,7 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 148.8,
+                "lbs": 148.5,
                 "reps": "8\u201310",
                 "rpe": 9.0
               }
@@ -3705,7 +3705,7 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 132.3,
+                "lbs": 132,
                 "reps": "10",
                 "rpe": 9.0
               }

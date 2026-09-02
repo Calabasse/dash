@@ -1171,7 +1171,11 @@
       "bodyweight"
     ],
     "e1rm_reps_coefficient": 30.0,
-    "training_max_rounding_lb": 5.0
+    "training_max_rounding_lb": 5.0,
+    "barbell_warmup_floor_lb": 88.0,
+    "barbell_warmup_floor_loading_types": [
+      "barbell"
+    ]
   },
   "engine_constants_meta": {
     "warmup_load_margin": {
@@ -1197,6 +1201,18 @@
       "ratified_by": "Chad Crawford (Program Director)",
       "ratifying_authority": "plan 05.3-02 Task 1 checkpoint:decision (gate=blocking) -- proposed value ratified as-is, unaffected by the main-lift-mapping option selected",
       "note": "CR-01 (05.3-REVIEW.md): registered here so the ratification-supersession gate (warning banner + mandatory second confirmation) actually fires for this field, matching the ratification already cited in tools/prescribe_hypertrophy.py's _FALLBACK_ENGINE_CONSTANTS comment. A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "barbell_warmup_floor_lb": {
+      "ratified_date": "2026-09-01",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "Chad Crawford's own direct instruction, quoted verbatim: 'Generally I will not warm-up with less than 88lbs on bench, inc bench, or bent rows.' Authorized as a LOCKED FILE (tools/prescribe_hypertrophy.py) prescribed-output change outside the additive/display-only precedent the current PHASE_BASE_REF checkpoint rests on (260901-rnk-PLAN.md F-5) -- this record IS the authorization trail.",
+      "note": "(a) 88.0 lb is a real rung of the lb-native plate ladder (44 lb bar + one 22 lb plate per side, tools/equipment_inventory.py), not a round number chosen for looks. (b) Scope is ALL barbell lifts (see barbell_warmup_floor_loading_types), not a name list of the three lifts Chad named (bench, incline bench, bent rows): those are the only barbell movements in the logged session history, and one of the three he named -- flat bench press -- does not appear in the data under any string, so a name list would fail on a lift he explicitly asked for (260901-rnk-PLAN.md F-4). A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "barbell_warmup_floor_loading_types": {
+      "ratified_date": "2026-09-01",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "Chad Crawford's own direct instruction (see barbell_warmup_floor_lb) -- scope decision carried in the same ratification.",
+      "note": "Scoped to all barbell lifts rather than a name list for the same reason recorded on barbell_warmup_floor_lb: flat bench press, one of the three lifts Chad named, has no logged occurrence under any string, so a name list would silently miss a lift he explicitly asked for (260901-rnk-PLAN.md F-4). Narrowing this scope later (e.g. if a barbell squat or deadlift is ever logged) is a config edit with this rationale attached, not an engine change. A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
     }
   },
   "occurrence_classification": {
