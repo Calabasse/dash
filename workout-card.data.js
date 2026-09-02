@@ -47,7 +47,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-02T06:30:05.739224",
+        "generated_at": "2026-09-02T17:54:17.256622",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -1263,7 +1263,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-02T06:30:05.739224",
+        "generated_at": "2026-09-02T17:54:17.256622",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -2580,7 +2580,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-02T06:30:05.739224",
+        "generated_at": "2026-09-02T17:54:17.256622",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -3450,7 +3450,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-02T06:30:05.739224",
+        "generated_at": "2026-09-02T17:54:17.256622",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
