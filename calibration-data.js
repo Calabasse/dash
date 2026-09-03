@@ -159,5 +159,5 @@ window.CALIBRATION = {
       "note": "Declared in the control schema but never written by run_system_tuner() -- not auto-tuned."
     }
   },
-  "generated_at": "2026-09-02T22:13:43.753825+00:00"
+  "generated_at": "2026-09-03T08:24:02.034267+00:00"
 };

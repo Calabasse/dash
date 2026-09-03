@@ -2,6 +2,8 @@ private/
 *.local
 .DS_Store
 poller.log
+__pycache__/
+*.pyc
 # Cloudflare Worker
 worker/node_modules/
 .wrangler/
