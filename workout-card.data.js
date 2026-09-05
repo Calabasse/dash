@@ -47,7 +47,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-04T06:30:16.942679",
+        "generated_at": "2026-09-05T06:30:14.565521",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -76,7 +76,7 @@ window.PROGRAM = {
           "recovery_debt": 11.544527889377555
         },
         "deload_state": {
-          "snapshot_date": "2026-09-04",
+          "snapshot_date": "2026-09-05",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -202,8 +202,8 @@ window.PROGRAM = {
             }
           ],
           "volumeLbs": 1022.5,
-          "gate_status": "confirmed",
-          "gate_reason": null,
+          "gate_status": "stale_ignored",
+          "gate_reason": "next_program: hold (stale, 2026-08-21) \u2014 ignored",
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9.5 -> 9.25 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -292,7 +292,11 @@ window.PROGRAM = {
           ],
           "increaseCutoff": 0.75,
           "reduceCutoff": -1.25,
-          "ignoredDecision": null,
+          "ignoredDecision": {
+            "date": "2026-08-21",
+            "decision": "hold",
+            "source": "program_builder_v2"
+          },
           "outcome": null,
           "effectiveness": {
             "window": [
@@ -595,8 +599,8 @@ window.PROGRAM = {
             }
           ],
           "volumeLbs": 1045.0,
-          "gate_status": "confirmed",
-          "gate_reason": null,
+          "gate_status": "stale_ignored",
+          "gate_reason": "next_program: hold (stale, 2026-08-21) \u2014 ignored",
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9 -> 8.75 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -696,7 +700,11 @@ window.PROGRAM = {
           ],
           "increaseCutoff": 0.75,
           "reduceCutoff": -1.25,
-          "ignoredDecision": null,
+          "ignoredDecision": {
+            "date": "2026-08-21",
+            "decision": "hold",
+            "source": "program_builder_v2"
+          },
           "outcome": null,
           "effectiveness": {
             "window": [
@@ -1110,7 +1118,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-04T06:30:16.942679",
+        "generated_at": "2026-09-05T06:30:14.565521",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -1139,7 +1147,7 @@ window.PROGRAM = {
           "recovery_debt": 11.544527889377555
         },
         "deload_state": {
-          "snapshot_date": "2026-09-04",
+          "snapshot_date": "2026-09-05",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -1922,7 +1930,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-04T06:30:16.942679",
+        "generated_at": "2026-09-05T06:30:14.565521",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -1951,7 +1959,7 @@ window.PROGRAM = {
           "recovery_debt": 11.544527889377555
         },
         "deload_state": {
-          "snapshot_date": "2026-09-04",
+          "snapshot_date": "2026-09-05",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -2825,7 +2833,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-04T06:30:16.942679",
+        "generated_at": "2026-09-05T06:30:14.565521",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
@@ -2854,7 +2862,7 @@ window.PROGRAM = {
           "recovery_debt": 11.544527889377555
         },
         "deload_state": {
-          "snapshot_date": "2026-09-04",
+          "snapshot_date": "2026-09-05",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -2980,8 +2988,8 @@ window.PROGRAM = {
             }
           ],
           "volumeLbs": 917.5,
-          "gate_status": "confirmed",
-          "gate_reason": null,
+          "gate_status": "stale_ignored",
+          "gate_reason": "next_program: hold (stale, 2026-08-21) \u2014 ignored",
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9.5 -> 9.25 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -3070,7 +3078,11 @@ window.PROGRAM = {
           ],
           "increaseCutoff": 0.75,
           "reduceCutoff": -1.25,
-          "ignoredDecision": null,
+          "ignoredDecision": {
+            "date": "2026-08-21",
+            "decision": "hold",
+            "source": "program_builder_v2"
+          },
           "outcome": null,
           "effectiveness": {
             "window": [
@@ -3360,8 +3372,8 @@ window.PROGRAM = {
             }
           ],
           "volumeLbs": 800.0,
-          "gate_status": "confirmed",
-          "gate_reason": null,
+          "gate_status": "stale_ignored",
+          "gate_reason": "next_program: hold (stale, 2026-08-21) \u2014 ignored",
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": "Would lower top RPE target 9.5 -> 9.25 based on a recent pattern of undershooting prescribed targets (signal -0.40). Advisory only -- the prescribed target is unchanged.",
           "decisionHistory": [
@@ -3461,7 +3473,11 @@ window.PROGRAM = {
           ],
           "increaseCutoff": 0.75,
           "reduceCutoff": -1.25,
-          "ignoredDecision": null,
+          "ignoredDecision": {
+            "date": "2026-08-21",
+            "decision": "hold",
+            "source": "program_builder_v2"
+          },
           "outcome": null,
           "effectiveness": {
             "window": [
