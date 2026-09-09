@@ -102,6 +102,18 @@
   </div>
 
   <div class="panel">
+    <h2>Decision & safety thresholds</h2>
+    <div id="calDecisionSafety"></div>
+    <div class="note">Read-only constants governing the increase/reduce z-score band and the tuner's reduce-rate ceiling (decision_band_contract.py, system_tuner.py). Not editable here &mdash; same D-08 no-write-capability rule as every other panel on this page.</div>
+  </div>
+
+  <div class="panel">
+    <h2>Fatigue & recovery thresholds</h2>
+    <div id="calFatigueRecovery"></div>
+    <div class="note">Read-only fatigue/recovery-debt thresholds (deload_state.py, fatigue_accumulation.py, fatigue_signal.py).</div>
+  </div>
+
+  <div class="panel">
     <h2>Engine constants</h2>
     <div id="engineConstants"></div>
     <div class="note">Flat constants read from the engine's own config (not the calibration feed above) &mdash; no auto-calibration behavior exists for these. Where a value carries an explicit ratification record, it is marked.</div>
@@ -271,6 +283,33 @@ function renderGeneratedAtStamp(){
   el.textContent=stamp ? `Calibration data generated at ${stamp}` : 'Calibration data generation time unavailable';
 }
 
+// Section 6 (spec 2026-09-09): both panels below read plain, always-present
+// key/value maps -- no locks, no history, no bounds -- so they share one
+// tiny renderer rather than duplicating renderCalibrationParams()'s
+// lock/bounds-aware table logic, which doesn't apply to either of these.
+function renderConstantTable(elementId, data, missingMessage){
+  const box=document.getElementById(elementId);
+  if(!data){
+    box.innerHTML=`<div class="note" style="color:var(--dim)">${escCal(missingMessage)}</div>`;
+    return;
+  }
+  const rows=Object.entries(data).map(([k,v])=>
+    `<tr><td class="k">${escCal(k)}</td><td>${escCal(String(v))}</td></tr>`).join('');
+  box.innerHTML='<table><thead><tr><th>constant</th><th>value</th></tr></thead><tbody>'+rows+'</tbody></table>';
+}
+
+function renderDecisionSafetyConstants(){
+  renderConstantTable('calDecisionSafety',
+    window.CALIBRATION && window.CALIBRATION.decision_safety_constants,
+    'no decision/safety constant data');
+}
+
+function renderFatigueRecoveryConstants(){
+  renderConstantTable('calFatigueRecovery',
+    window.CALIBRATION && window.CALIBRATION.fatigue_recovery_constants,
+    'no fatigue/recovery constant data');
+}
+
 // D-05/D-06: engine_constants panel -- reads from the EXISTING
 // prescription_config.json fetch (cfg, populated by render()), never from
 // window.CALIBRATION. Ratification markers come from engine_constants_meta
@@ -299,6 +338,8 @@ renderCalibrationParams();
 renderHistory();
 renderLockAudit();
 renderInactiveParams();
+renderDecisionSafetyConstants();
+renderFatigueRecoveryConstants();
 renderGeneratedAtStamp();
 </script>
 </body>
