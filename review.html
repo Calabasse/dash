@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cross-Workout Review</title>
+<style>
+  :root { --bg:#000; --card:#0a0a0a; --line:#222; --text:#f2f2f2; --head:#fff;
+          --muted:#8a8a8a; --accent:#4ade80; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:15px; line-height:1.4; }
+  .wrap { max-width:640px; margin:0 auto; padding:16px; }
+  h1 { font-size:20px; margin-bottom:4px; }
+  .sub { color:var(--muted); font-size:12px; margin-bottom:16px; }
+  .day-row { display:flex; align-items:center; gap:10px; background:var(--card);
+    border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin-bottom:8px; }
+  .day-row input[type=checkbox] { width:16px; height:16px; }
+  .day-row .meta { flex:1; }
+  .day-row .title { font-weight:600; }
+  .day-row .date { color:var(--muted); font-size:12px; }
+  #toolbar { display:flex; gap:8px; align-items:center; margin-top:14px; }
+  #toolbar button { background:#161616; color:var(--text); border:1px solid var(--line);
+    border-radius:7px; font-size:13px; padding:8px 14px; cursor:pointer; }
+  #toolbar button.go { background:var(--accent); color:#000; font-weight:600; border-color:var(--accent); }
+  #tbStatus { font-size:11px; color:var(--muted); margin-left:auto; }
+  #analysis { margin-top:14px; }
+  #analysis .box { background:#0e1410; border:1px solid #234023; border-left:3px solid var(--accent);
+    border-radius:8px; padding:12px 14px; font-size:13px; }
+  .empty { color:var(--muted); padding:20px 0; }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:8px;right:10px;z-index:9999;display:flex;gap:6px;">
+  <a href="index.html" style="font:600 12px -apple-system,sans-serif;color:#9ecbff;background:rgba(22,27,34,.85);border:1px solid #2a2f37;border-radius:6px;padding:4px 9px;text-decoration:none">← Home</a>
+  <a href="workout.html" style="font:600 12px -apple-system,sans-serif;color:#9ecbff;background:rgba(22,27,34,.85);border:1px solid #2a2f37;border-radius:6px;padding:4px 9px;text-decoration:none">Workout Card →</a>
+</div>
+<div class="wrap">
+  <h1>Cross-Workout Review</h1>
+  <div class="sub">Bundle the latest session for each of your active workout days into one prompt for AI review.</div>
+  <div id="days"></div>
+  <div id="toolbar">
+    <button class="go" onclick="sendToAI('chatgpt')">⤳ Ask ChatGPT</button>
+    <button onclick="sendToAI('claude')">⤳ Ask Claude</button>
+    <span id="tbStatus"></span>
+  </div>
+  <div id="analysis"></div>
+</div>
+
+<script src="workout-card.data.js?v=20260909063025"></script>
+<script>
+  const program = window.PROGRAM;
+  if(!program || !program.sessions){
+    document.getElementById('days').innerHTML =
+      '<p style="padding:20px;color:#f87171">workout-card.data.js not loaded — run tools/build_card_data.py</p>';
+    throw new Error('no PROGRAM');
+  }
+
+  const parseD = s => { const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); };
+
+  // Most recent session per day the lifter has actually done -- a day with
+  // zero sessions (e.g. Day D today) simply never appears in this list, no
+  // special-casing needed.
+  const days = [...new Set(program.sessions.map(s=>s.day))].sort();
+  const latestByDay = days
+    .map(d => program.sessions.filter(s=>s.day===d).sort((a,b)=>parseD(b.date)-parseD(a.date))[0])
+    .sort((a,b)=>a.day.localeCompare(b.day));
+
+  function tb(msg){ document.getElementById('tbStatus').textContent = msg; }
+
+  function renderDayRows(){
+    const box = document.getElementById('days');
+    if(latestByDay.length === 0){
+      box.innerHTML = '<div class="empty">No sessions found.</div>';
+      return;
+    }
+    box.innerHTML = latestByDay.map(s => `
+      <label class="day-row">
+        <input type="checkbox" id="day-${s.day}" checked>
+        <span class="meta">
+          <div class="title">${s.title}</div>
+          <div class="date">${s.date} · ${s.exercises.length} exercises</div>
+        </span>
+      </label>
+    `).join('');
+  }
+  renderDayRows();
+
+  // Per-session text block -- same shape as workout.html's handoffPrompt(),
+  // extracted to take a session object directly instead of reading the
+  // global `cur` index, so it can run once per bundled day here.
+  function sessionBlock(s){
+    let t = `Day: ${s.title} (${s.date}). Session stats: ${s.stats.join(', ')}.\n`;
+    t += `Each exercise — what was PERFORMED last vs the engine's PROPOSED next session (with its action + QC status):\n`;
+    s.exercises.forEach(e => {
+      t += `\n${e.name}  [action: ${e.action}, type: ${e.loading_type}, QC: ${e.qc}]\n`;
+      e.sets.forEach(x => {
+        const L = x.last, P = x.prop;
+        const lf = `${L.lbs??'-'}x${L.reps??'-'}@${L.rpe??'-'}`, pf = `${P.lbs??'-'}x${P.reps??'-'}@${P.rpe??'-'}`;
+        t += `  set ${x.type}: last ${lf}  →  proposed ${pf}\n`;
+      });
+      if(e.rationale) t += `  engine note: ${e.rationale.replace(/<[^>]+>/g,'')}\n`;
+    });
+    return t;
+  }
+
+  function combinedPrompt(selected){
+    const rule = '='.repeat(40);
+    let t = `I'm reviewing ${selected.length} of my training days together (last performed vs the engine's proposed next session for each).\n`;
+    selected.forEach(s => { t += `\n${rule}\n` + sessionBlock(s); });
+    t += `\n${rule}\n\n`;
+    t += `Please assess, LOOKING ACROSS all days together (not just one at a time): (1) the quality of each last session, and (2) whether each proposed prescription is sound for hypertrophy — load/rep/RPE coherence, progression logic, cumulative fatigue across days. Then let's discuss adjustments. Ask me anything you need.\n\n`;
+    t += `For each concrete change you'd recommend to the underlying engine, reply using exactly this format, one block per change:\n\n`;
+    t += `parameter: <name>\ncurrent value: <value>\nproposed value: <value>\nwhy: <reasoning>\nbased on: <which day(s) this is based on>\n`;
+    return t;
+  }
+
+  window.sendToAI = function(provider){
+    const selected = latestByDay.filter(s => {
+      const cb = document.getElementById('day-'+s.day);
+      return cb && cb.checked;
+    });
+    if(selected.length === 0){ tb('select at least one day first'); return; }
+
+    const p = combinedPrompt(selected);
+    // Always open the base chat (no URL-prefill) -- a multi-day bundle will
+    // essentially always exceed the ~6000-char query-param limit workout.html
+    // guards against, so there is no working URL-prefill path here to try.
+    const url = provider === 'chatgpt' ? 'https://chatgpt.com/' : 'https://claude.ai/new';
+    const win = window.open(url, '_blank');
+    const blocked = !win;
+
+    const ta = document.createElement('textarea');
+    ta.value = p;
+    ta.style.cssText = 'width:100%;height:220px;background:#0e1410;color:#cfe;border:1px solid #234023;border-radius:8px;padding:10px;font:12px/1.5 monospace';
+    const box = document.getElementById('analysis');
+    box.innerHTML = '';
+    const note = document.createElement('div');
+    note.style.cssText = 'font-size:12px;color:#8a8a8a;margin:8px 0 4px';
+    note.textContent = blocked
+      ? 'Popup blocked — open ' + (provider==='chatgpt'?'ChatGPT':'Claude') + ' manually and paste this'
+      : 'Context copied — paste it into the chat.';
+    box.appendChild(note); box.appendChild(ta); ta.select();
+
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(p).catch(()=>{});
+    }
+    tb(blocked ? 'popup blocked — context is in the box below' : 'handed off to ' + (provider==='chatgpt'?'ChatGPT':'Claude'));
+  };
+
+  tb(`${latestByDay.length} active day(s) found`);
+</script>
+</body>
+</html>
