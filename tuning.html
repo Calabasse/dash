@@ -120,6 +120,12 @@
   </div>
 
   <div class="panel">
+    <h2>Open governance decisions</h2>
+    <div id="calGovernanceFlags"></div>
+    <div class="note">Live status for the three open decisions from the test-suite-debt governance package (R4/ADR-0004, R5/ADR-0005, R7/ADR-0008) &mdash; each derived from a cheap live check on every deploy, never restated as static prose, so this panel cannot go stale the way a copied sentence would.</div>
+  </div>
+
+  <div class="panel">
     <h2>Status</h2>
     <div class="row">
       <button onclick="reload()">↺ reset to deployed</button>
@@ -310,6 +316,33 @@ function renderFatigueRecoveryConstants(){
     'no fatigue/recovery constant data');
 }
 
+// Section 7 (spec 2026-09-10): governance_flags is a small map of three
+// {status, detail, adr} objects, not a flat key/value list, so it gets its
+// own renderer rather than reusing renderConstantTable() -- status drives a
+// badge (open = still contested/pending; resolved/resolved-differently =
+// this flag's own premise has moved and it needs re-audit against the
+// governance package, not "safe to ignore").
+const GOV_FLAG_ORDER=['R4','R5','R7'];
+const GOV_STATUS_CLASS={
+  open:'cal-pinned', resolved:'cal-auto', 'resolved-differently':'cal-inactive'};
+function renderGovernanceFlags(){
+  const box=document.getElementById('calGovernanceFlags');
+  const flags=window.CALIBRATION && window.CALIBRATION.governance_flags;
+  if(!flags){
+    box.innerHTML='<div class="note" style="color:var(--dim)">no governance-flag data</div>';
+    return;
+  }
+  const rows=GOV_FLAG_ORDER.map(name=>{
+    const f=flags[name]; if(!f) return '';
+    const cls=GOV_STATUS_CLASS[f.status]||'cal-inactive';
+    return `<tr><td class="k">${escCal(name)}</td>`+
+      `<td><span class="${cls}">${escCal(f.status)}</span></td>`+
+      `<td>${escCal(f.detail)}</td>`+
+      `<td>${escCal(f.adr)}</td></tr>`;
+  }).join('');
+  box.innerHTML='<table><thead><tr><th>item</th><th>status</th><th>detail</th><th>ADR</th></tr></thead><tbody>'+rows+'</tbody></table>';
+}
+
 // D-05/D-06: engine_constants panel -- reads from the EXISTING
 // prescription_config.json fetch (cfg, populated by render()), never from
 // window.CALIBRATION. Ratification markers come from engine_constants_meta
@@ -340,6 +373,7 @@ renderLockAudit();
 renderInactiveParams();
 renderDecisionSafetyConstants();
 renderFatigueRecoveryConstants();
+renderGovernanceFlags();
 renderGeneratedAtStamp();
 </script>
 </body>
