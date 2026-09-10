@@ -66,6 +66,8 @@ sed -i '' -E "s#workout-card\.data\.js(\?v=[0-9]+)?#workout-card.data.js?v=$STAM
   && LOG "training: cache-busted workout.html (v=$STAMP)"
 sed -i '' -E "s#workout-card\.data\.js(\?v=[0-9]+)?#workout-card.data.js?v=$STAMP#" "$SITE/workout2.html" \
   && LOG "training: cache-busted workout2.html (v=$STAMP)"
+sed -i '' -E "s#workout-card\.data\.js(\?v=[0-9]+)?#workout-card.data.js?v=$STAMP#" "$SITE/review.html" \
+  && LOG "training: cache-busted review.html (v=$STAMP)"
 sed -i '' -E "s#calibration-data\.js(\?v=[0-9]+)?#calibration-data.js?v=$STAMP#" "$SITE/tuning.html" \
   && LOG "calibration: cache-busted tuning.html (v=$STAMP)"
 
