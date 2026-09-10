@@ -159,5 +159,23 @@ window.CALIBRATION = {
       "note": "Declared in the control schema but never written by run_system_tuner() -- not auto-tuned."
     }
   },
-  "generated_at": "2026-09-09T10:30:25.500661+00:00"
+  "decision_safety_constants": {
+    "BASE_Z_CUTOFF": 1.0,
+    "CONTROL_SHIFT_MULTIPLIER": 1.25,
+    "PARAM_MIN_VALUE": -0.2,
+    "PARAM_MAX_VALUE": 0.2,
+    "TARGET_REGRESS_MAX": 0.25
+  },
+  "fatigue_recovery_constants": {
+    "FATIGUE_HIGH": 5.5,
+    "FATIGUE_MED": 4.5,
+    "DEBT_HIGH": 2.5,
+    "DEBT_MED": 1.5,
+    "REGRESS_HIGH": 0.5,
+    "REGRESS_MED": 0.3,
+    "RECOVERY_BASELINE": 4.0,
+    "DEBT_DECAY": 0.7,
+    "DECAY_PER_DAY": 0.15
+  },
+  "generated_at": "2026-09-10T10:30:23.466840+00:00"
 };

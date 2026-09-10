@@ -46,12 +46,12 @@
   <div id="analysis"></div>
 </div>
 
-<script src="workout-card.data.js?v=20260909063025"></script>
+<script src="workout-card.data.js?v=20260910063023"></script>
 <script>
   const program = window.PROGRAM;
   if(!program || !program.sessions){
     document.getElementById('days').innerHTML =
-      '<p style="padding:20px;color:#f87171">workout-card.data.js not loaded — run tools/build_card_data.py</p>';
+      '<p style="padding:20px;color:#f87171">workout-card.data.js?v=20260910063023 not loaded — run tools/build_card_data.py</p>';
     throw new Error('no PROGRAM');
   }
 
