@@ -177,5 +177,22 @@ window.CALIBRATION = {
     "DEBT_DECAY": 0.7,
     "DECAY_PER_DAY": 0.15
   },
-  "generated_at": "2026-09-10T10:30:23.466840+00:00"
+  "governance_flags": {
+    "R4": {
+      "status": "open",
+      "detail": "oracle-replay gate not wired into any CI workflow; pass/fail state requires a manual `pytest docs/architecture/ape2_greenfield/oracle/test_oracle_replay.py` run to confirm currently",
+      "adr": "ADR-0004"
+    },
+    "R5": {
+      "status": "open",
+      "detail": "no alembic/ or migrations/ directory exists at repo root; the 2 redirected tests in tests/w9f_alpha_evidence_schema/test_migration_contract.py remain a live decision pending ADR-0005",
+      "adr": "ADR-0005"
+    },
+    "R7": {
+      "status": "open",
+      "detail": "'_0036' is registered and 10 alpha_* tables exist live, while docs/strategy/w9f/w9f_alpha_evidence_schema_validation_checklist.md reports Status: DRAFT \u2014 PENDING PROGRAM DIRECTOR AUTHORIZATION; verdict: NO-GO -- contradiction unresolved pending ADR-0008",
+      "adr": "ADR-0008"
+    }
+  },
+  "generated_at": "2026-09-11T10:30:19.020145+00:00"
 };
