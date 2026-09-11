@@ -86,6 +86,29 @@
   }
   renderDayRows();
 
+  // 260911-nu1 (F-0b): label-vs-engine set-role disagreement, surfaced on
+  // this file's only per-set line (sessionBlock() below). review.html has
+  // no per-set HTML table and no badge style (#calGovernanceFlags lives in
+  // tuning.html; the styled table.sets/.badge surface lives in
+  // workout.html/workout2.html, out of scope here) -- its real per-set
+  // surface is this plain-text AI-handoff prompt, which is exactly what the
+  // investigation indicts ("Any human (or LLM) reading the card cannot see
+  // which set drove the decision"). Returns a short bracketed clause when
+  // the label-derived role and the engine's own `engine_role` disagree, and
+  // '' when they agree, when `engine_role` is null/absent (no performed
+  // set, or data generated before Task 2 added the field), or when `type`
+  // is missing. A missing/undefined engine_role is NEVER treated as
+  // "warmup" by truthiness -- both null-ish checks are explicit.
+  function engineRoleAnnotation(x){
+    if(x.type === undefined || x.type === null) return '';
+    if(x.engine_role === undefined || x.engine_role === null) return '';
+    const labelRole = x.type === 'W' ? 'warmup' : 'working';
+    if(labelRole === x.engine_role) return '';
+    return x.engine_role === 'working'
+      ? ' [engine treated this as the working set]'
+      : ' [engine treated this as a warm-up]';
+  }
+
   // Per-session text block -- same shape as workout.html's handoffPrompt(),
   // extracted to take a session object directly instead of reading the
   // global `cur` index, so it can run once per bundled day here.
@@ -97,7 +120,7 @@
       e.sets.forEach(x => {
         const L = x.last, P = x.prop;
         const lf = `${L.lbs??'-'}x${L.reps??'-'}@${L.rpe??'-'}`, pf = `${P.lbs??'-'}x${P.reps??'-'}@${P.rpe??'-'}`;
-        t += `  set ${x.type}: last ${lf}  →  proposed ${pf}\n`;
+        t += `  set ${x.type}: last ${lf}  →  proposed ${pf}${engineRoleAnnotation(x)}\n`;
       });
       if(e.rationale) t += `  engine note: ${e.rationale.replace(/<[^>]+>/g,'')}\n`;
     });
