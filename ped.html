@@ -587,7 +587,7 @@ function addCompound(){ const n=val('newCompName'),h=+val('newCompHl');
   if(!n||!h){alert('Need name + half-life');return;}
   const r=ratioFor(n), m=mechFor(n);
   state.compounds.push({name:n,cls:'Custom',hl:h,conc:+val('newCompConc')||100,anab:r[0],andro:r[1],...m});
-  ['newCompName','newCompHl','newCompConc','newCompClass'].forEach(id=>document.getElementById(id).value='');
+  ['newCompName','newCompHl','newCompConc'].forEach(id=>document.getElementById(id).value='');
   save();renderLib();renderProtocol(); }
 function delComp(i){ state.compounds.splice(i,1); save();renderLib();renderProtocol(); }
 
