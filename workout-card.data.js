@@ -47,41 +47,41 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-11T06:30:18.727769",
+        "generated_at": "2026-09-12T06:30:25.424137",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
-          "bent over row barbell": 1.4458650403187046,
+          "bent over row barbell": 1.488537999547436,
           "chest dip assisted": 0.9375,
           "chest fly dumbbell": 0.4784767775935095,
-          "cross body hammer curl dumbbell": 0.3890539801221767,
+          "cross body hammer curl dumbbell": 0.34137531782947916,
           "incline bench press barbell": 1.4679218471983866,
-          "incline bicep curl dumbbell": 0.753122237480941,
+          "incline bicep curl dumbbell": 0.6687611940929828,
           "lateral raise band": 1.159862897893017,
           "lateral raise dumbbell": 0.09,
-          "one arm row dumbbell": 0.8737763752759646,
-          "pull up assisted": 5.433039614119077,
+          "one arm row dumbbell": 0.9076992196469391,
+          "pull up assisted": 5.660668539807585,
           "rear_dumbbell_raise": 0.4069161919148371,
           "reverse fly dumbbell": 0.09,
-          "seated_lateral_raise": 0.6205965437235925,
+          "seated_lateral_raise": 0.5811238524142512,
           "triceps extension dumbbell": 0.8183526268032818,
           "triceps_pushdown": 5.975622548486433
         },
         "fatigue_accumulation": {
-          "session_id": "f81dea43-af5c-4658-9661-206305351212",
-          "session_date": "2026-09-07T00:00:00",
-          "global_fatigue_score": 8.916120529174805,
-          "fatigue_trend_3": 8.74278450012207,
-          "fatigue_trend_5": 8.294686317443848,
-          "recovery_debt": 14.298351287841797
+          "session_id": "957008a5-c3e2-479d-a3ea-bb75a015c252",
+          "session_date": "2026-09-10T00:00:00",
+          "global_fatigue_score": 9.648165702819824,
+          "fatigue_trend_3": 8.88565731048584,
+          "fatigue_trend_5": 8.70893383026123,
+          "recovery_debt": 15.657011985778809
         },
         "deload_state": {
-          "snapshot_date": "2026-09-10T00:00:00",
+          "snapshot_date": "2026-09-11T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
-          "fatigue_trigger": 8.916120529174805,
-          "regression_trigger": 0.6470588445663452,
+          "fatigue_trigger": 9.648165702819824,
+          "regression_trigger": 0.5882353186607361,
           "cooldown_sessions": 3
         },
         "deload_signal_secondary": null,
@@ -160,7 +160,8 @@ window.PROGRAM = {
                 "lbs": 225.0,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "W",
@@ -173,7 +174,8 @@ window.PROGRAM = {
                 "lbs": 200.0,
                 "reps": "8",
                 "rpe": 6.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -186,7 +188,8 @@ window.PROGRAM = {
                 "lbs": 175.0,
                 "reps": "13\u201315",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -199,7 +202,8 @@ window.PROGRAM = {
                 "lbs": 175.0,
                 "reps": "7\u20139",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 3500.0,
@@ -266,7 +270,8 @@ window.PROGRAM = {
                 "lbs": 88,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "W",
@@ -279,7 +284,8 @@ window.PROGRAM = {
                 "lbs": 126.5,
                 "reps": "5",
                 "rpe": 6.5
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -292,7 +298,8 @@ window.PROGRAM = {
                 "lbs": 159.5,
                 "reps": "5\u201310",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -305,7 +312,8 @@ window.PROGRAM = {
                 "lbs": 143,
                 "reps": "8\u201310",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 3124.0,
@@ -372,7 +380,8 @@ window.PROGRAM = {
                 "lbs": 20,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -385,7 +394,8 @@ window.PROGRAM = {
                 "lbs": 37.5,
                 "reps": "10\u201315",
                 "rpe": 9.5
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 3,
@@ -398,7 +408,8 @@ window.PROGRAM = {
                 "lbs": 32.5,
                 "reps": "11\u201313",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 732.5,
@@ -465,7 +476,8 @@ window.PROGRAM = {
                 "lbs": 47.5,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "W",
@@ -478,7 +490,8 @@ window.PROGRAM = {
                 "lbs": 67.5,
                 "reps": "5",
                 "rpe": 6.5
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -491,7 +504,8 @@ window.PROGRAM = {
                 "lbs": 85,
                 "reps": "6\u201311",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -504,7 +518,8 @@ window.PROGRAM = {
                 "lbs": 75,
                 "reps": "10\u201312",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 1790.0,
@@ -571,7 +586,8 @@ window.PROGRAM = {
                 "lbs": 20,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -584,7 +600,8 @@ window.PROGRAM = {
                 "lbs": 37.5,
                 "reps": "8\u201315",
                 "rpe": 9.5
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 3,
@@ -597,7 +614,8 @@ window.PROGRAM = {
                 "lbs": 32.5,
                 "reps": "9\u201311",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 592.5,
@@ -658,7 +676,8 @@ window.PROGRAM = {
                 "lbs": 12.5,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": null
             },
             {
               "type": "T",
@@ -671,7 +690,8 @@ window.PROGRAM = {
                 "lbs": 22.5,
                 "reps": "9\u201311",
                 "rpe": 9.5
-              }
+              },
+              "engine_role": null
             },
             {
               "type": 1,
@@ -684,7 +704,8 @@ window.PROGRAM = {
                 "lbs": 20,
                 "reps": "13\u201315",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": 2,
@@ -697,7 +718,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 3,
@@ -710,7 +732,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -723,7 +746,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 1087.5,
@@ -969,41 +993,41 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-11T06:30:18.727769",
+        "generated_at": "2026-09-12T06:30:25.424137",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
-          "bent over row barbell": 1.4458650403187046,
+          "bent over row barbell": 1.488537999547436,
           "chest dip assisted": 0.9375,
           "chest fly dumbbell": 0.4784767775935095,
-          "cross body hammer curl dumbbell": 0.3890539801221767,
+          "cross body hammer curl dumbbell": 0.34137531782947916,
           "incline bench press barbell": 1.4679218471983866,
-          "incline bicep curl dumbbell": 0.753122237480941,
+          "incline bicep curl dumbbell": 0.6687611940929828,
           "lateral raise band": 1.159862897893017,
           "lateral raise dumbbell": 0.09,
-          "one arm row dumbbell": 0.8737763752759646,
-          "pull up assisted": 5.433039614119077,
+          "one arm row dumbbell": 0.9076992196469391,
+          "pull up assisted": 5.660668539807585,
           "rear_dumbbell_raise": 0.4069161919148371,
           "reverse fly dumbbell": 0.09,
-          "seated_lateral_raise": 0.6205965437235925,
+          "seated_lateral_raise": 0.5811238524142512,
           "triceps extension dumbbell": 0.8183526268032818,
           "triceps_pushdown": 5.975622548486433
         },
         "fatigue_accumulation": {
-          "session_id": "f81dea43-af5c-4658-9661-206305351212",
-          "session_date": "2026-09-07T00:00:00",
-          "global_fatigue_score": 8.916120529174805,
-          "fatigue_trend_3": 8.74278450012207,
-          "fatigue_trend_5": 8.294686317443848,
-          "recovery_debt": 14.298351287841797
+          "session_id": "957008a5-c3e2-479d-a3ea-bb75a015c252",
+          "session_date": "2026-09-10T00:00:00",
+          "global_fatigue_score": 9.648165702819824,
+          "fatigue_trend_3": 8.88565731048584,
+          "fatigue_trend_5": 8.70893383026123,
+          "recovery_debt": 15.657011985778809
         },
         "deload_state": {
-          "snapshot_date": "2026-09-10T00:00:00",
+          "snapshot_date": "2026-09-11T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
-          "fatigue_trigger": 8.916120529174805,
-          "regression_trigger": 0.6470588445663452,
+          "fatigue_trigger": 9.648165702819824,
+          "regression_trigger": 0.5882353186607361,
           "cooldown_sessions": 3
         },
         "deload_signal_secondary": null,
@@ -1045,7 +1069,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "progress",
-        "headline": "DAY C \u2014 DELTS / ABS (3-4 days) \u2014 2 load\u2191 \u00b7 3 rep\u2191 \u00b7 1 hold.",
+        "headline": "DAY C \u2014 DELTS / ABS (3-4 days) \u2014 1 load\u2191 \u00b7 3 rep\u2191 \u00b7 1 hold.",
         "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>6/6</b> prescriptions passed the validation gate."
       },
@@ -1067,7 +1091,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "hold",
           "assess": "Last top set: 30 lb \u00d7 12 @ RPE 10 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 30 \u2014 backoffs not yet productive; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (25) for 15 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 30 \u2014 backoffs not yet productive; chase reps to ~12 at RPE 9.5 before adding load. Back-off already reached its own 12-rep anchor at its own load (25) for 15 \u2014 it holds there because the top set has not yet earned its own load jump.",
           "when_to_add_load": "Reach 12 clean reps at 30 lb at RPE 9.5 or lower; then increase to 32.5 lb.",
           "sets": [
             {
@@ -1081,7 +1105,8 @@ window.PROGRAM = {
                 "lbs": 17.5,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -1094,7 +1119,8 @@ window.PROGRAM = {
                 "lbs": 30,
                 "reps": "12\u201315",
                 "rpe": 9.5
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 3,
@@ -1107,7 +1133,8 @@ window.PROGRAM = {
                 "lbs": 25,
                 "reps": "15",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -1120,7 +1147,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 1027.5,
@@ -1330,9 +1358,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "band_resisted_isolation",
           "qc": "pass",
-          "action": "add_reps",
+          "action": "progress_reps_tempo",
           "assess": "Last top set: 65 lb \u00d7 20 @ RPE 9 \u00b7 band_resisted_isolation \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 65 lb band \u2014 chase reps to ~15 at RPE 9. Bands available: 35/45/55/65 only. Back-off holds its own last load (55) for 5-7 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Already on the top band (65 lb). No heavier band in inventory \u2014 progress reps \u2192 tempo \u2192 pauses \u2192 ROM \u2192 volume before any new band. Back-off already reached its own 15-rep anchor at its own load (45) for 20 \u2014 it holds there because the top set has not yet earned its own load jump.",
           "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
@@ -1346,7 +1374,8 @@ window.PROGRAM = {
                 "lbs": 55.0,
                 "reps": "5",
                 "rpe": 6.0
-              }
+              },
+              "engine_role": null
             },
             {
               "type": "T",
@@ -1359,7 +1388,8 @@ window.PROGRAM = {
                 "lbs": 65.0,
                 "reps": "20",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": null
             },
             {
               "type": 1,
@@ -1369,10 +1399,11 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 55.0,
-                "reps": "5\u20137",
+                "lbs": 45.0,
+                "reps": "20",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": 2,
@@ -1385,7 +1416,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 3,
@@ -1398,7 +1430,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": 4,
@@ -1411,7 +1444,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 3300.0,
@@ -1440,7 +1474,7 @@ window.PROGRAM = {
             "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
             "No qualifying prior exact-exercise exposure found.",
             "Most recent qualifying shoulder_lateral cluster exposure: 2026-09-02 (120h ago).",
-            "Fatigue state for this occurrence: 'elevated'.",
+            "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (volume stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 36h.",
             "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
             "Level 5: shoulder_lateral cluster exposure 120h ago is at or past full recovery; not deciding.",
@@ -1464,7 +1498,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 30 lb \u00d7 10 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 30 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (27.5) for 14-16 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 30 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off already reached its own 12-rep anchor at its own load (27.5) for 14-16 \u2014 it holds there because the top set has not yet earned its own load jump.",
           "when_to_add_load": "Reach 12 clean reps at 30 lb at RPE 9.5 or lower; then increase to 32.5 lb.",
           "sets": [
             {
@@ -1478,7 +1512,8 @@ window.PROGRAM = {
                 "lbs": 17.5,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -1491,7 +1526,8 @@ window.PROGRAM = {
                 "lbs": 30,
                 "reps": "10\u201316",
                 "rpe": 9.5
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 3,
@@ -1504,7 +1540,8 @@ window.PROGRAM = {
                 "lbs": 27.5,
                 "reps": "14\u201316",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -1517,7 +1554,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 1085.0,
@@ -1741,8 +1779,8 @@ window.PROGRAM = {
           "loading_type": "bodyweight",
           "qc": "pass",
           "action": "add_reps",
-          "assess": "Last top set: 0 lb \u00d7 15 @ RPE 8 \u00b7 bodyweight \u00b7 anchor 20 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Bodyweight \u2014 chase reps to \u226520 at RPE 9 before adding external load. Back-off holds its own last load (bodyweight) for 8-10 \u2014 it has not reached the 20-rep anchor on its own performance yet.",
+          "assess": "Last top set: 0 lb \u00d7 8 @ RPE 9 \u00b7 bodyweight \u00b7 anchor 20 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Bodyweight \u2014 chase reps to \u226520 at RPE 9 before adding external load. Back-off holds its own last load (bodyweight) for 15-17 \u2014 it has not reached the 20-rep anchor on its own performance yet.",
           "when_to_add_load": "Reach 20 clean reps at bodyweight at RPE 9 or lower; then add 5 lb external load.",
           "sets": [
             {
@@ -1756,7 +1794,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": "8",
                 "rpe": 6.0
-              }
+              },
+              "engine_role": null
             },
             {
               "type": "T",
@@ -1767,9 +1806,10 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": null,
-                "reps": "15\u201325",
+                "reps": "8\u201325",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": null
             },
             {
               "type": 1,
@@ -1780,9 +1820,10 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": null,
-                "reps": "8\u201310",
+                "reps": "15\u201317",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 2,
@@ -1795,7 +1836,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 3,
@@ -1808,7 +1850,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -1821,7 +1864,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 0.0,
@@ -1895,9 +1939,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "band_combo",
           "qc": "pass",
-          "action": "increase_load",
-          "assess": "Last top set: 200 lb \u00d7 20 @ RPE 7 \u00b7 band_combo \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set hit 20 (\u226515) reps \u2014 add bands 200\u2192225 lb and rebuild reps. Back-off holds its own last load (200) for 12-14 \u2014 it has not reached the 15-rep anchor on its own performance yet.",
+          "action": "add_reps",
+          "assess": "Last top set: 200 lb \u00d7 12 @ RPE 8 \u00b7 band_combo \u00b7 anchor 15 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 200 lb band stack \u2014 chase reps to ~15 at RPE 9 before adding a band. Bands 50/75/100/125 stack to 50/75/100/125/150/175/200/225/250/275/300/350. Back-off already reached its own 15-rep anchor at its own load (200) for 20 \u2014 it holds there because the top set has not yet earned its own load jump.",
           "when_to_add_load": "Reach 15 clean reps at 300 lb at RPE 9 or lower; then step up to 325 lb.",
           "sets": [
             {
@@ -1908,10 +1952,11 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 200.0,
+                "lbs": 175.0,
                 "reps": "4",
                 "rpe": 6.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "W",
@@ -1924,7 +1969,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": "T",
@@ -1934,10 +1980,11 @@ window.PROGRAM = {
                 "rpe": 8
               },
               "prop": {
-                "lbs": 225.0,
-                "reps": "12\u201315",
+                "lbs": 200.0,
+                "reps": "12\u201320",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -1948,9 +1995,10 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 200.0,
-                "reps": "12\u201314",
+                "reps": "20",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 5900.0,
@@ -2144,7 +2192,7 @@ window.PROGRAM = {
             "Day B wins 'rotation frequency (most appearances)'.",
             "Most recent qualifying exact-exercise exposure: 2026-09-06 (24h ago).",
             "Most recent qualifying elbow_extension_primary cluster exposure: 2026-09-06 (24h ago).",
-            "Fatigue state for this occurrence: 'low'.",
+            "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (volume stimulus, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 36h.",
             "Upcoming primary exposure expected on day B (2026-09-09, 48h away).",
             "Level 3: resolved primary-owner day is B, not today's C; continuing to history/recovery evidence.",
@@ -2167,8 +2215,8 @@ window.PROGRAM = {
           "loading_type": "dumbbell",
           "qc": "pass",
           "action": "increase_load",
-          "assess": "Last top set: 20 lb \u00d7 20 @ RPE 7 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (20/12/18) \u2014 earn the jump; top set 20\u219222.5; +12.5% load costs ~4 reps, so the rep target drops 20\u219216 [range 10-16]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 20 for 10-12, rebuilding to the reps it just produced.",
+          "assess": "Last top set: 20 lb \u00d7 12 @ RPE 8 \u00b7 dumbbell \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 All working sets near the top (20/12/18) \u2014 earn the jump; top set 20\u219222.5; +12.5% load costs ~4 reps, so the rep target drops 12\u21928 [range 6-8]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 20 for 18-20, rebuilding to the reps it just produced.",
           "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
@@ -2182,7 +2230,8 @@ window.PROGRAM = {
                 "lbs": 12.5,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -2193,9 +2242,10 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 22.5,
-                "reps": "10\u201316",
+                "reps": "6\u20138",
                 "rpe": 9.5
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 3,
@@ -2206,9 +2256,10 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 20,
-                "reps": "10\u201312",
+                "reps": "18\u201320",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -2221,7 +2272,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 955.0,
@@ -2305,41 +2357,41 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-11T06:30:18.727769",
+        "generated_at": "2026-09-12T06:30:25.424137",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
-          "bent over row barbell": 1.4458650403187046,
+          "bent over row barbell": 1.488537999547436,
           "chest dip assisted": 0.9375,
           "chest fly dumbbell": 0.4784767775935095,
-          "cross body hammer curl dumbbell": 0.3890539801221767,
+          "cross body hammer curl dumbbell": 0.34137531782947916,
           "incline bench press barbell": 1.4679218471983866,
-          "incline bicep curl dumbbell": 0.753122237480941,
+          "incline bicep curl dumbbell": 0.6687611940929828,
           "lateral raise band": 1.159862897893017,
           "lateral raise dumbbell": 0.09,
-          "one arm row dumbbell": 0.8737763752759646,
-          "pull up assisted": 5.433039614119077,
+          "one arm row dumbbell": 0.9076992196469391,
+          "pull up assisted": 5.660668539807585,
           "rear_dumbbell_raise": 0.4069161919148371,
           "reverse fly dumbbell": 0.09,
-          "seated_lateral_raise": 0.6205965437235925,
+          "seated_lateral_raise": 0.5811238524142512,
           "triceps extension dumbbell": 0.8183526268032818,
           "triceps_pushdown": 5.975622548486433
         },
         "fatigue_accumulation": {
-          "session_id": "f81dea43-af5c-4658-9661-206305351212",
-          "session_date": "2026-09-07T00:00:00",
-          "global_fatigue_score": 8.916120529174805,
-          "fatigue_trend_3": 8.74278450012207,
-          "fatigue_trend_5": 8.294686317443848,
-          "recovery_debt": 14.298351287841797
+          "session_id": "957008a5-c3e2-479d-a3ea-bb75a015c252",
+          "session_date": "2026-09-10T00:00:00",
+          "global_fatigue_score": 9.648165702819824,
+          "fatigue_trend_3": 8.88565731048584,
+          "fatigue_trend_5": 8.70893383026123,
+          "recovery_debt": 15.657011985778809
         },
         "deload_state": {
-          "snapshot_date": "2026-09-10T00:00:00",
+          "snapshot_date": "2026-09-11T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
-          "fatigue_trigger": 8.916120529174805,
-          "regression_trigger": 0.6470588445663452,
+          "fatigue_trigger": 9.648165702819824,
+          "regression_trigger": 0.5882353186607361,
           "cooldown_sessions": 3
         },
         "deload_signal_secondary": null,
@@ -2417,7 +2469,8 @@ window.PROGRAM = {
                 "lbs": 93.5,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "W",
@@ -2430,7 +2483,8 @@ window.PROGRAM = {
                 "lbs": 132,
                 "reps": "5",
                 "rpe": 6.5
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -2443,7 +2497,8 @@ window.PROGRAM = {
                 "lbs": 165,
                 "reps": "5\u20139",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -2456,7 +2511,8 @@ window.PROGRAM = {
                 "lbs": 148.5,
                 "reps": "9\u201311",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 5,
@@ -2469,7 +2525,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 4103.0,
@@ -2536,7 +2593,8 @@ window.PROGRAM = {
                 "lbs": 25,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -2549,7 +2607,8 @@ window.PROGRAM = {
                 "lbs": 47.5,
                 "reps": "11\u201315",
                 "rpe": 9.5
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 3,
@@ -2562,7 +2621,8 @@ window.PROGRAM = {
                 "lbs": 45,
                 "reps": "10\u201312",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 972.5,
@@ -2630,7 +2690,8 @@ window.PROGRAM = {
                 "lbs": 40,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -2643,7 +2704,8 @@ window.PROGRAM = {
                 "lbs": 72.5,
                 "reps": "12\u201315",
                 "rpe": 9.5
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 3,
@@ -2656,7 +2718,8 @@ window.PROGRAM = {
                 "lbs": 65,
                 "reps": "9\u201311",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 1455.0,
@@ -2723,7 +2786,8 @@ window.PROGRAM = {
                 "lbs": 275.0,
                 "reps": "4",
                 "rpe": 6.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "W",
@@ -2736,7 +2800,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -2749,7 +2814,8 @@ window.PROGRAM = {
                 "lbs": 300.0,
                 "reps": "12\u201320",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -2762,7 +2828,8 @@ window.PROGRAM = {
                 "lbs": 275.0,
                 "reps": "12\u201314",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 5,
@@ -2775,7 +2842,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "warmup"
             }
           ],
           "volumeLbs": 8900.0,
@@ -2994,7 +3062,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": null
             },
             {
               "type": 2,
@@ -3007,7 +3076,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": null
             },
             {
               "type": 3,
@@ -3020,7 +3090,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": null
             }
           ],
           "volumeLbs": 1025.0,
@@ -3103,41 +3174,41 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-11T06:30:18.727769",
+        "generated_at": "2026-09-12T06:30:25.424137",
         "fatigue_signal": {
           "barbell_bent_over_row": 1.2744090432715622,
           "barbell_incline_bench_press": 0.8602555732340624,
-          "bent over row barbell": 1.4458650403187046,
+          "bent over row barbell": 1.488537999547436,
           "chest dip assisted": 0.9375,
           "chest fly dumbbell": 0.4784767775935095,
-          "cross body hammer curl dumbbell": 0.3890539801221767,
+          "cross body hammer curl dumbbell": 0.34137531782947916,
           "incline bench press barbell": 1.4679218471983866,
-          "incline bicep curl dumbbell": 0.753122237480941,
+          "incline bicep curl dumbbell": 0.6687611940929828,
           "lateral raise band": 1.159862897893017,
           "lateral raise dumbbell": 0.09,
-          "one arm row dumbbell": 0.8737763752759646,
-          "pull up assisted": 5.433039614119077,
+          "one arm row dumbbell": 0.9076992196469391,
+          "pull up assisted": 5.660668539807585,
           "rear_dumbbell_raise": 0.4069161919148371,
           "reverse fly dumbbell": 0.09,
-          "seated_lateral_raise": 0.6205965437235925,
+          "seated_lateral_raise": 0.5811238524142512,
           "triceps extension dumbbell": 0.8183526268032818,
           "triceps_pushdown": 5.975622548486433
         },
         "fatigue_accumulation": {
-          "session_id": "f81dea43-af5c-4658-9661-206305351212",
-          "session_date": "2026-09-07T00:00:00",
-          "global_fatigue_score": 8.916120529174805,
-          "fatigue_trend_3": 8.74278450012207,
-          "fatigue_trend_5": 8.294686317443848,
-          "recovery_debt": 14.298351287841797
+          "session_id": "957008a5-c3e2-479d-a3ea-bb75a015c252",
+          "session_date": "2026-09-10T00:00:00",
+          "global_fatigue_score": 9.648165702819824,
+          "fatigue_trend_3": 8.88565731048584,
+          "fatigue_trend_5": 8.70893383026123,
+          "recovery_debt": 15.657011985778809
         },
         "deload_state": {
-          "snapshot_date": "2026-09-10T00:00:00",
+          "snapshot_date": "2026-09-11T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
-          "fatigue_trigger": 8.916120529174805,
-          "regression_trigger": 0.6470588445663452,
+          "fatigue_trigger": 9.648165702819824,
+          "regression_trigger": 0.5882353186607361,
           "cooldown_sessions": 3
         },
         "deload_signal_secondary": null,
@@ -3216,7 +3287,8 @@ window.PROGRAM = {
                 "lbs": 225.0,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "W",
@@ -3229,7 +3301,8 @@ window.PROGRAM = {
                 "lbs": 200.0,
                 "reps": "8",
                 "rpe": 6.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -3242,7 +3315,8 @@ window.PROGRAM = {
                 "lbs": 175.0,
                 "reps": "14\u201315",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -3255,7 +3329,8 @@ window.PROGRAM = {
                 "lbs": 175.0,
                 "reps": "8\u201310",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 3850.0,
@@ -3308,7 +3383,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 154 lb \u00d7 8 @ RPE 9 \u00b7 barbell \u00b7 anchor 10 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 154 \u2014 reps below anchor; chase reps to ~10 at RPE 9 before adding load. Back-off holds its own last load (137.5) for 11 \u2014 it has not reached the 10-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 154 \u2014 reps below anchor; chase reps to ~10 at RPE 9 before adding load. Back-off already reached its own 10-rep anchor at its own load (137.5) for 11 \u2014 it holds there because the top set has not yet earned its own load jump.",
           "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
@@ -3322,7 +3397,8 @@ window.PROGRAM = {
                 "lbs": 88,
                 "reps": "7",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "W",
@@ -3335,7 +3411,8 @@ window.PROGRAM = {
                 "lbs": 121,
                 "reps": "5",
                 "rpe": 6.5
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -3348,7 +3425,8 @@ window.PROGRAM = {
                 "lbs": 154,
                 "reps": "8\u201311",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -3361,7 +3439,8 @@ window.PROGRAM = {
                 "lbs": 137.5,
                 "reps": "11",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 2744.5,
@@ -3428,7 +3507,8 @@ window.PROGRAM = {
                 "lbs": 20,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -3441,7 +3521,8 @@ window.PROGRAM = {
                 "lbs": 37.5,
                 "reps": "8\u201310",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 3,
@@ -3454,7 +3535,8 @@ window.PROGRAM = {
                 "lbs": 32.5,
                 "reps": "11\u201313",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 777.5,
@@ -3521,7 +3603,8 @@ window.PROGRAM = {
                 "lbs": 45,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "W",
@@ -3534,7 +3617,8 @@ window.PROGRAM = {
                 "lbs": 65,
                 "reps": "5",
                 "rpe": 6.5
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -3547,7 +3631,8 @@ window.PROGRAM = {
                 "lbs": 82.5,
                 "reps": "6\u201311",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -3560,7 +3645,8 @@ window.PROGRAM = {
                 "lbs": 75,
                 "reps": "10\u201312",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 1877.5,
@@ -3613,7 +3699,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 37.5 lb \u00d7 11 @ RPE 9 \u00b7 dumbbell \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 37.5 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (32.5) for 12-14 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 37.5 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off already reached its own 12-rep anchor at its own load (32.5) for 12-14 \u2014 it holds there because the top set has not yet earned its own load jump.",
           "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
           "sets": [
             {
@@ -3627,7 +3713,8 @@ window.PROGRAM = {
                 "lbs": 20,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": "T",
@@ -3640,7 +3727,8 @@ window.PROGRAM = {
                 "lbs": 37.5,
                 "reps": "11\u201315",
                 "rpe": 9.5
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 3,
@@ -3653,7 +3741,8 @@ window.PROGRAM = {
                 "lbs": 32.5,
                 "reps": "12\u201314",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 802.5,
@@ -3714,7 +3803,8 @@ window.PROGRAM = {
                 "lbs": 12.5,
                 "reps": "8",
                 "rpe": 5.0
-              }
+              },
+              "engine_role": null
             },
             {
               "type": "T",
@@ -3727,7 +3817,8 @@ window.PROGRAM = {
                 "lbs": 22.5,
                 "reps": "10\u201312",
                 "rpe": 9.5
-              }
+              },
+              "engine_role": null
             },
             {
               "type": 1,
@@ -3740,7 +3831,8 @@ window.PROGRAM = {
                 "lbs": 20,
                 "reps": "14\u201316",
                 "rpe": 9.0
-              }
+              },
+              "engine_role": "warmup"
             },
             {
               "type": 2,
@@ -3753,7 +3845,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 3,
@@ -3766,7 +3859,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -3779,7 +3873,8 @@ window.PROGRAM = {
                 "lbs": null,
                 "reps": null,
                 "rpe": null
-              }
+              },
+              "engine_role": "warmup"
             }
           ],
           "volumeLbs": 975.0,
