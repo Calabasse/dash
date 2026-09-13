@@ -6191,3 +6191,6 @@ Dashboard written → /Users/chadcrawford/forge/projects/APE/dashboards/withings
 [06:30:32] research: sync opt-in last30days briefs
 [06:30:32]   research: publish/ empty — nothing published
 [06:30:32] git: commit + push
+To https://github.com/Calabasse/dash.git
+   b6c6a76..56adc15  main -> main
+[06:30:35] deployed.
