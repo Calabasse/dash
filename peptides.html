@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Peptide Dosing &amp; Clearance Estimator</title>
+<style>
+  :root{
+    --bg:#000; --card:#0a0a0a; --panel:#101010; --line:#222; --line2:#2a2a2a;
+    --text:#f2f2f2; --head:#fff; --muted:#8a8a8a; --dim:#666;
+    --accent:#4ade80; --gold:#f5c451; --blue:#6aa9ff; --red:#f87171; --pad:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;font-size:14px;line-height:1.35}
+  .wrap{max-width:960px;margin:0 auto;padding:var(--pad)}
+  h1{font-size:21px;font-weight:700;letter-spacing:-.02em;margin-bottom:2px}
+  .sub{color:var(--muted);font-size:12px;margin-bottom:12px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:12px 13px;margin-bottom:14px}
+  .panel h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700;margin-bottom:9px;
+    display:flex;justify-content:space-between;align-items:center}
+  button{background:#161616;color:var(--text);border:1px solid var(--line);border-radius:6px;
+    font-size:12px;padding:5px 11px;cursor:pointer}
+  button:hover{border-color:var(--line2)}
+  button.primary{background:var(--accent);color:#000;font-weight:600;border-color:var(--accent)}
+  button.mini{padding:2px 7px;font-size:11px}
+  button.danger{color:var(--red)}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  th{color:var(--head);font-weight:600;font-size:11px;text-align:left;padding:4px 6px;border-bottom:1px solid var(--line)}
+  td{padding:3px 6px;font-size:13px;border-bottom:1px solid #161616;vertical-align:middle}
+  input,select{background:#141414;color:var(--text);border:1px solid var(--line);border-radius:5px;
+    padding:4px 6px;font-size:13px;font-family:inherit;width:100%}
+  input[type=number]{width:74px}
+  input[type=date]{width:140px}
+  select{cursor:pointer}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:middle}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:8px}
+  .legend span{display:inline-flex;align-items:center}
+  canvas{width:100%;height:340px;display:block;background:#080808;border-radius:7px;border:1px solid var(--line)}
+  .ctrls{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:10px;font-size:12px;color:var(--muted)}
+  .ctrls label{display:inline-flex;align-items:center;gap:5px}
+  .stat{display:inline-flex;flex-direction:column;background:#141414;border:1px solid var(--line);border-radius:6px;padding:6px 10px;min-width:90px}
+  .stat b{font-size:16px;color:var(--head)}
+  .stat span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .note{font-size:11px;color:var(--dim);line-height:1.5;margin-top:10px}
+  .tag{font-size:10px;padding:1px 5px;border-radius:3px;background:#1c1c1c;color:var(--muted)}
+  .conf-cited{color:var(--accent);font-weight:600}
+  .conf-estimated{color:var(--gold);font-weight:600}
+  .conf-low{color:var(--red);font-weight:600}
+  .addbar{display:flex;gap:6px;margin-top:8px}
+  .addbar input{max-width:170px}
+  .banner{background:#2a1d00;border:1px solid #5a3d00;color:#ffd479;padding:10px 12px;border-radius:8px;font-size:12px;margin-bottom:14px;line-height:1.5}
+  .gapnote{background:#1a1010;border:1px solid #3a1d1d;color:#f0a0a0;padding:8px 12px;border-radius:8px;font-size:11px;margin-bottom:14px;line-height:1.5}
+  .libname{font-weight:600}
+  .libtext{color:var(--muted);font-size:11px;max-width:260px;display:block}
+
+  #protoTable, #stackTable { width:auto; }
+  #protoTable td, #protoTable th, #stackTable td, #stackTable th { padding:3px 8px; white-space:nowrap; }
+  #protoTable select { width:auto; }
+  #protoTable input { width:auto; }
+  #protoTable td:first-child select { min-width:180px; max-width:220px; }
+  #protoTable input[type=number] { width:58px; }
+  #protoTable input[type=date] { width:118px; }
+  #protoTable select[onchange*="conc"] { width:64px; }
+  #protoTable select[onchange*="freq"] { width:118px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" style="position:fixed;top:8px;right:10px;z-index:9999;font:600 12px -apple-system,sans-serif;color:#9ecbff;background:rgba(22,27,34,.85);border:1px solid #2a2f37;border-radius:6px;padding:4px 9px;text-decoration:none">← Home</a>
+  <h1>Peptide Dosing <span style="color:var(--muted);font-weight:400;font-size:15px">+ Clearance Estimator</span></h1>
+  <div class="sub">Build a peptide stack and estimate active-load decay from each compound's own half-life. <b>Nothing is uploaded</b>: your data stays in your browser and in a plain-text file you save to your own device. Estimates only — not medical advice.</div>
+
+  <div class="banner">
+    <b>Read this first.</b> These compounds are NOT a uniform category. Some (tesamorelin) are FDA-approved
+    prescription drugs for one narrow indication. Some (sermorelin) were once FDA-approved and later withdrawn.
+    Most (BPC-157, TB-500, CJC-1295, ipamorelin, melanotan II, AOD-9604) are <b>unapproved research chemicals
+    with no completed human trials</b> — for several, the FDA has taken explicit action (BPC-157: determined
+    unsafe for compounding). Check the <b>Status</b> column in the Compound Library below before assuming
+    anything here is a legitimate, regulated medicine.
+  </div>
+  <div class="gapnote">
+    <b>Known gap:</b> semaglutide, tirzepatide, and other FDA-approved GLP-1 weight-loss drugs are NOT on this
+    page — no research monograph for them exists yet in the source project (<code>ped/corpus/monographs/</code>).
+    This page only covers peptides already researched there, flagged openly rather than silently omitted.
+  </div>
+
+  <!-- ===================== PROTOCOL ===================== -->
+  <div class="panel">
+    <h2>Stack / Protocol <button class="mini primary" onclick="addProtoRow()">+ add compound</button></h2>
+    <table id="protoTable">
+      <thead><tr>
+        <th>Compound</th><th>Conc (mg/ml)</th><th>Dose (mg)</th><th>Frequency</th>
+        <th>Start</th><th>End</th><th>ml/inj</th><th></th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- ===================== CHART ===================== -->
+  <div class="panel">
+    <h2>Estimated Active Load <button class="mini" onclick="redraw()">↻ refresh</button></h2>
+    <div class="ctrls">
+      <label>Model
+        <select id="model" onchange="redraw()">
+          <option value="bateman">Absorption + elimination (Bateman)</option>
+          <option value="mono">Elimination half-life decay (mono-exp)</option>
+        </select>
+      </label>
+      <label>Tail days <input type="number" id="tail" value="14" min="0" max="120" style="width:60px" onchange="redraw()"></label>
+      <label><input type="checkbox" id="showTotal" checked onchange="redraw()"> show total</label>
+    </div>
+    <canvas id="chart" width="1800" height="680"></canvas>
+    <div class="legend" id="legend"></div>
+    <div class="stats" id="stats"></div>
+    <div class="note">Each administration contributes a decay curve from that compound's own half-life; the plot sums them (superposition). "Active load" is a relative mg estimate, not a measured serum concentration — no established serum assay/calibration exists for most of these compounds, unlike testosterone's ng/dL. Where a compound's half-life is <span class="conf-estimated">estimated</span> or <span class="conf-low">low-confidence</span> (see Compound Library), the whole curve inherits that uncertainty.</div>
+  </div>
+
+  <!-- ===================== SUPPLY CALCULATOR ===================== -->
+  <div class="panel">
+    <h2>Supply Calculator — amount needed for X days</h2>
+    <div class="row" style="margin-bottom:8px">
+      <label style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)">
+        Days supply <input type="number" id="supplyDays" value="14" min="1" max="365" style="width:80px"></label>
+      <button class="mini primary" onclick="calcSupply()">Calculate</button>
+      <span style="font-size:11px;color:var(--dim)">uses the current stack above · U-100 syringe (100 units = 1 mL)</span>
+    </div>
+    <div id="supplyOut"></div>
+  </div>
+
+  <!-- ===================== SAVED STACKS ===================== -->
+  <div class="panel">
+    <h2>Saved Stacks
+      <span><button class="mini primary" onclick="saveCurrentStack()">save current stack</button></span>
+    </h2>
+    <table id="stackTable">
+      <thead><tr><th>Stack</th><th>Started</th><th>Ended</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div class="note">Saved stacks are read-only by default. Use <b>Load</b> to pull one into the editor, <b>Finish</b> to stamp today's end date, <b>Edit</b> to change details, <b>×</b> to delete. Finish/Edit/Delete all confirm to prevent accidents.</div>
+  </div>
+
+  <!-- ===================== COMPOUND LIBRARY ===================== -->
+  <div class="panel">
+    <h2>Compound Library <span class="tag">from ped/corpus/monographs — editable, add your own</span></h2>
+    <table id="libTable">
+      <thead><tr><th>Name</th><th>Half-life (d)</th><th>Confidence</th><th>Mechanism</th><th>Status</th><th>Safety flag</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div class="addbar">
+      <input id="newCompName" placeholder="Name (e.g. Selank)">
+      <input id="newCompHl" type="number" step="0.001" placeholder="half-life d" style="max-width:110px">
+      <input id="newCompConc" type="number" step="0.5" placeholder="conc mg/ml" style="max-width:110px">
+      <button class="mini primary" onclick="addCompound()">+ add compound</button>
+    </div>
+    <div class="note">Custom-added compounds have no monograph behind them — treat their half-life as unverified until you add a real source.</div>
+  </div>
+
+  <!-- ===================== DROPDOWN PRESETS ===================== -->
+  <div class="panel">
+    <h2>Dropdown Presets</h2>
+    <div class="row" style="align-items:flex-start">
+      <div style="flex:1;min-width:220px">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:5px">Concentrations (mg/ml)</div>
+        <div id="concChips" class="row"></div>
+        <div class="addbar"><input id="newConc" type="number" placeholder="e.g. 2" style="max-width:120px">
+          <button class="mini" onclick="addPreset('concentrations','newConc',true)">+ add</button></div>
+      </div>
+      <div style="flex:1;min-width:260px">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:5px">Frequencies (label → interval days)</div>
+        <div id="freqChips" class="row"></div>
+        <div class="addbar"><input id="newFreqLabel" placeholder="label e.g. E3D" style="max-width:110px">
+          <input id="newFreqDays" type="number" step="0.5" placeholder="days" style="max-width:80px">
+          <button class="mini" onclick="addFreq()">+ add</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Your data — save &amp; load</h2>
+    <div class="row">
+      <button class="mini primary" onclick="exportText()">⤓ Save to file (.txt)</button>
+      <button class="mini" onclick="document.getElementById('txtFile').click()">⤒ Load from file (.txt)</button>
+      <input type="file" id="txtFile" style="display:none" accept=".txt,text/plain" onchange="importText(event)">
+      <button class="mini" onclick="exportData()">⤓ export JSON</button>
+      <button class="mini" onclick="document.getElementById('importFile').click()">⤒ import JSON</button>
+      <input type="file" id="importFile" style="display:none" accept="application/json" onchange="importData(event)">
+      <button class="mini danger" onclick="clearAll()">clear &amp; start over</button>
+    </div>
+    <div class="note">"Save to file" downloads a readable plain-text file (never uploaded). JSON export also available. "Load" reads a saved file back in. Your stack stays in this browser between visits — nothing is uploaded.</div>
+  </div>
+</div>
+
+<script>
+// ============================ STATE ============================
+const LS = "peptide_tracker_v1";
+
+// Half-life in DAYS. conf: "cited" | "estimated" | "estimated-low".
+// Sourced from ped/corpus/monographs/*.yaml where possible (2026-09-12 read).
+// Every "estimated"/"estimated-low" entry has NO cited half-life in its own
+// monograph -- the number here is a rough placeholder, flagged as such, never
+// presented as a measurement. See ~/repos/books/ped/corpus/monographs/ for
+// the full sourced text behind each mechanism/status/flag line below.
+const SEED_COMPOUNDS = [
+  {name:"BPC-157", hl:0.021, conc:2, conf:"cited",
+   mech:"15-amino-acid gastric pentadecapeptide; proposed angiogenic / tissue-repair mechanism (VEGFR2, growth-factor modulation) -- mechanism not fully established",
+   status:"Not approved anywhere; FDA determined unsafe for compounding (2024)",
+   flag:"222 indexed papers, zero completed human trials of any kind. Safety data is essentially absent, not reassuring."},
+  {name:"TB-500", hl:2, conc:2, conf:"estimated",
+   mech:"Synthetic fragment of Thymosin Beta-4; actin-regulating, proposed tissue-repair / angiogenic peptide",
+   status:"Not approved as a human medicine anywhere; WADA-prohibited in sport",
+   flag:"No published human PK located in the source monograph -- half-life above is a rough placeholder, not a measurement."},
+  {name:"CJC-1295 (DAC)", hl:7, conc:2, conf:"cited",
+   mech:"GHRH analog with Drug Affinity Complex (albumin-binding) -- long-acting GH-axis stimulation",
+   status:"Not approved for human use anywhere",
+   flag:"Long-acting design sustains GH/IGF-1 exposure well beyond physiological pulsatile release; long-term safety data limited."},
+  {name:"Ipamorelin", hl:0.083, conc:2, conf:"cited",
+   mech:"Selective ghrelin-receptor (GHS-R1a) agonist -- GH secretagogue, reported to spare cortisol/prolactin vs other GHRPs",
+   status:"Not approved for human use anywhere",
+   flag:"Only human PK/PD study on record: 5 dose levels, 8 healthy men (Gobburu 1999)."},
+  {name:"Sermorelin", hl:0.008, conc:2, conf:"estimated",
+   mech:"GHRH(1-29) analog -- stimulates endogenous pituitary GH release",
+   status:"Formerly FDA-approved (Geref) for pediatric GH-deficiency diagnosis/treatment; since discontinued as a marketed drug",
+   flag:"Monograph describes half-life only as \"very short\" (rapid DPP-IV degradation); no clean number -- estimate above uses general GHRH(1-29) pharmacology."},
+  {name:"Tesamorelin", hl:0.0054, conc:2, conf:"estimated",
+   mech:"Stabilized GHRH(1-44) analog",
+   status:"FDA-approved (Egrifta) for ONE indication: HIV-lipodystrophy visceral fat reduction. Not approved for general weight loss, physique, or anti-aging use",
+   flag:"Half-life derived from the monograph's own population-PK values (CL~1,060 L/h, Vd~200 L) -- the monograph itself declined to state a half-life directly, since a curve would read as onset/duration guidance."},
+  {name:"Melanotan II", hl:0.5, conc:2, conf:"estimated-low",
+   mech:"Non-selective melanocortin-receptor agonist (MC1R/MC4R) -- proposed tanning / appetite / libido effects",
+   status:"Not approved as a human medicine anywhere (afamelanotide, a related but distinct compound, is separately approved for a specific photosensitivity condition)",
+   flag:"No completed human PK study located in the source monograph at all; half-life above is a rough guess only."},
+  {name:"AOD-9604", hl:0.02, conc:2, conf:"estimated-low",
+   mech:"HGH fragment 176-191 -- proposed lipolytic fragment of growth hormone, without GH's growth-promoting activity",
+   status:"Not approved as a therapeutic anywhere; no marketing authorization for obesity treatment; prohibited in sport",
+   flag:"Monograph states explicitly: no published human pharmacokinetics of any kind exist. Half-life above is a structural-analogy guess, not a measurement."},
+];
+const SEED_CONC = [1,2,3,5,10];
+const SEED_FREQ = [
+  {label:"ED (daily)", days:1},
+  {label:"BID (twice daily)", days:0.5},
+  {label:"EOD", days:2},
+  {label:"E3D", days:3},
+  {label:"Twice weekly", days:3.5},
+  {label:"Weekly", days:7},
+];
+function seedProtocol(){ return []; }
+
+let state = load();
+if(!state.stacks) state.stacks=[];
+function load(){
+  try{ const s = JSON.parse(localStorage.getItem(LS)); if(s&&s.compounds) return s; }catch(e){}
+  return { compounds:[...SEED_COMPOUNDS], concentrations:[...SEED_CONC],
+           frequencies:[...SEED_FREQ], protocol:seedProtocol(), stacks:[] };
+}
+function save(){ localStorage.setItem(LS, JSON.stringify(state)); }
+
+const COLORS = ["#4ade80","#6aa9ff","#f5c451","#f87171","#c084fc","#22d3ee","#fb923c","#a3e635","#f472b6","#94a3b8"];
+const freqDays = label => (state.frequencies.find(f=>f.label===label)||{days:7}).days;
+const compHl = name => (state.compounds.find(c=>c.name===name)||{hl:1}).hl;
+
+// ============================ PK MODEL ============================
+function contrib(D, tau, hl, model){
+  if(tau<0) return 0;
+  const ke = Math.LN2/hl;
+  if(model==="mono") return D*Math.exp(-ke*tau);
+  const riseHl = Math.min(0.15, hl*0.4);
+  const ka = Math.LN2/riseHl;
+  if(Math.abs(ka-ke)<1e-6) return D*ke*tau*Math.exp(-ke*tau);
+  const f = ka/(ka-ke)*(Math.exp(-ke*tau)-Math.exp(-ka*tau));
+  return D*f;
+}
+
+function buildSeries(){
+  const rows = state.protocol.filter(p=>p.comp && p.start);
+  if(!rows.length) return {days:[],series:[],t0:null};
+  let minT=Infinity, maxT=-Infinity;
+  rows.forEach(p=>{
+    const s=Date.parse(p.start); const e=p.end?Date.parse(p.end):s+28*864e5;
+    minT=Math.min(minT,s); maxT=Math.max(maxT,e);
+  });
+  const tail = (+document.getElementById('tail').value||0);
+  const model = document.getElementById('model').value;
+  const t0 = minT;
+  const totalDays = Math.ceil((maxT-minT)/864e5) + tail;
+  const SPD = 24;                                  // samples/day -- fast half-lives need fine sampling
+  const N = Math.min(totalDays, 1000);
+  const days = []; for(let i=0;i<=N*SPD;i++) days.push(i/SPD);
+
+  const series = rows.map((p,i)=>{
+    const hl = compHl(p.comp);
+    const sOff = (Date.parse(p.start)-t0)/864e5;
+    const eOff = ((p.end?Date.parse(p.end):maxT)-t0)/864e5;
+    const iv = freqDays(p.freq);
+    const events=[]; for(let t=sOff;t<=eOff+1e-6;t+=iv) events.push(t);
+    const dose = +p.dose||0;
+    const vals = days.map(d=>{
+      let sum=0; for(const ev of events){ if(ev<=d) sum+=contrib(dose, d-ev, hl, model); }
+      return sum;
+    });
+    return {label:p.comp, color:COLORS[i%COLORS.length], vals, weekly: dose*(7/iv), hl, events:events.length};
+  });
+  return {days,series,t0};
+}
+
+// ============================ CHART ============================
+function redraw(){
+  renderStats();
+  const {days,series,t0}=buildSeries();
+  const cv=document.getElementById('chart'), ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
+  const padL=70,padR=20,padT=18,padB=46;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  if(!series.length){ ctx.fillStyle="#666";ctx.font="26px sans-serif";ctx.fillText("Add a compound to your stack",padL,H/2); document.getElementById('legend').innerHTML=""; return; }
+
+  const showTotal=document.getElementById('showTotal').checked;
+  const plot = series.map(s=>({label:s.label, color:s.color, sv:s.vals}));
+  const total = days.map((_,i)=>plot.reduce((a,p)=>a+p.sv[i],0));
+
+  let ymax=0; plot.forEach(p=>p.sv.forEach(v=>ymax=Math.max(ymax,v)));
+  if(showTotal) total.forEach(v=>ymax=Math.max(ymax,v));
+  ymax=ymax*1.10||1;
+
+  const lastDay=days[days.length-1];
+  const X=d=>padL+ (days.length>1? d/lastDay*plotW : 0);
+  const Y=v=>padT+plotH-(v/ymax)*plotH;
+
+  ctx.strokeStyle="#1c1c1c"; ctx.lineWidth=1; ctx.fillStyle="#777"; ctx.font="20px sans-serif";
+  ctx.fillText("mg (relative)", 8, padT-2);
+  for(let g=0;g<=5;g++){ const yv=ymax*g/5, y=Y(yv);
+    ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(W-padR,y);ctx.stroke();
+    ctx.fillText(yv<1?yv.toFixed(2):Math.round(yv), 8, y+7); }
+  const step = lastDay>60?14: lastDay>21?7:2;
+  for(let d=0;d<=lastDay;d+=step){ const x=X(d);
+    ctx.strokeStyle="#161616";ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();
+    ctx.fillStyle="#777";ctx.fillText("d"+d, x-12, padT+plotH+26); }
+
+  const todayOff=Math.round((Date.now()-t0)/864e5);
+  if(todayOff>=0&&todayOff<=lastDay){ const x=X(todayOff);
+    ctx.strokeStyle="#4ade80";ctx.setLineDash([6,5]);ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle="#4ade80";ctx.fillText("today", x-18, padT+12); }
+
+  const colliding = new Set();
+  for(let a=0;a<plot.length;a++) for(let b=a+1;b<plot.length;b++){
+    let diff=0,cnt=0; for(let i=0;i<days.length;i+=3){ diff+=Math.abs(plot[a].sv[i]-plot[b].sv[i]); cnt++; }
+    if(cnt && (diff/cnt) < ymax*0.04){ colliding.add(a); colliding.add(b); }
+  }
+
+  ctx.font="20px sans-serif";
+  plot.forEach((p,idx)=>{
+    const hit = colliding.has(idx);
+    const off = hit ? (idx%2?2.2:-2.2) : 0;
+    ctx.strokeStyle=p.color; ctx.lineWidth=2.6; ctx.globalAlpha=hit?0.95:1;
+    ctx.setLineDash(hit ? (idx%2?[12,6]:[4,6]) : []);
+    ctx.beginPath();
+    p.sv.forEach((v,i)=>{ const x=X(days[i]),y=Y(v)+off; i?ctx.lineTo(x,y):ctx.moveTo(x,y); });
+    ctx.stroke();
+  });
+  ctx.setLineDash([]); ctx.globalAlpha=1;
+  if(showTotal){ ctx.strokeStyle="#ffffff"; ctx.lineWidth=2.8; ctx.setLineDash([7,4]); ctx.beginPath();
+    total.forEach((v,i)=>{ const x=X(days[i]),y=Y(v); i?ctx.lineTo(x,y):ctx.moveTo(x,y); }); ctx.stroke(); ctx.setLineDash([]); }
+
+  ctx.font="600 19px sans-serif";
+  const labels = plot.map(p=>{ const mx=Math.max(...p.sv);
+      const plat=p.sv.filter(v=>v>=mx*0.9); const css=plat.length?plat.reduce((a,v)=>a+v,0)/plat.length:mx;
+      return {color:p.color, css, label:p.label}; })
+    .filter(l=>l.css>0).sort((a,b)=>b.css-a.css);
+  let prevY=-99;
+  labels.forEach(l=>{ let y=Y(l.css); if(y-prevY<20) y=prevY+20; prevY=y;
+    ctx.fillStyle=l.color; ctx.textAlign="right";
+    ctx.fillText("Css≈"+(l.css<1?l.css.toFixed(2):Math.round(l.css)), W-padR-6, y-4); });
+  if(showTotal){ const mx=Math.max(...total); const plat=total.filter(v=>v>=mx*0.9);
+    const css=plat.length?plat.reduce((a,v)=>a+v,0)/plat.length:mx;
+    ctx.fillStyle="#fff"; let y=Y(css); if(y-prevY<20) y=prevY+20;
+    ctx.fillText("Σ Css≈"+(css<1?css.toFixed(2):Math.round(css)), W-padR-6, y-4); }
+  ctx.textAlign="left";
+
+  document.getElementById('legend').innerHTML =
+    plot.map(p=>`<span><span class="swatch" style="background:${p.color}"></span>${p.label}</span>`).join('')
+    + (showTotal?`<span><span class="swatch" style="background:#fff"></span>Total</span>`:'');
+}
+
+function renderStats(){
+  const rows=state.protocol.filter(p=>p.comp);
+  const stats=document.getElementById('stats');
+  const wk = rows.reduce((a,p)=>a+ (+p.dose||0)*(7/freqDays(p.freq)),0);
+  let html = `<div class="stat"><b>${rows.length}</b><span>compounds</span></div>`;
+  rows.forEach(p=>{ const w=(+p.dose||0)*(7/freqDays(p.freq));
+    html += `<div class="stat"><b>${w<1?w.toFixed(2):Math.round(w)}</b><span>${p.comp.split(' ')[0]} mg/wk</span></div>`; });
+  html += `<div class="stat"><b>${wk<1?wk.toFixed(2):Math.round(wk)}</b><span>total mg/wk</span></div>`;
+  stats.innerHTML=html;
+}
+
+// ============================ RENDER TABLES ============================
+function compOptions(sel){ return state.compounds.map(c=>`<option ${c.name===sel?'selected':''}>${c.name}</option>`).join(''); }
+function concOptions(sel){ return state.concentrations.map(c=>`<option ${(+c===+sel)?'selected':''}>${c}</option>`).join(''); }
+function freqOptions(sel){ return state.frequencies.map(f=>`<option ${f.label===sel?'selected':''}>${f.label}</option>`).join(''); }
+
+function renderProtocol(){
+  const tb=document.querySelector('#protoTable tbody'); tb.innerHTML='';
+  state.protocol.forEach((p,i)=>{
+    const ml = (p.dose&&p.conc)? (p.dose/p.conc).toFixed(2):'—';
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><select onchange="updProto(${i},'comp',this.value)">${compOptions(p.comp)}</select></td>
+      <td><select onchange="updProto(${i},'conc',this.value)">${concOptions(p.conc)}</select></td>
+      <td><input type="number" step="0.01" value="${p.dose||''}" onchange="updProto(${i},'dose',this.value)"></td>
+      <td><select onchange="updProto(${i},'freq',this.value)">${freqOptions(p.freq)}</select></td>
+      <td><input type="date" value="${p.start||''}" onchange="updProto(${i},'start',this.value)"></td>
+      <td><input type="date" value="${p.end||''}" onchange="updProto(${i},'end',this.value)"></td>
+      <td style="color:var(--muted)">${ml}</td>
+      <td><button class="mini danger" onclick="delProto(${i})">×</button></td>`;
+    tb.appendChild(tr);
+  });
+}
+const CONF_CLASS = {cited:'conf-cited', estimated:'conf-estimated', 'estimated-low':'conf-low'};
+const CONF_LABEL = {cited:'cited', estimated:'estimated', 'estimated-low':'estimated (low conf.)'};
+function renderLib(){
+  const tb=document.querySelector('#libTable tbody'); tb.innerHTML='';
+  state.compounds.forEach((c,i)=>{
+    const tr=document.createElement('tr');
+    const confClass = CONF_CLASS[c.conf]||'';
+    const confLabel = CONF_LABEL[c.conf]||(c.conf||'unverified');
+    tr.innerHTML=`
+      <td><input value="${c.name}" style="width:150px" class="libname" onchange="updComp(${i},'name',this.value)"></td>
+      <td><input type="number" step="0.001" value="${c.hl}" style="width:70px" onchange="updComp(${i},'hl',this.value)"></td>
+      <td class="${confClass}">${confLabel}</td>
+      <td><span class="libtext">${c.mech||''}</span></td>
+      <td><span class="libtext">${c.status||''}</span></td>
+      <td><span class="libtext">${c.flag||''}</span></td>
+      <td><button class="mini danger" onclick="delComp(${i})">×</button></td>`;
+    tb.appendChild(tr);
+  });
+}
+function renderPresets(){
+  document.getElementById('concChips').innerHTML =
+    state.concentrations.map((c,i)=>`<span class="tag">${c} <a style="cursor:pointer;color:var(--red)" onclick="delPreset('concentrations',${i})">×</a></span>`).join(' ');
+  document.getElementById('freqChips').innerHTML =
+    state.frequencies.map((f,i)=>`<span class="tag">${f.label} · ${f.days}d <a style="cursor:pointer;color:var(--red)" onclick="delPreset('frequencies',${i})">×</a></span>`).join(' ');
+}
+
+// ============================ MUTATIONS ============================
+function updProto(i,k,v){ state.protocol[i][k]= (k==='dose'||k==='conc')? +v : v;
+  if(k==='comp'){ const c=state.compounds.find(x=>x.name===v); if(c&&c.conc) state.protocol[i].conc=c.conc; }
+  save();renderProtocol();redraw(); }
+function addProtoRow(){ const c=state.compounds[0];
+  const s=new Date().toISOString().slice(0,10), e=new Date(Date.now()+28*864e5).toISOString().slice(0,10);
+  state.protocol.push({comp:c.name,conc:c.conc,dose:0.3,freq:state.frequencies[0].label,start:s,end:e}); save();renderProtocol();redraw(); }
+function delProto(i){ state.protocol.splice(i,1); save();renderProtocol();redraw(); }
+
+function updComp(i,k,v){ state.compounds[i][k]=(k==='hl'||k==='conc')?+v:v; save();renderLib();renderProtocol();redraw(); }
+function addCompound(){ const n=val('newCompName'),h=+val('newCompHl');
+  if(!n||!h){alert('Need name + half-life');return;}
+  state.compounds.push({name:n,hl:h,conc:+val('newCompConc')||2,conf:'estimated-low',
+    mech:'Custom entry -- no monograph', status:'Unverified', flag:'User-added; no source behind this half-life'});
+  ['newCompName','newCompHl','newCompConc'].forEach(id=>document.getElementById(id).value='');
+  save();renderLib();renderProtocol(); }
+function delComp(i){ state.compounds.splice(i,1); save();renderLib();renderProtocol(); }
+
+function addPreset(key,inputId,num){ const v=val(inputId); if(!v)return;
+  state[key].push(num?+v:v); document.getElementById(inputId).value=''; save();renderPresets();renderProtocol(); }
+function addFreq(){ const l=val('newFreqLabel'),d=+val('newFreqDays'); if(!l||!d)return;
+  state.frequencies.push({label:l,days:d}); document.getElementById('newFreqLabel').value='';document.getElementById('newFreqDays').value='';
+  save();renderPresets();renderProtocol();redraw(); }
+function delPreset(key,i){ state[key].splice(i,1); save();renderPresets();renderProtocol();redraw(); }
+
+// ============================ IO ============================
+function val(id){ return document.getElementById(id).value.trim(); }
+function exportData(){ const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='peptide-stack.json'; a.click(); }
+function importData(e){ const f=e.target.files[0]; if(!f)return; const r=new FileReader();
+  r.onload=()=>{ try{ state=JSON.parse(r.result); save(); renderAll(); }catch(err){alert('bad file');} }; r.readAsText(f); }
+function clearAll(){ if(!confirm('Clear stack and saved stacks and start over?'))return;
+  state.protocol=[]; state.stacks=[]; save(); renderAll(); }
+
+function serializeText(){
+  const L=[];
+  L.push('# Peptide Stack Tracker — saved '+new Date().toISOString().slice(0,10));
+  L.push('# Plain text. Hand-edit if you like; keep the [Section] headers and "Key: value" lines.');
+  L.push('# Blank line separates records within a section.');
+  L.push('');
+  const rec=(o,keys)=>keys.forEach(k=>{ if(o[k]!=null && o[k]!=='') L.push(k[0].toUpperCase()+k.slice(1)+': '+o[k]); });
+  L.push('[Protocol]');
+  (state.protocol||[]).forEach((p,i)=>{ if(i) L.push('');
+    rec({Compound:p.comp,Conc:p.conc,Dose:p.dose,Frequency:p.freq,Start:p.start,End:p.end},
+        ['Compound','Conc','Dose','Frequency','Start','End']); });
+  L.push(''); L.push('[Stack]');
+  (state.stacks||[]).forEach((c,i)=>{ if(i) L.push('');
+    rec({Name:c.name,Start:c.start,End:c.end,Status:c.status},['Name','Start','End','Status']);
+    (c.protocol||[]).forEach(p=>L.push('  Row: Compound='+p.comp+' | Conc='+(p.conc||'')+' | Dose='+(p.dose||'')
+      +' | Frequency='+(p.freq||'')+' | Start='+(p.start||'')+' | End='+(p.end||''))); });
+  L.push('');
+  return L.join('\n');
+}
+function parseText(txt){
+  const out={protocol:[],stacks:[]};
+  let section=null, rec=null;
+  const flush=()=>{ if(!rec){ rec=null; return; }
+    if(section==='Protocol' && rec.Compound)
+      out.protocol.push({comp:rec.Compound,conc:+rec.Conc||0,dose:+rec.Dose||0,freq:rec.Frequency||'',start:rec.Start||'',end:rec.End||''});
+    else if(section==='Stack' && rec.Name){ out.stacks.push({id:Date.now()+out.stacks.length,name:rec.Name,
+        start:rec.Start||'',end:rec.End||'', status:rec.Status||(rec.End?'finished':'active'),protocol:rec._rows||[]}); }
+    rec=null; };
+  txt.split(/\r?\n/).forEach(line=>{
+    const t=line.trim();
+    if(t.startsWith('#')) return;
+    const sec=t.match(/^\[(\w+)\]$/);
+    if(sec){ flush(); section=sec[1]; return; }
+    if(t===''){ flush(); return; }
+    const row=t.match(/^Row:\s*(.+)$/i);
+    if(row && rec){ const r={}; row[1].split('|').forEach(pair=>{ const m=pair.split('='); if(m.length>=2) r[m[0].trim().toLowerCase()]=m.slice(1).join('=').trim(); });
+      (rec._rows=rec._rows||[]).push({comp:r.compound,conc:+r.conc||0,dose:+r.dose||0,freq:r.frequency||'',start:r.start||'',end:r.end||''}); return; }
+    const kv=t.match(/^(\w+):\s*(.*)$/);
+    if(kv){ if(!rec) rec={}; rec[kv[1]]=kv[2]; }
+  });
+  flush();
+  return out;
+}
+function exportText(){
+  const blob=new Blob([serializeText()],{type:'text/plain'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='peptide-stack-'+new Date().toISOString().slice(0,10)+'.txt'; a.click();
+}
+function importText(e){ const f=e.target.files[0]; if(!f) return; const r=new FileReader();
+  r.onload=()=>{ try{
+    const p=parseText(r.result);
+    state.protocol=p.protocol; state.stacks=p.stacks;
+    const have=new Set(state.compounds.map(c=>c.name));
+    const refs=new Set(); p.protocol.forEach(x=>refs.add(x.comp)); p.stacks.forEach(c=>c.protocol.forEach(x=>refs.add(x.comp)));
+    refs.forEach(n=>{ if(n && !have.has(n)){
+      state.compounds.push({name:n,hl:1,conc:2,conf:'estimated-low',mech:'Imported -- no monograph',status:'Unverified',flag:'Imported; no source behind this half-life'}); } });
+    save(); renderAll();
+  }catch(err){ alert('Could not read that file. Keep the [Section] headers and "Key: value" lines.'); } };
+  r.readAsText(f); e.target.value='';
+}
+
+// ============================ SUPPLY CALCULATOR ============================
+function calcSupply(){
+  const days = +document.getElementById('supplyDays').value || 14;
+  const rows = state.protocol.filter(p=>p.comp && +p.dose>0);
+  const out = document.getElementById('supplyOut');
+  if(!rows.length){ out.innerHTML='<span style="color:var(--dim)">Add compounds to the stack first.</span>'; return; }
+
+  const inj=[];
+  rows.forEach(p=>{
+    const iv = freqDays(p.freq);
+    const weekly = (+p.dose)*(7/iv);
+    const periodMg = weekly*days/7;
+    const item = {name:p.comp, conc:+p.conc, iv, weekly, periodMg,
+      dailyMg:weekly/7, perInjMg:+p.dose};
+    item.mL=periodMg/(+p.conc||1); item.dailyML=item.dailyMg/(+p.conc||1);
+    item.dailyIU=item.dailyML*100; item.perInjML=item.perInjMg/(+p.conc||1);
+    inj.push(item);
+  });
+
+  let mixML=0, dailyMixML=0;
+  const tr = inj.map(it=>{ mixML+=it.mL; dailyMixML+=it.dailyML;
+    return `<tr><td>${it.name}</td><td>${it.weekly<1?it.weekly.toFixed(2):Math.round(it.weekly)}</td>
+      <td>${it.periodMg.toFixed(2)}</td><td>${it.conc}</td>
+      <td><b>${it.mL.toFixed(2)} mL</b></td>
+      <td>${it.dailyML.toFixed(3)} mL</td>
+      <td><b>${it.dailyIU.toFixed(1)} U</b></td></tr>`; }).join('');
+
+  let html = `<table><thead><tr><th>Compound</th><th>mg/wk</th><th>mg / ${days}d</th>
+      <th>conc</th><th>vol / ${days}d</th><th>daily</th><th>daily units</th></tr></thead><tbody>${tr}</tbody></table>`;
+
+  html += `<div class="panel" style="margin-top:10px;background:#0c130c;border-color:#1d3a1d">
+      <div style="font-size:13px;line-height:1.7">
+      <b>Combined reconstituted mix for ${days} days:</b> draw <b style="color:var(--accent)">${mixML.toFixed(2)} mL</b> total
+      (${inj.map(it=>it.mL.toFixed(2)+' mL '+it.name.split(' ')[0]).join(' + ')}).<br>
+      <b>Inject daily:</b> <b style="color:var(--accent)">${(dailyMixML*100).toFixed(1)} units</b>
+      (${dailyMixML.toFixed(3)} mL) on a U-100 insulin syringe.</div></div>`;
+
+  html += `<div class="note">Per-injection volume assumes the listed frequency. Daily-mix figures assume one combined daily shot. Verify concentrations on your vials before drawing.</div>`;
+  out.innerHTML = html;
+}
+
+// ============================ SAVED STACKS ============================
+let editStackId = null;
+function minStart(proto){ const ds=proto.map(p=>p.start).filter(Boolean).sort(); return ds[0]||new Date().toISOString().slice(0,10); }
+
+function saveCurrentStack(){
+  if(!state.protocol.length){ alert('No stack to save.'); return; }
+  const name = prompt('Stack name:', 'Stack '+new Date().toISOString().slice(0,7));
+  if(name===null) return;
+  state.stacks.unshift({ id:Date.now(), name:name||('Stack '+new Date().toISOString().slice(0,7)),
+    start:minStart(state.protocol), end:'', status:'active',
+    protocol: JSON.parse(JSON.stringify(state.protocol)) });
+  save(); renderStacks();
+}
+function loadStack(i){ if(!confirm('Load this stack into the editor? Replaces the current stack.')) return;
+  state.protocol = JSON.parse(JSON.stringify(state.stacks[i].protocol)); save(); renderAll(); }
+function finishStack(i){ if(!confirm('Mark this stack finished as of today?')) return;
+  state.stacks[i].end = new Date().toISOString().slice(0,10); state.stacks[i].status='finished'; save(); renderStacks(); }
+function delStack(i){ if(!confirm('Delete this saved stack? Cannot be undone.')) return;
+  state.stacks.splice(i,1); save(); renderStacks(); }
+function startEdit(i){ editStackId = state.stacks[i].id; renderStacks(); }
+function cancelEdit(){ editStackId=null; renderStacks(); }
+function saveEdit(i){ const c=state.stacks[i];
+  c.name=val('se_name'); c.start=val('se_start'); c.end=val('se_end'); c.status=c.end?'finished':'active';
+  editStackId=null; save(); renderStacks(); }
+
+function renderStacks(){
+  const tb=document.querySelector('#stackTable tbody'); tb.innerHTML='';
+  if(!state.stacks.length){ tb.innerHTML='<tr><td colspan="5" style="color:var(--dim)">No saved stacks yet.</td></tr>'; return; }
+  state.stacks.forEach((c,i)=>{
+    const tr=document.createElement('tr');
+    if(c.id===editStackId){
+      tr.innerHTML=`
+        <td><input id="se_name" value="${c.name}"></td>
+        <td><input type="date" id="se_start" value="${c.start||''}"></td>
+        <td><input type="date" id="se_end" value="${c.end||''}"></td>
+        <td colspan="2"><button class="mini primary" onclick="saveEdit(${i})">save</button>
+            <button class="mini" onclick="cancelEdit()">cancel</button></td>`;
+    } else {
+      const status = c.status==='active'
+        ? `<span style="color:var(--accent)">● active</span>`
+        : `<span style="color:var(--muted)">finished</span>`;
+      tr.innerHTML=`
+        <td>${c.name}<div style="font-size:10px;color:var(--dim)">${c.protocol.map(p=>p.comp.split(' ')[0]).join(', ')}</div></td>
+        <td>${c.start||'—'}</td><td>${c.end||'—'}</td><td>${status}</td>
+        <td style="white-space:nowrap">
+          <button class="mini" onclick="loadStack(${i})">Load</button>
+          ${c.status==='active'?`<button class="mini" onclick="finishStack(${i})">Finish</button>`:''}
+          <button class="mini" onclick="startEdit(${i})">Edit</button>
+          <button class="mini danger" onclick="delStack(${i})">×</button></td>`;
+    }
+    tb.appendChild(tr);
+  });
+}
+
+function renderAll(){ renderProtocol(); renderLib(); renderPresets(); renderStacks(); redraw(); }
+renderAll();
+</script>
+</body>
+</html>
