@@ -11,7 +11,7 @@ window.CALIBRATION = {
       "max": 0.2
     },
     "rpe_target_adjustment": {
-      "value": -0.5630498533724341,
+      "value": -0.125,
       "min": -1.0,
       "max": 1.0
     }
@@ -39,81 +39,81 @@ window.CALIBRATION = {
   "history": [
     {
       "paramName": "rpe_target_adjustment",
+      "previousValue": -0.125,
+      "newValue": -0.125,
+      "timestamp": "2026-09-20 12:31:02.116546",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "regression_sensitivity",
+      "previousValue": -0.2,
+      "newValue": -0.2,
+      "timestamp": "2026-09-20 12:31:02.116546",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "progression_bias",
+      "previousValue": 0.2,
+      "newValue": 0.2,
+      "timestamp": "2026-09-20 12:31:02.116546",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "rpe_target_adjustment",
+      "previousValue": -0.16304985337243405,
+      "newValue": -0.125,
+      "timestamp": "2026-09-20 12:31:00.240847",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "regression_sensitivity",
+      "previousValue": -0.2,
+      "newValue": -0.2,
+      "timestamp": "2026-09-20 12:31:00.240847",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "progression_bias",
+      "previousValue": 0.2,
+      "newValue": 0.2,
+      "timestamp": "2026-09-20 12:31:00.240847",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "rpe_target_adjustment",
+      "previousValue": -0.36304985337243406,
+      "newValue": -0.16304985337243405,
+      "timestamp": "2026-09-17 22:43:36.583747",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "regression_sensitivity",
+      "previousValue": -0.2,
+      "newValue": -0.2,
+      "timestamp": "2026-09-17 22:43:36.583747",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "progression_bias",
+      "previousValue": 0.2,
+      "newValue": 0.2,
+      "timestamp": "2026-09-17 22:43:36.583747",
+      "controlState": "too_conservative",
+      "controlReason": "increase_progression"
+    },
+    {
+      "paramName": "rpe_target_adjustment",
       "previousValue": -0.5630498533724341,
-      "newValue": -0.5630498533724341,
-      "timestamp": "2026-09-12 17:56:09.237489",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "regression_sensitivity",
-      "previousValue": -0.2,
-      "newValue": -0.2,
-      "timestamp": "2026-09-12 17:56:09.237489",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "progression_bias",
-      "previousValue": 0.2,
-      "newValue": 0.2,
-      "timestamp": "2026-09-12 17:56:09.237489",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "rpe_target_adjustment",
-      "previousValue": -0.4,
-      "newValue": -0.5630498533724341,
-      "timestamp": "2026-09-12 17:56:07.202272",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "regression_sensitivity",
-      "previousValue": -0.2,
-      "newValue": -0.2,
-      "timestamp": "2026-09-12 17:56:07.202272",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "progression_bias",
-      "previousValue": 0.2,
-      "newValue": 0.2,
-      "timestamp": "2026-09-12 17:56:07.202272",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "rpe_target_adjustment",
-      "previousValue": -0.2,
-      "newValue": -0.4,
-      "timestamp": "2026-08-22 10:04:24.015915",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "regression_sensitivity",
-      "previousValue": -0.2,
-      "newValue": -0.2,
-      "timestamp": "2026-08-22 10:04:24.015915",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "progression_bias",
-      "previousValue": 0.2,
-      "newValue": 0.2,
-      "timestamp": "2026-08-22 10:04:24.015915",
-      "controlState": "too_conservative",
-      "controlReason": "increase_progression"
-    },
-    {
-      "paramName": "rpe_target_adjustment",
-      "previousValue": 0.0,
-      "newValue": -0.2,
-      "timestamp": "2026-08-22 10:02:56.871965",
+      "newValue": -0.36304985337243406,
+      "timestamp": "2026-09-17 22:43:34.709549",
       "controlState": "too_conservative",
       "controlReason": "increase_progression"
     }
@@ -194,5 +194,5 @@ window.CALIBRATION = {
       "adr": "ADR-0008"
     }
   },
-  "generated_at": "2026-09-14T10:30:15.966161+00:00"
+  "generated_at": "2026-09-20T17:45:06.150033+00:00"
 };

@@ -1175,7 +1175,17 @@
     "barbell_warmup_floor_lb": 88.0,
     "barbell_warmup_floor_loading_types": [
       "barbell"
-    ]
+    ],
+    "never_earn_at_rpe": 10.0,
+    "failure_effort_rpe": 9.5,
+    "equipment_ceiling_progression": {
+      "tempo_seconds": 3.0,
+      "pause_seconds": 1.0,
+      "rom_note": "extended ROM",
+      "rep_overshoot_step": 3
+    },
+    "repeated_set_fatigue_decay_threshold": 0.25,
+    "anomalous_set_rep_gain_threshold": 0.5
   },
   "engine_constants_meta": {
     "warmup_load_margin": {
@@ -1213,6 +1223,36 @@
       "ratified_by": "Chad Crawford (Program Director)",
       "ratifying_authority": "Chad Crawford's own direct instruction (see barbell_warmup_floor_lb) -- scope decision carried in the same ratification.",
       "note": "Scoped to all barbell lifts rather than a name list for the same reason recorded on barbell_warmup_floor_lb: flat bench press, one of the three lifts Chad named, has no logged occurrence under any string, so a name list would silently miss a lift he explicitly asked for (260901-rnk-PLAN.md F-4). Narrowing this scope later (e.g. if a barbell squat or deadlift is ever logged) is a config edit with this rationale attached, not an engine change. A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "never_earn_at_rpe": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "chadcrawford",
+      "ratifying_authority": "phase 06.2 decision D-03; plan 06.2-02 Task 1 checkpoint:decision (gate=blocking), option-b: 'Target-relative RPE-10 rule plus top-set-keyed rep-ceiling guard' (06.2-CHECKPOINT-RESOLUTIONS.md Section 1)",
+      "note": "The failure threshold at which a performed top set can never satisfy the progression earn-gate, regardless of the profile's own earn_rpe_cap -- EXCEPT where the profile's own top_rpe is itself 10 (option-b's exception: the hit profile's deliberate RPE-10 target stays reachable). A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "failure_effort_rpe": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "chadcrawford",
+      "ratifying_authority": "phase 06.2 decision D-03 widening (a)/(b), authorized 2026-09-14 by Chad Crawford (Program Director) the same day D-03 was widened; plan 06.2-02 Task 1 checkpoint:decision (gate=blocking), option-b (06.2-CHECKPOINT-RESOLUTIONS.md Section 1)",
+      "note": "The performed-effort threshold (distinct from never_earn_at_rpe) at which (a) the prescribed top-set RPE target is capped by the performed RPE on hold/add_reps actions too, not only increase_load, and (b) the rep-ceiling widening stops absorbing a demoed set's reps -- gated on the TOP SET's own RPE (option-b's top-set-keyed reading), not each individual demoed set's RPE. A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "equipment_ceiling_progression": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "chadcrawford",
+      "ratifying_authority": "phase 06.2 decision D-04; plan 06.2-05 Task 1 checkpoint:decision (gate=blocking), option-b: 'Three-rung ladder keyed on rep overshoot' (06.2-CHECKPOINT-RESOLUTIONS.md Section 3)",
+      "note": "The three-rung equipment-ceiling progression ladder's ratified non-load levers: at the rep ceiling, a 3-second eccentric tempo; ceiling + one step (3 reps), tempo plus a 1-second peak-contraction pause; ceiling + two steps, adds an 'extended ROM' instruction. Prescribed only when the top set has exhausted the equipment ladder (progress_reps_tempo). A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "repeated_set_fatigue_decay_threshold": {
+      "ratified_date": "2026-09-17",
+      "ratified_by": "chadcrawford",
+      "ratifying_authority": "phase 06.3.1 decision D-02; plan 06.3.1-01 Task 2 checkpoint:decision (gate=blocking), option-a: 'D-02 = 0.25, D-03 = 0.50'",
+      "note": "The fraction of same-load, comparable-RPE (|delta RPE| <= 1.0) rep decay between a working set and its immediately preceding working set at which the later set is treated as fatigue-decayed rather than a genuine progression signal. Measured against live volm.duckdb by tools/measure_repeated_set_fatigue_decay.py: 249 qualifying pairs, 31 fires at >=25% = 12.4% fire rate -- this is RESEARCH.md's own ad hoc figure, now reproduced by a committed, reproducible instrument rather than a session snippet. Cleared comparison anchors: under the 30% halt-threshold precedent set in phases 06.2/06.3, and within 0.6 points of phase 06.2's own ratified 13.0% check-K fire rate. Confirmed to fire on the Day B Incline Bench audit repro (165x9@9, 137.5x9@9, 137.5x6@9: set 2->3 is same-load, |delta RPE|=0, decay=(9-6)/9=33.3%, fires at 25%). A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "anomalous_set_rep_gain_threshold": {
+      "ratified_date": "2026-09-17",
+      "ratified_by": "chadcrawford",
+      "ratifying_authority": "phase 06.3.1 decision D-03; plan 06.3.1-01 Task 2 checkpoint:decision (gate=blocking), option-a: 'D-02 = 0.25, D-03 = 0.50'",
+      "note": "The fraction of rep gain between a working set and its immediately preceding working set, where the later set's effective load is at or below the earlier set's, and the later set's RPE is at or below the earlier set's RPE, above which the later set is hard-excluded from progression anchoring as an anomalous outlier rather than blended into the top-set signal. Measured against live volm.duckdb by tools/measure_repeated_set_fatigue_decay.py: 370 qualifying pairs, 22 fires at >=50% = 5.9% fire rate -- deliberately conservative (25 percentage points of margin below the Day C Hanging Leg Raise repro's 75% gain), chosen because this constant's consequence (hard exclusion from progression anchoring) is harsher and less reversible than D-02's (a load reduction). Cleared comparison anchors: well under the 30% halt-threshold precedent set in phases 06.2/06.3, and confirmed to fire on the Day C Hanging Leg Raise audit repro (8@9 then 14@8: same/lower load, lower RPE (8<=9), gain=(14-8)/8=75%, fires at 50%). Comparison basis for the D-03 detector: a later working set whose effective load is at or below an earlier working set's, whose RPE is at or below that earlier set's, and whose reps exceed that earlier set's by at least this fraction. A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
     }
   },
   "occurrence_classification": {
@@ -1241,10 +1281,42 @@
       "working_reps": 20,
       "working_rpe_cap": 7.0,
       "working_set_count": 2,
+      "working_set_count_graduated": {
+        "reduced_count": 1,
+        "full_count": 2,
+        "full_at_recovery_fraction": 0.5
+      },
       "second_set_step_down": "one_equipment_increment"
     },
-    "supplemental_profile": {},
-    "category_overrides": {},
+    "supplemental_profile": {
+      "warmup_sets": 1,
+      "working_set_count": 2,
+      "working_set_count_graduated": {
+        "reduced_count": 1,
+        "full_count": 2,
+        "full_at_recovery_fraction": 0.5
+      },
+      "working_pct_of_primary_top": 0.675,
+      "working_reps": 17,
+      "working_rpe_cap": 8.0,
+      "second_set_step_down": "one_equipment_increment"
+    },
+    "category_overrides": {
+      "barbell": {
+        "working_pct_of_primary_top": 0.75,
+        "working_reps": 12
+      },
+      "cable_or_machine": {},
+      "band_combo": {},
+      "band_resisted_isolation": {},
+      "band_assisted_bodyweight": {
+        "assist_easier_steps": 1
+      },
+      "weighted_bodyweight": {
+        "reduce_steps": 1
+      },
+      "bodyweight": {}
+    },
     "fatigue_volume_weighting": {}
   },
   "occurrence_classification_meta": {
@@ -1344,10 +1416,106 @@
       "ratifying_authority": "06.1-FEATURE-SPEC.md 'Prescription Profiles' + Golden Test Case 1 exact expected prescription (user-authored spec, values pinned by an exact acceptance test)",
       "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
     },
+    "bloodflow_profile.working_set_count_graduated": {
+      "ratified_date": "2026-09-18",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "phase 06.3.1, plan 06.3.1-08, 06.3.1-CONTEXT.md decision D-01's graduated-cap clause -- closes D-01's last sub-item by replacing the flat, undifferentiated working_set_count the bloodflow/supplemental profiles both carried with a graduated 1-2 effective-set cap driven by the occurrence's own muscle-adjusted recovery-window position.",
+      "note": "Defines the 1-2 working-set graduation: below full_at_recovery_fraction (0.5) the occurrence receives reduced_count (1) working sets; at or above it, full_count (2). This block SUPERSEDES NOTHING in the bloodflow_profile.working_set_count record immediately above -- that flat value remains exactly what a no-signal call (recovery_fraction=None) returns, so Golden Test Case 1's ratified exact expected prescription is unchanged. The 0.5 boundary is chosen to coincide exactly with the already-ratified recovery_windows.bloodflow_fraction_of_recovery_hours value of 0.5 (see that entry above), so the volume cap steps at the SAME point the role classification already steps -- one boundary, not two that can drift apart -- rather than an independently chosen number. A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
     "bloodflow_profile.second_set_step_down": {
       "ratified_date": "2026-08-26",
       "ratified_by": "Chad Crawford (Program Director)",
       "ratifying_authority": "06.1-FEATURE-SPEC.md 'Prescription Profiles' + Golden Test Case 1 exact expected prescription (user-authored spec, values pinned by an exact acceptance test)",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "supplemental_profile.warmup_sets": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: 'Midpoint of each spec range, with explicit per-loading-type overrides' -- one optional warm-up, emitted only when a reference warm-up load resolves.",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "supplemental_profile.working_set_count": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: 'Midpoint of each spec range, with explicit per-loading-type overrides'",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "supplemental_profile.working_set_count_graduated": {
+      "ratified_date": "2026-09-18",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "phase 06.3.1, plan 06.3.1-08, 06.3.1-CONTEXT.md decision D-01's graduated-cap clause -- closes D-01's last sub-item by replacing the flat, undifferentiated working_set_count the bloodflow/supplemental profiles both carried with a graduated 1-2 effective-set cap driven by the occurrence's own muscle-adjusted recovery-window position.",
+      "note": "Defines the 1-2 working-set graduation: below full_at_recovery_fraction (0.5) the occurrence receives reduced_count (1) working sets; at or above it, full_count (2). This block SUPERSEDES NOTHING in the supplemental_profile.working_set_count record immediately above -- that flat value remains exactly what a no-signal call (recovery_fraction=None) returns. The 0.5 boundary is chosen to coincide exactly with the already-ratified recovery_windows.bloodflow_fraction_of_recovery_hours value of 0.5, so the volume cap steps at the SAME point the role classification already steps -- one boundary, not two that can drift apart -- rather than an independently chosen number. A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "supplemental_profile.working_pct_of_primary_top": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: 'Midpoint of each spec range, with explicit per-loading-type overrides' -- midpoint of 06.1-FEATURE-SPEC.md's ~60-75% range.",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "supplemental_profile.working_reps": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: 'Midpoint of each spec range, with explicit per-loading-type overrides' -- midpoint of 06.1-FEATURE-SPEC.md's ~15-20 rep range.",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "supplemental_profile.working_rpe_cap": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: 'Midpoint of each spec range, with explicit per-loading-type overrides' -- 06.1-FEATURE-SPEC.md's ~8 cap taken as-is.",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "supplemental_profile.second_set_step_down": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: 'Midpoint of each spec range, with explicit per-loading-type overrides' -- mirrors bloodflow_profile.second_set_step_down's identical convention.",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "category_overrides.barbell.working_pct_of_primary_top": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: barbell (compound axis) raises working_pct_of_primary_top to 0.75 because a 60% barbell top set is not a meaningful stimulus.",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "category_overrides.barbell.working_reps": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: barbell (compound axis) lowers working_reps to 12.",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "category_overrides.cable_or_machine": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: cable_or_machine keeps the isolation percentages/reps but steps by MACHINE_STEP_LB -- an explicit entry (empty override dict) proving the isolation rule was deliberately considered for this category, not silently applied by omission (T-06.1-32).",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "category_overrides.band_combo": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: band_combo snaps to the nearest achievable combination via snap_band_combo/band_combo_step_down rather than a raw percentage multiply, because band load is not linear -- explicit entry (empty override dict, mechanism is code-level per Task 2's action spec) proving deliberate consideration (T-06.1-32).",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "category_overrides.band_resisted_isolation": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: band_resisted_isolation steps down the band ladder -- explicit entry (empty override dict, mechanism is code-level) proving deliberate consideration (T-06.1-32).",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "category_overrides.band_assisted_bodyweight.assist_easier_steps": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director) for the MECHANISM (inverts direction, applies assist_easier() for a stated number of steps rather than a percentage); executor-filled for the EXACT step count",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a. The Program Director's ratified text named the mechanism (assist_easier(), inverted direction, 'a stated number of steps') without stating the exact count; 1 step was chosen by the executor for consistency with supplemental_profile.second_set_step_down's identical single-step ('one_equipment_increment') convention already ratified for every other loading type's working-set-1-to-working-set-2 transition. See 06.1-04-SUMMARY.md for the full reconciliation note.",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "category_overrides.weighted_bodyweight.reduce_steps": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director) for the MECHANISM (reduces external load by WEIGHTED_BW_STEP_LB steps rather than a percentage); executor-filled for the EXACT step count",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a. The Program Director's ratified text named the mechanism without stating the exact count; 1 step was chosen by the executor for the same reconciliation reason as category_overrides.band_assisted_bodyweight.assist_easier_steps -- see 06.1-04-SUMMARY.md.",
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "category_overrides.bodyweight": {
+      "ratified_date": "2026-09-14",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: bodyweight emits rep and RPE targets only -- explicit entry (empty override dict, mechanism is code-level: lbs forced to None) proving deliberate consideration (T-06.1-32).",
       "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
     }
   },
