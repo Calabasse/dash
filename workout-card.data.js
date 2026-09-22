@@ -47,7 +47,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-21T06:34:55.559362",
+        "generated_at": "2026-09-22T06:30:25.216259",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -66,19 +66,19 @@ window.PROGRAM = {
           "triceps_pushdown": 5.302496293976025
         },
         "fatigue_accumulation": {
-          "session_id": "8f44dc51-c471-48ea-a970-2bb9e80e9bf0",
-          "session_date": "2026-09-19T00:00:00",
-          "global_fatigue_score": 6.958134174346924,
-          "fatigue_trend_3": 8.38659954071045,
-          "fatigue_trend_5": 8.512056350708008,
-          "recovery_debt": 14.143220901489258
+          "session_id": "27fcd966-09c8-4a0d-a76c-2c6e8a6c0341",
+          "session_date": "2026-09-20T00:00:00",
+          "global_fatigue_score": 7.247748851776123,
+          "fatigue_trend_3": 7.878116130828857,
+          "fatigue_trend_5": 8.031972885131836,
+          "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-20T00:00:00",
+          "snapshot_date": "2026-09-21T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
-          "fatigue_trigger": 6.958134174346924,
+          "fatigue_trigger": 7.247748851776123,
           "regression_trigger": 0.7333333492279053,
           "cooldown_sessions": 3
         },
@@ -1111,7 +1111,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-21T06:34:55.559362",
+        "generated_at": "2026-09-22T06:30:25.216259",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -1130,19 +1130,19 @@ window.PROGRAM = {
           "triceps_pushdown": 5.302496293976025
         },
         "fatigue_accumulation": {
-          "session_id": "8f44dc51-c471-48ea-a970-2bb9e80e9bf0",
-          "session_date": "2026-09-19T00:00:00",
-          "global_fatigue_score": 6.958134174346924,
-          "fatigue_trend_3": 8.38659954071045,
-          "fatigue_trend_5": 8.512056350708008,
-          "recovery_debt": 14.143220901489258
+          "session_id": "27fcd966-09c8-4a0d-a76c-2c6e8a6c0341",
+          "session_date": "2026-09-20T00:00:00",
+          "global_fatigue_score": 7.247748851776123,
+          "fatigue_trend_3": 7.878116130828857,
+          "fatigue_trend_5": 8.031972885131836,
+          "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-20T00:00:00",
+          "snapshot_date": "2026-09-21T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
-          "fatigue_trigger": 6.958134174346924,
+          "fatigue_trigger": 7.247748851776123,
           "regression_trigger": 0.7333333492279053,
           "cooldown_sessions": 3
         },
@@ -1187,7 +1187,7 @@ window.PROGRAM = {
         "status": "review",
         "headline": "DAY B - CHEST / TRICEPS \u2014 0 load\u2191 \u00b7 1 rep\u2191 \u00b7 0 hold \u00b7 4 non-primary excluded.",
         "assess": "5 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
-        "prescription": "QC: <b>0/5</b> prescriptions passed the validation gate; <b>5 flagged</b> \u2014 see the \u2717 tags below.",
+        "prescription": "QC: <b>1/5</b> prescriptions passed the validation gate; <b>4 flagged</b> \u2014 see the \u2717 tags below.",
         "nonPrimaryExcluded": 4
       },
       "exercises": [
@@ -1553,10 +1553,10 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "cable_or_machine",
-          "qc": "fail",
+          "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 300 lb \u00d7 9 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2717 QC fail: set_role_conflict(warmup_labeled_set_at_working_effort(set 2 @ RPE 9))</b> \u00b7 Hold 300 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off already reached its own 12-rep anchor at its own load (275) for 13-15 \u2014 it holds there because the top set has not yet earned its own load jump.",
+          "rationale": "<b>\u2713 QC pass \u2014 set_role_conflict(warmup_labeled_set_at_working_effort(set 2 @ RPE 9))</b> \u00b7 Hold 300 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off already reached its own 12-rep anchor at its own load (275) for 13-15 \u2014 it holds there because the top set has not yet earned its own load jump.",
           "when_to_add_load": "Reach 12 clean reps at 300 lb at RPE 9.5 or lower; then increase to 305 lb.",
           "sets": [
             {
@@ -1980,7 +1980,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-21T06:34:55.559362",
+        "generated_at": "2026-09-22T06:30:25.216259",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -1999,19 +1999,19 @@ window.PROGRAM = {
           "triceps_pushdown": 5.302496293976025
         },
         "fatigue_accumulation": {
-          "session_id": "8f44dc51-c471-48ea-a970-2bb9e80e9bf0",
-          "session_date": "2026-09-19T00:00:00",
-          "global_fatigue_score": 6.958134174346924,
-          "fatigue_trend_3": 8.38659954071045,
-          "fatigue_trend_5": 8.512056350708008,
-          "recovery_debt": 14.143220901489258
+          "session_id": "27fcd966-09c8-4a0d-a76c-2c6e8a6c0341",
+          "session_date": "2026-09-20T00:00:00",
+          "global_fatigue_score": 7.247748851776123,
+          "fatigue_trend_3": 7.878116130828857,
+          "fatigue_trend_5": 8.031972885131836,
+          "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-20T00:00:00",
+          "snapshot_date": "2026-09-21T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
-          "fatigue_trigger": 6.958134174346924,
+          "fatigue_trigger": 7.247748851776123,
           "regression_trigger": 0.7333333492279053,
           "cooldown_sessions": 3
         },
@@ -2879,7 +2879,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-21T06:34:55.559362",
+        "generated_at": "2026-09-22T06:30:25.216259",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -2898,19 +2898,19 @@ window.PROGRAM = {
           "triceps_pushdown": 5.302496293976025
         },
         "fatigue_accumulation": {
-          "session_id": "8f44dc51-c471-48ea-a970-2bb9e80e9bf0",
-          "session_date": "2026-09-19T00:00:00",
-          "global_fatigue_score": 6.958134174346924,
-          "fatigue_trend_3": 8.38659954071045,
-          "fatigue_trend_5": 8.512056350708008,
-          "recovery_debt": 14.143220901489258
+          "session_id": "27fcd966-09c8-4a0d-a76c-2c6e8a6c0341",
+          "session_date": "2026-09-20T00:00:00",
+          "global_fatigue_score": 7.247748851776123,
+          "fatigue_trend_3": 7.878116130828857,
+          "fatigue_trend_5": 8.031972885131836,
+          "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-20T00:00:00",
+          "snapshot_date": "2026-09-21T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
-          "fatigue_trigger": 6.958134174346924,
+          "fatigue_trigger": 7.247748851776123,
           "regression_trigger": 0.7333333492279053,
           "cooldown_sessions": 3
         },
