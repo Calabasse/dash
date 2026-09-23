@@ -47,7 +47,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-22T06:30:25.216259",
+        "generated_at": "2026-09-23T06:37:18.675890",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -74,7 +74,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-21T00:00:00",
+          "snapshot_date": "2026-09-22T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -121,9 +121,9 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY C \u2014 DELTS / ABS \u2014 1 load\u2191 \u00b7 1 rep\u2191 \u00b7 0 hold \u00b7 3 non-primary excluded.",
+        "headline": "DAY C \u2014 DELTS / ABS \u2014 0 load\u2191 \u00b7 1 rep\u2191 \u00b7 1 hold \u00b7 3 non-primary excluded.",
         "assess": "5 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
-        "prescription": "QC: <b>2/5</b> prescriptions passed the validation gate; <b>3 flagged</b> \u2014 see the \u2717 tags below.",
+        "prescription": "QC: <b>4/5</b> prescriptions passed the validation gate; <b>1 flagged</b> \u2014 see the \u2717 tags below.",
         "nonPrimaryExcluded": 3
       },
       "exercises": [
@@ -293,12 +293,52 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "band_resisted_isolation",
-          "qc": "fail",
+          "qc": "pass",
           "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe)</b> \u00b7 Cannot prescribe supplemental volume for Lateral Raise (Band): the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "assess": "Most recent primary session: 30 lb \u00d7 12 @ RPE 10, 25 lb \u00d7 16 @ RPE 9, and 22.5 lb \u00d7 16 @ RPE 9 on 2026-09-13. Today's Day C occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_volume_exceeded_profile_slots(performed=3,slots=2,delta=1), reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Lateral Raise (Band) received its primary progression work on 2026-09-13. Prescribe 35 lb \u00d7 8 @ RPE 5, then 35 lb \u00d7 17 @ RPE 8 and 35 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 30 lb \u00d7 15 clean reps at RPE 9 or lower before increasing to 35 lb.",
+          "when_to_add_load": "Reach 15 clean reps at 35 lb at RPE 9 or lower; then step up to 45 lb.",
           "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "prop": {
+                "lbs": 35.0,
+                "reps": "8",
+                "rpe": 5.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "prop": {
+                "lbs": 35.0,
+                "reps": "17",
+                "rpe": 8.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
             {
               "type": 1,
               "last": {
@@ -307,9 +347,9 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 35.0,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -372,7 +412,28 @@ window.PROGRAM = {
           "primaryReference": {
             "sessionId": "16da60fc-24ec-4836-8f87-89f802947f99",
             "date": "2026-09-13",
-            "sets": []
+            "sets": [
+              {
+                "lbs": 17.5,
+                "reps": 8,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 30.0,
+                "reps": 12,
+                "rpe": 10.0
+              },
+              {
+                "lbs": 25.0,
+                "reps": 16,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 22.5,
+                "reps": 16,
+                "rpe": 9.0
+              }
+            ]
           },
           "progressionEligible": false,
           "fatigueVolumeEligible": true,
@@ -404,9 +465,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "cable_or_machine",
           "qc": "fail",
-          "action": "increase_load",
+          "action": "hold",
           "assess": "Last top set: 30 lb \u00d7 13 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2717 QC fail: dropped_working_set(performed=3,slots=2)</b> \u00b7 All working sets near the top (13/15/15) \u2014 earn the jump; top set 30\u219235; +16.7% load costs ~6 reps, so the rep target drops 13\u21927 [range 5-7]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 30 for 13-15, rebuilding to the reps it just produced.",
+          "rationale": "<b>\u2717 QC fail: dropped_working_set(performed=3,slots=2), isolation_load_jump_capped(from=30,to=35,pct=16.6667,predicted_reps=5)</b> \u00b7 Hold 30 \u2014 the smallest available step (30\u219235) would exceed the 10% isolation load-jump cap; chase additional reps at this load, aim for cleaner execution/lower RPE at 30, or plan a slower progression before forcing the jump. Back-off already reached its own 12-rep anchor at its own load (30) for 15 \u2014 it holds there because the top set has not yet earned its own load jump.",
           "when_to_add_load": "Reach 12 clean reps at 30 lb at RPE 9.5 or lower; then increase to 35 lb.",
           "sets": [
             {
@@ -417,7 +478,7 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 20,
+                "lbs": 15,
                 "reps": "8",
                 "rpe": 5.0,
                 "tempo_seconds": null,
@@ -434,9 +495,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 35,
-                "reps": "5\u20137",
-                "rpe": 9.0,
+                "lbs": 30,
+                "reps": "13\u201315",
+                "rpe": 9.5,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -452,7 +513,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 30,
-                "reps": "13\u201315",
+                "reps": "15",
                 "rpe": 9.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
@@ -727,10 +788,10 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "cable_or_machine",
-          "qc": "fail",
+          "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 0 lb \u00d7 8 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2717 QC fail: anomalous_set_excluded(reps=17,rpe=8,vs_reps=8,vs_rpe=9), anomalous_set_excluded(reps=15,rpe=9,vs_reps=8,vs_rpe=9), anomalous_set_excluded(reps=12,rpe=9,vs_reps=8,vs_rpe=9)</b> \u00b7 Hold 0 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off 0 for 10-15 \u2014 derived from the top set; no matching performed back-off was logged.",
+          "rationale": "<b>\u2713 QC pass \u2014 anomalous_set_excluded(reps=17,rpe=8,vs_reps=8,vs_rpe=9), anomalous_set_excluded(reps=15,rpe=9,vs_reps=8,vs_rpe=9), anomalous_set_excluded(reps=12,rpe=9,vs_reps=8,vs_rpe=9)</b> \u00b7 Hold 0 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off 0 for 10-15 \u2014 derived from the top set; no matching performed back-off was logged.",
           "when_to_add_load": "Reach 12 clean reps at 0 lb at RPE 9.5 or lower; then increase to 5 lb.",
           "sets": [
             {
@@ -1111,7 +1172,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-22T06:30:25.216259",
+        "generated_at": "2026-09-23T06:37:18.675890",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -1138,7 +1199,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-21T00:00:00",
+          "snapshot_date": "2026-09-22T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -1184,10 +1245,10 @@ window.PROGRAM = {
         "11.8k lbs"
       ],
       "summary": {
-        "status": "review",
+        "status": "progress",
         "headline": "DAY B - CHEST / TRICEPS \u2014 0 load\u2191 \u00b7 1 rep\u2191 \u00b7 0 hold \u00b7 4 non-primary excluded.",
         "assess": "5 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
-        "prescription": "QC: <b>1/5</b> prescriptions passed the validation gate; <b>4 flagged</b> \u2014 see the \u2717 tags below.",
+        "prescription": "QC: <b>5/5</b> prescriptions passed the validation gate.",
         "nonPrimaryExcluded": 4
       },
       "exercises": [
@@ -1205,11 +1266,11 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "cable_or_machine",
-          "qc": "fail",
+          "qc": "pass",
           "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe)</b> \u00b7 Cannot prescribe supplemental volume for Incline Bench Press (Barbell): the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "assess": "Most recent primary session: 165 lb \u00d7 9 @ RPE 9, 137.5 lb \u00d7 9 @ RPE 9, and 137.5 lb \u00d7 6 @ RPE 9 on 2026-09-12. Today's Day B occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Incline Bench Press (Barbell) received its primary progression work on 2026-09-12. Prescribe 130 lb \u00d7 6 @ RPE 6, then 110 lb \u00d7 17 @ RPE 8 and 105 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 165 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 170 lb.",
+          "when_to_add_load": "Reach 12 clean reps at 165 lb at RPE 9.5 or lower; then increase to 170 lb.",
           "sets": [
             {
               "type": "W",
@@ -1219,9 +1280,9 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 130,
+                "reps": "6",
+                "rpe": 6.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -1253,9 +1314,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 110,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -1270,9 +1331,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 105,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -1301,7 +1362,33 @@ window.PROGRAM = {
           "primaryReference": {
             "sessionId": "d723d8cd-57e3-4683-8310-ae3f913a9f1c",
             "date": "2026-09-12",
-            "sets": []
+            "sets": [
+              {
+                "lbs": 93.5,
+                "reps": 8,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 132.0,
+                "reps": 6,
+                "rpe": 6.0
+              },
+              {
+                "lbs": 165.0,
+                "reps": 9,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 137.5,
+                "reps": 9,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 137.5,
+                "reps": 6,
+                "rpe": 9.0
+              }
+            ]
           },
           "progressionEligible": false,
           "fatigueVolumeEligible": true,
@@ -1332,11 +1419,11 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "cable_or_machine",
-          "qc": "fail",
+          "qc": "pass",
           "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe)</b> \u00b7 Cannot prescribe supplemental volume for Chest Fly (Dumbbell): the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "assess": "Most recent primary session: 47.5 lb \u00d7 15 @ RPE 9 and 45 lb \u00d7 11 @ RPE 9 on 2026-09-12. Today's Day B occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Chest Fly (Dumbbell) received its primary progression work on 2026-09-12. Prescribe 25 lb \u00d7 8 @ RPE 5, then 30 lb \u00d7 17 @ RPE 8 and 25 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 47.5 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 50 lb.",
+          "when_to_add_load": "Reach 12 clean reps at 47.5 lb at RPE 9.5 or lower; then increase to 50 lb.",
           "sets": [
             {
               "type": "W",
@@ -1346,9 +1433,9 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 25,
+                "reps": "8",
+                "rpe": 5.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -1363,9 +1450,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 30,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -1380,9 +1467,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 25,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -1411,7 +1498,23 @@ window.PROGRAM = {
           "primaryReference": {
             "sessionId": "d723d8cd-57e3-4683-8310-ae3f913a9f1c",
             "date": "2026-09-12",
-            "sets": []
+            "sets": [
+              {
+                "lbs": 25.0,
+                "reps": 8,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 47.5,
+                "reps": 15,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 45.0,
+                "reps": 11,
+                "rpe": 9.0
+              }
+            ]
           },
           "progressionEligible": false,
           "fatigueVolumeEligible": true,
@@ -1443,29 +1546,12 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "cable_or_machine",
-          "qc": "fail",
+          "qc": "pass",
           "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe)</b> \u00b7 Cannot prescribe supplemental volume for Triceps Extension (Dumbbell): the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "assess": "Most recent primary session: 275 lb \u00d7 4 @ RPE 6, 300 lb \u00d7 13 @ RPE 9, 275 lb \u00d7 9 @ RPE 9, and 250 lb \u00d7 9 @ RPE 9 on 2026-09-12. Today's Day B occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Triceps Extension (Dumbbell) received its primary progression work on 2026-09-12. Prescribe 200 lb \u00d7 17 @ RPE 8 and 195 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 300 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 305 lb.",
+          "when_to_add_load": "Reach 12 clean reps at 300 lb at RPE 9.5 or lower; then increase to 305 lb.",
           "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": 45,
-                "reps": 8,
-                "rpe": 5
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            },
             {
               "type": "T",
               "last": {
@@ -1474,9 +1560,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 200,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -1489,6 +1575,23 @@ window.PROGRAM = {
                 "lbs": 65,
                 "reps": 8,
                 "rpe": 9
+              },
+              "prop": {
+                "lbs": 195,
+                "reps": "17",
+                "rpe": 8.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
+            {
+              "type": "W",
+              "last": {
+                "lbs": 45,
+                "reps": 8,
+                "rpe": 5
               },
               "prop": {
                 "lbs": null,
@@ -1522,7 +1625,28 @@ window.PROGRAM = {
           "primaryReference": {
             "sessionId": "d723d8cd-57e3-4683-8310-ae3f913a9f1c",
             "date": "2026-09-12",
-            "sets": []
+            "sets": [
+              {
+                "lbs": 275.0,
+                "reps": 4,
+                "rpe": 6.0
+              },
+              {
+                "lbs": 300.0,
+                "reps": 13,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 275.0,
+                "reps": 9,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 250.0,
+                "reps": 9,
+                "rpe": 9.0
+              }
+            ]
           },
           "progressionEligible": false,
           "fatigueVolumeEligible": true,
@@ -1836,12 +1960,52 @@ window.PROGRAM = {
           "cues": [],
           "noWeight": false,
           "loading_type": "cable_or_machine",
-          "qc": "fail",
+          "qc": "pass",
           "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe)</b> \u00b7 Cannot prescribe supplemental volume for Incline Bicep Curl (Dumbbell): the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "assess": "Most recent primary session: 37.5 lb \u00d7 10 @ RPE 9 and 32.5 lb \u00d7 10 @ RPE 9 on 2026-09-15. Today's Day B occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Incline Bicep Curl (Dumbbell) received its primary progression work on 2026-09-15. Prescribe 20 lb \u00d7 8 @ RPE 5, then 25 lb \u00d7 17 @ RPE 8 and 20 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 37.5 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 40 lb.",
+          "when_to_add_load": "Reach 12 clean reps at 37.5 lb at RPE 9.5 or lower; then increase to 40 lb.",
           "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "prop": {
+                "lbs": 20,
+                "reps": "8",
+                "rpe": 5.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "prop": {
+                "lbs": 25,
+                "reps": "17",
+                "rpe": 8.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
             {
               "type": 1,
               "last": {
@@ -1850,9 +2014,9 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 20,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -1915,7 +2079,23 @@ window.PROGRAM = {
           "primaryReference": {
             "sessionId": "58b272ee-caf2-4acc-957e-2b6e08e7618f",
             "date": "2026-09-15",
-            "sets": []
+            "sets": [
+              {
+                "lbs": 20.0,
+                "reps": 8,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 37.5,
+                "reps": 10,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 32.5,
+                "reps": 10,
+                "rpe": 9.0
+              }
+            ]
           },
           "progressionEligible": false,
           "fatigueVolumeEligible": true,
@@ -1980,7 +2160,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-22T06:30:25.216259",
+        "generated_at": "2026-09-23T06:37:18.675890",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -2007,7 +2187,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-21T00:00:00",
+          "snapshot_date": "2026-09-22T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -2053,10 +2233,10 @@ window.PROGRAM = {
         "10.6k lbs"
       ],
       "summary": {
-        "status": "review",
+        "status": "hold",
         "headline": "DAY A \u2014 BACK / BICEPS \u2014 0 load\u2191 \u00b7 0 rep\u2191 \u00b7 0 hold \u00b7 6 non-primary excluded.",
         "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
-        "prescription": "QC: <b>1/6</b> prescriptions passed the validation gate; <b>5 flagged</b> \u2014 see the \u2717 tags below.",
+        "prescription": "QC: <b>6/6</b> prescriptions passed the validation gate.",
         "nonPrimaryExcluded": 6
       },
       "exercises": [
@@ -2075,12 +2255,46 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "band_assisted_bodyweight",
-          "qc": "fail",
+          "qc": "pass",
           "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe)</b> \u00b7 Cannot prescribe supplemental volume for Pull Up (Assisted): the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "assess": "Most recent primary session: 150 lb \u00d7 7 @ RPE 7.5, 150 lb \u00d7 7 @ RPE 8.5, 150 lb \u00d7 9 @ RPE 10, and 175 lb \u00d7 6 @ RPE 10 on 2026-05-13. Today's Day A occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Pull Up (Assisted) received its primary progression work on 2026-05-13. Prescribe 175 assist \u00d7 17 @ RPE 8 and 200 assist \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 150 assist \u00d7 15 clean reps at RPE 10 or lower before increasing to 150 assist.",
+          "when_to_add_load": "Reach 15 clean reps with 150 lb assistance at RPE 10 or lower; then reduce assistance to 125 lb.",
           "sets": [
+            {
+              "type": "T",
+              "last": {
+                "lbs": 175,
+                "reps": 13,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 175.0,
+                "reps": "17",
+                "rpe": 8.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
+            {
+              "type": 4,
+              "last": {
+                "lbs": 175,
+                "reps": 9,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 200.0,
+                "reps": "17",
+                "rpe": 8.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
             {
               "type": "W",
               "last": {
@@ -2114,40 +2328,6 @@ window.PROGRAM = {
                 "rom_note": null
               },
               "engine_role": null
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": 175,
-                "reps": 13,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            },
-            {
-              "type": 4,
-              "last": {
-                "lbs": 175,
-                "reps": 9,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
             }
           ],
           "volumeLbs": 3850.0,
@@ -2171,7 +2351,28 @@ window.PROGRAM = {
           "primaryReference": {
             "sessionId": "d764d3ea-3ea5-405c-a904-17ff28021091",
             "date": "2026-05-13",
-            "sets": []
+            "sets": [
+              {
+                "lbs": 150.0,
+                "reps": 7,
+                "rpe": 7.5
+              },
+              {
+                "lbs": 150.0,
+                "reps": 7,
+                "rpe": 8.5
+              },
+              {
+                "lbs": 150.0,
+                "reps": 9,
+                "rpe": 10.0
+              },
+              {
+                "lbs": 175.0,
+                "reps": 6,
+                "rpe": 10.0
+              }
+            ]
           },
           "progressionEligible": false,
           "fatigueVolumeEligible": true,
@@ -2202,11 +2403,11 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "cable_or_machine",
-          "qc": "fail",
+          "qc": "pass",
           "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe)</b> \u00b7 Cannot prescribe supplemental volume for Bent Over Row (Barbell): the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "assess": "Most recent primary session: 154 lb \u00d7 11 @ RPE 9 and 143 lb \u00d7 10 @ RPE 9 on 2026-09-10. Today's Day A occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Bent Over Row (Barbell) received its primary progression work on 2026-09-10. Prescribe 120 lb \u00d7 5 @ RPE 6, then 105 lb \u00d7 17 @ RPE 8 and 100 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 154 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 160 lb.",
+          "when_to_add_load": "Reach 12 clean reps at 154 lb at RPE 9.5 or lower; then increase to 160 lb.",
           "sets": [
             {
               "type": "W",
@@ -2216,9 +2417,9 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 120,
+                "reps": "5",
+                "rpe": 6.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2250,9 +2451,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 105,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2267,9 +2468,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 100,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2298,7 +2499,28 @@ window.PROGRAM = {
           "primaryReference": {
             "sessionId": "957008a5-c3e2-479d-a3ea-bb75a015c252",
             "date": "2026-09-10",
-            "sets": []
+            "sets": [
+              {
+                "lbs": 88.0,
+                "reps": 8,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 121.0,
+                "reps": 5,
+                "rpe": 6.0
+              },
+              {
+                "lbs": 154.0,
+                "reps": 11,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 143.0,
+                "reps": 10,
+                "rpe": 9.0
+              }
+            ]
           },
           "progressionEligible": false,
           "fatigueVolumeEligible": true,
@@ -2329,11 +2551,11 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "cable_or_machine",
-          "qc": "fail",
+          "qc": "pass",
           "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe)</b> \u00b7 Cannot prescribe supplemental volume for Incline Bicep Curl (Dumbbell): the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "assess": "Most recent primary session: 22.5 lb \u00d7 15 @ RPE 9 and 22.8 lb \u00d7 15 @ RPE 9 on 2026-09-13. Today's Day A occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Incline Bicep Curl (Dumbbell) received its primary progression work on 2026-09-13. Prescribe 15 lb \u00d7 10 @ RPE 5, then 15 lb \u00d7 17 @ RPE 8 and 10 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 22.8 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 30 lb.",
+          "when_to_add_load": "Reach 12 clean reps at 22.8 lb at RPE 9.5 or lower; then increase to 30 lb.",
           "sets": [
             {
               "type": "W",
@@ -2343,9 +2565,9 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 15,
+                "reps": "10",
+                "rpe": 5.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2360,9 +2582,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 15,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2377,9 +2599,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 10,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2408,7 +2630,23 @@ window.PROGRAM = {
           "primaryReference": {
             "sessionId": "16da60fc-24ec-4836-8f87-89f802947f99",
             "date": "2026-09-13",
-            "sets": []
+            "sets": [
+              {
+                "lbs": 15.0,
+                "reps": 10,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 22.5,
+                "reps": 15,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 22.8,
+                "reps": 15,
+                "rpe": 9.0
+              }
+            ]
           },
           "progressionEligible": false,
           "fatigueVolumeEligible": true,
@@ -2438,11 +2676,11 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "cable_or_machine",
-          "qc": "fail",
+          "qc": "pass",
           "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe)</b> \u00b7 Cannot prescribe supplemental volume for One Arm Row (Dumbbell): the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "assess": "Most recent primary session: 154 lb \u00d7 11 @ RPE 9 and 143 lb \u00d7 10 @ RPE 9 on 2026-09-10. Today's Day A occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 One Arm Row (Dumbbell) received its primary progression work on 2026-09-10. Prescribe 120 lb \u00d7 5 @ RPE 6, then 105 lb \u00d7 17 @ RPE 8 and 100 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 154 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 160 lb.",
+          "when_to_add_load": "Reach 12 clean reps at 154 lb at RPE 9.5 or lower; then increase to 160 lb.",
           "sets": [
             {
               "type": "W",
@@ -2452,9 +2690,9 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 120,
+                "reps": "5",
+                "rpe": 6.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2486,9 +2724,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 105,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2503,9 +2741,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 100,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2534,7 +2772,28 @@ window.PROGRAM = {
           "primaryReference": {
             "sessionId": "957008a5-c3e2-479d-a3ea-bb75a015c252",
             "date": "2026-09-10",
-            "sets": []
+            "sets": [
+              {
+                "lbs": 88.0,
+                "reps": 8,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 121.0,
+                "reps": 5,
+                "rpe": 6.0
+              },
+              {
+                "lbs": 154.0,
+                "reps": 11,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 143.0,
+                "reps": 10,
+                "rpe": 9.0
+              }
+            ]
           },
           "progressionEligible": false,
           "fatigueVolumeEligible": true,
@@ -2565,11 +2824,11 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "cable_or_machine",
-          "qc": "fail",
+          "qc": "pass",
           "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe)</b> \u00b7 Cannot prescribe supplemental volume for Cross Body Hammer Curl (Dumbbell): the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "assess": "Most recent primary session: 22.5 lb \u00d7 15 @ RPE 9 and 22.8 lb \u00d7 15 @ RPE 9 on 2026-09-13. Today's Day A occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Cross Body Hammer Curl (Dumbbell) received its primary progression work on 2026-09-13. Prescribe 15 lb \u00d7 10 @ RPE 5, then 15 lb \u00d7 17 @ RPE 8 and 10 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 22.8 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 30 lb.",
+          "when_to_add_load": "Reach 12 clean reps at 22.8 lb at RPE 9.5 or lower; then increase to 30 lb.",
           "sets": [
             {
               "type": "W",
@@ -2579,9 +2838,9 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 15,
+                "reps": "10",
+                "rpe": 5.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2596,9 +2855,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 15,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2613,9 +2872,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 10,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2644,7 +2903,23 @@ window.PROGRAM = {
           "primaryReference": {
             "sessionId": "16da60fc-24ec-4836-8f87-89f802947f99",
             "date": "2026-09-13",
-            "sets": []
+            "sets": [
+              {
+                "lbs": 15.0,
+                "reps": 10,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 22.5,
+                "reps": 15,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 22.8,
+                "reps": 15,
+                "rpe": 9.0
+              }
+            ]
           },
           "progressionEligible": false,
           "fatigueVolumeEligible": true,
@@ -2879,7 +3154,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-22T06:30:25.216259",
+        "generated_at": "2026-09-23T06:37:18.675890",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -2906,7 +3181,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-21T00:00:00",
+          "snapshot_date": "2026-09-22T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -2953,9 +3228,9 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY C \u2014 DELTS / ABS \u2014 1 load\u2191 \u00b7 1 rep\u2191 \u00b7 0 hold \u00b7 4 non-primary excluded.",
+        "headline": "DAY C \u2014 DELTS / ABS \u2014 0 load\u2191 \u00b7 1 rep\u2191 \u00b7 1 hold \u00b7 4 non-primary excluded.",
         "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
-        "prescription": "QC: <b>2/6</b> prescriptions passed the validation gate; <b>4 flagged</b> \u2014 see the \u2717 tags below.",
+        "prescription": "QC: <b>5/6</b> prescriptions passed the validation gate; <b>1 flagged</b> \u2014 see the \u2717 tags below.",
         "nonPrimaryExcluded": 4
       },
       "exercises": [
@@ -3125,12 +3400,52 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "band_resisted_isolation",
-          "qc": "fail",
+          "qc": "pass",
           "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe)</b> \u00b7 Cannot prescribe supplemental volume for Lateral Raise (Band): the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "assess": "Most recent primary session: 30 lb \u00d7 12 @ RPE 10, 25 lb \u00d7 15 @ RPE 8, and 22.5 lb \u00d7 13 @ RPE 9 on 2026-09-07. Today's Day C occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Lateral Raise (Band) received its primary progression work on 2026-09-07. Prescribe 35 lb \u00d7 8 @ RPE 5, then 35 lb \u00d7 17 @ RPE 8 and 35 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 30 lb \u00d7 15 clean reps at RPE 9 or lower before increasing to 35 lb.",
+          "when_to_add_load": "Reach 15 clean reps at 35 lb at RPE 9 or lower; then step up to 45 lb.",
           "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "prop": {
+                "lbs": 35.0,
+                "reps": "8",
+                "rpe": 5.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "prop": {
+                "lbs": 35.0,
+                "reps": "17",
+                "rpe": 8.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
             {
               "type": 1,
               "last": {
@@ -3139,9 +3454,9 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 35.0,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -3221,7 +3536,28 @@ window.PROGRAM = {
           "primaryReference": {
             "sessionId": "f81dea43-af5c-4658-9661-206305351212",
             "date": "2026-09-07",
-            "sets": []
+            "sets": [
+              {
+                "lbs": 17.5,
+                "reps": 8,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 30.0,
+                "reps": 12,
+                "rpe": 10.0
+              },
+              {
+                "lbs": 25.0,
+                "reps": 15,
+                "rpe": 8.0
+              },
+              {
+                "lbs": 22.5,
+                "reps": 13,
+                "rpe": 9.0
+              }
+            ]
           },
           "progressionEligible": false,
           "fatigueVolumeEligible": true,
@@ -3253,9 +3589,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "cable_or_machine",
           "qc": "fail",
-          "action": "increase_load",
+          "action": "hold",
           "assess": "Last top set: 30 lb \u00d7 15 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2717 QC fail: dropped_working_set(performed=3,slots=2)</b> \u00b7 All working sets near the top (15/16/15) \u2014 earn the jump; top set 30\u219235; +16.7% load costs ~6 reps, so the rep target drops 15\u21929 [range 7-9]. Isolation: only loaded once the whole cluster is productive. Back-off earned its own jump too \u2014 30 for 14-16, rebuilding to the reps it just produced.",
+          "rationale": "<b>\u2717 QC fail: dropped_working_set(performed=3,slots=2), isolation_load_jump_capped(from=30,to=35,pct=16.6667,predicted_reps=7)</b> \u00b7 Hold 30 \u2014 the smallest available step (30\u219235) would exceed the 10% isolation load-jump cap; chase additional reps at this load, aim for cleaner execution/lower RPE at 30, or plan a slower progression before forcing the jump. Back-off already reached its own 12-rep anchor at its own load (30) for 16 \u2014 it holds there because the top set has not yet earned its own load jump.",
           "when_to_add_load": "Reach 12 clean reps at 30 lb at RPE 9.5 or lower; then increase to 35 lb.",
           "sets": [
             {
@@ -3266,7 +3602,7 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 20,
+                "lbs": 15,
                 "reps": "8",
                 "rpe": 5.0,
                 "tempo_seconds": null,
@@ -3283,9 +3619,9 @@ window.PROGRAM = {
                 "rpe": 9
               },
               "prop": {
-                "lbs": 35,
-                "reps": "7\u20139",
-                "rpe": 9.0,
+                "lbs": 30,
+                "reps": "15\u201316",
+                "rpe": 9.5,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -3301,7 +3637,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 30,
-                "reps": "14\u201316",
+                "reps": "16",
                 "rpe": 9.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
@@ -3576,10 +3912,10 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "cable_or_machine",
-          "qc": "fail",
+          "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 0 lb \u00d7 8 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2717 QC fail: anomalous_set_excluded(reps=14,rpe=8,vs_reps=8,vs_rpe=9), anomalous_set_excluded(reps=12,rpe=9,vs_reps=8,vs_rpe=9)</b> \u00b7 Hold 0 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (0) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "rationale": "<b>\u2713 QC pass \u2014 anomalous_set_excluded(reps=14,rpe=8,vs_reps=8,vs_rpe=9), anomalous_set_excluded(reps=12,rpe=9,vs_reps=8,vs_rpe=9)</b> \u00b7 Hold 0 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (0) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
           "when_to_add_load": "Reach 12 clean reps at 0 lb at RPE 9.5 or lower; then increase to 5 lb.",
           "sets": [
             {
@@ -3989,12 +4325,52 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "cable_or_machine",
-          "qc": "fail",
+          "qc": "pass",
           "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe)</b> \u00b7 Cannot prescribe supplemental volume for Incline Bicep Curl (Dumbbell): the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "assess": "Most recent primary session: 37.5 lb \u00d7 10 @ RPE 9 and 32.5 lb \u00d7 11 @ RPE 9 on 2026-09-10. Today's Day C occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Incline Bicep Curl (Dumbbell) received its primary progression work on 2026-09-10. Prescribe 20 lb \u00d7 8 @ RPE 5, then 25 lb \u00d7 17 @ RPE 8 and 20 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 37.5 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 40 lb.",
+          "when_to_add_load": "Reach 12 clean reps at 37.5 lb at RPE 9.5 or lower; then increase to 40 lb.",
           "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "prop": {
+                "lbs": 20,
+                "reps": "8",
+                "rpe": 5.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "prop": {
+                "lbs": 25,
+                "reps": "17",
+                "rpe": 8.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
             {
               "type": 1,
               "last": {
@@ -4003,9 +4379,9 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 20,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -4068,7 +4444,23 @@ window.PROGRAM = {
           "primaryReference": {
             "sessionId": "957008a5-c3e2-479d-a3ea-bb75a015c252",
             "date": "2026-09-10",
-            "sets": []
+            "sets": [
+              {
+                "lbs": 20.0,
+                "reps": 8,
+                "rpe": 5.0
+              },
+              {
+                "lbs": 37.5,
+                "reps": 10,
+                "rpe": 9.0
+              },
+              {
+                "lbs": 32.5,
+                "reps": 11,
+                "rpe": 9.0
+              }
+            ]
           },
           "progressionEligible": false,
           "fatigueVolumeEligible": true,

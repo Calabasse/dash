@@ -1185,7 +1185,41 @@
       "rep_overshoot_step": 3
     },
     "repeated_set_fatigue_decay_threshold": 0.25,
-    "anomalous_set_rep_gain_threshold": 0.5
+    "anomalous_set_rep_gain_threshold": 0.5,
+    "isolation_load_jump": {
+      "max_pct_increase": 10,
+      "min_predicted_reps": 8
+    },
+    "qc_issue_severity": {
+      "set_role_conflict": "warn",
+      "anomalous_set_excluded": "warn",
+      "anomalous_set_retained_would_empty_pool": "warn",
+      "reference_volume_exceeded_profile_slots": "warn",
+      "no_working_sets": "fail",
+      "insufficient_performed_input": "fail",
+      "insufficient_reference_input": "fail",
+      "missing": "fail",
+      "dropped_working_set": "fail",
+      "rejected_governed_value": "fail",
+      "invalid_load": "fail",
+      "non_numeric_reps": "fail",
+      "reps_min>reps_max": "fail",
+      "bodyweight_with_load": "fail",
+      "assist_not_achievable": "fail",
+      "band_not_in_ladder": "fail",
+      "band_combo_not_achievable": "fail",
+      "isolation_load_increase_without_anchor": "fail",
+      "load_increase_without_productive_backoff": "fail",
+      "no_stimulating_set": "fail",
+      "flat_template": "fail",
+      "warmup_rpe>=top": "fail",
+      "note_load_not_derivable": "fail",
+      "note_reps_not_derivable": "fail",
+      "note_backoff_claim_without_backoff_set": "fail",
+      "assess_top_set_mismatch": "fail",
+      "reference_resolution_fallback": "warn",
+      "isolation_load_jump_capped": "warn"
+    }
   },
   "engine_constants_meta": {
     "warmup_load_margin": {
@@ -1253,6 +1287,18 @@
       "ratified_by": "chadcrawford",
       "ratifying_authority": "phase 06.3.1 decision D-03; plan 06.3.1-01 Task 2 checkpoint:decision (gate=blocking), option-a: 'D-02 = 0.25, D-03 = 0.50'",
       "note": "The fraction of rep gain between a working set and its immediately preceding working set, where the later set's effective load is at or below the earlier set's, and the later set's RPE is at or below the earlier set's RPE, above which the later set is hard-excluded from progression anchoring as an anomalous outlier rather than blended into the top-set signal. Measured against live volm.duckdb by tools/measure_repeated_set_fatigue_decay.py: 370 qualifying pairs, 22 fires at >=50% = 5.9% fire rate -- deliberately conservative (25 percentage points of margin below the Day C Hanging Leg Raise repro's 75% gain), chosen because this constant's consequence (hard exclusion from progression anchoring) is harsher and less reversible than D-02's (a load reduction). Cleared comparison anchors: well under the 30% halt-threshold precedent set in phases 06.2/06.3, and confirmed to fire on the Day C Hanging Leg Raise audit repro (8@9 then 14@8: same/lower load, lower RPE (8<=9), gain=(14-8)/8=75%, fires at 50%). Comparison basis for the D-03 detector: a later working set whose effective load is at or below an earlier working set's, whose RPE is at or below that earlier set's, and whose reps exceed that earlier set's by at least this fraction. A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "isolation_load_jump": {
+      "ratified_date": "2026-09-23",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "phase 06.3.1.1.1.1 decision P-03 (06.3.1.1.1.1-CONTEXT.md); plan 06.3.1.1.1.1-02 Task 3 checkpoint:decision (gate=blocking), option-a: 'ratify every recommended value as measured' -- see 06.3.1.1.1.1-02-SUMMARY.md's Ratification Record for the full citation, this exact value pair, and the measured fire-rate table this plan (06.3.1.1.1.1-04) cites rather than re-deriving.",
+      "note": "max_pct_increase (10%) and min_predicted_reps (8) together bound a single isolation load-jump step: an increase is permitted only when its percentage rise is at or below max_pct_increase AND _reps_after_load_jump()'s predicted lower-bound rep target is at or above min_predicted_reps (or the exercise's own profile-TYPE min_predicted_reps override, when present -- P-03's 'unless the exercise's profile explicitly permits lower-rep work' clause). Measured against live volm.duckdb by tools/measure_isolation_load_jump.py: 125 qualifying isolation increase_load occurrences (LOADED loading types only -- barbell/dumbbell/cable_or_machine, the only branch _reps_after_load_jump() is called from). cap=7.5% and cap=10% are measured-identical (94/125 = 75.2% blocked in both -- no historical jump falls between them), so 10% is the least-restrictive choice within the PRD's own stated 5-10% range that changes nothing versus 7.5%; cap=5% is measurably more aggressive (81.6% blocked) and would over-correct jumps that are already reasonable at the smallest available equipment increment. floor=8 (89/125 = 71.2% blocked) is chosen over floor=10 (90/125 = 72.0% blocked, a 1-occurrence difference) as the PRD's own literal number ('never accept a load increase whose predicted resulting rep count falls below 8'). A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "qc_issue_severity": {
+      "ratified_date": "2026-09-22",
+      "ratified_by": "chadcrawford",
+      "ratifying_authority": "phase 06.3.1.1.1.1 decision P-10 (06.3.1.1.1.1-CONTEXT.md); plan 06.3.1.1.1.1-01 Task 1/Task 2",
+      "note": "Per-issue-code severity tier consumed by _qc_severity_for_issue()/_qc_status_from_issues() (tools/prescribe_hypertrophy.py). qc_status keeps its existing two-value contract (\"pass\"/\"fail\"); this map supplies the additive Prescription.qc_severity field's five-way distinction without changing what build_card_data.format_qc_tag() reads. set_role_conflict is P-10 category (2) present-but-misclassified: plan 05.1-02 (ratified 2026-08-15) already repairs the misclassification by promoting the set into the prescription's own working-set selection before validate() ever runs, so the QC code is downgraded to warn -- it is a display-only advisory about the input label, not a defect in the prescribed numbers. reference_resolution_fallback (added phase 06.3.1.1.1.1 plan 03, ratified 2026-09-22) is P-10 category (3), \"reference-resolution failure\": P-01's fallback chain (exact -> exact_relaxed -> cluster -> fail-closed) resolves this code to warn per P-01's own explicit \"warn, continue\" requirement -- the prescription it accompanies is a real, defensible one built from real performed data, never a hard failure; only the terminal fail-closed case (insufficient_reference_input, unchanged by this addition) still hard-fails. isolation_load_jump_capped (added phase 06.3.1.1.1.1 plan 04, ratified 2026-09-23) is P-10 category (4), \"physiologically implausible prescription\" made SAFE rather than fired as a hard failure: a capped jump is a deliberate, inspectable hold/chase-reps decision, not a defect, so it is downgraded to warn -- the athlete still gets a defensible, real prescription, and the blocked limit (percentage or predicted reps) is named in the code's own payload. Any issue-code prefix absent from this map resolves to fail (_qc_severity_for_issue()'s fail-closed-by-omission default): a future code added without a deliberate severity choice must behave exactly as it does today (hard QC failure), never silently downgrade. 06.2's D-02 dropped_working_set is explicitly NOT downgraded by this phase -- it keeps fail, matching 06.2-CONTEXT.md's ratified QC-visibility-only posture, which this phase is scoped out of reopening. A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
     }
   },
   "occurrence_classification": {
