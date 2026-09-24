@@ -47,7 +47,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-23T06:37:18.675890",
+        "generated_at": "2026-09-24T06:30:15.432100",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -74,7 +74,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-22T00:00:00",
+          "snapshot_date": "2026-09-23T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -121,9 +121,9 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY C \u2014 DELTS / ABS \u2014 0 load\u2191 \u00b7 1 rep\u2191 \u00b7 1 hold \u00b7 3 non-primary excluded.",
+        "headline": "DAY C \u2014 DELTS / ABS \u2014 0 load\u2191 \u00b7 0 rep\u2191 \u00b7 2 hold \u00b7 3 non-primary excluded.",
         "assess": "5 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
-        "prescription": "QC: <b>4/5</b> prescriptions passed the validation gate; <b>1 flagged</b> \u2014 see the \u2717 tags below.",
+        "prescription": "QC: <b>3/5</b> prescriptions passed the validation gate; <b>2 flagged</b> \u2014 see the \u2717 tags below.",
         "nonPrimaryExcluded": 3
       },
       "exercises": [
@@ -788,10 +788,10 @@ window.PROGRAM = {
           ],
           "noWeight": false,
           "loading_type": "cable_or_machine",
-          "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 0 lb \u00d7 8 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass \u2014 anomalous_set_excluded(reps=17,rpe=8,vs_reps=8,vs_rpe=9), anomalous_set_excluded(reps=15,rpe=9,vs_reps=8,vs_rpe=9), anomalous_set_excluded(reps=12,rpe=9,vs_reps=8,vs_rpe=9)</b> \u00b7 Hold 0 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off 0 for 10-15 \u2014 derived from the top set; no matching performed back-off was logged.",
+          "qc": "fail",
+          "action": "hold",
+          "assess": "Last top set: 0 lb \u00d7 15 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2717 QC fail: dropped_working_set(performed=3,slots=2), anomalous_set_excluded(reps=8,rpe=9,vs_reps=15,vs_rpe=9,cluster_size=3), isolation_load_jump_capped(from=0,to=5,pct=none,predicted_reps=8)</b> \u00b7 Hold 0 \u2014 no further load increment is available for this equipment; chase additional reps at this load, aim for cleaner execution/lower RPE at 0, or plan a slower progression before forcing the jump. Back-off already reached its own 12-rep anchor at its own load (0) for 17 \u2014 it holds there because the top set has not yet earned its own load jump.",
           "when_to_add_load": "Reach 12 clean reps at 0 lb at RPE 9.5 or lower; then increase to 5 lb.",
           "sets": [
             {
@@ -826,7 +826,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 0,
-                "reps": "8\u201315",
+                "reps": "15\u201317",
                 "rpe": 9.5,
                 "tempo_seconds": null,
                 "pause_seconds": null,
@@ -843,7 +843,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 0,
-                "reps": "10\u201315",
+                "reps": "17",
                 "rpe": 9.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
@@ -1172,7 +1172,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-23T06:37:18.675890",
+        "generated_at": "2026-09-24T06:30:15.432100",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -1199,7 +1199,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-22T00:00:00",
+          "snapshot_date": "2026-09-23T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -2160,7 +2160,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-23T06:37:18.675890",
+        "generated_at": "2026-09-24T06:30:15.432100",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -2187,7 +2187,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-22T00:00:00",
+          "snapshot_date": "2026-09-23T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -2257,8 +2257,8 @@ window.PROGRAM = {
           "loading_type": "band_assisted_bodyweight",
           "qc": "pass",
           "action": "supplemental",
-          "assess": "Most recent primary session: 150 lb \u00d7 7 @ RPE 7.5, 150 lb \u00d7 7 @ RPE 8.5, 150 lb \u00d7 9 @ RPE 10, and 175 lb \u00d7 6 @ RPE 10 on 2026-05-13. Today's Day A occurrence is classified as a supplemental-volume exposure.",
-          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Pull Up (Assisted) received its primary progression work on 2026-05-13. Prescribe 175 assist \u00d7 17 @ RPE 8 and 200 assist \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 150 assist \u00d7 15 clean reps at RPE 10 or lower before increasing to 150 assist.",
+          "assess": "Most recent primary session: 150 lb \u00d7 7 @ RPE 7.5, 150 lb \u00d7 7 @ RPE 8.5, and 175 lb \u00d7 6 @ RPE 10 on 2026-05-13. Today's Day A occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u2713 QC pass \u2014 anomalous_set_excluded(reps=9,rpe=10,vs_reps=7,vs_rpe=8,cluster_size=2), reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Pull Up (Assisted) received its primary progression work on 2026-05-13. Prescribe 175 assist \u00d7 17 @ RPE 8 and 200 assist \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 150 assist \u00d7 15 clean reps at RPE 10 or lower before increasing to 150 assist.",
           "when_to_add_load": "Reach 15 clean reps with 150 lb assistance at RPE 10 or lower; then reduce assistance to 125 lb.",
           "sets": [
             {
@@ -3154,7 +3154,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-23T06:37:18.675890",
+        "generated_at": "2026-09-24T06:30:15.432100",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -3181,7 +3181,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-22T00:00:00",
+          "snapshot_date": "2026-09-23T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -3228,7 +3228,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY C \u2014 DELTS / ABS \u2014 0 load\u2191 \u00b7 1 rep\u2191 \u00b7 1 hold \u00b7 4 non-primary excluded.",
+        "headline": "DAY C \u2014 DELTS / ABS \u2014 0 load\u2191 \u00b7 0 rep\u2191 \u00b7 2 hold \u00b7 4 non-primary excluded.",
         "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>5/6</b> prescriptions passed the validation gate; <b>1 flagged</b> \u2014 see the \u2717 tags below.",
         "nonPrimaryExcluded": 4
@@ -3913,9 +3913,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "cable_or_machine",
           "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 0 lb \u00d7 8 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass \u2014 anomalous_set_excluded(reps=14,rpe=8,vs_reps=8,vs_rpe=9), anomalous_set_excluded(reps=12,rpe=9,vs_reps=8,vs_rpe=9)</b> \u00b7 Hold 0 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (0) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "action": "hold",
+          "assess": "Last top set: 0 lb \u00d7 12 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass \u2014 anomalous_set_excluded(reps=8,rpe=9,vs_reps=11,vs_rpe=9,cluster_size=4), isolation_load_jump_capped(from=0,to=5,pct=none,predicted_reps=8)</b> \u00b7 Hold 0 \u2014 no further load increment is available for this equipment; chase additional reps at this load, aim for cleaner execution/lower RPE at 0, or plan a slower progression before forcing the jump. Back-off already reached its own 12-rep anchor at its own load (0) for 14-15 \u2014 it holds there because the top set has not yet earned its own load jump.",
           "when_to_add_load": "Reach 12 clean reps at 0 lb at RPE 9.5 or lower; then increase to 5 lb.",
           "sets": [
             {
@@ -3950,7 +3950,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 0,
-                "reps": "8\u201315",
+                "reps": "12\u201315",
                 "rpe": 9.5,
                 "tempo_seconds": null,
                 "pause_seconds": null,
@@ -3967,7 +3967,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 0,
-                "reps": "10\u201312",
+                "reps": "14\u201315",
                 "rpe": 9.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
