@@ -1387,7 +1387,11 @@
       },
       "bodyweight": {}
     },
-    "fatigue_volume_weighting": {}
+    "fatigue_volume_weighting": {
+      "primary_progression": 1.0,
+      "supplemental_volume": 0.6,
+      "bloodflow_recovery": 0.3
+    }
   },
   "occurrence_classification_meta": {
     "recovery_windows.bloodflow_fraction_of_recovery_hours": {
@@ -1587,6 +1591,12 @@
       "ratified_by": "Chad Crawford (Program Director)",
       "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: bodyweight emits rep and RPE targets only -- explicit entry (empty override dict, mechanism is code-level: lbs forced to None) proving deliberate consideration (T-06.1-32).",
       "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "fatigue_volume_weighting": {
+      "ratified_date": "2026-09-24",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "plan 06.3.1.1.1.1-07 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-24, option-a: confirm the corrected session-scoped architecture as written. P-09 (workload hierarchy) is implemented by apply_session_workload_hierarchy() (tools/occurrence_classifier.py). P-08 (supplemental_fatigue_weighting) is DEFERRED, NOT implemented and NOT closed -- these weights do not influence whether or how much same-session non-primary volume is reduced; the session pass's reduction is an unconditional all-or-nothing trade once its trigger fires, so a real P-08 (a weight-sensitive reduction, e.g. a partial reduction whose depth is a function of the weight) remains an open requirement for a future plan.",
+      "note": "primary_progression=1.0, supplemental_volume=0.6, bloodflow_recovery=0.3 are ENGINEERING-JUDGMENT POLICY DEFAULTS, not measured: no candidate weight or counterfactual verdict exists to measure them against (Plan 02's P-08 instrument is a descriptive-only cross-tabulation, and fatigue_state is never recomputed under a weighted model), so the number itself carries no empirical derivation. Supporting context only, never a derivation: 06.3.1.1.1.1-MEASUREMENTS.md section P-08 (494 (session, muscle_group, exercise) rows across 95 sessions; 157 of 304 (session, muscle_group) pairs, 51.6%, carry more than one exercise on the same muscle in the same session; 69 supplemental occurrences also carry fatigue_state=high; 21 skip_overlap occurrences, every one at fatigue_state=high). These weights are consumed ONLY by apply_session_workload_hierarchy(), and ONLY to compute the weighted-volume figure it records in classification_reasons for observability. They are NEVER consumed by get_recovery_hours() (app/services/analytics/recovery_model.py, untouched) or fatigue_state_for_sets() (untouched). This REFINES 06.3.1's D-01 (muscle-level recovery gating plus the graduated supplemental-volume cap) rather than adding a parallel fatigue system: the session pass reads the resolver's already-decided role/role_source/classification_reasons and never recomputes fatigue. Trigger rule (Task 1, option-a): a same-session supplemental or blood-flow occurrence present on the escalated primary's muscle group -- presence-based, can fire even when that volume did not cause the escalation (accepted false-positive direction, favors holding a primary over silently dropping it). Reversibility: costly (acknowledged). A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
     }
   },
   "profiles_meta": {

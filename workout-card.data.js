@@ -10,8 +10,8 @@ window.PROGRAM = {
       "nextAvailable": {
         "earliest": "2026-09-23",
         "latest": "2026-09-24",
-        "fatigue_state": "moderate",
-        "driver": "delts recovery (stretch stimulus, moderate fatigue, ~52h)"
+        "fatigue_state": "high",
+        "driver": "delts recovery (stretch stimulus, high fatigue, ~64h)"
       },
       "fatigueAdvisory": {
         "fatigue_taxonomy": {
@@ -47,7 +47,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-24T06:30:15.432100",
+        "generated_at": "2026-09-25T06:30:19.659534",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -74,7 +74,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-23T00:00:00",
+          "snapshot_date": "2026-09-24T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -121,10 +121,10 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY C \u2014 DELTS / ABS \u2014 0 load\u2191 \u00b7 0 rep\u2191 \u00b7 2 hold \u00b7 3 non-primary excluded.",
+        "headline": "DAY C \u2014 DELTS / ABS \u2014 0 load\u2191 \u00b7 0 rep\u2191 \u00b7 3 hold \u00b7 2 non-primary excluded.",
         "assess": "5 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>3/5</b> prescriptions passed the validation gate; <b>2 flagged</b> \u2014 see the \u2717 tags below.",
-        "nonPrimaryExcluded": 3
+        "nonPrimaryExcluded": 2
       },
       "exercises": [
         {
@@ -142,11 +142,28 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "cable_or_machine",
           "qc": "pass",
-          "action": "skip_overlap",
-          "assess": "Most recent primary session: 30 lb \u00d7 11 @ RPE 9, 25 lb \u00d7 13 @ RPE 9, and 22.5 lb \u00d7 15 @ RPE 9 on 2026-08-25.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 OMIT \u2014 Seated Lateral Raise classified skip_overlap: fatigue/recovery debt exceeds the acceptable level (high over the configured threshold) for added volume today. No working sets prescribed today.",
+          "action": "hold",
+          "assess": "Last top set: 30 lb \u00d7 13 @ RPE 10 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Held, not progressed: 30 lb \u00d7 13, a single top set only. Same-session volume on this muscle group was reduced first, so this exercise keeps one held set instead of being skipped or advanced.",
           "when_to_add_load": "Reach 12 clean reps at 30 lb at RPE 9.5 or lower; then increase to 35 lb.",
           "sets": [
+            {
+              "type": "T",
+              "last": {
+                "lbs": 30,
+                "reps": 13,
+                "rpe": 10
+              },
+              "prop": {
+                "lbs": 30,
+                "reps": "13",
+                "rpe": 9.5,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "working"
+            },
             {
               "type": "W",
               "last": {
@@ -162,24 +179,7 @@ window.PROGRAM = {
                 "pause_seconds": null,
                 "rom_note": null
               },
-              "engine_role": null
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": 30,
-                "reps": 13,
-                "rpe": 10
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
+              "engine_role": "warmup"
             },
             {
               "type": 3,
@@ -196,7 +196,7 @@ window.PROGRAM = {
                 "pause_seconds": null,
                 "rom_note": null
               },
-              "engine_role": null
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -213,25 +213,131 @@ window.PROGRAM = {
                 "pause_seconds": null,
                 "rom_note": null
               },
-              "engine_role": null
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 1127.5,
-          "gate_status": "no_signal",
-          "gate_reason": "Decision gate not applicable to a non-primary occurrence (occurrenceRole=skip_overlap).",
+          "gate_status": "confirmed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": null,
-          "decisionHistory": [],
+          "decisionHistory": [
+            {
+              "date": "2026-09-20",
+              "decision": "hold",
+              "decisionScore": 34.3525,
+              "decisionScoreRaw": 34.3525,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "27fcd966-09c8-4a0d-a76c-2c6e8a6c0341",
+              "outcome": null
+            },
+            {
+              "date": "2026-09-15",
+              "decision": "hold",
+              "decisionScore": 25.87333333333333,
+              "decisionScoreRaw": 25.87333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "58b272ee-caf2-4acc-957e-2b6e08e7618f",
+              "outcome": null
+            },
+            {
+              "date": "2026-09-13",
+              "decision": "hold",
+              "decisionScore": 34.29,
+              "decisionScoreRaw": 34.29,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "16da60fc-24ec-4836-8f87-89f802947f99",
+              "outcome": null
+            },
+            {
+              "date": "2026-09-10",
+              "decision": "hold",
+              "decisionScore": 25.9775,
+              "decisionScoreRaw": 25.9775,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "957008a5-c3e2-479d-a3ea-bb75a015c252",
+              "outcome": null
+            },
+            {
+              "date": "2026-09-07",
+              "decision": "hold",
+              "decisionScore": 33.51916666666666,
+              "decisionScoreRaw": 33.51916666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "f81dea43-af5c-4658-9661-206305351212",
+              "outcome": null
+            }
+          ],
           "increaseCutoff": 0.75,
           "reduceCutoff": -1.25,
-          "ignoredDecision": {
-            "date": "2026-09-20",
-            "decision": "hold",
-            "source": "program_builder_v2"
-          },
+          "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": null,
-          "occurrenceRole": "skip_overlap",
+          "effectiveness": {
+            "window": [
+              {
+                "sessionId": "f308cefb-9b0e-4481-acbd-1617a58bac3e",
+                "date": "2026-08-25",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
+                "date": "2026-08-21",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+                "date": "2026-08-15",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
+                "date": "2026-08-08",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
+                "date": "2026-08-04",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              }
+            ],
+            "validCount": 5,
+            "progressCount": 3,
+            "regressCount": 2,
+            "neutralCount": 0,
+            "scores": [
+              -1.0,
+              1.0,
+              -1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "occurrenceRole": "primary_progression",
           "roleSource": "recovery_override",
           "roleConfidence": "medium",
           "primaryReference": {
@@ -260,8 +366,8 @@ window.PROGRAM = {
               }
             ]
           },
-          "progressionEligible": false,
-          "fatigueVolumeEligible": false,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role read from persisted occurrence_role table",
             "Day C inferred as primary owner: won 5/6 ownership signals over the runner-up (0).",
@@ -276,7 +382,8 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'high'.",
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 52h.",
             "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression.",
-            "Escalation: fatigue_state=high overrides the history_inference-decided primary_progression result -> skip_overlap (bounded post-resolution escalation; single destination, cannot override a manual override)."
+            "Escalation: fatigue_state=high overrides the history_inference-decided primary_progression result -> skip_overlap (bounded post-resolution escalation; single destination, cannot override a manual override).",
+            "Session workload hierarchy: restored to primary_progression and held at reduced volume (a single top set at its last performed load) instead of skip_overlap -- same-session volume on the same muscle group (shoulders) from lateral_raise_(band) was traded away first (weighted volume 1.2, observability only; the ratified weights never decide whether or how much is reduced)."
           ]
         },
         {
@@ -294,51 +401,11 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "band_resisted_isolation",
           "qc": "pass",
-          "action": "supplemental",
-          "assess": "Most recent primary session: 30 lb \u00d7 12 @ RPE 10, 25 lb \u00d7 16 @ RPE 9, and 22.5 lb \u00d7 16 @ RPE 9 on 2026-09-13. Today's Day C occurrence is classified as a supplemental-volume exposure.",
-          "rationale": "<b>\u2713 QC pass \u2014 reference_volume_exceeded_profile_slots(performed=3,slots=2,delta=1), reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Lateral Raise (Band) received its primary progression work on 2026-09-13. Prescribe 35 lb \u00d7 8 @ RPE 5, then 35 lb \u00d7 17 @ RPE 8 and 35 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 30 lb \u00d7 15 clean reps at RPE 9 or lower before increasing to 35 lb.",
+          "action": "skip_overlap",
+          "assess": "Most recent primary session: 30 lb \u00d7 12 @ RPE 10, 25 lb \u00d7 16 @ RPE 9, and 22.5 lb \u00d7 16 @ RPE 9 on 2026-09-13.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 OMIT \u2014 Lateral Raise (Band) classified skip_overlap: fatigue/recovery debt exceeds the acceptable level (high over the configured threshold) for added volume today. No working sets prescribed today.",
           "when_to_add_load": "Reach 15 clean reps at 35 lb at RPE 9 or lower; then step up to 45 lb.",
           "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "prop": {
-                "lbs": 35.0,
-                "reps": "8",
-                "rpe": 5.0,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "prop": {
-                "lbs": 35.0,
-                "reps": "17",
-                "rpe": 8.0,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            },
             {
               "type": 1,
               "last": {
@@ -347,9 +414,9 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 35.0,
-                "reps": "17",
-                "rpe": 8.0,
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -393,7 +460,7 @@ window.PROGRAM = {
           ],
           "volumeLbs": 2970.0,
           "gate_status": "no_signal",
-          "gate_reason": "Decision gate not applicable to a non-primary occurrence (occurrenceRole=supplemental_volume).",
+          "gate_reason": "Decision gate not applicable to a non-primary occurrence (occurrenceRole=skip_overlap).",
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [],
@@ -406,9 +473,9 @@ window.PROGRAM = {
           },
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "supplemental_volume",
-          "roleSource": "fallback",
-          "roleConfidence": "low",
+          "occurrenceRole": "skip_overlap",
+          "roleSource": "recovery_override",
+          "roleConfidence": "medium",
           "primaryReference": {
             "sessionId": "16da60fc-24ec-4836-8f87-89f802947f99",
             "date": "2026-09-13",
@@ -436,7 +503,7 @@ window.PROGRAM = {
             ]
           },
           "progressionEligible": false,
-          "fatigueVolumeEligible": true,
+          "fatigueVolumeEligible": false,
           "classificationReasons": [
             "role read from persisted occurrence_role table",
             "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
@@ -447,7 +514,8 @@ window.PROGRAM = {
             "Recovery-hours band width for this occurrence (volume stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 40h.",
             "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
             "Level 5: shoulders muscle exposure 168h ago is at or past full recovery; not deciding.",
-            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume.",
+            "Session workload hierarchy: same-session supplemental occurrence re-routed from supplemental_volume to skip_overlap -- seated_lateral_raise on the same muscle group (shoulders) was escalated to skip_overlap by fatigue_state=high in this session; same-session supplemental volume is reduced before a primary is compromised (weighted volume traded away: 1.2 of 2 raw working sets at weight 0.6, observability only)."
           ]
         },
         {
@@ -1172,7 +1240,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-24T06:30:15.432100",
+        "generated_at": "2026-09-25T06:30:19.659534",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -1199,7 +1267,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-23T00:00:00",
+          "snapshot_date": "2026-09-24T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -2160,7 +2228,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-24T06:30:15.432100",
+        "generated_at": "2026-09-25T06:30:19.659534",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -2187,7 +2255,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-23T00:00:00",
+          "snapshot_date": "2026-09-24T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -3117,8 +3185,8 @@ window.PROGRAM = {
       "nextAvailable": {
         "earliest": "2026-09-16",
         "latest": "2026-09-17",
-        "fatigue_state": "moderate",
-        "driver": "delts recovery (stretch stimulus, moderate fatigue, ~52h)"
+        "fatigue_state": "high",
+        "driver": "delts recovery (stretch stimulus, high fatigue, ~64h)"
       },
       "fatigueAdvisory": {
         "fatigue_taxonomy": {
@@ -3154,7 +3222,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-24T06:30:15.432100",
+        "generated_at": "2026-09-25T06:30:19.659534",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -3181,7 +3249,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-23T00:00:00",
+          "snapshot_date": "2026-09-24T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -3228,10 +3296,10 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY C \u2014 DELTS / ABS \u2014 0 load\u2191 \u00b7 0 rep\u2191 \u00b7 2 hold \u00b7 4 non-primary excluded.",
+        "headline": "DAY C \u2014 DELTS / ABS \u2014 0 load\u2191 \u00b7 0 rep\u2191 \u00b7 3 hold \u00b7 3 non-primary excluded.",
         "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>5/6</b> prescriptions passed the validation gate; <b>1 flagged</b> \u2014 see the \u2717 tags below.",
-        "nonPrimaryExcluded": 4
+        "nonPrimaryExcluded": 3
       },
       "exercises": [
         {
@@ -3249,11 +3317,28 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "cable_or_machine",
           "qc": "pass",
-          "action": "skip_overlap",
-          "assess": "Most recent primary session: 30 lb \u00d7 11 @ RPE 9, 25 lb \u00d7 13 @ RPE 9, and 22.5 lb \u00d7 15 @ RPE 9 on 2026-08-25.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 OMIT \u2014 Seated Lateral Raise classified skip_overlap: fatigue/recovery debt exceeds the acceptable level (high over the configured threshold) for added volume today. No working sets prescribed today.",
+          "action": "hold",
+          "assess": "Last top set: 30 lb \u00d7 12 @ RPE 10 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Held, not progressed: 30 lb \u00d7 12, a single top set only. Same-session volume on this muscle group was reduced first, so this exercise keeps one held set instead of being skipped or advanced.",
           "when_to_add_load": "Reach 12 clean reps at 30 lb at RPE 9.5 or lower; then increase to 35 lb.",
           "sets": [
+            {
+              "type": "T",
+              "last": {
+                "lbs": 30,
+                "reps": 12,
+                "rpe": 10
+              },
+              "prop": {
+                "lbs": 30,
+                "reps": "12",
+                "rpe": 9.5,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "working"
+            },
             {
               "type": "W",
               "last": {
@@ -3269,24 +3354,7 @@ window.PROGRAM = {
                 "pause_seconds": null,
                 "rom_note": null
               },
-              "engine_role": null
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": 30,
-                "reps": 12,
-                "rpe": 10
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
+              "engine_role": "warmup"
             },
             {
               "type": 3,
@@ -3303,7 +3371,7 @@ window.PROGRAM = {
                 "pause_seconds": null,
                 "rom_note": null
               },
-              "engine_role": null
+              "engine_role": "working"
             },
             {
               "type": 4,
@@ -3320,25 +3388,131 @@ window.PROGRAM = {
                 "pause_seconds": null,
                 "rom_note": null
               },
-              "engine_role": null
+              "engine_role": "working"
             }
           ],
           "volumeLbs": 1120.0,
-          "gate_status": "no_signal",
-          "gate_reason": "Decision gate not applicable to a non-primary occurrence (occurrenceRole=skip_overlap).",
+          "gate_status": "confirmed",
+          "gate_reason": null,
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": null,
-          "decisionHistory": [],
+          "decisionHistory": [
+            {
+              "date": "2026-09-20",
+              "decision": "hold",
+              "decisionScore": 34.3525,
+              "decisionScoreRaw": 34.3525,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "27fcd966-09c8-4a0d-a76c-2c6e8a6c0341",
+              "outcome": null
+            },
+            {
+              "date": "2026-09-15",
+              "decision": "hold",
+              "decisionScore": 25.87333333333333,
+              "decisionScoreRaw": 25.87333333333333,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "58b272ee-caf2-4acc-957e-2b6e08e7618f",
+              "outcome": null
+            },
+            {
+              "date": "2026-09-13",
+              "decision": "hold",
+              "decisionScore": 34.29,
+              "decisionScoreRaw": 34.29,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "16da60fc-24ec-4836-8f87-89f802947f99",
+              "outcome": null
+            },
+            {
+              "date": "2026-09-10",
+              "decision": "hold",
+              "decisionScore": 25.9775,
+              "decisionScoreRaw": 25.9775,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "957008a5-c3e2-479d-a3ea-bb75a015c252",
+              "outcome": null
+            },
+            {
+              "date": "2026-09-07",
+              "decision": "hold",
+              "decisionScore": 33.51916666666666,
+              "decisionScoreRaw": 33.51916666666666,
+              "controlProgressionBias": 0.2,
+              "controlRegressionSensitivity": -0.2,
+              "controlState": "in_band",
+              "decisionSource": "program_builder_v2",
+              "sessionId": "f81dea43-af5c-4658-9661-206305351212",
+              "outcome": null
+            }
+          ],
           "increaseCutoff": 0.75,
           "reduceCutoff": -1.25,
-          "ignoredDecision": {
-            "date": "2026-09-20",
-            "decision": "hold",
-            "source": "program_builder_v2"
-          },
+          "ignoredDecision": null,
           "outcome": null,
-          "effectiveness": null,
-          "occurrenceRole": "skip_overlap",
+          "effectiveness": {
+            "window": [
+              {
+                "sessionId": "f308cefb-9b0e-4481-acbd-1617a58bac3e",
+                "date": "2026-08-25",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "6e91840d-be60-4550-9c3f-049e3836415f",
+                "date": "2026-08-21",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "641a1853-7827-45ff-b9b9-6347daf5e5fe",
+                "date": "2026-08-15",
+                "behaviorClass": "volume_undershoot",
+                "effectivenessScore": -1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "7fe9abef-24e5-4622-9f61-473bb8ae9e64",
+                "date": "2026-08-08",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              },
+              {
+                "sessionId": "716c7d04-94d1-4009-a62b-514f2a228dbc",
+                "date": "2026-08-04",
+                "behaviorClass": "volume_overshoot",
+                "effectivenessScore": 1.0,
+                "valid": true
+              }
+            ],
+            "validCount": 5,
+            "progressCount": 3,
+            "regressCount": 2,
+            "neutralCount": 0,
+            "scores": [
+              -1.0,
+              1.0,
+              -1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "occurrenceRole": "primary_progression",
           "roleSource": "recovery_override",
           "roleConfidence": "medium",
           "primaryReference": {
@@ -3367,8 +3541,8 @@ window.PROGRAM = {
               }
             ]
           },
-          "progressionEligible": false,
-          "fatigueVolumeEligible": false,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
           "classificationReasons": [
             "role read from persisted occurrence_role table",
             "Day C inferred as primary owner: won 5/6 ownership signals over the runner-up (0).",
@@ -3383,7 +3557,8 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'high'.",
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 52h.",
             "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression.",
-            "Escalation: fatigue_state=high overrides the history_inference-decided primary_progression result -> skip_overlap (bounded post-resolution escalation; single destination, cannot override a manual override)."
+            "Escalation: fatigue_state=high overrides the history_inference-decided primary_progression result -> skip_overlap (bounded post-resolution escalation; single destination, cannot override a manual override).",
+            "Session workload hierarchy: restored to primary_progression and held at reduced volume (a single top set at its last performed load) instead of skip_overlap -- same-session volume on the same muscle group (shoulders) from lateral_raise_(band) was traded away first (weighted volume 1.8, observability only; the ratified weights never decide whether or how much is reduced)."
           ]
         },
         {
@@ -3401,51 +3576,11 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "band_resisted_isolation",
           "qc": "pass",
-          "action": "supplemental",
-          "assess": "Most recent primary session: 30 lb \u00d7 12 @ RPE 10, 25 lb \u00d7 15 @ RPE 8, and 22.5 lb \u00d7 13 @ RPE 9 on 2026-09-07. Today's Day C occurrence is classified as a supplemental-volume exposure.",
-          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 Supplemental volume \u2014 Lateral Raise (Band) received its primary progression work on 2026-09-07. Prescribe 35 lb \u00d7 8 @ RPE 5, then 35 lb \u00d7 17 @ RPE 8 and 35 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 30 lb \u00d7 15 clean reps at RPE 9 or lower before increasing to 35 lb.",
+          "action": "skip_overlap",
+          "assess": "Most recent primary session: 30 lb \u00d7 12 @ RPE 10, 25 lb \u00d7 15 @ RPE 8, and 22.5 lb \u00d7 13 @ RPE 9 on 2026-09-07.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_resolution_fallback(tier=cluster)</b> \u00b7 OMIT \u2014 Lateral Raise (Band) classified skip_overlap: fatigue/recovery debt exceeds the acceptable level (high over the configured threshold) for added volume today. No working sets prescribed today.",
           "when_to_add_load": "Reach 15 clean reps at 35 lb at RPE 9 or lower; then step up to 45 lb.",
           "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "prop": {
-                "lbs": 35.0,
-                "reps": "8",
-                "rpe": 5.0,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "prop": {
-                "lbs": 35.0,
-                "reps": "17",
-                "rpe": 8.0,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            },
             {
               "type": 1,
               "last": {
@@ -3454,9 +3589,9 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": 35.0,
-                "reps": "17",
-                "rpe": 8.0,
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -3517,7 +3652,7 @@ window.PROGRAM = {
           ],
           "volumeLbs": 3475.0,
           "gate_status": "no_signal",
-          "gate_reason": "Decision gate not applicable to a non-primary occurrence (occurrenceRole=supplemental_volume).",
+          "gate_reason": "Decision gate not applicable to a non-primary occurrence (occurrenceRole=skip_overlap).",
           "recoveryOverlapWarning": null,
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [],
@@ -3530,9 +3665,9 @@ window.PROGRAM = {
           },
           "outcome": null,
           "effectiveness": null,
-          "occurrenceRole": "supplemental_volume",
-          "roleSource": "fallback",
-          "roleConfidence": "low",
+          "occurrenceRole": "skip_overlap",
+          "roleSource": "recovery_override",
+          "roleConfidence": "medium",
           "primaryReference": {
             "sessionId": "f81dea43-af5c-4658-9661-206305351212",
             "date": "2026-09-07",
@@ -3560,7 +3695,7 @@ window.PROGRAM = {
             ]
           },
           "progressionEligible": false,
-          "fatigueVolumeEligible": true,
+          "fatigueVolumeEligible": false,
           "classificationReasons": [
             "role read from persisted occurrence_role table",
             "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
@@ -3571,7 +3706,8 @@ window.PROGRAM = {
             "Recovery-hours band width for this occurrence (volume stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 40h.",
             "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
             "Level 5: shoulders muscle exposure 144h ago is at or past full recovery; not deciding.",
-            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume."
+            "Level 8 (fallback): competing evidence existed but no level's threshold was met -> supplemental_volume.",
+            "Session workload hierarchy: same-session supplemental occurrence re-routed from supplemental_volume to skip_overlap -- seated_lateral_raise on the same muscle group (shoulders) was escalated to skip_overlap by fatigue_state=high in this session; same-session supplemental volume is reduced before a primary is compromised (weighted volume traded away: 1.8 of 3 raw working sets at weight 0.6, observability only)."
           ]
         },
         {
