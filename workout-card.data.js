@@ -47,7 +47,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-25T06:30:19.659534",
+        "generated_at": "2026-09-26T06:30:16.700305",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -74,7 +74,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-24T00:00:00",
+          "snapshot_date": "2026-09-25T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -1051,7 +1051,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "bloodflow",
           "assess": "Most recent primary session: 275 lb \u00d7 4 @ RPE 6, 300 lb \u00d7 9 @ RPE 9, 275 lb \u00d7 13 @ RPE 9, and 250 lb \u00d7 10 @ RPE 9 on 2026-09-19. Today's Day C occurrence is classified as a blood-flow/recovery exposure.",
-          "rationale": "<b>\u2713 QC pass \u2014 reference_volume_exceeded_profile_slots(performed=2,slots=1,delta=1)</b> \u00b7 Blood-flow/recovery exposure \u2014 Triceps Pushdown received its primary progression work on 2026-09-19. Prescribe 150 lb \u00d7 8 @ RPE 5 and 200 lb \u00d7 20 @ RPE 7 maximum. Stop each working set at 20 reps or RPE 7, whichever occurs first. Today's performance is excluded from primary progression decisions. The primary progression remains 300 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 305 lb.",
+          "rationale": "<b>\u2713 QC pass \u2014 reference_volume_exceeded_profile_slots(performed=2,slots=1,delta=1), bloodflow_plausibility_recompute(from=200,to=175,ref_load=175,ref_reps=20,ref_rpe=9,cap=7)</b> \u00b7 Blood-flow/recovery exposure \u2014 Triceps Pushdown received its primary progression work on 2026-09-19. Prescribe 150 lb \u00d7 8 @ RPE 5 and 175 lb \u00d7 20 @ RPE 7 maximum. Stop each working set at 20 reps or RPE 7, whichever occurs first. Today's performance is excluded from primary progression decisions. The primary progression remains 300 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 305 lb.",
           "when_to_add_load": "Reach 12 clean reps at 300 lb at RPE 9.5 or lower; then increase to 305 lb.",
           "sets": [
             {
@@ -1085,7 +1085,7 @@ window.PROGRAM = {
                 "rom_note": null
               },
               "prop": {
-                "lbs": 200,
+                "lbs": 175,
                 "reps": "20",
                 "rpe": 7.0,
                 "tempo_seconds": null,
@@ -1240,7 +1240,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-25T06:30:19.659534",
+        "generated_at": "2026-09-26T06:30:16.700305",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -1267,7 +1267,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-24T00:00:00",
+          "snapshot_date": "2026-09-25T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -2228,7 +2228,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-25T06:30:19.659534",
+        "generated_at": "2026-09-26T06:30:16.700305",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -2255,7 +2255,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-24T00:00:00",
+          "snapshot_date": "2026-09-25T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -3222,7 +3222,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-09-25T06:30:19.659534",
+        "generated_at": "2026-09-26T06:30:16.700305",
         "fatigue_signal": {
           "bent over row barbell": 1.3782222182573198,
           "chest dip assisted": 0.9375,
@@ -3249,7 +3249,7 @@ window.PROGRAM = {
           "recovery_debt": 13.148003578186035
         },
         "deload_state": {
-          "snapshot_date": "2026-09-24T00:00:00",
+          "snapshot_date": "2026-09-25T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
