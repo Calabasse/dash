@@ -47,7 +47,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-01T06:31:17.494567",
+        "generated_at": "2026-10-02T06:30:14.052088",
         "fatigue_signal": {
           "bent over row barbell": 1.0281361765282753,
           "chest dip assisted": 0.9375,
@@ -74,7 +74,7 @@ window.PROGRAM = {
           "recovery_debt": 9.909958839416504
         },
         "deload_state": {
-          "snapshot_date": "2026-09-30T00:00:00",
+          "snapshot_date": "2026-10-01T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "debt",
@@ -852,7 +852,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-01T06:31:17.494567",
+        "generated_at": "2026-10-02T06:30:14.052088",
         "fatigue_signal": {
           "bent over row barbell": 1.0281361765282753,
           "chest dip assisted": 0.9375,
@@ -879,7 +879,7 @@ window.PROGRAM = {
           "recovery_debt": 9.909958839416504
         },
         "deload_state": {
-          "snapshot_date": "2026-09-30T00:00:00",
+          "snapshot_date": "2026-10-01T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "debt",
@@ -1828,7 +1828,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-01T06:31:17.494567",
+        "generated_at": "2026-10-02T06:30:14.052088",
         "fatigue_signal": {
           "bent over row barbell": 1.0281361765282753,
           "chest dip assisted": 0.9375,
@@ -1855,7 +1855,7 @@ window.PROGRAM = {
           "recovery_debt": 9.909958839416504
         },
         "deload_state": {
-          "snapshot_date": "2026-09-30T00:00:00",
+          "snapshot_date": "2026-10-01T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "debt",
@@ -3021,7 +3021,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-01T06:31:17.494567",
+        "generated_at": "2026-10-02T06:30:14.052088",
         "fatigue_signal": {
           "bent over row barbell": 1.0281361765282753,
           "chest dip assisted": 0.9375,
@@ -3048,7 +3048,7 @@ window.PROGRAM = {
           "recovery_debt": 9.909958839416504
         },
         "deload_state": {
-          "snapshot_date": "2026-09-30T00:00:00",
+          "snapshot_date": "2026-10-01T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "debt",
