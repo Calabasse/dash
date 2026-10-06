@@ -1227,10 +1227,20 @@
       "note_backoff_claim_without_backoff_set": "fail",
       "assess_top_set_mismatch": "fail",
       "reference_resolution_fallback": "warn",
+      "reference_resolution_fallback_cross_id": "fail",
       "isolation_load_jump_capped": "warn",
       "bloodflow_plausibility_recompute": "warn",
       "bloodflow_plausibility_undetermined": "warn",
-      "bloodflow_plausibility_floor_exhausted": "fail"
+      "bloodflow_plausibility_floor_exhausted": "fail",
+      "warmup_harder_than_work": "fail",
+      "progression_value_unchanged": "fail",
+      "assist_direction_reversed": "fail",
+      "equipment_conflict_g4_held": "warn",
+      "equipment_conflict": "fail",
+      "supplemental_exceeds_primary_load": "fail",
+      "implausible_load_reps_rpe": "fail",
+      "action_contradicts_sets": "fail",
+      "supplemental_target_unmapped": "warn"
     }
   },
   "engine_constants_meta": {
@@ -1335,6 +1345,7 @@
       "ratified_date": "2026-09-22",
       "ratified_by": "chadcrawford",
       "ratifying_authority": "phase 06.3.1.1.1.1 decision P-10 (06.3.1.1.1.1-CONTEXT.md); plan 06.3.1.1.1.1-01 Task 1/Task 2",
+      "superseded": "2026-10-04: superseded for the cross-canonical-ID case only by reference_resolution_fallback_cross_id (G2, 261004-c1h-DECISIONS.md D-05); same-ID tiers stay warn.",
       "note": "Per-issue-code severity tier consumed by _qc_severity_for_issue()/_qc_status_from_issues() (tools/prescribe_hypertrophy.py). qc_status keeps its existing two-value contract (\"pass\"/\"fail\"); this map supplies the additive Prescription.qc_severity field's five-way distinction without changing what build_card_data.format_qc_tag() reads. set_role_conflict is P-10 category (2) present-but-misclassified: plan 05.1-02 (ratified 2026-08-15) already repairs the misclassification by promoting the set into the prescription's own working-set selection before validate() ever runs, so the QC code is downgraded to warn -- it is a display-only advisory about the input label, not a defect in the prescribed numbers. reference_resolution_fallback (added phase 06.3.1.1.1.1 plan 03, ratified 2026-09-22) is P-10 category (3), \"reference-resolution failure\": P-01's fallback chain (exact -> exact_relaxed -> cluster -> fail-closed) resolves this code to warn per P-01's own explicit \"warn, continue\" requirement -- the prescription it accompanies is a real, defensible one built from real performed data, never a hard failure; only the terminal fail-closed case (insufficient_reference_input, unchanged by this addition) still hard-fails. isolation_load_jump_capped (added phase 06.3.1.1.1.1 plan 04, ratified 2026-09-23) is P-10 category (4), \"physiologically implausible prescription\" made SAFE rather than fired as a hard failure: a capped jump is a deliberate, inspectable hold/chase-reps decision, not a defect, so it is downgraded to warn -- the athlete still gets a defensible, real prescription, and the blocked limit (percentage or predicted reps) is named in the code's own payload. Any issue-code prefix absent from this map resolves to fail (_qc_severity_for_issue()'s fail-closed-by-omission default): a future code added without a deliberate severity choice must behave exactly as it does today (hard QC failure), never silently downgrade. 06.2's D-02 dropped_working_set is explicitly NOT downgraded by this phase -- it keeps fail, matching 06.2-CONTEXT.md's ratified QC-visibility-only posture, which this phase is scoped out of reopening. bloodflow_plausibility_recompute and bloodflow_plausibility_undetermined (added phase 06.3.1.1.1.1 plan 05, P-04, ratified 2026-09-23) are P-10 category (4), \"physiologically implausible prescription\" made SAFE: a recompute that reached a coherent load is a deliberate, inspectable correction, and an undetermined result (reference data missing) keeps the already-vetted ratified percentage while making the unchecked state visible -- both warn. bloodflow_plausibility_floor_exhausted (same plan) is the deliberate exception and is FAIL tier, citing P-04's own defensibility requirement directly: the descent reached the policy floor and the load is STILL incoherent against the demonstrated reference, so the shipped prescription does not pass plausibility, and a warn-tier code cannot honestly describe an outcome the gate itself calls implausible (codex plan-review correction, 2026-09-22, round 4). A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
     },
     "bloodflow_plausibility": {
@@ -1352,7 +1363,23 @@
       "ratified_by": "Chad Crawford (Program Director)",
       "ratifying_authority": "phase 06.3.1.1.1.1 decision P-04 (06.3.1.1.1.1-CONTEXT.md); plan 06.3.1.1.1.1-02 Task 3 checkpoint:decision (gate=blocking), option-a: 'ratify every recommended value as measured' -- see 06.3.1.1.1.1-02-SUMMARY.md's Ratification Record (rpe_tolerance=0.5; min_load_fraction_of_candidate=0.5, assigned directly by the Program Director as a policy default). Consumed by plan 06.3.1.1.1.1-05.",
       "note": "P-04 (bloodflow_rpe_coherence) blood-flow plausibility gate, consumed by _bloodflow_load_is_coherent()/_plausible_bloodflow_load() (tools/prescribe_hypertrophy.py). MODEL: a monotonic coherence check, NOT an RPE prediction (codex plan-review correction, 2026-09-22, HIGH -- dimensional error: _PCT_LOAD_PER_REP/_rep_cost_of_jump() estimate the REP cost of a load change, and nothing in this codebase converts rep-equivalents to RPE points, so inverting them would invent unmeasured physiology). A candidate is implausible only when it claims MORE load, at the SAME OR MORE reps, will cost strictly LESS effort than ref_rpe - rpe_tolerance; no RPE value is predicted or fabricated. rpe_tolerance = 0.5 RPE points, a boundary-noise margin (not a predicted-RPE tolerance). Measured by tools/measure_bloodflow_plausibility.py against 10 qualifying default-profile bloodflow occurrences with a resolvable reference exposure: 0/10 = 0.0% monotonicity violations at rpe_tolerance 0, 0.5 and 1.0 alike (06.3.1.1.1.1-MEASUREMENTS.md section P-04). This is a structural, sample-uninformative tie, stated as such: the ratified working_pct_of_primary_top 0.667 can never produce a prescribed load above the reference load, so the data cannot discriminate among candidates; 0.5 was ratified as the conservative middle of the swept range, protective against a future case (a percentage at or above 1.0, or an unusually low reference RPE) this history cannot exercise. Confidence: low as a measurement, adequate as a safety margin. 0 barbell-loading-type bloodflow occurrences exist in history, so the barbell path is untested against real data. min_load_fraction_of_candidate = 0.5 is an engineering-judgment POLICY DEFAULT, explicitly NOT a measured value (no historical data measures how far a load must descend): the descent floor, expressed as a fraction of the ORIGINAL CANDIDATE the gate started from, never of the reference load (a fraction <=1 of the reference can never itself fail coherence, so it could never bind -- codex plan-review correction, round 2). The gate is ONE-DIRECTIONAL: it can only lower a load, so the percentages ratified 2026-08-26 against Golden Test Case 1 (working_pct_of_primary_top 0.667; the barbell 0.75 override) remain the ceiling and their pinned values stay reachable. Three distinct outcomes, three QC codes (see qc_issue_severity): recompute (warn), undetermined (warn), floor_exhausted (fail). A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "reference_resolution_fallback_cross_id": {
+      "ratified_date": "2026-10-04",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "APE_EP_Pro_Correction_Spec_v2.md section 2, gate G2, selected in the 2026-10-04 QC menu; the options were drafted by the AI QC pass",
+      "note": "Splits the cross-canonical-ID case out of reference_resolution_fallback. Cross-canonical-ID fallback = FAIL (spec 7.2, G2). Same-canonical-ID fallback (exact_relaxed or a configured alias) stays WARN under reference_resolution_fallback. The engine gates reference use with tools/exercise_identity.reference_is_cross_id() before any load, warm-up, note or threshold is built (spec 3.2); a cross-ID reference is treated as a missing reference and emits reference_missing. Decision record: 261004-c1h-DECISIONS.md D-05. Superseded 2026-10-05 (narrowing, Chad Crawford, DECISIONS.md D-05): this record governs the FAIL tier only, the cross-canonical-ID fallback. The same-canonical-ID alias fallback (WARN tier) is governed by reference_resolution_fallback (severity warn), not by this record. Severity fail is unchanged and matches the narrowed text."
+    },
+    "equipment_conflict_g4_held": {
+      "ratified_date": "2026-10-04",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "APE_EP_Pro_Correction_Spec_v2.md section 3.7 (original spec invariant 7.3), gate G2b, selected in the 2026-10-04 QC menu; the options were drafted by the AI QC pass. Recorded as 261004-c1h-DECISIONS.md D-10.",
+      "note": "Invariant 7.3 under the G-4 hold (WINDOWS.md #31, Program Director option-c 2026-09-27, not reopened). The card path passes no equipment, so classify() defaults a dumbbell or barbell to cable_or_machine (tools/equipment_inventory.py). A dumbbell or barbell identity (from exercise_identity.resolve_identity) whose card loading type is that cable_or_machine fallback resolves to warn and its issue text cites G-4 (equipment_conflict_g4_held). Every other identity-to-card equipment disagreement resolves to fail (equipment_conflict). The G-4 fix itself is not made: program_builder_v2 is a Forbidden Mutation Zone and the held classify() inputs are unchanged."
     }
+  },
+  "exercise_identity": {
+    "aliases": {},
+    "note": "Mechanism, not a ratified value (261004-c1h spec 3.2, decision D-02). Aliases stay empty until DECISIONS.md approves a candidate. Alias keys and targets are normalized by norm_exercise_key on both sides. A key claimed by two canonical ids is reported by validate_identity_config() as ambiguous and resolves to null."
   },
   "occurrence_classification": {
     "primary_owner_days": {},
@@ -1387,6 +1414,112 @@
       },
       "second_set_step_down": "one_equipment_increment"
     },
+    "supplemental_targets_by_movement_class": {
+      "assisted_pull_up": {
+        "reps": [
+          10,
+          15
+        ],
+        "rpe": [
+          7,
+          8
+        ],
+        "sets": [
+          1,
+          2
+        ],
+        "canonical_ids": [
+          "pull_up_assisted"
+        ]
+      },
+      "compound_row": {
+        "reps": [
+          8,
+          15
+        ],
+        "rpe": [
+          7,
+          8
+        ],
+        "sets": [
+          1,
+          2
+        ],
+        "canonical_ids": [
+          "bent_over_row_barbell"
+        ]
+      },
+      "one_arm_dumbbell_row": {
+        "reps": [
+          10,
+          15
+        ],
+        "rpe": [
+          7,
+          8
+        ],
+        "sets": [
+          1,
+          2
+        ],
+        "canonical_ids": [
+          "one_arm_row_dumbbell"
+        ]
+      },
+      "dumbbell_curl": {
+        "reps": [
+          12,
+          15
+        ],
+        "rpe": [
+          7,
+          8
+        ],
+        "sets": [
+          1,
+          2
+        ],
+        "canonical_ids": [
+          "incline_bicep_curl_dumbbell",
+          "cross_body_hammer_curl_dumbbell"
+        ]
+      },
+      "lateral_raise": {
+        "reps": [
+          15,
+          20
+        ],
+        "rpe": [
+          7,
+          8
+        ],
+        "sets": [
+          1,
+          2
+        ],
+        "canonical_ids": [
+          "seated_lateral_raise",
+          "lateral_raise_dumbbell"
+        ]
+      },
+      "band_constant_tension_isolation": {
+        "reps": [
+          15,
+          25
+        ],
+        "rpe": [
+          7,
+          8
+        ],
+        "sets": [
+          1,
+          2
+        ],
+        "canonical_ids": [
+          "lateral_raise_band"
+        ]
+      }
+    },
     "supplemental_profile": {
       "warmup_sets": 1,
       "working_set_count": 2,
@@ -1420,6 +1553,11 @@
       "primary_progression": 1.0,
       "supplemental_volume": 0.6,
       "bloodflow_recovery": 0.3
+    },
+    "session_role": {
+      "derivation": "scheduled_slot_plus_session_plan",
+      "history_may_demote_primary": false,
+      "overrides": {}
     }
   },
   "occurrence_classification_meta": {
@@ -1531,6 +1669,30 @@
       "ratifying_authority": "06.1-FEATURE-SPEC.md 'Prescription Profiles' + Golden Test Case 1 exact expected prescription (user-authored spec, values pinned by an exact acceptance test)",
       "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
     },
+    "supplemental_targets_by_movement_class": {
+      "ratified_date": "2026-10-04",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "APE_EP_Pro_Correction_Spec_v2.md section 2, gate G1 (2026-10-04 QC menu). The six-class table is the spec v2 section 3.3 proposal. The option text was drafted by the AI QC pass; Chad selected 'replace the global 17 reps @ RPE 8 supplemental rule with the movement-specific table'. Set counts (1-2) equal the existing graduated cap and are unchanged.",
+      "note": "Governs mapped canonical ids only (exact canonical-id membership, no name fragments, no cluster). Rep range is per class. RPE target is 7-8; the emitted PSet target is the cap, 8. A change to any class needs a new ratification record."
+    },
+    "supplemental_targets_by_movement_class.membership": {
+      "ratified_date": "2026-10-05",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "DECISIONS.md D-03 (G1a), Chad Crawford 2026-10-05, option g1a-a: 'confirm the T1 class membership'. Membership = ROOT-CAUSE.md section 6 proposed classes, by canonical id. Band lateral raise: DECISIONS.md D-13 (Chad Crawford, 2026-10-05).",
+      "note": "Band lateral raise (canonical id lateral_raise_band, shown as lateral_raise_(band) in ROOT-CAUSE.md section 6) is mapped to band_constant_tension_isolation per D-13 (Chad Crawford, 2026-10-05). lateral_raise is unchanged. Rear Dumbbell Raise, Reverse Fly, Incline Bench Press (Barbell), dips and triceps movements stay unmapped per the T1 membership. Superseded 2026-10-05: the earlier EXECUTOR READING caveat on this line (band treated as unmapped, warn) is withdrawn by D-13."
+    },
+    "supplemental_targets_by_movement_class.band_constant_tension_isolation": {
+      "ratified_date": "2026-10-05",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "DECISIONS.md D-13 (Chad Crawford, 2026-10-05, band class): map the band lateral raise to the BAND class. Values are spec v2 section 3.3 band row: reps 15-25, RPE 7-8, sets 1-2, unchanged from the table already in this file.",
+      "note": "The class had no member before D-13 (canonical_ids []). Its only member is lateral_raise_band, from the live name 'Lateral Raise (Band)'. Mapping by canonical id only (no name fragments). Loads are unchanged (G1b-a, D-04). The code fallback mirror in tools/prescribe_hypertrophy.py _FALLBACK_SUPPLEMENTAL_CLASS_TABLE still lists canonical_ids [] for this class; it is used only when prescription_config.json cannot be loaded, and that file is locked, so it is not edited here (open item)."
+    },
+    "supplemental_targets_by_movement_class.unmapped": {
+      "ratified_date": "2026-10-05",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "DECISIONS.md D-03 (G1a), Chad Crawford 2026-10-05: 'Unmapped movements: keep their own existing rep range at RPE 7-8 with a visible warning.' Plan option g1a-a.",
+      "note": "An unmapped movement keeps supplemental_profile.working_reps (17), or category_overrides.barbell.working_reps (12) for barbell, at RPE cap 8, and carries supplemental_target_unmapped(exercise=<canonical id>) at severity warn. The 17 @ 8 value therefore survives only for unmapped movements. Open for Chad: whether that is acceptable for the ~115 of 332 supplemental occurrences that are unmapped."
+    },
     "supplemental_profile.warmup_sets": {
       "ratified_date": "2026-09-14",
       "ratified_by": "Chad Crawford (Program Director)",
@@ -1559,13 +1721,15 @@
       "ratified_date": "2026-09-14",
       "ratified_by": "Chad Crawford (Program Director)",
       "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: 'Midpoint of each spec range, with explicit per-loading-type overrides' -- midpoint of 06.1-FEATURE-SPEC.md's ~15-20 rep range.",
-      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently.",
+      "superseded": "2026-10-04 (G1): superseded as the supplemental rule for mapped canonical ids by occurrence_classification.supplemental_targets_by_movement_class. The value is retained unchanged as the UNMAPPED fallback under DECISIONS.md D-03 (G1a, option g1a-a), where the warn code supplemental_target_unmapped is emitted. No new value was ratified here."
     },
     "supplemental_profile.working_rpe_cap": {
       "ratified_date": "2026-09-14",
       "ratified_by": "Chad Crawford (Program Director)",
       "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: 'Midpoint of each spec range, with explicit per-loading-type overrides' -- 06.1-FEATURE-SPEC.md's ~8 cap taken as-is.",
-      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently.",
+      "superseded": "2026-10-04 (G1): superseded as the supplemental rule for mapped canonical ids by occurrence_classification.supplemental_targets_by_movement_class. The value is retained unchanged as the UNMAPPED fallback under DECISIONS.md D-03 (G1a, option g1a-a), where the warn code supplemental_target_unmapped is emitted. No new value was ratified here."
     },
     "supplemental_profile.second_set_step_down": {
       "ratified_date": "2026-09-14",
@@ -1583,7 +1747,8 @@
       "ratified_date": "2026-09-14",
       "ratified_by": "Chad Crawford (Program Director)",
       "ratifying_authority": "plan 06.1-04 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-14, option-a: barbell (compound axis) lowers working_reps to 12.",
-      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+      "note": "A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently.",
+      "superseded": "2026-10-04 (G1): superseded as the supplemental rule for mapped canonical ids by occurrence_classification.supplemental_targets_by_movement_class. The value is retained unchanged as the UNMAPPED fallback under DECISIONS.md D-03 (G1a, option g1a-a), where the warn code supplemental_target_unmapped is emitted. No new value was ratified here."
     },
     "category_overrides.cable_or_machine": {
       "ratified_date": "2026-09-14",
@@ -1626,6 +1791,12 @@
       "ratified_by": "Chad Crawford (Program Director)",
       "ratifying_authority": "plan 06.3.1.1.1.1-07 Task 1 checkpoint:decision (gate=blocking), Program Director selection 2026-09-24, option-a: confirm the corrected session-scoped architecture as written. P-09 (workload hierarchy) is implemented by apply_session_workload_hierarchy() (tools/occurrence_classifier.py). P-08 (supplemental_fatigue_weighting) is DEFERRED, NOT implemented and NOT closed -- these weights do not influence whether or how much same-session non-primary volume is reduced; the session pass's reduction is an unconditional all-or-nothing trade once its trigger fires, so a real P-08 (a weight-sensitive reduction, e.g. a partial reduction whose depth is a function of the weight) remains an open requirement for a future plan.",
       "note": "primary_progression=1.0, supplemental_volume=0.6, bloodflow_recovery=0.3 are ENGINEERING-JUDGMENT POLICY DEFAULTS, not measured: no candidate weight or counterfactual verdict exists to measure them against (Plan 02's P-08 instrument is a descriptive-only cross-tabulation, and fatigue_state is never recomputed under a weighted model), so the number itself carries no empirical derivation. Supporting context only, never a derivation: 06.3.1.1.1.1-MEASUREMENTS.md section P-08 (494 (session, muscle_group, exercise) rows across 95 sessions; 157 of 304 (session, muscle_group) pairs, 51.6%, carry more than one exercise on the same muscle in the same session; 69 supplemental occurrences also carry fatigue_state=high; 21 skip_overlap occurrences, every one at fatigue_state=high). These weights are consumed ONLY by apply_session_workload_hierarchy(), and ONLY to compute the weighted-volume figure it records in classification_reasons for observability. They are NEVER consumed by get_recovery_hours() (app/services/analytics/recovery_model.py, untouched) or fatigue_state_for_sets() (untouched). This REFINES 06.3.1's D-01 (muscle-level recovery gating plus the graduated supplemental-volume cap) rather than adding a parallel fatigue system: the session pass reads the resolver's already-decided role/role_source/classification_reasons and never recomputes fatigue. Trigger rule (Task 1, option-a): a same-session supplemental or blood-flow occurrence present on the escalated primary's muscle group -- presence-based, can fire even when that volume did not cause the escalation (accepted false-positive direction, favors holding a primary over silently dropping it). Reversibility: costly (acknowledged). A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
+    },
+    "session_role": {
+      "ratified_date": "2026-10-04",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "APE_EP_Pro_Correction_Spec_v2.md section 2, gate G3 (2026-10-04 QC menu; options drafted by the AI QC pass). Direction confirmed by Chad Crawford in the 2026-10-05 instruction: history may warn, never sets supplemental_volume on its own.",
+      "note": "Session role derives from the scheduled A/B/C slot plus the session plan (overrides). Slot reliability, ROOT-CAUSE.md section 5: 94 of 98 sessions resolve to A/B/C, 0 templateWorkoutId disagreements with the name letter, 0 rotation breaks on resolved sessions. The 4 unresolved 2026-03 sessions take the visible unresolved_slot warning. history_may_demote_primary=false is the G3 setting; overrides {} is a mechanism, not a ratified per-session value. A change to history_may_demote_primary needs a new ratification record."
     }
   },
   "profiles_meta": {
