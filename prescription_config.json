@@ -1558,6 +1558,11 @@
       "derivation": "scheduled_slot_plus_session_plan",
       "history_may_demote_primary": false,
       "overrides": {}
+    },
+    "muscle_recovery_ceiling": {
+      "applies_to": "isolation",
+      "exempt_explicit_configuration": false,
+      "exceptions": {}
     }
   },
   "occurrence_classification_meta": {
@@ -1797,6 +1802,12 @@
       "ratified_by": "Chad Crawford (Program Director)",
       "ratifying_authority": "APE_EP_Pro_Correction_Spec_v2.md section 2, gate G3 (2026-10-04 QC menu; options drafted by the AI QC pass). Direction confirmed by Chad Crawford in the 2026-10-05 instruction: history may warn, never sets supplemental_volume on its own.",
       "note": "Session role derives from the scheduled A/B/C slot plus the session plan (overrides). Slot reliability, ROOT-CAUSE.md section 5: 94 of 98 sessions resolve to A/B/C, 0 templateWorkoutId disagreements with the name letter, 0 rotation breaks on resolved sessions. The 4 unresolved 2026-03 sessions take the visible unresolved_slot warning. history_may_demote_primary=false is the G3 setting; overrides {} is a mechanism, not a ratified per-session value. A change to history_may_demote_primary needs a new ratification record."
+    },
+    "muscle_recovery_ceiling": {
+      "ratified_date": "2026-10-11",
+      "ratified_by": "Chad Crawford (Program Director)",
+      "ratifying_authority": "261011-stx-CONTEXT.md item 4 (Chad, 2026-10-11, this session's Claude + Codex adversarial review raised the finding; the rule itself is Chad's own words). T2 (261011-stx, 2026-10-12) selected option d19-a over d19-b for the exempt_explicit_configuration reading.",
+      "note": "Chad's own words: 'muscle ceiling always wins.' When a muscle group is in a recovery/bloodflow/supplemental mode from a recent exposure, every direct isolation exercise for that same muscle is capped at that ceiling by default -- can only be made MORE conservative by exception, never less, and any exception must be explicit and logged. applies_to='isolation' is fixed: compounds are never capped (d19_03). exempt_explicit_configuration=false is the ratified d19-a reading: literal 'always' -- a manual-override or template-role isolation exercise is capped too, narrowing (never removing) Level 1/2's classification-time precedence; see 261004-c1h-DECISIONS.md D-16's SUPERSEDED-IN-PART line, which D-19 shares with D-16's own Level 1/2 forward-tighten narrowing. d19-b (exempt_explicit_configuration=true) was the rejected alternative. The MECHANISM (apply_muscle_recovery_ceiling(), the per-muscle grouping, the exceptions-dict shape) is executor discretion (CONTEXT: 'exact mechanism ... plan to propose, not pre-decided'), not itself ratified -- only the RULE above and the d19-a/d19-b selection are. A change here supersedes a ratified value -- edit only with a new, explicit ratification, not silently."
     }
   },
   "profiles_meta": {

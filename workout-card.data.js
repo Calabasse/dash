@@ -50,7 +50,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-12T06:30:20.323813",
+        "generated_at": "2026-10-13T06:30:16.809563",
         "fatigue_signal": {
           "bent over row barbell": 1.3565338838246475,
           "chest dip assisted": 0.9375,
@@ -79,7 +79,7 @@ window.PROGRAM = {
           "recovery_debt": 11.318036079406738
         },
         "deload_state": {
-          "snapshot_date": "2026-10-11T00:00:00",
+          "snapshot_date": "2026-10-12T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -391,7 +391,33 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 52h.",
             "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-13",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day C inferred as primary owner: won 5/6 ownership signals over the runner-up (0).",
+              "Day C wins 'highest top-set effort (RPE)'.",
+              "Day C wins 'highest relative load'.",
+              "Day C wins 'greatest qualifying working-set count'.",
+              "Day C wins 'consistent top-set-plus-backoff structure'.",
+              "Day C wins 'rotation frequency (most appearances)'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-06 (96h ago).",
+              "Most recent qualifying shoulders muscle exposure: 2026-10-06 (96h ago).",
+              "Most recent qualifying shoulder_lateral cluster exposure: 2026-10-06 (96h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 52h.",
+              "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-13 (source=estimated); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Lateral Raise (Band)",
@@ -722,7 +748,34 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (volume stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 40h.",
             "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-13",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day C inferred as primary owner: won 6/6 ownership signals over the runner-up (-1).",
+              "Day C wins 'highest top-set effort (RPE)'.",
+              "Day C wins 'highest relative load'.",
+              "Day C wins 'greatest qualifying working-set count'.",
+              "Day C wins 'consistent top-set-plus-backoff structure'.",
+              "Day C wins 'rotation frequency (most appearances)'.",
+              "Day C wins 'existing progression history'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-06 (96h ago).",
+              "Most recent qualifying shoulders muscle exposure: 2026-10-06 (96h ago).",
+              "Most recent qualifying shoulder_lateral cluster exposure: 2026-10-06 (96h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (volume stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 40h.",
+              "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-13 (source=estimated); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Rear Dumbbell Raise",
@@ -1039,7 +1092,34 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 52h.",
             "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-13",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day C inferred as primary owner: won 6/6 ownership signals over the runner-up (-1).",
+              "Day C wins 'highest top-set effort (RPE)'.",
+              "Day C wins 'highest relative load'.",
+              "Day C wins 'greatest qualifying working-set count'.",
+              "Day C wins 'consistent top-set-plus-backoff structure'.",
+              "Day C wins 'rotation frequency (most appearances)'.",
+              "Day C wins 'existing progression history'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-06 (96h ago).",
+              "Most recent qualifying shoulders muscle exposure: 2026-10-06 (96h ago).",
+              "Most recent qualifying shoulder_rear cluster exposure: 2026-10-06 (96h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 52h.",
+              "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-13 (source=estimated); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Hanging Leg Raise",
@@ -1204,7 +1284,33 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group abdominals, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
             "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-13",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day C inferred as primary owner: won 5/6 ownership signals over the runner-up (-1).",
+              "Day C wins 'highest top-set effort (RPE)'.",
+              "Day C wins 'highest relative load'.",
+              "Day C wins 'greatest qualifying working-set count'.",
+              "Day C wins 'consistent top-set-plus-backoff structure'.",
+              "Day C wins 'rotation frequency (most appearances)'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-06 (96h ago).",
+              "Most recent qualifying abdominals muscle exposure: 2026-10-06 (96h ago).",
+              "Most recent qualifying core_hip_flexion cluster exposure: 2026-10-06 (96h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group abdominals, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+              "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-13 (source=estimated); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Triceps Pushdown",
@@ -1222,9 +1328,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "cable_or_machine",
           "qc": "pass",
-          "action": "bloodflow",
-          "assess": "Most recent primary session: 300 lb \u00d7 15 @ RPE 9 and 275 lb \u00d7 11 @ RPE 9 on 2026-10-09. Today's Day C occurrence is classified as a blood-flow/recovery exposure.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Blood-flow/recovery exposure \u2014 Triceps Pushdown received its primary progression work on 2026-10-09. Prescribe 150 lb \u00d7 8 @ RPE 5 and 200 lb \u00d7 20 @ RPE 7 maximum. Stop each working set at 20 reps or RPE 7, whichever occurs first. Today's performance is excluded from primary progression decisions. The primary progression remains 300 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 305 lb.",
+          "action": "supplemental",
+          "assess": "Most recent primary session: 300 lb \u00d7 15 @ RPE 9 and 275 lb \u00d7 11 @ RPE 9 on 2026-10-09. Today's Day C occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u26a0 QC warn \u2014 supplemental_target_unmapped(exercise=triceps_pushdown)</b> \u00b7 <b>Forward projection: supplemental_volume (relaxed, governing source band_l4)</b> \u00b7 Supplemental volume \u2014 Triceps Pushdown received its primary progression work on 2026-10-09. Prescribe 135 lb \u00d7 8 @ RPE 5, then 200 lb \u00d7 17 @ RPE 8 and 195 lb \u00d7 17 @ RPE 8, stopping at 17 reps or RPE 8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 300 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 305 lb.",
           "when_to_add_load": "Reach 12 clean reps at 300 lb at RPE 9.5 or lower; then increase to 305 lb.",
           "sets": [
             {
@@ -1235,7 +1341,7 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 150,
+                "lbs": 135,
                 "reps": "8",
                 "rpe": 5.0,
                 "tempo_seconds": null,
@@ -1256,8 +1362,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 200,
-                "reps": "20",
-                "rpe": 7.0,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -1272,9 +1378,9 @@ window.PROGRAM = {
                 "rpe": 6
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 195,
+                "reps": "17",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -1302,7 +1408,7 @@ window.PROGRAM = {
           "volumeLbs": 7525.0,
           "gate_status": "no_signal",
           "gate_reason": "Decision gate not applicable to a non-primary occurrence (occurrenceRole=bloodflow_recovery).",
-          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (44h, stretch stimulus, low fatigue) extends to 2026-10-12, past that. Advisory only -- no volume was changed.",
+          "recoveryOverlapWarning": "Day A (back/arms) also trains arms (assumed next-day spacing, not a logged session). This exercise's own recovery estimate (50h, stretch stimulus, moderate fatigue) extends to 2026-10-13, past that. Advisory only -- no volume was changed.",
           "rpeAdjustmentAdvisory": null,
           "decisionHistory": [],
           "increaseCutoff": 0.75,
@@ -1355,7 +1461,34 @@ window.PROGRAM = {
             "Upcoming primary exposure expected on day B (2026-10-12, 48h away).",
             "Level 3: resolved primary-owner day is B, not today's C; continuing to history/recovery evidence.",
             "Level 4 decided: exact-exercise exposure 24h ago against a 50h recovery window -> bloodflow_recovery."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "supplemental_volume",
+            "source": "history_inference",
+            "governingSource": "band_l4",
+            "change": "relaxed",
+            "targetExposureDate": "2026-10-13",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day B inferred as primary owner: won 4/6 ownership signals over the runner-up (0).",
+              "Day B wins 'highest top-set effort (RPE)'.",
+              "Day B wins 'greatest qualifying working-set count'.",
+              "Day B wins 'consistent top-set-plus-backoff structure'.",
+              "Day B wins 'rotation frequency (most appearances)'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-09 (24h ago).",
+              "Most recent qualifying triceps muscle exposure: 2026-10-09 (24h ago).",
+              "Most recent qualifying elbow_extension_primary cluster exposure: 2026-10-09 (24h ago).",
+              "Fatigue state for this occurrence: 'low'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group triceps, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 50h.",
+              "Upcoming primary exposure expected on day B (2026-10-12, 48h away).",
+              "Level 3: resolved primary-owner day is B, not today's C; continuing to history/recovery evidence.",
+              "Level 4 decided: exact-exercise exposure 24h ago against a 50h recovery window -> bloodflow_recovery.",
+              "Forward projection: target exposure 2026-10-13 (source=estimated); governing source=band_l4. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role relaxed relative to the historical role (bloodflow_recovery); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         }
       ],
       "sequencingAdvisory": null
@@ -1408,7 +1541,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-12T06:30:20.323813",
+        "generated_at": "2026-10-13T06:30:16.809563",
         "fatigue_signal": {
           "bent over row barbell": 1.3565338838246475,
           "chest dip assisted": 0.9375,
@@ -1437,7 +1570,7 @@ window.PROGRAM = {
           "recovery_debt": 11.318036079406738
         },
         "deload_state": {
-          "snapshot_date": "2026-10-11T00:00:00",
+          "snapshot_date": "2026-10-12T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -1641,7 +1774,35 @@ window.PROGRAM = {
             "Recovery-hours band width for this occurrence (heavy stimulus, muscle group chest, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 78h.",
             "Level 3 decided: today's day (B) is the resolved primary-owner day (source=inferred) -> primary_progression.",
             "Escalation: fatigue_state=high overrides the history_inference-decided primary_progression result -> skip_overlap (bounded post-resolution escalation; single destination, cannot override a manual override)."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "skip_overlap",
+            "source": "recovery_override",
+            "governingSource": "stage3_escalation",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-12",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day B inferred as primary owner: won 6/6 ownership signals over the runner-up (-1).",
+              "Day B wins 'highest top-set effort (RPE)'.",
+              "Day B wins 'highest relative load'.",
+              "Day B wins 'greatest qualifying working-set count'.",
+              "Day B wins 'consistent top-set-plus-backoff structure'.",
+              "Day B wins 'rotation frequency (most appearances)'.",
+              "Day B wins 'existing progression history'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-05 (96h ago).",
+              "Most recent qualifying chest muscle exposure: 2026-10-05 (96h ago).",
+              "Most recent qualifying push_horizontal cluster exposure: 2026-10-05 (96h ago).",
+              "Fatigue state for this occurrence: 'high'.",
+              "Recovery-hours band width for this occurrence (heavy stimulus, muscle group chest, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 78h.",
+              "Level 3 decided: today's day (B) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Escalation: fatigue_state=high overrides the history_inference-decided primary_progression result -> skip_overlap (bounded post-resolution escalation; single destination, cannot override a manual override).",
+              "Forward projection: target exposure 2026-10-12 (source=estimated); governing source=stage3_escalation. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (skip_overlap); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Chest Fly (Dumbbell)",
@@ -1930,7 +2091,34 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group chest, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 54h.",
             "Level 3 decided: today's day (B) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-12",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day B inferred as primary owner: won 6/6 ownership signals over the runner-up (-1).",
+              "Day B wins 'highest top-set effort (RPE)'.",
+              "Day B wins 'highest relative load'.",
+              "Day B wins 'greatest qualifying working-set count'.",
+              "Day B wins 'consistent top-set-plus-backoff structure'.",
+              "Day B wins 'rotation frequency (most appearances)'.",
+              "Day B wins 'existing progression history'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-05 (96h ago).",
+              "Most recent qualifying chest muscle exposure: 2026-10-05 (96h ago).",
+              "Most recent qualifying chest_isolation cluster exposure: 2026-10-05 (96h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group chest, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 54h.",
+              "Level 3 decided: today's day (B) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-12 (source=estimated); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Triceps Extension (Dumbbell)",
@@ -1979,7 +2167,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 72.5,
-                "reps": "9\u201315",
+                "reps": "10\u201315",
                 "rpe": 9.5,
                 "tempo_seconds": null,
                 "pause_seconds": null,
@@ -2220,7 +2408,34 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group triceps, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 50h.",
             "Level 3 decided: today's day (B) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-12",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day B inferred as primary owner: won 6/6 ownership signals over the runner-up (-1).",
+              "Day B wins 'highest top-set effort (RPE)'.",
+              "Day B wins 'highest relative load'.",
+              "Day B wins 'greatest qualifying working-set count'.",
+              "Day B wins 'consistent top-set-plus-backoff structure'.",
+              "Day B wins 'rotation frequency (most appearances)'.",
+              "Day B wins 'existing progression history'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-05 (96h ago).",
+              "Most recent qualifying triceps muscle exposure: 2026-10-05 (96h ago).",
+              "Most recent qualifying elbow_extension_primary cluster exposure: 2026-10-05 (96h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group triceps, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 50h.",
+              "Level 3 decided: today's day (B) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-12 (source=estimated); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Triceps Pushdown",
@@ -2485,7 +2700,32 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group triceps, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 50h.",
             "Level 3 decided: today's day (B) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-12",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day B inferred as primary owner: won 4/6 ownership signals over the runner-up (0).",
+              "Day B wins 'highest top-set effort (RPE)'.",
+              "Day B wins 'greatest qualifying working-set count'.",
+              "Day B wins 'consistent top-set-plus-backoff structure'.",
+              "Day B wins 'rotation frequency (most appearances)'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-05 (96h ago).",
+              "Most recent qualifying triceps muscle exposure: 2026-10-05 (96h ago).",
+              "Most recent qualifying elbow_extension_primary cluster exposure: 2026-10-05 (96h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group triceps, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 50h.",
+              "Level 3 decided: today's day (B) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-12 (source=estimated); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Incline Bicep Curl (Dumbbell)",
@@ -2496,9 +2736,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "cable_or_machine",
           "qc": "pass",
-          "action": "bloodflow",
-          "assess": "Most recent primary session: 40 lb \u00d7 12 @ RPE 9 and 25 lb \u00d7 10 @ RPE 9 on 2026-10-08. Today's Day B occurrence is classified as a blood-flow/recovery exposure.",
-          "rationale": "<b>\u26a0 QC warn \u2014 equipment_conflict_g4_held(identity=dumbbell,card=cable_or_machine,hold=G-4)</b> \u00b7 Blood-flow/recovery exposure \u2014 Incline Bicep Curl (Dumbbell) received its primary progression work on 2026-10-08. Prescribe 20 lb \u00d7 8 @ RPE 5 and 25 lb \u00d7 20 @ RPE 7 maximum. Stop each working set at 20 reps or RPE 7, whichever occurs first. Today's performance is excluded from primary progression decisions. The primary progression remains 40 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 45 lb.",
+          "action": "supplemental",
+          "assess": "Most recent primary session: 40 lb \u00d7 12 @ RPE 9 and 25 lb \u00d7 10 @ RPE 9 on 2026-10-08. Today's Day B occurrence is classified as a supplemental-volume exposure.",
+          "rationale": "<b>\u26a0 QC warn \u2014 equipment_conflict_g4_held(identity=dumbbell,card=cable_or_machine,hold=G-4)</b> \u00b7 <b>Forward projection: supplemental_volume (relaxed, governing source band_l4)</b> \u00b7 Supplemental volume \u2014 Incline Bicep Curl (Dumbbell) received its primary progression work on 2026-10-08. Prescribe 10 lb \u00d7 8 @ RPE 5, then 25 lb \u00d7 12-15 @ RPE 8 and 20 lb \u00d7 12-15 @ RPE 8, stopping at 12-15 reps or RPE 7-8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 40 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 45 lb.",
           "when_to_add_load": "Reach 12 clean reps at 40 lb at RPE 9.5 or lower; then increase to 45 lb.",
           "sets": [
             {
@@ -2512,7 +2752,7 @@ window.PROGRAM = {
                 "rom_note": null
               },
               "prop": {
-                "lbs": 20,
+                "lbs": 10,
                 "reps": "8",
                 "rpe": 5.0,
                 "tempo_seconds": null,
@@ -2533,8 +2773,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 25,
-                "reps": "20",
-                "rpe": 7.0,
+                "reps": "12\u201315",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2549,9 +2789,9 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
+                "lbs": 20,
+                "reps": "12\u201315",
+                "rpe": 8.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -2649,7 +2889,34 @@ window.PROGRAM = {
             "Upcoming primary exposure expected on day A (2026-10-11, 48h away).",
             "Level 3: resolved primary-owner day is A, not today's B; continuing to history/recovery evidence.",
             "Level 4 decided: exact-exercise exposure 24h ago against a 50h recovery window -> bloodflow_recovery."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "supplemental_volume",
+            "source": "history_inference",
+            "governingSource": "band_l4",
+            "change": "relaxed",
+            "targetExposureDate": "2026-10-12",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day A inferred as primary owner: won 4/6 ownership signals over the runner-up (1).",
+              "Day A wins 'highest top-set effort (RPE)'.",
+              "Day A wins 'highest relative load'.",
+              "Day A wins 'greatest qualifying working-set count'.",
+              "Day A wins 'rotation frequency (most appearances)'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-08 (24h ago).",
+              "Most recent qualifying biceps muscle exposure: 2026-10-08 (24h ago).",
+              "Most recent qualifying elbow_flexion_primary cluster exposure: 2026-10-08 (24h ago).",
+              "Fatigue state for this occurrence: 'low'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group biceps, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 50h.",
+              "Upcoming primary exposure expected on day A (2026-10-11, 48h away).",
+              "Level 3: resolved primary-owner day is A, not today's B; continuing to history/recovery evidence.",
+              "Level 4 decided: exact-exercise exposure 24h ago against a 50h recovery window -> bloodflow_recovery.",
+              "Forward projection: target exposure 2026-10-12 (source=estimated); governing source=band_l4. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role relaxed relative to the historical role (bloodflow_recovery); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Hammer Curl (Dumbbell)",
@@ -2786,7 +3053,33 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'low'.",
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group biceps, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 50h.",
             "Level 3 decided: today's day (B) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-12",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day B inferred as primary owner: won 5/6 ownership signals over the runner-up (-1).",
+              "Day B wins 'highest top-set effort (RPE)'.",
+              "Day B wins 'highest relative load'.",
+              "Day B wins 'greatest qualifying working-set count'.",
+              "Day B wins 'consistent top-set-plus-backoff structure'.",
+              "Day B wins 'rotation frequency (most appearances)'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-05 (96h ago).",
+              "Most recent qualifying biceps muscle exposure: 2026-10-08 (24h ago).",
+              "Most recent qualifying elbow_flexion_primary cluster exposure: 2026-10-08 (24h ago).",
+              "Fatigue state for this occurrence: 'low'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group biceps, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 50h.",
+              "Level 3 decided: today's day (B) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-12 (source=estimated); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         }
       ],
       "sequencingAdvisory": null
@@ -2839,7 +3132,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-12T06:30:20.323813",
+        "generated_at": "2026-10-13T06:30:16.809563",
         "fatigue_signal": {
           "bent over row barbell": 1.3565338838246475,
           "chest dip assisted": 0.9375,
@@ -2868,7 +3161,7 @@ window.PROGRAM = {
           "recovery_debt": 11.318036079406738
         },
         "deload_state": {
-          "snapshot_date": "2026-10-11T00:00:00",
+          "snapshot_date": "2026-10-12T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -2985,7 +3278,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 150.0,
-                "reps": "12\u201315",
+                "reps": "13\u201315",
                 "rpe": 9.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
@@ -3230,7 +3523,33 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (heavy stimulus, muscle group lats, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 80h.",
             "Level 3 decided: today's day (A) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-11",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day A inferred as primary owner: won 5/6 ownership signals over the runner-up (-1).",
+              "Day A wins 'highest top-set effort (RPE)'.",
+              "Day A wins 'highest relative load'.",
+              "Day A wins 'greatest qualifying working-set count'.",
+              "Day A wins 'rotation frequency (most appearances)'.",
+              "Day A wins 'existing progression history'.",
+              "No qualifying prior exact-exercise exposure found.",
+              "No qualifying prior lats muscle exposure found.",
+              "No qualifying prior pull_vertical cluster exposure found.",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (heavy stimulus, muscle group lats, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 80h.",
+              "Level 3 decided: today's day (A) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-11 (source=estimated); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Bent Over Row (Barbell)",
@@ -3295,7 +3614,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 159.5,
-                "reps": "10\u201315",
+                "reps": "11\u201315",
                 "rpe": 9.5,
                 "tempo_seconds": null,
                 "pause_seconds": null,
@@ -3541,7 +3860,34 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (heavy stimulus, muscle group upperback, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 80h.",
             "Level 3 decided: today's day (A) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-11",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day A inferred as primary owner: won 6/6 ownership signals over the runner-up (-1).",
+              "Day A wins 'highest top-set effort (RPE)'.",
+              "Day A wins 'highest relative load'.",
+              "Day A wins 'greatest qualifying working-set count'.",
+              "Day A wins 'consistent top-set-plus-backoff structure'.",
+              "Day A wins 'rotation frequency (most appearances)'.",
+              "Day A wins 'existing progression history'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-04 (96h ago).",
+              "Most recent qualifying upperback muscle exposure: 2026-10-04 (96h ago).",
+              "Most recent qualifying pull_horizontal cluster exposure: 2026-10-04 (96h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (heavy stimulus, muscle group upperback, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 80h.",
+              "Level 3 decided: today's day (A) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-11 (source=estimated); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Incline Bicep Curl (Dumbbell)",
@@ -3823,7 +4169,32 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group biceps, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 50h.",
             "Level 3 decided: today's day (A) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-11",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day A inferred as primary owner: won 4/6 ownership signals over the runner-up (1).",
+              "Day A wins 'highest top-set effort (RPE)'.",
+              "Day A wins 'highest relative load'.",
+              "Day A wins 'greatest qualifying working-set count'.",
+              "Day A wins 'rotation frequency (most appearances)'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-05 (72h ago).",
+              "Most recent qualifying biceps muscle exposure: 2026-10-05 (72h ago).",
+              "Most recent qualifying elbow_flexion_primary cluster exposure: 2026-10-05 (72h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group biceps, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 50h.",
+              "Level 3 decided: today's day (A) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-11 (source=estimated); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "One Arm Row (Dumbbell)",
@@ -4134,7 +4505,34 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (heavy stimulus, muscle group upperback, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 80h.",
             "Level 3 decided: today's day (A) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-11",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day A inferred as primary owner: won 6/6 ownership signals over the runner-up (-1).",
+              "Day A wins 'highest top-set effort (RPE)'.",
+              "Day A wins 'highest relative load'.",
+              "Day A wins 'greatest qualifying working-set count'.",
+              "Day A wins 'consistent top-set-plus-backoff structure'.",
+              "Day A wins 'rotation frequency (most appearances)'.",
+              "Day A wins 'existing progression history'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-04 (96h ago).",
+              "Most recent qualifying upperback muscle exposure: 2026-10-04 (96h ago).",
+              "Most recent qualifying pull_horizontal cluster exposure: 2026-10-04 (96h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (heavy stimulus, muscle group upperback, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 80h.",
+              "Level 3 decided: today's day (A) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-11 (source=estimated); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Cross Body Hammer Curl (Dumbbell)",
@@ -4182,7 +4580,7 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 37.5,
-                "reps": "10\u201315",
+                "reps": "11\u201315",
                 "rpe": 9.5,
                 "tempo_seconds": null,
                 "pause_seconds": null,
@@ -4423,7 +4821,34 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group biceps, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 50h.",
             "Level 3 decided: today's day (A) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-11",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day A inferred as primary owner: won 6/6 ownership signals over the runner-up (-1).",
+              "Day A wins 'highest top-set effort (RPE)'.",
+              "Day A wins 'highest relative load'.",
+              "Day A wins 'greatest qualifying working-set count'.",
+              "Day A wins 'consistent top-set-plus-backoff structure'.",
+              "Day A wins 'rotation frequency (most appearances)'.",
+              "Day A wins 'existing progression history'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-04 (96h ago).",
+              "Most recent qualifying biceps muscle exposure: 2026-10-05 (72h ago).",
+              "Most recent qualifying elbow_flexion_primary cluster exposure: 2026-10-05 (72h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group biceps, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 50h.",
+              "Level 3 decided: today's day (A) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-11 (source=estimated); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Seated Lateral Raise",
@@ -4434,9 +4859,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "cable_or_machine",
           "qc": "pass",
-          "action": "supplemental",
-          "assess": "Most recent primary session: 30 lb \u00d7 13 @ RPE 10, 25 lb \u00d7 15 @ RPE 9, and 22.5 lb \u00d7 15 @ RPE 9 on 2026-10-06. Today's Day A occurrence is classified as a supplemental-volume exposure.",
-          "rationale": "<b>\u26a0 QC warn \u2014 reference_volume_exceeded_profile_slots(performed=3,slots=2,delta=1)</b> \u00b7 Supplemental volume \u2014 Seated Lateral Raise received its primary progression work on 2026-10-06. Prescribe 10 lb \u00d7 8 @ RPE 5, then 20 lb \u00d7 15-20 @ RPE 8 and 15 lb \u00d7 15-20 @ RPE 8, stopping at 15-20 reps or RPE 7-8, whichever occurs first. Today's performance does not affect primary progression. The primary progression remains 30 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 35 lb.",
+          "action": "bloodflow",
+          "assess": "Most recent primary session: 30 lb \u00d7 13 @ RPE 10, 25 lb \u00d7 15 @ RPE 9, and 22.5 lb \u00d7 15 @ RPE 9 on 2026-10-06. Today's Day A occurrence is classified as a blood-flow/recovery exposure.",
+          "rationale": "<b>\u26a0 QC warn \u2014 reference_volume_exceeded_profile_slots(performed=3,slots=1,delta=2)</b> \u00b7 <b>Forward projection: bloodflow_recovery (tightened, governing source band_l4)</b> \u00b7 Blood-flow/recovery exposure \u2014 Seated Lateral Raise received its primary progression work on 2026-10-06. Prescribe 15 lb \u00d7 8 @ RPE 5 and 20 lb \u00d7 20 @ RPE 7 maximum. Stop each working set at 20 reps or RPE 7, whichever occurs first. Today's performance is excluded from primary progression decisions. The primary progression remains 30 lb \u00d7 12 clean reps at RPE 9.5 or lower before increasing to 35 lb.",
           "when_to_add_load": "Reach 12 clean reps at 30 lb at RPE 9.5 or lower; then increase to 35 lb.",
           "sets": [
             {
@@ -4447,7 +4872,7 @@ window.PROGRAM = {
                 "rpe": 5
               },
               "prop": {
-                "lbs": 10,
+                "lbs": 15,
                 "reps": "8",
                 "rpe": 5.0,
                 "tempo_seconds": null,
@@ -4468,28 +4893,8 @@ window.PROGRAM = {
               },
               "prop": {
                 "lbs": 20,
-                "reps": "15\u201320",
-                "rpe": 8.0,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            },
-            {
-              "type": 3,
-              "last": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "prop": {
-                "lbs": 15,
-                "reps": "15\u201320",
-                "rpe": 8.0,
+                "reps": "20",
+                "rpe": 7.0,
                 "tempo_seconds": null,
                 "pause_seconds": null,
                 "rom_note": null
@@ -4559,7 +4964,35 @@ window.PROGRAM = {
             "Upcoming primary exposure expected on day C (2026-10-10, 48h away).",
             "Level 3: resolved primary-owner day is C, not today's A; continuing to history/recovery evidence.",
             "Level 4 decided: exact-exercise exposure 48h ago against a 52h recovery window -> supplemental_volume."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "bloodflow_recovery",
+            "source": "history_inference",
+            "governingSource": "band_l4",
+            "change": "tightened",
+            "targetExposureDate": "2026-10-11",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": "bloodflow_recovery",
+            "ceiling": null,
+            "reasons": [
+              "Day C inferred as primary owner: won 5/6 ownership signals over the runner-up (0).",
+              "Day C wins 'highest top-set effort (RPE)'.",
+              "Day C wins 'highest relative load'.",
+              "Day C wins 'greatest qualifying working-set count'.",
+              "Day C wins 'consistent top-set-plus-backoff structure'.",
+              "Day C wins 'rotation frequency (most appearances)'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-06 (48h ago).",
+              "Most recent qualifying shoulders muscle exposure: 2026-10-06 (48h ago).",
+              "Most recent qualifying shoulder_lateral cluster exposure: 2026-10-06 (48h ago).",
+              "Fatigue state for this occurrence: 'low'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 52h.",
+              "Upcoming primary exposure expected on day C (2026-10-10, 48h away).",
+              "Level 3: resolved primary-owner day is C, not today's A; continuing to history/recovery evidence.",
+              "Level 4 decided: exact-exercise exposure 48h ago against a 52h recovery window -> supplemental_volume.",
+              "Forward projection: target exposure 2026-10-11 (source=estimated); governing source=band_l4. Binding evidence: exact tier, 2026-10-10 (24h before target) against a 52h recovery window -> bloodflow_recovery. Future role tightened relative to the historical role (supplemental_volume); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         }
       ],
       "sequencingAdvisory": "\"Incline Bicep Curl (Dumbbell)\" (isolation/accessory) is displayed before \"One Arm Row (Dumbbell)\" (a major/compound movement) -- major movements are usually sequenced first so accessory fatigue doesn't compromise them. ASSUMPTION, not a confirmed defect: this reflects the displayed/template order the session was logged in, not verified execution order -- VOLM logs no per-set/per-group timestamps, only session-level start/end times."
@@ -4612,7 +5045,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-12T06:30:20.323813",
+        "generated_at": "2026-10-13T06:30:16.809563",
         "fatigue_signal": {
           "bent over row barbell": 1.3565338838246475,
           "chest dip assisted": 0.9375,
@@ -4641,7 +5074,7 @@ window.PROGRAM = {
           "recovery_debt": 11.318036079406738
         },
         "deload_state": {
-          "snapshot_date": "2026-10-11T00:00:00",
+          "snapshot_date": "2026-10-12T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
           "trigger_type": "fatigue",
@@ -4688,7 +5121,7 @@ window.PROGRAM = {
       ],
       "summary": {
         "status": "review",
-        "headline": "DAY C \u2014 DELTS / ABS \u2014 0 load\u2191 \u00b7 1 rep\u2191 \u00b7 1 hold \u00b7 2 non-primary excluded.",
+        "headline": "DAY C \u2014 DELTS / ABS \u2014 0 load\u2191 \u00b7 0 rep\u2191 \u00b7 1 hold \u00b7 2 non-primary excluded.",
         "assess": "5 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
         "prescription": "QC: <b>2/5</b> prescriptions passed the validation gate; <b>3 flagged</b> \u2014 see the \u2717 tags below.",
         "nonPrimaryExcluded": 2
@@ -4844,7 +5277,34 @@ window.PROGRAM = {
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 52h.",
             "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression.",
             "Escalation: fatigue_state=high overrides the history_inference-decided primary_progression result -> skip_overlap (bounded post-resolution escalation; single destination, cannot override a manual override)."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "skip_overlap",
+            "source": "recovery_override",
+            "governingSource": "stage3_escalation",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-10",
+            "targetDateSource": "actual",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day C inferred as primary owner: won 5/6 ownership signals over the runner-up (0).",
+              "Day C wins 'highest top-set effort (RPE)'.",
+              "Day C wins 'highest relative load'.",
+              "Day C wins 'greatest qualifying working-set count'.",
+              "Day C wins 'consistent top-set-plus-backoff structure'.",
+              "Day C wins 'rotation frequency (most appearances)'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-03 (72h ago).",
+              "Most recent qualifying shoulders muscle exposure: 2026-10-03 (72h ago).",
+              "Most recent qualifying shoulder_lateral cluster exposure: 2026-10-03 (72h ago).",
+              "Fatigue state for this occurrence: 'high'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 52h.",
+              "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Escalation: fatigue_state=high overrides the history_inference-decided primary_progression result -> skip_overlap (bounded post-resolution escalation; single destination, cannot override a manual override).",
+              "Forward projection: target exposure 2026-10-10 (source=actual, session 2c8fde91-d70f-404f-bed2-00974c60d16a); governing source=stage3_escalation. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (skip_overlap); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Lateral Raise (Band)",
@@ -5170,7 +5630,34 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (volume stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 40h.",
             "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-10",
+            "targetDateSource": "actual",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day C inferred as primary owner: won 6/6 ownership signals over the runner-up (-1).",
+              "Day C wins 'highest top-set effort (RPE)'.",
+              "Day C wins 'highest relative load'.",
+              "Day C wins 'greatest qualifying working-set count'.",
+              "Day C wins 'consistent top-set-plus-backoff structure'.",
+              "Day C wins 'rotation frequency (most appearances)'.",
+              "Day C wins 'existing progression history'.",
+              "No qualifying prior exact-exercise exposure found.",
+              "Most recent qualifying shoulders muscle exposure: 2026-10-03 (72h ago).",
+              "Most recent qualifying shoulder_lateral cluster exposure: 2026-10-03 (72h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (volume stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 40h.",
+              "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-10 (source=actual, session 2c8fde91-d70f-404f-bed2-00974c60d16a); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Rear Dumbbell Raise",
@@ -5487,7 +5974,34 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 52h.",
             "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-10",
+            "targetDateSource": "actual",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day C inferred as primary owner: won 6/6 ownership signals over the runner-up (-1).",
+              "Day C wins 'highest top-set effort (RPE)'.",
+              "Day C wins 'highest relative load'.",
+              "Day C wins 'greatest qualifying working-set count'.",
+              "Day C wins 'consistent top-set-plus-backoff structure'.",
+              "Day C wins 'rotation frequency (most appearances)'.",
+              "Day C wins 'existing progression history'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-03 (72h ago).",
+              "Most recent qualifying shoulders muscle exposure: 2026-10-03 (72h ago).",
+              "Most recent qualifying shoulder_rear cluster exposure: 2026-10-03 (72h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group shoulders, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 52h.",
+              "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-10 (source=actual, session 2c8fde91-d70f-404f-bed2-00974c60d16a); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Hanging Leg Raise",
@@ -5504,9 +6018,9 @@ window.PROGRAM = {
           "noWeight": false,
           "loading_type": "cable_or_machine",
           "qc": "fail",
-          "action": "add_reps",
+          "action": "progress_reps_tempo",
           "assess": "Last top set: 0 lb \u00d7 18 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2717 QC fail: dropped_working_set(performed=3,slots=2)</b> \u00b7 Hold 0: no external load is logged on the top set, so there is no load step to take; chase reps to ~12 at RPE 9.5. Back-off already reached its own 12-rep anchor at its own load (0) for 18 \u2014 it holds there because the top set has not yet earned its own load jump.",
+          "rationale": "<b>\u2717 QC fail: dropped_working_set(performed=3,slots=2)</b> \u00b7 Hold 0: no external load is logged and the top set already reached the 15 rep ceiling \u2014 prescribed: 3s eccentric tempo, 1s peak-contraction pause. Back-off already reached its own 12-rep anchor at its own load (0) for 18 \u2014 it holds there because the top set has not yet earned its own load jump.",
           "when_to_add_load": "Reach 12 clean reps at 0 lb at RPE 9.5 or lower; then increase to 5 lb.",
           "sets": [
             {
@@ -5543,8 +6057,8 @@ window.PROGRAM = {
                 "lbs": 0,
                 "reps": "18",
                 "rpe": 9.5,
-                "tempo_seconds": null,
-                "pause_seconds": null,
+                "tempo_seconds": 3.0,
+                "pause_seconds": 1.0,
                 "rom_note": null
               },
               "engine_role": null
@@ -5652,7 +6166,33 @@ window.PROGRAM = {
             "Fatigue state for this occurrence: 'moderate'.",
             "Recovery-hours band width for this occurrence (stretch stimulus, muscle group abdominals, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
             "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "history_inference",
+            "governingSource": "owner_day_l3",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-10",
+            "targetDateSource": "actual",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "Day C inferred as primary owner: won 5/6 ownership signals over the runner-up (-1).",
+              "Day C wins 'highest top-set effort (RPE)'.",
+              "Day C wins 'highest relative load'.",
+              "Day C wins 'greatest qualifying working-set count'.",
+              "Day C wins 'consistent top-set-plus-backoff structure'.",
+              "Day C wins 'rotation frequency (most appearances)'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-03 (72h ago).",
+              "Most recent qualifying abdominals muscle exposure: 2026-10-03 (72h ago).",
+              "Most recent qualifying core_hip_flexion cluster exposure: 2026-10-03 (72h ago).",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group abdominals, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 48h.",
+              "Level 3 decided: today's day (C) is the resolved primary-owner day (source=inferred) -> primary_progression.",
+              "Forward projection: target exposure 2026-10-10 (source=actual, session 2c8fde91-d70f-404f-bed2-00974c60d16a); governing source=owner_day_l3. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         },
         {
           "name": "Triceps Pushdown",
@@ -5811,7 +6351,34 @@ window.PROGRAM = {
             "Upcoming primary exposure expected on day B (2026-10-09, 72h away).",
             "Level 3: resolved primary-owner day is B, not today's C; continuing to history/recovery evidence.",
             "Level 4 decided: exact-exercise exposure 24h ago against a 50h recovery window -> bloodflow_recovery."
-          ]
+          ],
+          "futurePrescriptionRole": {
+            "role": "bloodflow_recovery",
+            "source": "history_inference",
+            "governingSource": "band_l4",
+            "change": "unchanged",
+            "targetExposureDate": "2026-10-10",
+            "targetDateSource": "actual",
+            "projected": true,
+            "band": "bloodflow_recovery",
+            "ceiling": null,
+            "reasons": [
+              "Day B inferred as primary owner: won 4/6 ownership signals over the runner-up (0).",
+              "Day B wins 'highest top-set effort (RPE)'.",
+              "Day B wins 'greatest qualifying working-set count'.",
+              "Day B wins 'consistent top-set-plus-backoff structure'.",
+              "Day B wins 'rotation frequency (most appearances)'.",
+              "Most recent qualifying exact-exercise exposure: 2026-10-05 (24h ago).",
+              "Most recent qualifying triceps muscle exposure: 2026-10-05 (24h ago).",
+              "Most recent qualifying elbow_extension_primary cluster exposure: 2026-10-05 (24h ago).",
+              "Fatigue state for this occurrence: 'low'.",
+              "Recovery-hours band width for this occurrence (stretch stimulus, muscle group triceps, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 50h.",
+              "Upcoming primary exposure expected on day B (2026-10-09, 72h away).",
+              "Level 3: resolved primary-owner day is B, not today's C; continuing to history/recovery evidence.",
+              "Level 4 decided: exact-exercise exposure 24h ago against a 50h recovery window -> bloodflow_recovery.",
+              "Forward projection: target exposure 2026-10-10 (source=actual, session 2c8fde91-d70f-404f-bed2-00974c60d16a); governing source=band_l4. Binding evidence: exact tier, 2026-10-09 (24h before target) against a 50h recovery window -> bloodflow_recovery. Future role unchanged relative to the historical role (bloodflow_recovery); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
         }
       ],
       "sequencingAdvisory": null
