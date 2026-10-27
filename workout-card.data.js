@@ -50,15 +50,15 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-26T06:30:16.879579",
+        "generated_at": "2026-10-27T06:30:19.491979",
         "fatigue_signal": {
           "bent over row barbell": 1.0988843422943035,
           "chest dip assisted": 0.9375,
-          "chest fly dumbbell": 0.4096221437152875,
+          "chest fly dumbbell": 0.33131547412777057,
           "cross body hammer curl dumbbell": 0.30662172778904445,
           "hammer curl dumbbell": 0.25745140624999996,
           "hanging_leg_raise": 0.08906791201743097,
-          "incline bench press barbell": 0.9360551390548155,
+          "incline bench press barbell": 0.9000778309488933,
           "incline bicep curl dumbbell": 0.3609412397008856,
           "lateral raise band": 0.8107072584031167,
           "lateral raise dumbbell": 0.09,
@@ -67,23 +67,23 @@ window.PROGRAM = {
           "rear_dumbbell_raise": 0.21198071193835816,
           "reverse fly dumbbell": 0.09,
           "seated_lateral_raise": 0.2594283149553266,
-          "triceps extension dumbbell": 0.5204621092540328,
-          "triceps_pushdown": 3.950848859876541
+          "triceps extension dumbbell": 0.5293482275453756,
+          "triceps_pushdown": 3.0665516237385173
         },
         "fatigue_accumulation": {
-          "session_id": "7eb0d804-61bd-4dbf-b091-6adaff4ff44c",
-          "session_date": "2026-10-24T00:00:00",
-          "global_fatigue_score": 6.715437412261963,
-          "fatigue_trend_3": 4.6345367431640625,
-          "fatigue_trend_5": 5.760941505432129,
-          "recovery_debt": 5.354392051696777
+          "session_id": "3fc6ff6d-3e4e-4b70-baf5-676e39ca37f4",
+          "session_date": "2026-10-25T00:00:00",
+          "global_fatigue_score": 4.8272929191589355,
+          "fatigue_trend_3": 4.304638385772705,
+          "fatigue_trend_5": 5.054251194000244,
+          "recovery_debt": 4.575367450714111
         },
         "deload_state": {
-          "snapshot_date": "2026-10-25T00:00:00",
+          "snapshot_date": "2026-10-26T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
-          "trigger_type": "fatigue",
-          "fatigue_trigger": 6.715437412261963,
+          "trigger_type": "debt",
+          "fatigue_trigger": 4.8272929191589355,
           "regression_trigger": 0.7647058963775635,
           "cooldown_sessions": 3
         },
@@ -1439,15 +1439,15 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-26T06:30:16.879579",
+        "generated_at": "2026-10-27T06:30:19.491979",
         "fatigue_signal": {
           "bent over row barbell": 1.0988843422943035,
           "chest dip assisted": 0.9375,
-          "chest fly dumbbell": 0.4096221437152875,
+          "chest fly dumbbell": 0.33131547412777057,
           "cross body hammer curl dumbbell": 0.30662172778904445,
           "hammer curl dumbbell": 0.25745140624999996,
           "hanging_leg_raise": 0.08906791201743097,
-          "incline bench press barbell": 0.9360551390548155,
+          "incline bench press barbell": 0.9000778309488933,
           "incline bicep curl dumbbell": 0.3609412397008856,
           "lateral raise band": 0.8107072584031167,
           "lateral raise dumbbell": 0.09,
@@ -1456,23 +1456,23 @@ window.PROGRAM = {
           "rear_dumbbell_raise": 0.21198071193835816,
           "reverse fly dumbbell": 0.09,
           "seated_lateral_raise": 0.2594283149553266,
-          "triceps extension dumbbell": 0.5204621092540328,
-          "triceps_pushdown": 3.950848859876541
+          "triceps extension dumbbell": 0.5293482275453756,
+          "triceps_pushdown": 3.0665516237385173
         },
         "fatigue_accumulation": {
-          "session_id": "7eb0d804-61bd-4dbf-b091-6adaff4ff44c",
-          "session_date": "2026-10-24T00:00:00",
-          "global_fatigue_score": 6.715437412261963,
-          "fatigue_trend_3": 4.6345367431640625,
-          "fatigue_trend_5": 5.760941505432129,
-          "recovery_debt": 5.354392051696777
+          "session_id": "3fc6ff6d-3e4e-4b70-baf5-676e39ca37f4",
+          "session_date": "2026-10-25T00:00:00",
+          "global_fatigue_score": 4.8272929191589355,
+          "fatigue_trend_3": 4.304638385772705,
+          "fatigue_trend_5": 5.054251194000244,
+          "recovery_debt": 4.575367450714111
         },
         "deload_state": {
-          "snapshot_date": "2026-10-25T00:00:00",
+          "snapshot_date": "2026-10-26T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
-          "trigger_type": "fatigue",
-          "fatigue_trigger": 6.715437412261963,
+          "trigger_type": "debt",
+          "fatigue_trigger": 4.8272929191589355,
           "regression_trigger": 0.7647058963775635,
           "cooldown_sessions": 3
         },
@@ -3213,15 +3213,15 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-26T06:30:16.879579",
+        "generated_at": "2026-10-27T06:30:19.491979",
         "fatigue_signal": {
           "bent over row barbell": 1.0988843422943035,
           "chest dip assisted": 0.9375,
-          "chest fly dumbbell": 0.4096221437152875,
+          "chest fly dumbbell": 0.33131547412777057,
           "cross body hammer curl dumbbell": 0.30662172778904445,
           "hammer curl dumbbell": 0.25745140624999996,
           "hanging_leg_raise": 0.08906791201743097,
-          "incline bench press barbell": 0.9360551390548155,
+          "incline bench press barbell": 0.9000778309488933,
           "incline bicep curl dumbbell": 0.3609412397008856,
           "lateral raise band": 0.8107072584031167,
           "lateral raise dumbbell": 0.09,
@@ -3230,23 +3230,23 @@ window.PROGRAM = {
           "rear_dumbbell_raise": 0.21198071193835816,
           "reverse fly dumbbell": 0.09,
           "seated_lateral_raise": 0.2594283149553266,
-          "triceps extension dumbbell": 0.5204621092540328,
-          "triceps_pushdown": 3.950848859876541
+          "triceps extension dumbbell": 0.5293482275453756,
+          "triceps_pushdown": 3.0665516237385173
         },
         "fatigue_accumulation": {
-          "session_id": "7eb0d804-61bd-4dbf-b091-6adaff4ff44c",
-          "session_date": "2026-10-24T00:00:00",
-          "global_fatigue_score": 6.715437412261963,
-          "fatigue_trend_3": 4.6345367431640625,
-          "fatigue_trend_5": 5.760941505432129,
-          "recovery_debt": 5.354392051696777
+          "session_id": "3fc6ff6d-3e4e-4b70-baf5-676e39ca37f4",
+          "session_date": "2026-10-25T00:00:00",
+          "global_fatigue_score": 4.8272929191589355,
+          "fatigue_trend_3": 4.304638385772705,
+          "fatigue_trend_5": 5.054251194000244,
+          "recovery_debt": 4.575367450714111
         },
         "deload_state": {
-          "snapshot_date": "2026-10-25T00:00:00",
+          "snapshot_date": "2026-10-26T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
-          "trigger_type": "fatigue",
-          "fatigue_trigger": 6.715437412261963,
+          "trigger_type": "debt",
+          "fatigue_trigger": 4.8272929191589355,
           "regression_trigger": 0.7647058963775635,
           "cooldown_sessions": 3
         },
@@ -4489,15 +4489,15 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-26T06:30:16.879579",
+        "generated_at": "2026-10-27T06:30:19.491979",
         "fatigue_signal": {
           "bent over row barbell": 1.0988843422943035,
           "chest dip assisted": 0.9375,
-          "chest fly dumbbell": 0.4096221437152875,
+          "chest fly dumbbell": 0.33131547412777057,
           "cross body hammer curl dumbbell": 0.30662172778904445,
           "hammer curl dumbbell": 0.25745140624999996,
           "hanging_leg_raise": 0.08906791201743097,
-          "incline bench press barbell": 0.9360551390548155,
+          "incline bench press barbell": 0.9000778309488933,
           "incline bicep curl dumbbell": 0.3609412397008856,
           "lateral raise band": 0.8107072584031167,
           "lateral raise dumbbell": 0.09,
@@ -4506,23 +4506,23 @@ window.PROGRAM = {
           "rear_dumbbell_raise": 0.21198071193835816,
           "reverse fly dumbbell": 0.09,
           "seated_lateral_raise": 0.2594283149553266,
-          "triceps extension dumbbell": 0.5204621092540328,
-          "triceps_pushdown": 3.950848859876541
+          "triceps extension dumbbell": 0.5293482275453756,
+          "triceps_pushdown": 3.0665516237385173
         },
         "fatigue_accumulation": {
-          "session_id": "7eb0d804-61bd-4dbf-b091-6adaff4ff44c",
-          "session_date": "2026-10-24T00:00:00",
-          "global_fatigue_score": 6.715437412261963,
-          "fatigue_trend_3": 4.6345367431640625,
-          "fatigue_trend_5": 5.760941505432129,
-          "recovery_debt": 5.354392051696777
+          "session_id": "3fc6ff6d-3e4e-4b70-baf5-676e39ca37f4",
+          "session_date": "2026-10-25T00:00:00",
+          "global_fatigue_score": 4.8272929191589355,
+          "fatigue_trend_3": 4.304638385772705,
+          "fatigue_trend_5": 5.054251194000244,
+          "recovery_debt": 4.575367450714111
         },
         "deload_state": {
-          "snapshot_date": "2026-10-25T00:00:00",
+          "snapshot_date": "2026-10-26T00:00:00",
           "deload_flag": true,
           "pre_deload_flag": false,
-          "trigger_type": "fatigue",
-          "fatigue_trigger": 6.715437412261963,
+          "trigger_type": "debt",
+          "fatigue_trigger": 4.8272929191589355,
           "regression_trigger": 0.7647058963775635,
           "cooldown_sessions": 3
         },
