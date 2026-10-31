@@ -3,6 +3,916 @@ window.PROGRAM = {
   "avatar": "",
   "sessions": [
     {
+      "day": "B",
+      "title": "DAY B - CHEST / TRICEPS",
+      "date": "2026-10-30",
+      "sessionRole": "primary",
+      "sessionRoleSource": "scheduled_slot",
+      "sessionRoleWarnings": [],
+      "prevDate": "2026-10-25",
+      "nextAvailable": {
+        "earliest": "2026-11-03",
+        "latest": "2026-11-04",
+        "fatigue_state": "moderate",
+        "driver": "chest recovery (heavy stimulus, moderate fatigue, ~78h)"
+      },
+      "fatigueAdvisory": {
+        "fatigue_taxonomy": {
+          "systemic": {
+            "recovery_complexity": "high",
+            "suppression_risk": "high",
+            "persistence_profile": "multi_day",
+            "adaptive_impact": "global"
+          },
+          "local": {
+            "recovery_complexity": "moderate",
+            "suppression_risk": "moderate",
+            "persistence_profile": "short_term",
+            "adaptive_impact": "regional"
+          },
+          "neural": {
+            "recovery_complexity": "high",
+            "suppression_risk": "high",
+            "persistence_profile": "multi_day",
+            "adaptive_impact": "global"
+          },
+          "metabolic": {
+            "recovery_complexity": "moderate",
+            "suppression_risk": "moderate",
+            "persistence_profile": "acute",
+            "adaptive_impact": "regional"
+          },
+          "structural": {
+            "recovery_complexity": "very_high",
+            "suppression_risk": "high",
+            "persistence_profile": "long_term",
+            "adaptive_impact": "local"
+          }
+        },
+        "session_id": null,
+        "generated_at": "2026-10-30T20:35:35.430133",
+        "fatigue_signal": null,
+        "fatigue_accumulation": null,
+        "deload_state": null,
+        "deload_signal_secondary": null,
+        "stimulus_fatigue": null,
+        "advisory_decision": null,
+        "anomalies": null,
+        "component_status": {
+          "fatigue_taxonomy": "ok",
+          "fatigue_accumulation": "unavailable",
+          "fatigue_signal": "unavailable",
+          "exercise_response_state": "unavailable",
+          "deload_state": "unavailable"
+        },
+        "thresholds": {
+          "global_fatigue_score": {
+            "scale": "unbounded_sum",
+            "med": 4.5,
+            "high": 5.5
+          },
+          "recovery_debt": {
+            "scale": "unbounded_decaying_accumulator",
+            "med": 1.5,
+            "high": 2.5,
+            "baseline": 4.0,
+            "decay": 0.7
+          },
+          "regress_ratio": {
+            "scale": "ratio_0_1",
+            "med": 0.3,
+            "high": 0.5
+          }
+        },
+        "is_advisory": true
+      },
+      "stats": [
+        "67m",
+        "14 sets",
+        "13.7k lbs"
+      ],
+      "summary": {
+        "status": "review",
+        "headline": "DAY B - CHEST / TRICEPS \u2014 4 load\u2191 \u00b7 1 rep\u2191 \u00b7 0 hold \u00b7 1 non-primary excluded.",
+        "assess": "6 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
+        "prescription": "QC: <b>5/6</b> prescriptions passed the validation gate; <b>1 flagged</b> \u2014 see the \u2717 tags below.",
+        "nonPrimaryExcluded": 1
+      },
+      "exercises": [
+        {
+          "name": "Exercise",
+          "icon": "\ud83c\udfcb\ufe0f",
+          "muscleGroup": null,
+          "rest": "3:00",
+          "cues": [
+            "Shoulder blades set",
+            "Lower under control",
+            "Press through upper chest",
+            "No bouncing",
+            "Stop before bar speed dies"
+          ],
+          "noWeight": false,
+          "loading_type": "cable_or_machine",
+          "qc": "fail",
+          "action": "supplemental",
+          "assess": "Most recent primary session: load and reps and rpe not recorded.",
+          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe), reference_missing(target=exercise)</b> \u00b7 Cannot prescribe supplemental volume for Exercise: the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
+          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
+          "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": 88,
+                "reps": 8,
+                "rpe": 5
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
+            {
+              "type": "W",
+              "last": {
+                "lbs": 121,
+                "reps": 5,
+                "rpe": 6
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": 150,
+                "reps": 8,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
+            {
+              "type": 4,
+              "last": {
+                "lbs": 137.5,
+                "reps": 6,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            }
+          ],
+          "volumeLbs": 2025.0,
+          "gate_status": "no_signal",
+          "gate_reason": "Decision gate not applicable to a non-primary occurrence (occurrenceRole=supplemental_volume).",
+          "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": null,
+          "occurrenceRole": "supplemental_volume",
+          "roleSource": "recovery_override",
+          "roleConfidence": "medium",
+          "primaryReference": null,
+          "progressionEligible": false,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Fatigue state for this occurrence: 'elevated'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 6 decided: fatigue_state=elevated with no qualifying history signal -> supplemental_volume."
+          ],
+          "futurePrescriptionRole": {
+            "role": "supplemental_volume",
+            "source": "recovery_override",
+            "governingSource": "fatigue_l6",
+            "change": "unchanged",
+            "targetExposureDate": "2026-11-02",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+              "No qualifying prior exact-exercise exposure found.",
+              "Fatigue state for this occurrence: 'elevated'.",
+              "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+              "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+              "Level 6 decided: fatigue_state=elevated with no qualifying history signal -> supplemental_volume.",
+              "Forward projection: target exposure 2026-11-02 (source=estimated); governing source=fatigue_l6. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (supplemental_volume); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
+        },
+        {
+          "name": "Exercise",
+          "icon": "\ud83c\udfcb\ufe0f",
+          "muscleGroup": null,
+          "rest": "2:30",
+          "cues": [
+            "Stretch focus",
+            "Soft elbow bend fixed",
+            "2\u20133 sec eccentric",
+            "No pressing motion",
+            "Stop short of shoulder irritation"
+          ],
+          "noWeight": false,
+          "loading_type": "cable_or_machine",
+          "qc": "pass",
+          "action": "increase_load",
+          "assess": "Last top set: 50 lb \u00d7 12 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 50\u00d712 at RPE 9 (\u2265 anchor 12), backoffs productive \u2014 top set 50\u219255; +10.0% load costs ~3 reps, so the rep target drops 12\u21929 [range 7-9]. Back-off earned its own jump too \u2014 50 for 10-12, rebuilding to the reps it just produced.",
+          "when_to_add_load": "Reach 12 clean reps at 50 lb at RPE 9.5 or lower; then increase to 55 lb.",
+          "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": 30,
+                "reps": 8,
+                "rpe": 5
+              },
+              "prop": {
+                "lbs": 30,
+                "reps": "8",
+                "rpe": 5.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "warmup"
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": 50,
+                "reps": 12,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 55,
+                "reps": "7\u20139",
+                "rpe": 9.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "working"
+            },
+            {
+              "type": 3,
+              "last": {
+                "lbs": 45,
+                "reps": 12,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 50,
+                "reps": "10\u201312",
+                "rpe": 9.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "working"
+            }
+          ],
+          "volumeLbs": 1140.0,
+          "gate_status": "no_signal",
+          "gate_reason": null,
+          "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Fatigue state for this occurrence: 'moderate'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
+            "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day)."
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "fallback",
+            "governingSource": "fallback_l8",
+            "change": "unchanged",
+            "targetExposureDate": "2026-11-02",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+              "No qualifying prior exact-exercise exposure found.",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+              "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+              "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
+              "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day).",
+              "Forward projection: target exposure 2026-11-02 (source=estimated); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
+        },
+        {
+          "name": "Exercise",
+          "icon": "\ud83c\udfcb\ufe0f",
+          "muscleGroup": null,
+          "rest": "2:30",
+          "cues": [
+            "Elbows fixed slightly in",
+            "Full stretch behind head",
+            "2\u20133 sec eccentric",
+            "Pause in stretch",
+            "No shoulder movement",
+            "Keep tension on triceps"
+          ],
+          "noWeight": false,
+          "loading_type": "cable_or_machine",
+          "qc": "pass",
+          "action": "add_reps",
+          "assess": "Last top set: 72.5 lb \u00d7 10 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 72.5 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off holds its own last load (65) for 9-11 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 12 clean reps at 72.5 lb at RPE 9.5 or lower; then increase to 80 lb.",
+          "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": 45,
+                "reps": 8,
+                "rpe": 5
+              },
+              "prop": {
+                "lbs": 40,
+                "reps": "8",
+                "rpe": 5.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "warmup"
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": 72.5,
+                "reps": 10,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 72.5,
+                "reps": "11\u201315",
+                "rpe": 9.5,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "working"
+            },
+            {
+              "type": 3,
+              "last": {
+                "lbs": 65,
+                "reps": 9,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 65,
+                "reps": "9\u201311",
+                "rpe": 9.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "working"
+            }
+          ],
+          "volumeLbs": 1310.0,
+          "gate_status": "no_signal",
+          "gate_reason": null,
+          "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Fatigue state for this occurrence: 'moderate'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
+            "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day)."
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "fallback",
+            "governingSource": "fallback_l8",
+            "change": "unchanged",
+            "targetExposureDate": "2026-11-02",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+              "No qualifying prior exact-exercise exposure found.",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+              "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+              "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
+              "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day).",
+              "Forward projection: target exposure 2026-11-02 (source=estimated); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
+        },
+        {
+          "name": "Exercise",
+          "icon": "\ud83c\udfcb\ufe0f",
+          "muscleGroup": null,
+          "rest": "2:00",
+          "cues": [
+            "Elbows pinned",
+            "Full lockout",
+            "Controlled return",
+            "No shoulder roll",
+            "Keep tension on triceps"
+          ],
+          "noWeight": false,
+          "loading_type": "cable_or_machine",
+          "qc": "pass",
+          "action": "increase_load",
+          "assess": "Last top set: 300 lb \u00d7 15 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 300\u00d715 at RPE 9 (\u2265 anchor 12), backoffs productive \u2014 top set 300\u2192305; +1.7% load costs ~1 rep, so the rep target drops 15\u219214 [range 8-14]. Back-off steps its load down to 295 for 10-12 \u2014 the same load was repeated and could not hold its rep count at comparable effort (10\u219215 reps at that load), so the load steps down rather than the set being dropped.",
+          "when_to_add_load": "Reach 12 clean reps at 300 lb at RPE 9.5 or lower; then increase to 305 lb.",
+          "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": 200,
+                "reps": 8,
+                "rpe": 5
+              },
+              "prop": {
+                "lbs": 170,
+                "reps": "8",
+                "rpe": 5.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "warmup"
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": 300,
+                "reps": 15,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 305,
+                "reps": "8\u201314",
+                "rpe": 9.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "working"
+            },
+            {
+              "type": 3,
+              "last": {
+                "lbs": 300,
+                "reps": 10,
+                "rpe": 9
+              },
+              "prop": {
+                "lbs": 295,
+                "reps": "10\u201312",
+                "rpe": 9.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "working"
+            }
+          ],
+          "volumeLbs": 7500.0,
+          "gate_status": "no_signal",
+          "gate_reason": null,
+          "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Fatigue state for this occurrence: 'moderate'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
+            "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day)."
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "fallback",
+            "governingSource": "fallback_l8",
+            "change": "unchanged",
+            "targetExposureDate": "2026-11-02",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+              "No qualifying prior exact-exercise exposure found.",
+              "Fatigue state for this occurrence: 'moderate'.",
+              "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+              "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+              "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
+              "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day).",
+              "Forward projection: target exposure 2026-11-02 (source=estimated); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
+        },
+        {
+          "name": "Exercise",
+          "icon": "\ud83c\udfcb\ufe0f",
+          "muscleGroup": null,
+          "rest": "2:00",
+          "cues": [],
+          "noWeight": false,
+          "loading_type": "cable_or_machine",
+          "qc": "pass",
+          "action": "increase_load",
+          "assess": "Last top set: 30 lb \u00d7 14 @ RPE 8 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 30\u00d714 at RPE 8 (\u2265 anchor 12), backoffs productive \u2014 top set 30\u219235; +16.7% load costs ~6 reps, so the rep target drops 14\u21928 [range 6-8]. Back-off holds its own last load (27.5) for 10-12 \u2014 it has not reached the 12-rep anchor on its own performance yet.",
+          "when_to_add_load": "Reach 12 clean reps at 30 lb at RPE 9.5 or lower; then increase to 35 lb.",
+          "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "prop": {
+                "lbs": 20,
+                "reps": "8",
+                "rpe": 5.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "prop": {
+                "lbs": 35,
+                "reps": "6\u20138",
+                "rpe": 9.5,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
+            {
+              "type": 1,
+              "last": {
+                "lbs": 20,
+                "reps": 8,
+                "rpe": 5
+              },
+              "prop": {
+                "lbs": 27.5,
+                "reps": "10\u201312",
+                "rpe": 9.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "warmup"
+            },
+            {
+              "type": 2,
+              "last": {
+                "lbs": 30,
+                "reps": 14,
+                "rpe": 8
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "working"
+            },
+            {
+              "type": 3,
+              "last": {
+                "lbs": 27.5,
+                "reps": 10,
+                "rpe": 8
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "working"
+            }
+          ],
+          "volumeLbs": 855.0,
+          "gate_status": "no_signal",
+          "gate_reason": null,
+          "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Fatigue state for this occurrence: 'low'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
+            "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day)."
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "fallback",
+            "governingSource": "fallback_l8",
+            "change": "unchanged",
+            "targetExposureDate": "2026-11-02",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+              "No qualifying prior exact-exercise exposure found.",
+              "Fatigue state for this occurrence: 'low'.",
+              "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+              "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+              "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
+              "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day).",
+              "Forward projection: target exposure 2026-11-02 (source=estimated); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
+        },
+        {
+          "name": "Exercise",
+          "icon": "\ud83c\udfcb\ufe0f",
+          "muscleGroup": null,
+          "rest": "2:00",
+          "cues": [],
+          "noWeight": false,
+          "loading_type": "cable_or_machine",
+          "qc": "pass",
+          "action": "increase_load",
+          "assess": "Last top set: 30 lb \u00d7 12 @ RPE 8 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 30\u00d712 at RPE 8 (\u2265 anchor 12), backoffs productive \u2014 top set 30\u219235; +16.7% load costs ~6 reps, so the rep target drops 12\u21926 [range 4-6]. Back-off earned its own jump too \u2014 30 for 10-12, rebuilding to the reps it just produced.",
+          "when_to_add_load": "Reach 12 clean reps at 30 lb at RPE 9.5 or lower; then increase to 35 lb.",
+          "sets": [
+            {
+              "type": "W",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "prop": {
+                "lbs": 20,
+                "reps": "8",
+                "rpe": 5.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
+            {
+              "type": "T",
+              "last": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "prop": {
+                "lbs": 35,
+                "reps": "4\u20136",
+                "rpe": 9.5,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": null
+            },
+            {
+              "type": 1,
+              "last": {
+                "lbs": 20,
+                "reps": 8,
+                "rpe": 5
+              },
+              "prop": {
+                "lbs": 30,
+                "reps": "10\u201312",
+                "rpe": 9.0,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "warmup"
+            },
+            {
+              "type": 2,
+              "last": {
+                "lbs": 30,
+                "reps": 12,
+                "rpe": 8
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "working"
+            },
+            {
+              "type": 3,
+              "last": {
+                "lbs": 25,
+                "reps": 12,
+                "rpe": 8
+              },
+              "prop": {
+                "lbs": null,
+                "reps": null,
+                "rpe": null,
+                "tempo_seconds": null,
+                "pause_seconds": null,
+                "rom_note": null
+              },
+              "engine_role": "working"
+            }
+          ],
+          "volumeLbs": 820.0,
+          "gate_status": "no_signal",
+          "gate_reason": null,
+          "recoveryOverlapWarning": null,
+          "rpeAdjustmentAdvisory": null,
+          "decisionHistory": [],
+          "increaseCutoff": null,
+          "reduceCutoff": null,
+          "ignoredDecision": null,
+          "outcome": null,
+          "effectiveness": null,
+          "occurrenceRole": "primary_progression",
+          "roleSource": "fallback",
+          "roleConfidence": "low",
+          "primaryReference": null,
+          "progressionEligible": true,
+          "fatigueVolumeEligible": true,
+          "classificationReasons": [
+            "role recomputed in memory (no persisted occurrence_role row for this key)",
+            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+            "No qualifying prior exact-exercise exposure found.",
+            "Fatigue state for this occurrence: 'low'.",
+            "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+            "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
+            "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day)."
+          ],
+          "futurePrescriptionRole": {
+            "role": "primary_progression",
+            "source": "fallback",
+            "governingSource": "fallback_l8",
+            "change": "unchanged",
+            "targetExposureDate": "2026-11-02",
+            "targetDateSource": "estimated",
+            "projected": true,
+            "band": null,
+            "ceiling": null,
+            "reasons": [
+              "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
+              "No qualifying prior exact-exercise exposure found.",
+              "Fatigue state for this occurrence: 'low'.",
+              "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
+              "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
+              "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
+              "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day).",
+              "Forward projection: target exposure 2026-11-02 (source=estimated); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+            ]
+          }
+        }
+      ],
+      "sequencingAdvisory": null
+    },
+    {
       "day": "A",
       "title": "DAY A \u2014 BACK / BICEPS",
       "date": "2026-10-29",
@@ -50,7 +960,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-30T06:30:21.791294",
+        "generated_at": "2026-10-30T20:35:35.430133",
         "fatigue_signal": null,
         "fatigue_accumulation": null,
         "deload_state": null,
@@ -803,7 +1713,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-30T06:30:21.791294",
+        "generated_at": "2026-10-30T20:35:35.430133",
         "fatigue_signal": null,
         "fatigue_accumulation": null,
         "deload_state": null,
@@ -1583,7 +2493,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-30T06:30:21.791294",
+        "generated_at": "2026-10-30T20:35:35.430133",
         "fatigue_signal": null,
         "fatigue_accumulation": null,
         "deload_state": null,
@@ -1753,7 +2663,7 @@ window.PROGRAM = {
             "governingSource": "fatigue_l6",
             "change": "unchanged",
             "targetExposureDate": "2026-10-30",
-            "targetDateSource": "estimated",
+            "targetDateSource": "actual",
             "projected": true,
             "band": null,
             "ceiling": null,
@@ -1764,7 +2674,7 @@ window.PROGRAM = {
               "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
               "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
               "Level 6 decided: fatigue_state=elevated with no qualifying history signal -> supplemental_volume.",
-              "Forward projection: target exposure 2026-10-30 (source=estimated); governing source=fatigue_l6. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (supplemental_volume); the historical occurrenceRole and the persisted table are unchanged."
+              "Forward projection: target exposure 2026-10-30 (source=actual, session 78fadebc-9e24-4202-bfc0-2ec48bc25803); governing source=fatigue_l6. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (supplemental_volume); the historical occurrenceRole and the persisted table are unchanged."
             ]
           }
         },
@@ -1873,7 +2783,7 @@ window.PROGRAM = {
             "governingSource": "fallback_l8",
             "change": "unchanged",
             "targetExposureDate": "2026-10-30",
-            "targetDateSource": "estimated",
+            "targetDateSource": "actual",
             "projected": true,
             "band": null,
             "ceiling": null,
@@ -1885,7 +2795,7 @@ window.PROGRAM = {
               "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
               "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
               "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day).",
-              "Forward projection: target exposure 2026-10-30 (source=estimated); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+              "Forward projection: target exposure 2026-10-30 (source=actual, session 78fadebc-9e24-4202-bfc0-2ec48bc25803); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
             ]
           }
         },
@@ -1995,7 +2905,7 @@ window.PROGRAM = {
             "governingSource": "fallback_l8",
             "change": "unchanged",
             "targetExposureDate": "2026-10-30",
-            "targetDateSource": "estimated",
+            "targetDateSource": "actual",
             "projected": true,
             "band": null,
             "ceiling": null,
@@ -2007,7 +2917,7 @@ window.PROGRAM = {
               "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
               "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
               "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day).",
-              "Forward projection: target exposure 2026-10-30 (source=estimated); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+              "Forward projection: target exposure 2026-10-30 (source=actual, session 78fadebc-9e24-4202-bfc0-2ec48bc25803); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
             ]
           }
         },
@@ -2116,500 +3026,6 @@ window.PROGRAM = {
             "governingSource": "fallback_l8",
             "change": "unchanged",
             "targetExposureDate": "2026-10-30",
-            "targetDateSource": "estimated",
-            "projected": true,
-            "band": null,
-            "ceiling": null,
-            "reasons": [
-              "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
-              "No qualifying prior exact-exercise exposure found.",
-              "Fatigue state for this occurrence: 'moderate'.",
-              "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
-              "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
-              "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
-              "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day).",
-              "Forward projection: target exposure 2026-10-30 (source=estimated); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
-            ]
-          }
-        }
-      ],
-      "sequencingAdvisory": null
-    },
-    {
-      "day": "A",
-      "title": "DAY A \u2014 BACK / BICEPS",
-      "date": "2026-10-24",
-      "sessionRole": "primary",
-      "sessionRoleSource": "scheduled_slot",
-      "sessionRoleWarnings": [],
-      "prevDate": "2026-10-17",
-      "nextAvailable": {
-        "earliest": "2026-10-28",
-        "latest": "2026-10-29",
-        "fatigue_state": "moderate",
-        "driver": "back recovery (heavy stimulus, moderate fatigue, ~80h)"
-      },
-      "fatigueAdvisory": {
-        "fatigue_taxonomy": {
-          "systemic": {
-            "recovery_complexity": "high",
-            "suppression_risk": "high",
-            "persistence_profile": "multi_day",
-            "adaptive_impact": "global"
-          },
-          "local": {
-            "recovery_complexity": "moderate",
-            "suppression_risk": "moderate",
-            "persistence_profile": "short_term",
-            "adaptive_impact": "regional"
-          },
-          "neural": {
-            "recovery_complexity": "high",
-            "suppression_risk": "high",
-            "persistence_profile": "multi_day",
-            "adaptive_impact": "global"
-          },
-          "metabolic": {
-            "recovery_complexity": "moderate",
-            "suppression_risk": "moderate",
-            "persistence_profile": "acute",
-            "adaptive_impact": "regional"
-          },
-          "structural": {
-            "recovery_complexity": "very_high",
-            "suppression_risk": "high",
-            "persistence_profile": "long_term",
-            "adaptive_impact": "local"
-          }
-        },
-        "session_id": null,
-        "generated_at": "2026-10-30T06:30:21.791294",
-        "fatigue_signal": null,
-        "fatigue_accumulation": null,
-        "deload_state": null,
-        "deload_signal_secondary": null,
-        "stimulus_fatigue": null,
-        "advisory_decision": null,
-        "anomalies": null,
-        "component_status": {
-          "fatigue_taxonomy": "ok",
-          "fatigue_accumulation": "unavailable",
-          "fatigue_signal": "unavailable",
-          "exercise_response_state": "unavailable",
-          "deload_state": "unavailable"
-        },
-        "thresholds": {
-          "global_fatigue_score": {
-            "scale": "unbounded_sum",
-            "med": 4.5,
-            "high": 5.5
-          },
-          "recovery_debt": {
-            "scale": "unbounded_decaying_accumulator",
-            "med": 1.5,
-            "high": 2.5,
-            "baseline": 4.0,
-            "decay": 0.7
-          },
-          "regress_ratio": {
-            "scale": "ratio_0_1",
-            "med": 0.3,
-            "high": 0.5
-          }
-        },
-        "is_advisory": true
-      },
-      "stats": [
-        "67m",
-        "10 sets",
-        "10.1k lbs"
-      ],
-      "summary": {
-        "status": "review",
-        "headline": "DAY A \u2014 BACK / BICEPS \u2014 2 load\u2191 \u00b7 1 rep\u2191 \u00b7 0 hold \u00b7 2 non-primary excluded.",
-        "assess": "5 exercises. Last = what you performed; Proposed = Yates/Mentzer model: warm-up ramp \u2192 one top set to failure (RPE 9.5\u201310) \u2192 RPE-9 back-off. Load, reps and RPE are computed together (load\u2191 \u21d2 reps reset).",
-        "prescription": "QC: <b>3/5</b> prescriptions passed the validation gate; <b>2 flagged</b> \u2014 see the \u2717 tags below.",
-        "nonPrimaryExcluded": 2
-      },
-      "exercises": [
-        {
-          "name": "Exercise",
-          "icon": "\ud83c\udfcb\ufe0f",
-          "muscleGroup": null,
-          "rest": "3:00",
-          "cues": [
-            "Full ROM",
-            "Stretch at bottom",
-            "Chest up",
-            "Drive elbows down",
-            "No kipping",
-            "Reduce assistance before adding reps if reps stalli"
-          ],
-          "noWeight": false,
-          "loading_type": "cable_or_machine",
-          "qc": "fail",
-          "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe), reference_missing(target=exercise)</b> \u00b7 Cannot prescribe supplemental volume for Exercise: the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
-          "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": 225,
-                "reps": 8,
-                "rpe": 5
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            },
-            {
-              "type": "W",
-              "last": {
-                "lbs": 200,
-                "reps": 5,
-                "rpe": 6
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": 150,
-                "reps": 13,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            },
-            {
-              "type": 4,
-              "last": {
-                "lbs": 175,
-                "reps": 11,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            }
-          ],
-          "volumeLbs": 3875.0,
-          "gate_status": "no_signal",
-          "gate_reason": "Decision gate not applicable to a non-primary occurrence (occurrenceRole=supplemental_volume).",
-          "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
-          "decisionHistory": [],
-          "increaseCutoff": null,
-          "reduceCutoff": null,
-          "ignoredDecision": null,
-          "outcome": null,
-          "effectiveness": null,
-          "occurrenceRole": "supplemental_volume",
-          "roleSource": "recovery_override",
-          "roleConfidence": "medium",
-          "primaryReference": null,
-          "progressionEligible": false,
-          "fatigueVolumeEligible": true,
-          "classificationReasons": [
-            "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
-            "No qualifying prior exact-exercise exposure found.",
-            "Fatigue state for this occurrence: 'elevated'.",
-            "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
-            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
-            "Level 6 decided: fatigue_state=elevated with no qualifying history signal -> supplemental_volume."
-          ],
-          "futurePrescriptionRole": {
-            "role": "supplemental_volume",
-            "source": "recovery_override",
-            "governingSource": "fatigue_l6",
-            "change": "unchanged",
-            "targetExposureDate": "2026-10-29",
-            "targetDateSource": "actual",
-            "projected": true,
-            "band": null,
-            "ceiling": null,
-            "reasons": [
-              "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
-              "No qualifying prior exact-exercise exposure found.",
-              "Fatigue state for this occurrence: 'elevated'.",
-              "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
-              "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
-              "Level 6 decided: fatigue_state=elevated with no qualifying history signal -> supplemental_volume.",
-              "Forward projection: target exposure 2026-10-29 (source=actual, session 689d092a-d0cb-4a11-ad5e-372fefbc695a); governing source=fatigue_l6. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (supplemental_volume); the historical occurrenceRole and the persisted table are unchanged."
-            ]
-          }
-        },
-        {
-          "name": "Exercise",
-          "icon": "\ud83c\udfcb\ufe0f",
-          "muscleGroup": null,
-          "rest": "3:00",
-          "cues": [
-            "Stable torso",
-            "Pull to low chest / upper abs",
-            "No jerking",
-            "Control eccentric",
-            "Do not turn it into a hip hinge shrug"
-          ],
-          "noWeight": false,
-          "loading_type": "cable_or_machine",
-          "qc": "fail",
-          "action": "supplemental",
-          "assess": "Most recent primary session: load and reps and rpe not recorded.",
-          "rationale": "<b>\u2717 QC fail: insufficient_reference_input, missing(load), missing(reps), missing(rpe), reference_missing(target=exercise)</b> \u00b7 Cannot prescribe supplemental volume for Exercise: the primary reference session's load and reps and rpe were not logged for this exercise. No load, rep or RPE target is being asserted from missing data.",
-          "when_to_add_load": "Progression criterion unavailable until a valid working set is logged.",
-          "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": 88,
-                "reps": 8,
-                "rpe": 5
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            },
-            {
-              "type": "W",
-              "last": {
-                "lbs": 126.5,
-                "reps": 5,
-                "rpe": 6
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": 148.5,
-                "reps": 10,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            },
-            {
-              "type": 4,
-              "last": {
-                "lbs": 137.5,
-                "reps": 10,
-                "rpe": 8
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": null
-            }
-          ],
-          "volumeLbs": 2860.0,
-          "gate_status": "no_signal",
-          "gate_reason": "Decision gate not applicable to a non-primary occurrence (occurrenceRole=supplemental_volume).",
-          "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
-          "decisionHistory": [],
-          "increaseCutoff": null,
-          "reduceCutoff": null,
-          "ignoredDecision": null,
-          "outcome": null,
-          "effectiveness": null,
-          "occurrenceRole": "supplemental_volume",
-          "roleSource": "recovery_override",
-          "roleConfidence": "medium",
-          "primaryReference": null,
-          "progressionEligible": false,
-          "fatigueVolumeEligible": true,
-          "classificationReasons": [
-            "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
-            "No qualifying prior exact-exercise exposure found.",
-            "Fatigue state for this occurrence: 'elevated'.",
-            "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
-            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
-            "Level 6 decided: fatigue_state=elevated with no qualifying history signal -> supplemental_volume."
-          ],
-          "futurePrescriptionRole": {
-            "role": "supplemental_volume",
-            "source": "recovery_override",
-            "governingSource": "fatigue_l6",
-            "change": "unchanged",
-            "targetExposureDate": "2026-10-29",
-            "targetDateSource": "actual",
-            "projected": true,
-            "band": null,
-            "ceiling": null,
-            "reasons": [
-              "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
-              "No qualifying prior exact-exercise exposure found.",
-              "Fatigue state for this occurrence: 'elevated'.",
-              "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
-              "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
-              "Level 6 decided: fatigue_state=elevated with no qualifying history signal -> supplemental_volume.",
-              "Forward projection: target exposure 2026-10-29 (source=actual, session 689d092a-d0cb-4a11-ad5e-372fefbc695a); governing source=fatigue_l6. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (supplemental_volume); the historical occurrenceRole and the persisted table are unchanged."
-            ]
-          }
-        },
-        {
-          "name": "Exercise",
-          "icon": "\ud83c\udfcb\ufe0f",
-          "muscleGroup": null,
-          "rest": "2:30",
-          "cues": [
-            "Full stretch with shoulder extended",
-            "Elbows fixed",
-            "Supinate hard at top",
-            "2\u20133 sec eccentric",
-            "No shoulder movement"
-          ],
-          "noWeight": false,
-          "loading_type": "cable_or_machine",
-          "qc": "pass",
-          "action": "increase_load",
-          "assess": "Last top set: 37.5 lb \u00d7 12 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 37.5\u00d712 at RPE 9 (\u2265 anchor 12), backoffs productive \u2014 top set 37.5\u219240; +6.7% load costs ~2 reps, so the rep target drops 12\u219210 [range 8-10]. Back-off earned its own jump too \u2014 35 for 11-13, rebuilding to the reps it just produced.",
-          "when_to_add_load": "Reach 12 clean reps at 37.5 lb at RPE 9.5 or lower; then increase to 40 lb.",
-          "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": 20,
-                "reps": 8,
-                "rpe": 5
-              },
-              "prop": {
-                "lbs": 20,
-                "reps": "8",
-                "rpe": 5.0,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": "warmup"
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": 37.5,
-                "reps": 12,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 40,
-                "reps": "8\u201310",
-                "rpe": 9.0,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": "working"
-            },
-            {
-              "type": 3,
-              "last": {
-                "lbs": 30,
-                "reps": 13,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 35,
-                "reps": "11\u201313",
-                "rpe": 9.0,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": "working"
-            }
-          ],
-          "volumeLbs": 840.0,
-          "gate_status": "no_signal",
-          "gate_reason": null,
-          "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
-          "decisionHistory": [],
-          "increaseCutoff": null,
-          "reduceCutoff": null,
-          "ignoredDecision": null,
-          "outcome": null,
-          "effectiveness": null,
-          "occurrenceRole": "primary_progression",
-          "roleSource": "fallback",
-          "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
-          "fatigueVolumeEligible": true,
-          "classificationReasons": [
-            "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
-            "No qualifying prior exact-exercise exposure found.",
-            "Fatigue state for this occurrence: 'moderate'.",
-            "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
-            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
-            "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
-            "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day)."
-          ],
-          "futurePrescriptionRole": {
-            "role": "primary_progression",
-            "source": "fallback",
-            "governingSource": "fallback_l8",
-            "change": "unchanged",
-            "targetExposureDate": "2026-10-29",
             "targetDateSource": "actual",
             "projected": true,
             "band": null,
@@ -2622,266 +3038,7 @@ window.PROGRAM = {
               "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
               "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
               "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day).",
-              "Forward projection: target exposure 2026-10-29 (source=actual, session 689d092a-d0cb-4a11-ad5e-372fefbc695a); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
-            ]
-          }
-        },
-        {
-          "name": "Exercise",
-          "icon": "\ud83c\udfcb\ufe0f",
-          "muscleGroup": null,
-          "rest": "2:30",
-          "cues": [
-            "Stretch at bottom",
-            "Drive elbow back",
-            "No torso rotation",
-            "Keep ribcage locked",
-            "Control lowering"
-          ],
-          "noWeight": false,
-          "loading_type": "cable_or_machine",
-          "qc": "pass",
-          "action": "add_reps",
-          "assess": "Last top set: 80 lb \u00d7 11 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 80 \u2014 reps below anchor; chase reps to ~12 at RPE 9.5 before adding load. Back-off already reached its own 12-rep anchor at its own load (70) for 12-14 \u2014 it holds there because the top set has not yet earned its own load jump.",
-          "when_to_add_load": "Reach 12 clean reps at 80 lb at RPE 9.5 or lower; then increase to 85 lb.",
-          "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": 45,
-                "reps": 8,
-                "rpe": 5
-              },
-              "prop": {
-                "lbs": 45,
-                "reps": "8",
-                "rpe": 5.0,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": "warmup"
-            },
-            {
-              "type": "W",
-              "last": {
-                "lbs": 65,
-                "reps": 5,
-                "rpe": 6
-              },
-              "prop": {
-                "lbs": null,
-                "reps": null,
-                "rpe": null,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": "warmup"
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": 80,
-                "reps": 11,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 80,
-                "reps": "12\u201315",
-                "rpe": 9.5,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": "working"
-            },
-            {
-              "type": 4,
-              "last": {
-                "lbs": 70,
-                "reps": 12,
-                "rpe": 8
-              },
-              "prop": {
-                "lbs": 70,
-                "reps": "12\u201314",
-                "rpe": 9.0,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": "working"
-            }
-          ],
-          "volumeLbs": 1720.0,
-          "gate_status": "no_signal",
-          "gate_reason": null,
-          "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
-          "decisionHistory": [],
-          "increaseCutoff": null,
-          "reduceCutoff": null,
-          "ignoredDecision": null,
-          "outcome": null,
-          "effectiveness": null,
-          "occurrenceRole": "primary_progression",
-          "roleSource": "fallback",
-          "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
-          "fatigueVolumeEligible": true,
-          "classificationReasons": [
-            "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
-            "No qualifying prior exact-exercise exposure found.",
-            "Fatigue state for this occurrence: 'moderate'.",
-            "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
-            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
-            "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
-            "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day)."
-          ],
-          "futurePrescriptionRole": {
-            "role": "primary_progression",
-            "source": "fallback",
-            "governingSource": "fallback_l8",
-            "change": "unchanged",
-            "targetExposureDate": "2026-10-29",
-            "targetDateSource": "actual",
-            "projected": true,
-            "band": null,
-            "ceiling": null,
-            "reasons": [
-              "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
-              "No qualifying prior exact-exercise exposure found.",
-              "Fatigue state for this occurrence: 'moderate'.",
-              "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
-              "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
-              "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
-              "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day).",
-              "Forward projection: target exposure 2026-10-29 (source=actual, session 689d092a-d0cb-4a11-ad5e-372fefbc695a); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
-            ]
-          }
-        },
-        {
-          "name": "Exercise",
-          "icon": "\ud83c\udfcb\ufe0f",
-          "muscleGroup": null,
-          "rest": "2:00",
-          "cues": [
-            "Neutral grip fixed",
-            "Elbow slightly forward",
-            "No torso swing",
-            "Control eccentric",
-            "Keep tension on brachialis"
-          ],
-          "noWeight": false,
-          "loading_type": "cable_or_machine",
-          "qc": "pass",
-          "action": "increase_load",
-          "assess": "Last top set: 35 lb \u00d7 13 @ RPE 9 \u00b7 cable_or_machine \u00b7 anchor 12 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Top set 35\u00d713 at RPE 9 (\u2265 anchor 12), backoffs productive \u2014 top set 35\u219240; +14.3% load costs ~5 reps, so the rep target drops 13\u21928 [range 6-8]. Back-off earned its own jump too \u2014 35 for 11-13, rebuilding to the reps it just produced.",
-          "when_to_add_load": "Reach 12 clean reps at 35 lb at RPE 9.5 or lower; then increase to 40 lb.",
-          "sets": [
-            {
-              "type": "W",
-              "last": {
-                "lbs": 20,
-                "reps": 8,
-                "rpe": 5
-              },
-              "prop": {
-                "lbs": 20,
-                "reps": "8",
-                "rpe": 5.0,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": "warmup"
-            },
-            {
-              "type": "T",
-              "last": {
-                "lbs": 35,
-                "reps": 13,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 40,
-                "reps": "6\u20138",
-                "rpe": 9.0,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": "working"
-            },
-            {
-              "type": 3,
-              "last": {
-                "lbs": 30,
-                "reps": 13,
-                "rpe": 9
-              },
-              "prop": {
-                "lbs": 35,
-                "reps": "11\u201313",
-                "rpe": 9.0,
-                "tempo_seconds": null,
-                "pause_seconds": null,
-                "rom_note": null
-              },
-              "engine_role": "working"
-            }
-          ],
-          "volumeLbs": 845.0,
-          "gate_status": "no_signal",
-          "gate_reason": null,
-          "recoveryOverlapWarning": null,
-          "rpeAdjustmentAdvisory": null,
-          "decisionHistory": [],
-          "increaseCutoff": null,
-          "reduceCutoff": null,
-          "ignoredDecision": null,
-          "outcome": null,
-          "effectiveness": null,
-          "occurrenceRole": "primary_progression",
-          "roleSource": "fallback",
-          "roleConfidence": "low",
-          "primaryReference": null,
-          "progressionEligible": true,
-          "fatigueVolumeEligible": true,
-          "classificationReasons": [
-            "role recomputed in memory (no persisted occurrence_role row for this key)",
-            "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
-            "No qualifying prior exact-exercise exposure found.",
-            "Fatigue state for this occurrence: 'moderate'.",
-            "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
-            "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
-            "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
-            "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day)."
-          ],
-          "futurePrescriptionRole": {
-            "role": "primary_progression",
-            "source": "fallback",
-            "governingSource": "fallback_l8",
-            "change": "unchanged",
-            "targetExposureDate": "2026-10-29",
-            "targetDateSource": "actual",
-            "projected": true,
-            "band": null,
-            "ceiling": null,
-            "reasons": [
-              "No exposures of this exercise could be matched to a known day letter; cannot infer a primary-owner day.",
-              "No qualifying prior exact-exercise exposure found.",
-              "Fatigue state for this occurrence: 'moderate'.",
-              "Recovery-hours band width for this occurrence (heavy stimulus, no muscle resolved, evaluated at a fixed moderate-fatigue baseline -- levels 4/5 own history recency alone): 72h.",
-              "Level 3: primary-owner day could not be resolved (ambiguous or no history); not granting primary_progression on an unresolved owner.",
-              "Level 6: no qualifying history signal, and fatigue_state does not warrant an override; not deciding.",
-              "Level 8 (fallback): no competing exposure, fatigue, or schedule evidence found at any level -> primary_progression (the ordinary case for a normal exercise on its normal day).",
-              "Forward projection: target exposure 2026-10-29 (source=actual, session 689d092a-d0cb-4a11-ad5e-372fefbc695a); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
+              "Forward projection: target exposure 2026-10-30 (source=actual, session 78fadebc-9e24-4202-bfc0-2ec48bc25803); governing source=fallback_l8. No qualifying forward evidence at any tier (exact/muscle/cluster). Future role unchanged relative to the historical role (primary_progression); the historical occurrenceRole and the persisted table are unchanged."
             ]
           }
         }
