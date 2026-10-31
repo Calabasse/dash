@@ -50,7 +50,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-30T20:35:35.430133",
+        "generated_at": "2026-10-31T06:30:16.842982",
         "fatigue_signal": null,
         "fatigue_accumulation": null,
         "deload_state": null,
@@ -960,7 +960,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-30T20:35:35.430133",
+        "generated_at": "2026-10-31T06:30:16.842982",
         "fatigue_signal": null,
         "fatigue_accumulation": null,
         "deload_state": null,
@@ -1713,7 +1713,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-30T20:35:35.430133",
+        "generated_at": "2026-10-31T06:30:16.842982",
         "fatigue_signal": null,
         "fatigue_accumulation": null,
         "deload_state": null,
@@ -2493,7 +2493,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-30T20:35:35.430133",
+        "generated_at": "2026-10-31T06:30:16.842982",
         "fatigue_signal": null,
         "fatigue_accumulation": null,
         "deload_state": null,
