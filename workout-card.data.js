@@ -50,7 +50,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-31T19:30:15.026008",
+        "generated_at": "2026-11-01T06:30:18.164186",
         "fatigue_signal": {
           "bent over row barbell": 1.230080820499051,
           "chest dip assisted": 0.9375,
@@ -1657,7 +1657,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-31T19:30:15.026008",
+        "generated_at": "2026-11-01T06:30:18.164186",
         "fatigue_signal": {
           "bent over row barbell": 1.230080820499051,
           "chest dip assisted": 0.9375,
@@ -3126,7 +3126,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-31T19:30:15.026008",
+        "generated_at": "2026-11-01T06:30:18.164186",
         "fatigue_signal": {
           "bent over row barbell": 1.230080820499051,
           "chest dip assisted": 0.9375,
@@ -4587,7 +4587,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-10-31T19:30:15.026008",
+        "generated_at": "2026-11-01T06:30:18.164186",
         "fatigue_signal": {
           "bent over row barbell": 1.230080820499051,
           "chest dip assisted": 0.9375,
@@ -4973,7 +4973,7 @@ window.PROGRAM = {
           "qc": "pass",
           "action": "add_reps",
           "assess": "Last top set: 75 lb \u00d7 13 @ RPE 9 \u00b7 band_resisted_isolation \u00b7 anchor 15 reps.",
-          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 75 lb band \u2014 chase reps to ~15 at RPE 9. Bands available: 35/45/55/65/75 only. Back-off already reached its own 15-rep anchor at its own load (65) for 17-19 \u2014 it holds there because the top set has not yet earned its own load jump.",
+          "rationale": "<b>\u2713 QC pass</b> \u00b7 Hold 75 lb band \u2014 chase reps to ~15 at RPE 9. Bands available: 45/55/65/75 only. Back-off already reached its own 15-rep anchor at its own load (65) for 17-19 \u2014 it holds there because the top set has not yet earned its own load jump.",
           "when_to_add_load": "Already at the heaviest available resistance; progress reps, tempo and ROM before any new load.",
           "sets": [
             {
