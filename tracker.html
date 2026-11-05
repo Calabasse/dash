@@ -86,20 +86,21 @@
     <div class="ctrls">
       <label>Model
         <select id="model" onchange="redraw()">
-          <option value="bateman">Absorption + ester decay (Bateman)</option>
+          <option value="bateman">Illustrative absorption shape (Bateman)</option>
           <option value="mono">Ester half-life decay (mono-exp)</option>
         </select>
       </label>
       <label>Units
         <select id="units" onchange="redraw()">
           <option value="mg">Active mg in system</option>
-          <option value="ngdl">ng/dL (serum testosterone)</option>
+          <option value="ngdl">ng/dL (calibrated estimate)</option>
           <option value="anabolic">Anabolic load (test-equiv mg)</option>
           <option value="androgen">Androgen load (test-equiv mg)</option>
         </select>
       </label>
       <label id="ngdlScaleWrap" style="display:none">ng/dL per mg
         <input type="number" id="ngdlScale" value="6" step="0.5" style="width:60px" onchange="redraw()"></label>
+      <span id="ngdlNote" style="display:none;color:var(--gold)"></span>
       <label>Tail days <input type="number" id="tail" value="28" min="0" max="120" style="width:60px" onchange="redraw()"></label>
       <label><input type="checkbox" id="showTotal" checked onchange="redraw()"> show total</label>
     </div>
@@ -107,6 +108,52 @@
     <div class="legend" id="legend"></div>
     <div class="stats" id="stats"></div>
     <div class="note">Model: each administration contributes a curve from the compound's ester half-life; the plot sums them (superposition), same approach as steroidplotter. "Active mg in system" is a relative estimate of hormone released, not a measured ng/dL serum value (true serum needs volume-of-distribution + individual clearance).</div>
+  </div>
+
+  <!-- ===================== LOADING & STEADY-STATE SIMULATOR ===================== -->
+  <div class="panel" id="simPanel">
+    <h2>Loading &amp; Steady-State Simulator <button class="mini" id="simToggle" onclick="simToggleOpen()">hide</button></h2>
+    <div id="simBody">
+      <div class="ctrls">
+        <label>Compound <select id="simComp" style="width:220px" onchange="simPickCompound()"></select></label>
+        <span id="simCompInfo" style="font-size:11px;color:var(--dim)"></span>
+      </div>
+      <details id="simSources" class="note" style="margin-top:0;margin-bottom:8px;display:none"><summary>half-life sources</summary><div id="simSourcesBody"></div></details>
+      <div id="simCompNotice" class="note" style="margin-top:0;margin-bottom:8px;color:var(--gold);display:none"></div>
+      <div class="ctrls">
+        <label>Weekly amount (mg/wk) <input type="number" id="simW" step="1" style="width:74px" onchange="simInput('W')"></label>
+        <label>Half-life (d) <input type="number" id="simHl" step="0.05" style="width:70px" onchange="simInput('hl')"></label>
+        <label>Frequency <select id="simFreq" style="width:160px" onchange="simInput('freq')"></select></label>
+        <label>Duration (d) <input type="number" id="simDur" step="1" style="width:64px" onchange="simInput('duration')"></label>
+      </div>
+      <div class="ctrls">
+        <label>Loading doses n <input type="number" id="simN" step="1" style="width:56px" onchange="simInput('n')"></label>
+        <label>Loading amount Q (mg) <input type="number" id="simQ" step="1" style="width:74px" onchange="simInput('Q')"></label>
+        <label><input type="checkbox" id="simScaleQ" style="width:auto" onchange="simInput('scaleQ')"> scale Q with weekly amount</label>
+      </div>
+      <div class="ctrls">
+        <label>Units <select id="simUnits" style="width:150px" onchange="simInput('units')">
+          <option value="mg">mg-equivalent</option><option value="pct">% of SS peak</option></select></label>
+        <label><input type="checkbox" id="simShowA" style="width:auto" onchange="simInput('show')"> A</label>
+        <label><input type="checkbox" id="simShowB" style="width:auto" onchange="simInput('show')"> B</label>
+        <label><input type="checkbox" id="simShowC" style="width:auto" onchange="simInput('show')"> C</label>
+        <label><input type="checkbox" id="simShowD" style="width:auto" onchange="simInput('show')"> D</label>
+        <label><input type="checkbox" id="simTrough" style="width:auto" onchange="simInput('trough')"> SS trough line</label>
+      </div>
+      <div class="ctrls">
+        <button class="mini" id="simUseProto" onclick="simUseProtocol()">Use my protocol</button>
+        <button class="mini" id="simResetBtn" onclick="simReset()">reset</button>
+        <button class="mini primary" id="simCsvBtn" onclick="simDownloadCSV()">&#10515; CSV</button>
+        <span id="simMsg" role="status" style="font-size:12px;color:var(--red)"></span>
+      </div>
+      <canvas id="simChart" width="1800" height="680"></canvas>
+      <div id="simHover" style="font-size:12px;color:var(--muted);min-height:17px;margin-top:6px;font-variant-numeric:tabular-nums"></div>
+      <div class="legend" id="simLegend"></div>
+      <div class="note" id="simLimit">Modeled drug amount under an effective apparent-decay model, in mg-equivalent. Not a serum concentration and not a dosing recommendation. Testosterone cypionate is released slowly from an oil depot, so real serum curves rise and fall differently. Equal mg across compounds does not mean equal effect or safety. Each dose is treated as an instant input that decays with k = ln 2 / half-life; steady-state and load (L) figures are mathematical equivalents under that model, not body burden or clinical targets. Scenario D is a theoretical initial condition, not a dosing recommendation.</div>
+      <div class="stats" id="simSS"></div>
+      <div style="overflow-x:auto;margin-top:10px"><table id="simTable" style="width:auto"></table></div>
+      <div id="simFreqNote" class="note" style="display:none"></div>
+    </div>
   </div>
 
   <!-- ===================== BLOODWORK / HORMONE PANEL ===================== -->
@@ -215,6 +262,7 @@
   </div>
 </div>
 
+<script src="pk.js"></script>
 <script>
 // ============================ STATE ============================
 const LS = "ped_tracker_v1";
@@ -227,7 +275,7 @@ const SEED_COMPOUNDS = [
   {name:"Testosterone Phenylpropionate", cls:"Test", hl:1.5, conc:100},
   {name:"Testosterone Isocaproate", cls:"Test", hl:4, conc:100},
   {name:"Testosterone Enanthate", cls:"Test", hl:4.5, conc:250},
-  {name:"Testosterone Cypionate", cls:"Test", hl:5, conc:200},
+  {name:"Testosterone Cypionate", cls:"Test", hl:4.05, conc:200},   // apparent (depot-limited); sources in pk.js COMPOUND_META
   {name:"Testosterone Decanoate", cls:"Test", hl:7.5, conc:100},
   {name:"Testosterone Undecanoate", cls:"Test", hl:20.9, conc:250},
   {name:"Sustanon 250 (blend)", cls:"Test", hl:5, conc:250},
@@ -338,18 +386,7 @@ const freqDays = label => (state.frequencies.find(f=>f.label===label)||{days:7})
 const compHl = name => (state.compounds.find(c=>c.name===name)||{hl:5}).hl;
 
 // ============================ PK MODEL ============================
-// contribution of a single dose D given at tau days ago.
-function contrib(D, tau, hl, model){
-  if(tau<0) return 0;
-  const ke = Math.LN2/hl;                 // ester / elimination rate
-  if(model==="mono") return D*Math.exp(-ke*tau);
-  // Bateman: absorption (fast) + ester decay (slow terminal). ka>ke.
-  const riseHl = Math.min(0.6, hl*0.4);   // absorption half-life
-  const ka = Math.LN2/riseHl;
-  if(Math.abs(ka-ke)<1e-6) return D*ke*tau*Math.exp(-ke*tau);
-  const f = ka/(ka-ke)*(Math.exp(-ke*tau)-Math.exp(-ka*tau));
-  return D*f;
-}
+// All PK math (contrib, the per-row dose loop, the simulator model) lives in pk.js as window.PK.
 
 function buildSeries(){
   const rows = state.protocol.filter(p=>p.comp && p.start);
@@ -367,21 +404,18 @@ function buildSeries(){
   const N = Math.min(totalDays, 1000);
   const days = []; for(let i=0;i<=N*SPD;i++) days.push(i/SPD);
 
+  // dates -> day offsets here; the dose loop and per-dose curve are PK.protocolSeries / PK.contrib
+  const pkRows = rows.map(p=>({
+    dose: +p.dose||0, hl: compHl(p.comp),
+    startOff: Math.round((Date.parse(p.start)-t0)/864e5),
+    endOff: Math.round(((p.end?Date.parse(p.end):maxT)-t0)/864e5),
+    intervalDays: freqDays(p.freq) }));
+  const valsByRow = PK.protocolSeries(pkRows, {days, model});
   const series = rows.map((p,i)=>{
     const comp = state.compounds.find(x=>x.name===p.comp)||{};
-    const hl = compHl(p.comp);
-    const sOff = Math.round((Date.parse(p.start)-t0)/864e5);
-    const eOff = Math.round(((p.end?Date.parse(p.end):maxT)-t0)/864e5);
-    const iv = freqDays(p.freq);
-    // injection day offsets within [sOff,eOff]
-    const events=[]; for(let t=sOff;t<=eOff+1e-6;t+=iv) events.push(t);
-    const dose = +p.dose||0;
-    const vals = days.map(d=>{
-      let sum=0; for(const ev of events){ if(ev<=d) sum+=contrib(dose, d-ev, hl, model); }
-      return sum;
-    });
-    return {label:p.comp, color:COLORS[i%COLORS.length], vals, weekly: dose*(7/iv), hl,
-            events:events.length, anab:comp.anab??100, andro:comp.andro??100,
+    const r = pkRows[i];
+    return {label:p.comp, color:COLORS[i%COLORS.length], vals:valsByRow[i], weekly: r.dose*(7/r.intervalDays), hl:r.hl,
+            events:PK.doseTimes(r.startOff, r.endOff, r.intervalDays).length, anab:comp.anab??100, andro:comp.andro??100,
             arbind:comp.arbind??100, arom:!!comp.arom, prog:!!comp.prog, dht:!!comp.dht};
   });
   return {days,series,t0};
@@ -403,6 +437,10 @@ function redraw(){
   const cal = calibrationInfo(series, days, t0);
   const isIndex = (units==='anabolic'||units==='androgen');
   document.getElementById('ngdlScaleWrap').style.display = (units==='ngdl')?'inline-flex':'none';
+  const ngNote = document.getElementById('ngdlNote');
+  ngNote.style.display = (units==='ngdl')?'inline':'none';
+  ngNote.textContent = cal.factor ? 'calibrated estimate from your bloodwork, not a validated PK prediction'
+                                  : 'manual factor, not calibrated';
   const basis = 'rat';   // index basis selector removed; default to rat A:A
   const ngdlFactor = (units==='ngdl') ? (cal.factor || (+document.getElementById('ngdlScale').value||6)) : 1;
   document.getElementById('calFactor').textContent =
@@ -421,7 +459,7 @@ function redraw(){
     if(units==='ngdl')     return isTest(s.label)? ngdlFactor : null;   // only T assays as serum testosterone
     return 1;
   }
-  const ylabel = units==='ngdl' ? 'ng/dL'
+  const ylabel = units==='ngdl' ? (cal.factor ? 'ng/dL (calibrated estimate)' : 'ng/dL (manual factor)')
     : units==='anabolic' ? `Anabolic Index (rel · ${basis})`
     : units==='androgen' ? `Androgen Index (rel · ${basis})` : 'mg';
 
@@ -925,7 +963,7 @@ renderAll();
 
 // ---- panel order (by h2 title; DOM-reorder so HTML source order doesn't matter) ----
 (function reorderPanels(){
-  const order=['your data','saved cycles','cycle / protocol','estimated serum',
+  const order=['your data','saved cycles','cycle / protocol','estimated serum','loading & steady-state',
     'supply calculator','ancillaries','bloodwork','compound library','dropdown presets'];
   const wrap=document.querySelector('.wrap');
   const rank=p=>{ const t=((p.querySelector('h2')||{}).textContent||'').toLowerCase();
@@ -933,6 +971,224 @@ renderAll();
   [...wrap.querySelectorAll(':scope > .panel')].sort((a,b)=>rank(a)-rank(b))
     .forEach(p=>wrap.appendChild(p));
 })();
+
+// ============================ LOADING & STEADY-STATE SIMULATOR ============================
+// Math lives in pk.js (window.PK). Inputs live in memory and in their own key, ped_sim_v1.
+// The simulator never reads ped_tracker_v1 or state.protocol on its own and never writes
+// either; the one exception is "Use my protocol", which reads the first protocol row once.
+const SIM_LS = "ped_sim_v1";
+const SIM_IDS = ['A','B','C','D'];
+const SIM_LABEL = {A:'A · steady dosing', B:'B · first dose = weekly amount', C:'C · n loading doses of Q',
+  D:'D · first dose = L (theoretical initial condition, not a dosing recommendation)'};
+const SIM_SPD = 8;                       // samples per day, same density as the cycle chart
+const SIM_CUSTOM = '__custom__';
+const simEl = id => document.getElementById(id);
+const simNum = s => (s===null || s===undefined || String(s).trim()==='') ? NaN : Number(s);
+const simCss = (v, fb) => (getComputedStyle(document.documentElement).getPropertyValue(v).trim() || fb);
+function simColors(){ return {A:simCss('--muted','#8a8a8a'), B:simCss('--blue','#6aa9ff'), C:'#fb923c', D:simCss('--accent','#4ade80')}; }
+
+// Frequencies come from the page's list; malformed saved entries are skipped, not thrown.
+function simFreqs(){
+  const list=[]; let skipped=0;
+  (state.frequencies||[]).forEach(f=>{
+    if(f && typeof f.label==='string' && f.label && typeof f.days==='number' && Number.isFinite(f.days) && f.days>0) list.push(f);
+    else skipped++; });
+  return {list, skipped};
+}
+function simDefaults(){
+  const fl=simFreqs().list, daily=fl.find(f=>f.days===1)||fl[0];
+  const meta=PK.COMPOUND_META['Testosterone Cypionate'];
+  return {comp:'Testosterone Cypionate', W:200, hl: meta ? meta.tHalf : 5, freq: daily ? daily.label : '',
+    n:3, Q:100, scaleQ:false, duration:42, units:'mg', show:{A:true,B:true,C:true,D:true}, trough:false, open:true};
+}
+function simLoad(){
+  const d=simDefaults();
+  try{ const s=JSON.parse(localStorage.getItem(SIM_LS));
+    if(s && typeof s==='object') return Object.assign(d, s, {show:Object.assign({}, d.show, s.show||{})}); }catch(e){}
+  return d;
+}
+function simSave(){ try{ localStorage.setItem(SIM_LS, JSON.stringify(sim)); }catch(e){} }
+let sim = simLoad();
+let simLast = null;                      // last successful computation, for drawing, hover and CSV
+
+function simWrite(){
+  const comps=simEl('simComp'); comps.innerHTML='';
+  state.compounds.forEach(c=>{ const o=document.createElement('option'); o.value=c.name; o.textContent=c.name; comps.appendChild(o); });
+  const oc=document.createElement('option'); oc.value=SIM_CUSTOM; oc.textContent='custom half-life'; comps.appendChild(oc);
+  if(!state.compounds.some(c=>c.name===sim.comp)) sim.comp=SIM_CUSTOM;
+  comps.value=sim.comp;
+  const fs=simEl('simFreq'); fs.innerHTML='';
+  simFreqs().list.forEach(f=>{ const o=document.createElement('option'); o.value=f.label; o.textContent=f.label+' ('+f.days+' d)'; fs.appendChild(o); });
+  fs.value=sim.freq;
+  simEl('simW').value=sim.W; simEl('simHl').value=sim.hl; simEl('simN').value=sim.n; simEl('simQ').value=sim.Q;
+  simEl('simDur').value=sim.duration; simEl('simScaleQ').checked=!!sim.scaleQ; simEl('simUnits').value=sim.units;
+  SIM_IDS.forEach(id=>simEl('simShow'+id).checked=!!sim.show[id]); simEl('simTrough').checked=!!sim.trough;
+  simEl('simBody').style.display=sim.open?'':'none'; simEl('simToggle').textContent=sim.open?'hide':'show';
+}
+function simInput(field){
+  if(field==='W' && sim.scaleQ){            // Q follows W only when the tick is on
+    const oldW=simNum(sim.W), newW=simNum(simEl('simW').value), q=simNum(sim.Q);
+    if(Number.isFinite(q) && Number.isFinite(newW) && newW>0 && oldW>0)
+      simEl('simQ').value = +PK.scaleQ(q, oldW, newW, true).toPrecision(10);
+  }
+  if(field==='hl') simEl('simComp').value=SIM_CUSTOM;   // a typed half-life is no longer the picked compound's
+  sim.comp=simEl('simComp').value; sim.W=simEl('simW').value; sim.hl=simEl('simHl').value;
+  sim.freq=simEl('simFreq').value; sim.n=simEl('simN').value; sim.Q=simEl('simQ').value;
+  sim.duration=simEl('simDur').value; sim.scaleQ=simEl('simScaleQ').checked; sim.units=simEl('simUnits').value;
+  SIM_IDS.forEach(id=>sim.show[id]=simEl('simShow'+id).checked); sim.trough=simEl('simTrough').checked;
+  simSave(); simRun();
+}
+function simPickCompound(){
+  const name=simEl('simComp').value; sim.comp=name;
+  if(name!==SIM_CUSTOM){
+    const meta=PK.COMPOUND_META[name], c=state.compounds.find(x=>x.name===name);
+    if(meta) sim.hl=meta.tHalf; else if(c) sim.hl=c.hl;
+  }
+  simWrite(); simSave(); simRun();
+}
+function simToggleOpen(){ sim.open=!sim.open; simWrite(); simSave(); if(sim.open) simRun(); }
+function simReset(){ const open=sim.open; sim=simDefaults(); sim.open=open; simEl('simMsg').textContent='';
+  simWrite(); simSave(); simRun(); }
+
+// "Use my protocol": read the first protocol row once, pre-fill W, half-life and frequency.
+function simUseProtocol(){
+  const msg=simEl('simMsg');
+  const row=(state.protocol||[])[0];
+  if(!row){ msg.textContent='Your protocol is empty, so nothing was filled in.'; return; }
+  const comp=state.compounds.find(c=>c.name===row.comp);
+  const f=simFreqs().list.find(x=>x.label===row.freq);
+  const dose=Number(row.dose);
+  if(!comp || !(typeof comp.hl==='number' && Number.isFinite(comp.hl) && comp.hl>0)){
+    msg.textContent='The first protocol row\'s compound or its half-life is missing, so nothing was filled in.'; return; }
+  if(!f){ msg.textContent='The first protocol row\'s frequency is missing or invalid, so nothing was filled in.'; return; }
+  if(!(Number.isFinite(dose) && dose>0)){ msg.textContent='The first protocol row\'s dose is missing or invalid, so nothing was filled in.'; return; }
+  sim.W = +(dose*7/f.days).toPrecision(10); sim.hl=comp.hl; sim.freq=f.label; sim.comp=comp.name;
+  msg.textContent='';
+  simWrite(); simSave(); simRun();
+}
+
+function simCompInfo(){
+  const name=simEl('simComp').value, meta=PK.COMPOUND_META[name];
+  const info=simEl('simCompInfo'), src=simEl('simSources'), body=simEl('simSourcesBody');
+  let t;
+  if(meta){
+    t=`${meta.hlType} · ${meta.tHalf} d (sourced range ${meta.tHalfRange[0]} to ${meta.tHalfRange[1]} d)`;
+    body.innerHTML='';
+    const p=document.createElement('p'); p.textContent=meta.evidence+' '+meta.rationale; body.appendChild(p);
+    const ul=document.createElement('ul'); ul.style.marginLeft='16px';
+    meta.sources.forEach(s=>{ const li=document.createElement('li'); li.textContent=`${s.cite} Published ${s.published}; accessed ${s.accessed}.`; ul.appendChild(li); });
+    body.appendChild(ul); src.style.display='';
+  } else { t='unsourced / custom'; src.style.display='none'; }
+  const label = name===SIM_CUSTOM ? '' : name;
+  if(/blend|sustanon/i.test(label)) t+=' · blend: a single half-life is only an approximation';
+  info.textContent=t;
+  // saved library value differs from the sourced value: one-line notice, saved data untouched
+  const notes=[];
+  Object.keys(PK.COMPOUND_META).forEach(k=>{ const c=state.compounds.find(x=>x.name===k);
+    if(c && +c.hl!==PK.COMPOUND_META[k].tHalf) notes.push(`Your saved library lists ${k} at ${c.hl} d; the sourced value is ${PK.COMPOUND_META[k].tHalf} d. Your saved data is unchanged.`); });
+  const n=simEl('simCompNotice'); n.textContent=notes.join(' '); n.style.display=notes.length?'':'none';
+}
+
+function simRun(){
+  const msg=simEl('simMsg'); msg.textContent='';
+  simCompInfo();
+  const fr=simFreqs(), fn=simEl('simFreqNote');
+  fn.textContent = fr.skipped ? `${fr.skipped} saved frequency preset(s) with a missing or invalid interval were skipped.` : '';
+  fn.style.display = fr.skipped ? '' : 'none';
+  if(!sim.open) return;
+  const f=fr.list.find(x=>x.label===sim.freq);
+  let out;
+  try{
+    if(!f) throw new RangeError('Choose a frequency from the list.');
+    const o={W:simNum(sim.W), tau:f.days, tHalf:simNum(sim.hl), n:simNum(sim.n), Q:simNum(sim.Q), duration:simNum(sim.duration)};
+    const ss=PK.steadyState(o);
+    const res=SIM_IDS.map(id=>{ const s=PK.scenarioDoses(Object.assign({id}, o));
+      return {id, sched:s, points:PK.simulate(s, ss.k, o.duration, SIM_SPD).points, m:PK.metrics(s, ss.k, o.duration, ss)}; });
+    out={o, ss, res};
+  }catch(e){
+    if(!(e instanceof RangeError)) throw e;
+    msg.textContent=e.message; simLast=null; simClear(); return;
+  }
+  simLast=out;
+  const pctOpt=simEl('simUnits').options[1]; pctOpt.disabled=!(out.ss.peak>0);
+  if(pctOpt.disabled && sim.units==='pct'){ sim.units='mg'; simEl('simUnits').value='mg'; }
+  simEl('simCsvBtn').disabled=false;
+  simDraw(); simTables();
+}
+function simClear(){
+  const cv=simEl('simChart'), ctx=cv.getContext('2d'); ctx.clearRect(0,0,cv.width,cv.height);
+  ctx.fillStyle="#666"; ctx.font="26px sans-serif"; ctx.fillText("Fix the input above to compute", 70, cv.height/2);
+  ['simLegend','simSS','simTable','simHover'].forEach(id=>simEl(id).innerHTML='');
+  simEl('simCsvBtn').disabled=true;
+}
+
+function simDraw(){
+  const L=simLast, cv=simEl('simChart'), ctx=cv.getContext('2d');
+  const W=cv.width, H=cv.height; ctx.clearRect(0,0,W,H);
+  const padL=70,padR=20,padT=18,padB=46, plotW=W-padL-padR, plotH=H-padT-padB;
+  const pct=sim.units==='pct', sc=pct?100/L.ss.peak:1, col=simColors(), dur=L.o.duration;
+  const vis=L.res.filter(r=>sim.show[r.id]);
+  let ymax=L.ss.peak*sc; vis.forEach(r=>r.points.forEach(p=>{ if(p.a*sc>ymax) ymax=p.a*sc; }));
+  ymax=ymax*1.10||1;
+  const X=t=>padL+t/dur*plotW, Y=v=>padT+plotH-(v/ymax)*plotH;
+  L.geo={padL, plotW, dur, W};
+  ctx.strokeStyle="#1c1c1c"; ctx.lineWidth=1; ctx.fillStyle="#777"; ctx.font="20px sans-serif";
+  ctx.fillText(pct?'% of SS peak':'mg-equivalent', padL+8, padT+20);
+  for(let g=0;g<=5;g++){ const yv=ymax*g/5, y=Y(yv);
+    ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(W-padR,y);ctx.stroke(); ctx.fillText(Math.round(yv), 8, y+7); }
+  const step=dur>365?56: dur>180?28: dur>90?14: dur>21?7: 1;
+  for(let d=0;d<=dur;d+=step){ const x=X(d);
+    ctx.strokeStyle="#161616";ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();
+    ctx.fillStyle="#777"; ctx.textAlign = d+step>dur ? "right" : "left";
+    ctx.fillText("d"+d, d+step>dur ? x : x-12, padT+plotH+26); ctx.textAlign="left"; }
+  // steady-state reference lines
+  const ref=(v,dash,label)=>{ const y=Y(v*sc); ctx.strokeStyle="#bbbbbb"; ctx.lineWidth=1.6; ctx.setLineDash(dash);
+    ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(W-padR,y);ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle="#bbbbbb"; ctx.textAlign="right"; ctx.fillText(label, W-padR-6, y-6); ctx.textAlign="left"; };
+  ref(L.ss.peak,[10,6],'SS peak'); if(sim.trough) ref(L.ss.trough,[3,6],'SS trough');
+  vis.forEach(r=>{ ctx.strokeStyle=col[r.id]; ctx.lineWidth=2.6; ctx.beginPath();
+    r.points.forEach((p,i)=>{ const x=X(p.t), y=Y(p.a*sc); i?ctx.lineTo(x,y):ctx.moveTo(x,y); }); ctx.stroke(); });
+  simEl('simLegend').innerHTML = vis.map(r=>`<span><span class="swatch" style="background:${col[r.id]}"></span>${SIM_LABEL[r.id]}</span>`).join('')
+    + `<span><span class="swatch" style="background:#bbb"></span>SS peak (dashed)</span>`;
+}
+function simHover(e){
+  const L=simLast; if(!L || !L.geo) return;
+  const cv=simEl('simChart'), rect=cv.getBoundingClientRect();
+  const x=(e.clientX-rect.left)*(cv.width/rect.width);
+  const t=Math.max(0, Math.min(L.geo.dur, (x-L.geo.padL)/L.geo.plotW*L.geo.dur));
+  const pct=sim.units==='pct', F=PK.FMT;
+  simEl('simHover').textContent = `t = ${F.days(t)} d · ` + L.res.filter(r=>sim.show[r.id])
+    .map(r=>{ const a=PK.amountAt(r.points, L.ss.k, t); return `${r.id} ${pct?F.pct(a/L.ss.peak*100)+'%':F.mg(a)+' mg'}`; }).join(' · ');
+}
+function simTables(){
+  const L=simLast, F=PK.FMT, m0=L.res[0].m;
+  simEl('simSS').innerHTML = [[F.mg(m0.ssPeak),'SS peak mg'],[F.mg(m0.ssTrough),'SS trough mg'],[F.mg(m0.load),'L (load) mg'],
+    [F.ratio(m0.loadOverD),'L / dose'],[F.ratio(m0.loadOverW),'L / weekly'],[F.mg(L.ss.dTau),'dose per interval mg']]
+    .map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
+  const dose=x=> x ? `dose ${x.index} · d${F.days(x.t)}${x.beyondChart?' (beyond chart)':''}` : '—';
+  const rows=[
+    ['Max post-dose amount (mg)', r=>F.mg(r.m.maxPost)],
+    ['Peak overshoot vs SS peak (%)', r=>F.pct(r.m.overshootPct)],
+    [`Cumulative input, days 0 to ${L.o.duration} (mg)`, r=>F.mg(r.m.cumulativeInput)],
+    [`AUC, days 0 to ${L.o.duration} (mg·day)`, r=>F.mg(r.m.auc)],
+  ];
+  m0.thresholds.forEach((th,i)=>{ const pp=Math.round(th.p*100);
+    rows.push([`First crossing of ${pp}% SS peak`, r=>dose(r.m.thresholds[i].firstCrossing)]);
+    rows.push([`Sustained entry, ${pp}% band`, r=>dose(r.m.thresholds[i].sustainedEntry)]); });
+  const col=simColors();
+  simEl('simTable').innerHTML = `<thead><tr><th>Metric</th>${L.res.map(r=>`<th style="color:${col[r.id]}">${r.id}</th>`).join('')}</tr></thead><tbody>`
+    + rows.map(([label,fn])=>`<tr><td>${label}</td>${L.res.map(r=>`<td>${fn(r)}</td>`).join('')}</tr>`).join('') + '</tbody>';
+}
+function simDownloadCSV(){
+  const L=simLast; if(!L) return;
+  const vis=L.res.filter(r=>sim.show[r.id]);
+  if(!vis.length){ simEl('simMsg').textContent='Turn on at least one curve to export.'; return; }
+  const csv=PK.toCSV(vis.map(r=>({id:r.id, points:r.points, ssPeak:L.ss.peak})));
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  a.download='pk-simulator.csv'; a.click();
+}
+function simInit(){ simWrite(); simEl('simChart').addEventListener('mousemove', simHover); simRun(); }
+simInit();
 </script>
 </body>
 </html>
