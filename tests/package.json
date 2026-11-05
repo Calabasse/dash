@@ -1,0 +1,12 @@
+{
+  "name": "dash-site-tests",
+  "private": true,
+  "description": "Unit (node --test) and browser (Playwright) tests for pk.js and the PED pages. Nothing here ships to the site.",
+  "scripts": {
+    "test:unit": "node --test unit/",
+    "test:browser": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0"
+  }
+}
