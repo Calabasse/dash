@@ -276,6 +276,43 @@ test.describe('single-dose frequency', () => {
   }
 });
 
+test.describe('protocol: single-date rows and curve modes', () => {
+  for (const p of H.PAGES) {
+    test(`R11 single-dose row has one date; chart curves each row / combined / both: ${p}`, async ({ browser }, ti) => {
+      const { ctx, page, problems } = await open(browser, ti, p, STATE);
+      // add a one-time Test Cyp dose on the first row's start date (fixture: TC weekly, TE, Deca)
+      await page.evaluate(() => { state.protocol.push({ comp: 'Testosterone Cypionate', conc: 250, dose: 182, freq: 'Single dose (once)',
+        start: '2026-01-05', end: '2025-12-01' }); renderProtocol(); redraw(); });   // End before Start must not drop the dose
+      const last = page.locator('#protoTable tbody tr').nth(3);
+      await expect(last.locator('input[type=date]')).toHaveCount(1);
+      await expect(last).toContainText('once, no end date');
+      const s = await page.evaluate(() => buildSeries().series[3]);
+      expect(s.events).toBe(1);
+      const legend = page.locator('#legend > span');
+      // each row (default): 4 rows + total; duplicate names carry their frequency
+      await expect(legend).toHaveCount(5);
+      await expect(page.locator('#legend')).toContainText('Testosterone Cypionate · Single dose (once)');
+      await expect(page.locator('#legend')).toContainText('Testosterone Cypionate · Weekly');
+      const rowsShot = await page.locator('#chart').screenshot();
+      // combined per compound: TC rows added into one curve
+      await page.selectOption('#curveMode', 'compound');
+      await expect(legend).toHaveCount(4);
+      await expect(page.locator('#legend')).toContainText('Testosterone Cypionate (combined)');
+      expect((await page.locator('#chart').screenshot()).equals(rowsShot)).toBe(false);
+      // both: 4 rows + 1 combined + total
+      await page.selectOption('#curveMode', 'both');
+      await expect(legend).toHaveCount(6);
+      // single dose alone still gets a decay window: about 5 half-lives
+      await page.evaluate(() => { state.protocol = [state.protocol[3]]; renderProtocol(); document.getElementById('tail').value = '0'; });
+      const b = await page.evaluate(() => { const r = buildSeries(); return { last: r.days[r.days.length - 1], hl: r.series[0].hl }; });
+      expect(b.last).toBe(Math.ceil(5 * b.hl));
+      expect(problems).toEqual([]);
+      expect(await page.evaluate(() => localStorage.getItem('ped_tracker_v1'))).toBe(STATE);   // test edits were in memory only
+      await ctx.close();
+    });
+  }
+});
+
 test('R6 intentional template/tracker differences survive', async ({ browser }, ti) => {
   const tpl = fs.readFileSync(path.join(REPO, 'templates/ped.html'), 'utf8');
   const trk = fs.readFileSync(path.join(REPO, 'tracker.html'), 'utf8');

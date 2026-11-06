@@ -60,7 +60,7 @@
   #protoTable input[type=number] { width:58px; }
   #protoTable input[type=date], #ancTable input[type=date] { width:118px; }
   #protoTable select[onchange*="conc"] { width:64px; }
-  #protoTable select[onchange*="freq"], #ancTable select[onchange*="freq"] { width:118px; }
+  #protoTable select[onchange*="freq"], #ancTable select[onchange*="freq"] { width:150px; }
 </style>
 </head>
 <body>
@@ -104,6 +104,8 @@
       <span id="ngdlNote" style="display:none;color:var(--gold)"></span>
       <label>Tail days <input type="number" id="tail" value="28" min="0" max="120" style="width:60px" onchange="redraw()"></label>
       <label><input type="checkbox" id="showTotal" checked onchange="redraw()"> show total</label>
+      <label>Curves <select id="curveMode" style="width:auto" onchange="redraw()">
+        <option value="rows">Each row</option><option value="compound">Combined per compound</option><option value="both">Both</option></select></label>
     </div>
     <canvas id="chart" width="1800" height="680"></canvas>
     <div class="legend" id="legend"></div>
@@ -409,7 +411,9 @@ function buildSeries(){
   if(!rows.length) return {days:[],series:[],t0:null};
   let minT=Infinity, maxT=-Infinity;
   rows.forEach(p=>{
-    const s=Date.parse(p.start); const e=p.end?Date.parse(p.end):s+84*864e5;
+    const s=Date.parse(p.start);
+    const e = isSingle(p) ? s+Math.ceil(5*compHl(p.comp))*864e5   // single dose: show ~5 half-lives of decay; End is ignored
+            : (p.end?Date.parse(p.end):s+84*864e5);
     minT=Math.min(minT,s); maxT=Math.max(maxT,e);
   });
   const tail = (+document.getElementById('tail').value||0);
@@ -424,13 +428,13 @@ function buildSeries(){
   const pkRows = rows.map(p=>({
     dose: +p.dose||0, hl: compHl(p.comp),
     startOff: Math.round((Date.parse(p.start)-t0)/864e5),
-    endOff: Math.round(((p.end?Date.parse(p.end):maxT)-t0)/864e5),
+    endOff: isSingle(p) ? Math.round((Date.parse(p.start)-t0)/864e5) : Math.round(((p.end?Date.parse(p.end):maxT)-t0)/864e5),
     intervalDays: freqDays(p.freq) }));
   const valsByRow = PK.protocolSeries(pkRows, {days, model});
   const series = rows.map((p,i)=>{
     const comp = state.compounds.find(x=>x.name===p.comp)||{};
     const r = pkRows[i];
-    return {label:p.comp, color:COLORS[i%COLORS.length], vals:valsByRow[i], weekly: r.intervalDays>0 ? r.dose*(7/r.intervalDays) : 0, hl:r.hl,
+    return {label:p.comp, freq:p.freq, color:COLORS[i%COLORS.length], vals:valsByRow[i], weekly: r.intervalDays>0 ? r.dose*(7/r.intervalDays) : 0, hl:r.hl,
             events:PK.doseTimes(r.startOff, r.endOff, r.intervalDays).length, single:!(r.intervalDays>0), anab:comp.anab??100, andro:comp.andro??100,
             arbind:comp.arbind??100, arom:!!comp.arom, prog:!!comp.prog, dht:!!comp.dht};
   });
@@ -480,10 +484,23 @@ function redraw(){
     : units==='androgen' ? `Androgen Index (rel · ${basis})` : 'mg';
 
   // scaled, drawable series
-  const plot = series.map(s=>({s, f:pf(s)})).filter(o=>o.f!==null)
+  const rowPlot = series.map(s=>({s, f:pf(s)})).filter(o=>o.f!==null)
     .map(o=>({label:o.s.label, color:o.s.color, anab:o.s.anab, andro:o.s.andro,
               sv:o.s.vals.map(v=>v*o.f), src:o.s}));
-  const total = days.map((_,i)=>plot.reduce((a,p)=>a+p.sv[i],0));
+  const total = days.map((_,i)=>rowPlot.reduce((a,p)=>a+p.sv[i],0));   // always from rows: never double-counts
+  // curve modes: each row (default), rows of one compound added into one curve, or both
+  const mode = (document.getElementById('curveMode')||{}).value || 'rows';
+  const nameCount={}; rowPlot.forEach(p=>nameCount[p.label]=(nameCount[p.label]||0)+1);
+  rowPlot.forEach(p=>{ p.disp = nameCount[p.label]>1 ? `${p.label} · ${p.src.freq}` : p.label; });
+  const groups=[];
+  rowPlot.forEach(p=>{ let g=groups.find(x=>x.label===p.label);
+    if(!g){ g={label:p.label, color:p.color, anab:p.anab, andro:p.andro, src:Object.assign({}, p.src), parts:[]}; groups.push(g); }
+    g.parts.push(p); });
+  groups.forEach(g=>{ g.sv=days.map((_,i)=>g.parts.reduce((a,p)=>a+p.sv[i],0));
+    g.disp = g.parts.length>1 ? `${g.label} (combined)` : g.label; g.src.single = g.parts.every(p=>p.src.single); });
+  const plot = mode==='compound' ? groups
+    : mode==='both' ? rowPlot.map(p=>Object.assign(p, {faint: nameCount[p.label]>1})).concat(groups.filter(g=>g.parts.length>1))
+    : rowPlot;
 
   let ymax=0; plot.forEach(p=>p.sv.forEach(v=>ymax=Math.max(ymax,v)));
   if(showTotal) total.forEach(v=>ymax=Math.max(ymax,v));
@@ -513,6 +530,7 @@ function redraw(){
   // collision detection: only dash + nudge series whose curves overlap another.
   const colliding = new Set();
   for(let a=0;a<plot.length;a++) for(let b=a+1;b<plot.length;b++){
+    if(plot[a].faint || plot[b].faint) continue;
     let diff=0,cnt=0; for(let i=0;i<days.length;i+=3){ diff+=Math.abs(plot[a].sv[i]-plot[b].sv[i]); cnt++; }
     if(cnt && (diff/cnt) < ymax*0.04){ colliding.add(a); colliding.add(b); }
   }
@@ -522,7 +540,7 @@ function redraw(){
   plot.forEach((p,idx)=>{
     const hit = colliding.has(idx);
     const off = hit ? (idx%2?2.2:-2.2) : 0;     // separate only the colliding ones
-    ctx.strokeStyle=p.color; ctx.lineWidth=2.6; ctx.globalAlpha=hit?0.95:1;
+    ctx.strokeStyle=p.color; ctx.lineWidth=p.faint?1.6:2.6; ctx.globalAlpha=p.faint?0.45:(hit?0.95:1);
     ctx.setLineDash(hit ? (idx%2?[12,6]:[4,6]) : []);  // dashed only when colliding
     ctx.beginPath();
     p.sv.forEach((v,i)=>{ const x=X(days[i]),y=Y(v)+off; i?ctx.lineTo(x,y):ctx.moveTo(x,y); });
@@ -534,7 +552,7 @@ function redraw(){
 
   // ---- steady-state callouts: plateau mean per compound, labeled at the right ----
   ctx.font="600 19px sans-serif";
-  const labels = plot.map(p=>{ const mx=Math.max(...p.sv);
+  const labels = plot.filter(p=>!p.faint).map(p=>{ const mx=Math.max(...p.sv);
       const plat=p.sv.filter(v=>v>=mx*0.9); const css=plat.length?plat.reduce((a,v)=>a+v,0)/plat.length:mx;
       return {color:p.color, css, label:p.label, single:p.src.single}; })
     .filter(l=>l.css>0 && !l.single).sort((a,b)=>b.css-a.css);   // no steady state for a one-time dose
@@ -556,7 +574,7 @@ function redraw(){
 
   // legend
   document.getElementById('legend').innerHTML =
-    plot.map(p=>`<span><span class="swatch" style="background:${p.color}"></span>${p.label}</span>`).join('')
+    plot.map(p=>`<span${p.faint?' style="opacity:.6"':''}><span class="swatch" style="background:${p.color}"></span>${p.disp||p.label}</span>`).join('')
     + (showTotal?`<span><span class="swatch" style="background:#fff"></span>Total</span>`:'')
     + (units==='ngdl'&&cal.points.length?`<span><span class="swatch" style="background:#f5c451"></span>bloodwork</span>`:'');
 
@@ -591,7 +609,8 @@ function renderProtocol(){
       <td><input type="number" value="${p.dose||''}" onchange="updProto(${i},'dose',this.value)"></td>
       <td><select onchange="updProto(${i},'freq',this.value)">${freqOptions(p.freq)}</select></td>
       <td><input type="date" value="${p.start||''}" onchange="updProto(${i},'start',this.value)"></td>
-      <td><input type="date" value="${p.end||''}" onchange="updProto(${i},'end',this.value)"></td>
+      <td>${isSingle(p) ? `<span style="color:var(--dim);font-size:12px" title="Single dose: one injection on the Start date">once, no end date</span>`
+        : `<input type="date" value="${p.end||''}" onchange="updProto(${i},'end',this.value)">`}</td>
       <td style="color:var(--muted)">${ml}</td>
       <td><button class="mini danger" onclick="delProto(${i})">×</button></td>`;
     tb.appendChild(tr);
