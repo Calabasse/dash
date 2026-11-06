@@ -24,6 +24,7 @@ test('U1 steady-state quantities, daily and weekly', () => {
     const ss = PK.steadyState({ W, tau, tHalf }), f = formulas(W, tau, tHalf);
     close(ss.k, f.k, 'k'); close(ss.r, f.r, 'r'); close(ss.dTau, f.D, 'D_tau');
     close(ss.peak, f.peak, 'SS_peak'); close(ss.trough, f.trough, 'SS_trough'); close(ss.load, f.L, 'L');
+    close(ss.mean, f.D / (f.k * tau), 'interval mean');
     const m = PK.metrics(sched('A', { W, tau }), ss.k, 42, ss);
     close(m.loadOverD, f.L / f.D, 'L/D'); close(m.loadOverW, f.L / W, 'L/W');
   }

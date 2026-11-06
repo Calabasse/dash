@@ -34,18 +34,15 @@ async function exerciseSimulator(page) {
   await page.selectOption('#simComp', 'Testosterone Enanthate');
   await page.selectOption('#simComp', 'Sustanon 250 (blend)');
   await page.selectOption('#simComp', 'Testosterone Cypionate');
+  await setNum(page, '#simConc', 200);
+  await setNum(page, '#simConc', 250);
   await setNum(page, '#simW', 300);
-  await page.check('#simScaleQ');
-  await setNum(page, '#simW', 150);
-  await page.uncheck('#simScaleQ');
   await setNum(page, '#simHl', 6);
   await page.selectOption('#simFreq', 'Twice weekly (E3.5D)');
-  await setNum(page, '#simN', 4);
-  await setNum(page, '#simQ', 80);
   await setNum(page, '#simDur', 60);
   await page.selectOption('#simUnits', 'pct');
   await page.selectOption('#simUnits', 'mg');
-  for (const id of 'ABCD') { await page.uncheck('#simShow' + id); await page.check('#simShow' + id); }
+  for (const id of 'AD') { await page.uncheck('#simShow' + id); await page.check('#simShow' + id); }
   await page.check('#simTrough'); await page.uncheck('#simTrough');
   await page.locator('#simChart').hover({ position: { x: 200, y: 100 } });
   const dl = page.waitForEvent('download'); await page.click('#simCsvBtn'); await dl;
@@ -89,12 +86,14 @@ for (const p of H.PAGES) {
 
     test(`R4 four curves, toggles, units, CSV equals toCSV: ${p}`, async ({ browser }, ti) => {
       const { ctx, page, problems } = await open(browser, ti, p, STATE);
-      await expect(page.locator('#simLegend > span')).toHaveCount(5);          // A-D + SS peak
-      expect(await page.evaluate(() => simLast.res.map(r => r.id).join(''))).toBe('ABCD');
+      await expect(page.locator('#simLegend > span')).toHaveCount(3);          // A, D + SS peak
+      expect(await page.evaluate(() => simLast.res.map(r => r.id).join(''))).toBe('AD');
+      await expect(page.locator('#simShowB')).toHaveCount(0);
+      await expect(page.locator('#simN')).toHaveCount(0);
       const shot = () => page.locator('#simChart').screenshot();
       const before = await shot();
-      await page.uncheck('#simShowB');
-      await expect(page.locator('#simLegend > span')).toHaveCount(4);
+      await page.uncheck('#simShowA');
+      await expect(page.locator('#simLegend > span')).toHaveCount(2);
       expect((await shot()).equals(before)).toBe(false);
       await page.selectOption('#simUnits', 'pct');
       expect(await page.evaluate(() => sim.units)).toBe('pct');
@@ -103,7 +102,7 @@ for (const p of H.PAGES) {
       expect((await shot()).equals(pctShot)).toBe(false);
       await page.locator('#simChart').hover({ position: { x: 300, y: 100 } });
       await expect(page.locator('#simHover')).toContainText('t = ');
-      // CSV: visible curves only (B is off)
+      // CSV: visible curves only (A is off)
       const dl = page.waitForEvent('download'); await page.click('#simCsvBtn');
       const file = await (await dl).path();
       const got = fs.readFileSync(file, 'utf8');
@@ -111,7 +110,7 @@ for (const p of H.PAGES) {
         .map(r => ({ id: r.id, points: r.points, ssPeak: simLast.ss.peak }))));
       expect(got).toBe(want);
       expect(got.split('\n')[0]).toBe('scenario,kind,t_days,amount_mg,pct_of_ss_peak');
-      expect(new Set(got.trim().split('\n').slice(1).map(l => l[0]))).toEqual(new Set(['A', 'C', 'D']));
+      expect(new Set(got.trim().split('\n').slice(1).map(l => l[0]))).toEqual(new Set(['D']));
       // validation: inline message, nothing computed, no alert
       let dialogs = 0; page.on('dialog', d => { dialogs++; d.dismiss(); });
       await setNum(page, '#simHl', 400);
@@ -150,10 +149,41 @@ for (const p of H.PAGES) {
   });
 }
 
+test.describe('dose plan and explanation', () => {
+  for (const p of H.PAGES) {
+    test(`R8 up-front dose, daily mg, mL at 250 mg/mL, why-181.6 text: ${p}`, async ({ browser }, ti) => {
+      const { ctx, page, problems } = await open(browser, ti, p, null);
+      // defaults: 200 mg/wk, daily, t1/2 4.05 d, Test Cyp at 250 mg/mL
+      const ss = await page.evaluate(() => PK.steadyState({ W: 200, tau: 1, tHalf: 4.05 }));
+      const mg = x => (Math.round(x * 10) / 10).toFixed(1);
+      const plan = page.locator('#simPlan');
+      await expect(plan).toContainText(`${mg(200 / 7)} mg/day`);
+      await expect(plan).toContainText(`${mg(ss.load)} mg`);
+      const rows = plan.locator('tbody tr');
+      await expect(rows).toHaveCount(2);
+      await expect(rows.nth(0).locator('td').nth(1)).toContainText(`${mg(ss.dTau)} mg`);        // A up-front = regular dose
+      await expect(rows.nth(1).locator('td').nth(1)).toContainText(`${mg(ss.load)} mg`);        // D up-front = L
+      await expect(rows.nth(1).locator('td').nth(1)).toContainText(`${(ss.load / 250).toFixed(3)} mL`);
+      await expect(rows.nth(0).locator('td').nth(2)).toContainText(`${(ss.dTau / 250).toFixed(3)} mL`);
+      await expect(page.inputValue('#simConc')).resolves.toBe('250');
+      await expect(page.locator('#simWhyBody')).toContainText(`SS peak = ${ss.dTau.toFixed(2)} ÷ ${(1 - ss.r).toFixed(4)} = ${mg(ss.peak)} mg`);
+      // concentration is remembered per compound and changes only the volumes
+      await setNum(page, '#simConc', 200);
+      await expect(rows.nth(1).locator('td').nth(1)).toContainText(`${(ss.load / 200).toFixed(3)} mL`);
+      await expect(rows.nth(1).locator('td').nth(1)).toContainText(`${mg(ss.load)} mg`);
+      expect(await page.evaluate(() => JSON.parse(localStorage.getItem('ped_sim_v1')).concBy['Testosterone Cypionate'])).toBe('200');
+      expect(problems).toEqual([]);
+      await ctx.close();
+    });
+  }
+});
+
 test('R6 intentional template/tracker differences survive', async ({ browser }, ti) => {
   const tpl = fs.readFileSync(path.join(REPO, 'templates/ped.html'), 'utf8');
   const trk = fs.readFileSync(path.join(REPO, 'tracker.html'), 'utf8');
-  expect(tpl).toContain('<a href="index.html"'); expect(trk).not.toContain('<a href="index.html"');
+  // Home link: listed as an intentional difference in spec v3 section 0.3; superseded 2026-11-05 by
+  // Chad ("tracker.html does not have a button to take us back"). Both pages now carry it.
+  expect(tpl).toContain('<a href="index.html"'); expect(trk).toContain('<a href="index.html"');
   expect(tpl).toContain('<h1>PED Cycle <span'); expect(trk).toContain('<h1>PED Cycle Tool <span');
   expect(tpl).toContain('Your cycle auto-saves in this browser between visits.');
   expect(trk).toContain('Your cycle stays in this browser between visits');

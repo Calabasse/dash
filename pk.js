@@ -82,7 +82,8 @@
       'Interval is too short for this half-life (1 - r < 1e-6); steady state is not computed.');
     const dTau = W * tau / 7;
     const peak = dTau / (1 - r);
-    return { k: k, r: r, dTau: dTau, peak: peak, trough: peak * r, load: peak };
+    // mean: average amount over one steady-state interval, dTau / (k * tau)
+    return { k: k, r: r, dTau: dTau, peak: peak, trough: peak * r, load: peak, mean: dTau / (k * tau) };
   }
 
   // Amount of dose number i (one-based) for a scenario. Loading amounts replace the
