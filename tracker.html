@@ -1190,8 +1190,27 @@ function simPlan(){
   const row=r=>{ const d=r.sched.doses;
     return `<tr><td style="color:${simColors()[r.id]};font-weight:600">${r.id}</td><td>${cell(d[0].mg)}</td>
       <td>${d.length>1?cell(d[1].mg):'none in this duration'}<div style="font-size:11px;color:var(--muted)">${every}, from day ${F.days(f.days)}</div></td></tr>`; };
+  // Injection volume for a dose: exact mL and U-100 units, the nearest whole unit a syringe can
+  // measure (and the mg that volume delivers), and which common syringe size holds it.
+  const volTile=(title, mg, sub)=>{
+    if(!okConc) return `<div class="stat" style="min-width:240px"><span>${title}</span><b>${F.mg(mg)} mg</b><span>enter a concentration for the volume</span></div>`;
+    const mL=mg/conc, u=mL*100, uR=Math.round(u);
+    const fit = u>100 ? 'more than a 1 mL (100-unit) syringe holds'
+      : u>50 ? 'needs a 1 mL (100-unit) syringe' : u>30 ? 'fits a 0.5 mL (50-unit) syringe' : 'fits a 0.3 mL (30-unit) syringe';
+    const near = uR>=1 ? `nearest whole unit: ${uR} units = ${(uR/100).toFixed(2)} mL = ${F.mg(uR/100*conc)} mg` : 'less than 1 unit: below what a U-100 syringe can measure';
+    return `<div class="stat" style="min-width:240px"><span>${title}</span>
+      <b style="font-size:20px">${mL.toFixed(3)} mL · ${u.toFixed(1)} units</b>
+      <span style="text-transform:none;letter-spacing:0">${F.mg(mg)} mg at ${conc} mg/mL · ${sub}</span>
+      <span style="text-transform:none;letter-spacing:0;color:var(--text)">${near}</span>
+      <span style="text-transform:none;letter-spacing:0">${fit}</span></div>`; };
+  const regular=L.inst.dTau, upfront=L.inst.load;
   simEl('simPlan').innerHTML =
-    `<div class="stats" style="margin-top:0;margin-bottom:8px">
+    `<div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Injection volumes${okConc?` at ${conc} mg/mL (U-100 syringe: 100 units = 1 mL)`:''}</div>
+    <div class="stats" style="margin-top:0;margin-bottom:8px">
+      ${volTile('Up-front dose (D only, day 0)', upfront, 'once')}
+      ${volTile(`Regular dose (A and D)`, regular, `${every}${okConc?`, ${(regular/conc*7/f.days).toFixed(3)} mL per week`:''}`)}
+    </div>
+    <div class="stats" style="margin-top:0;margin-bottom:8px">
       <div class="stat"><b>${F.mg(daily)} mg/day</b><span>daily amount (${F.mg(L.o.W)} mg/wk ÷ 7)</span></div>
       <div class="stat"><b>${F.mg(L.inst.dTau)} mg</b><span>regular dose, ${every}</span></div>
       <div class="stat"><b>${F.mg(L.inst.load)} mg</b><span>up-front dose for D (= L)</span></div></div>

@@ -172,6 +172,14 @@ test.describe('dose plan and explanation', () => {
       await expect(rows.nth(1).locator('td').nth(1)).toContainText(`${(ss.load / 250).toFixed(3)} mL`);
       await expect(rows.nth(0).locator('td').nth(2)).toContainText(`${(ss.dTau / 250).toFixed(3)} mL`);
       await expect(page.inputValue('#simConc')).resolves.toBe('250');
+      // headline injection volumes: up-front and regular dose, nearest whole unit and the mg it delivers
+      const uUp = Math.round(ss.load / 250 * 100), uReg = Math.round(ss.dTau / 250 * 100);
+      await expect(plan).toContainText(`${(ss.load / 250).toFixed(3)} mL · ${(ss.load / 250 * 100).toFixed(1)} units`);
+      await expect(plan).toContainText(`nearest whole unit: ${uUp} units = ${(uUp / 100).toFixed(2)} mL = ${mg(uUp / 100 * 250)} mg`);
+      await expect(plan).toContainText(`${(ss.dTau / 250).toFixed(3)} mL · ${(ss.dTau / 250 * 100).toFixed(1)} units`);
+      await expect(plan).toContainText(`nearest whole unit: ${uReg} units = ${(uReg / 100).toFixed(2)} mL = ${mg(uReg / 100 * 250)} mg`);
+      await expect(plan).toContainText('needs a 1 mL (100-unit) syringe');
+      await expect(plan).toContainText(`${(ss.dTau / 250 * 7).toFixed(3)} mL per week`);
       await expect(page.locator('#simWhyBody')).toContainText(`SS peak = ${ss.dTau.toFixed(2)} ÷ ${(1 - ss.r).toFixed(4)} = ${mg(ss.peak)} mg`);
       // concentration is remembered per compound and changes only the volumes
       await setNum(page, '#simConc', 200);
