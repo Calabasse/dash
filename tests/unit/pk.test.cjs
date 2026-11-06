@@ -25,6 +25,10 @@ test('U1 steady-state quantities, daily and weekly', () => {
     close(ss.k, f.k, 'k'); close(ss.r, f.r, 'r'); close(ss.dTau, f.D, 'D_tau');
     close(ss.peak, f.peak, 'SS_peak'); close(ss.trough, f.trough, 'SS_trough'); close(ss.load, f.L, 'L');
     close(ss.mean, f.D / (f.k * tau), 'interval mean');
+    close(ss.residence, tHalf / Math.LN2, 'residence = t_half / ln 2');
+    close(ss.mean, (W / 7) * ss.residence, "average = daily amount x days' worth held");
+    const eq = PK.steadyState({ W, tau, tHalf: PK.WEEK_EQUIV_HALF_LIFE });
+    close(eq.mean, W, 'average equals weekly amount at t_half = 7 ln 2');
     const m = PK.metrics(sched('A', { W, tau }), ss.k, 42, ss);
     close(m.loadOverD, f.L / f.D, 'L/D'); close(m.loadOverW, f.L / W, 'L/W');
   }

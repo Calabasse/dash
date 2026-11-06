@@ -181,6 +181,12 @@ test.describe('dose plan and explanation', () => {
       await expect(plan).toContainText('needs a 1 mL (100-unit) syringe');
       await expect(plan).toContainText(`${(ss.dTau / 250 * 7).toFixed(3)} mL per week`);
       await expect(page.locator('#simWhyBody')).toContainText(`SS peak = ${ss.dTau.toFixed(2)} ÷ ${(1 - ss.r).toFixed(4)} = ${mg(ss.peak)} mg`);
+      const why = page.locator('#simWhyBody');
+      await expect(why).toContainText(`holds about ${(4.05 / Math.LN2).toFixed(2)} days' worth of dosing`);
+      await expect(why).toContainText(`${mg(ss.mean)} mg on average`);
+      await expect(why).toContainText('(average = weekly amount)');
+      await expect(why).toContainText(`${(7 * Math.LN2).toFixed(2)} days (7 × ln 2)`);
+      expect(await why.innerHTML()).toMatch(/^<p><b>200\.0 mg\/wk and 181\.6 mg measure different things/);
       // concentration is remembered per compound and changes only the volumes
       await setNum(page, '#simConc', 200);
       await expect(rows.nth(1).locator('td').nth(1)).toContainText(`${(ss.load / 200).toFixed(3)} mL`);

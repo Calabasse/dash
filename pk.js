@@ -85,7 +85,8 @@
     const dTau = W * tau / 7;
     const peak = dTau / (1 - r);
     // mean: average amount over one steady-state interval, dTau / (k * tau)
-    return { k: k, r: r, dTau: dTau, peak: peak, trough: peak * r, load: peak, mean: dTau / (k * tau) };
+    // residence: mean time a dose stays on board, 1/k = t_half / ln 2 ("days' worth" of dosing held)
+    return { k: k, r: r, dTau: dTau, peak: peak, trough: peak * r, load: peak, mean: dTau / (k * tau), residence: 1 / k };
   }
 
   // Amount of dose number i (one-based) for a scenario. Loading amounts replace the
@@ -431,13 +432,16 @@
   const fixed = d => x => (fin(x) ? (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d) : '');
   const FMT = Object.freeze({ mg: fixed(1), ratio: fixed(2), pct: fixed(1), days: fixed(1) });
 
+  // Half-life at which the steady-state average equals the weekly amount: W/7 * t/ln2 = W  =>  t = 7 ln 2.
+  const WEEK_EQUIV_HALF_LIFE = 7 * Math.LN2;
+
   const PK = {
     contrib: contrib, doseTimes: doseTimes, protocolSeries: protocolSeries,
     steadyState: steadyState, scenarioDoses: scenarioDoses, scaleQ: scaleQ,
     simulate: simulate, amountAt: amountAt, metrics: metrics,
     steadyStateAbsorption: steadyStateAbsorption, simulateAbsorption: simulateAbsorption,
     metricsAbsorption: metricsAbsorption, illustrativeKa: illustrativeKa, interpAt: interpAt, toCSV: toCSV, COMPOUND_META: COMPOUND_META, LIMITS: LIMITS,
-    FMT: FMT,
+    FMT: FMT, WEEK_EQUIV_HALF_LIFE: WEEK_EQUIV_HALF_LIFE,
   };
   if (typeof module !== 'undefined' && module.exports) module.exports = PK; else root.PK = PK;
 })(typeof globalThis !== 'undefined' ? globalThis : this);
