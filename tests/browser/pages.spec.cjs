@@ -180,7 +180,14 @@ test.describe('dose plan and explanation', () => {
       await expect(plan).toContainText(`${(ss.dTau / 250).toFixed(3)} mL · ${(ss.dTau / 250 * 100).toFixed(1)} units`);
       await expect(plan).toContainText(`nearest whole unit: ${uReg} units = ${(uReg / 100).toFixed(2)} mL = ${mg(uReg / 100 * 250)} mg`);
       await expect(plan).toContainText('needs a 1 mL (100-unit) syringe');
-      await expect(plan).toContainText(`${(ss.dTau / 250 * 7).toFixed(3)} mL per week`);
+      // weekly total leads: 200 mg/wk at 250 mg/mL = 0.800 mL; the loading dose is labelled as not the weekly amount
+      const tiles = plan.locator('.stats').first().locator('.stat');
+      await expect(tiles.nth(0)).toContainText('Weekly total');
+      await expect(tiles.nth(0)).toContainText(`${(200 / 250).toFixed(3)} mL`);
+      await expect(tiles.nth(0)).not.toContainText('syringe');
+      await expect(tiles.nth(1)).toContainText(`${(ss.dTau / 250).toFixed(3)} mL`);
+      await expect(tiles.nth(2)).toContainText('not the weekly amount');
+      await expect(tiles.nth(2)).toContainText(`${(ss.load / 250).toFixed(3)} mL`);
       await expect(page.locator('#simWhyBody')).toContainText(`SS peak = ${ss.dTau.toFixed(2)} ÷ ${(1 - ss.r).toFixed(4)} = ${mg(ss.peak)} mg`);
       const why = page.locator('#simWhyBody');
       await expect(why).toContainText(`holds about ${(4.05 / Math.LN2).toFixed(2)} days' worth of dosing`);
