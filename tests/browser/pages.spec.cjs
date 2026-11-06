@@ -92,14 +92,15 @@ for (const p of H.PAGES) {
 
     test(`R4 four curves, toggles, units, CSV equals toCSV: ${p}`, async ({ browser }, ti) => {
       const { ctx, page, problems } = await open(browser, ti, p, STATE);
-      await expect(page.locator('#simLegend > span')).toHaveCount(4);          // A, D, SS peak, compare note
+      await expect(page.locator('#simLegend > span')).toHaveCount(3);          // A, D, SS peak (comparison is opt-in)
+      await expect(page.locator('#simCmp')).not.toBeChecked();
       expect(await page.evaluate(() => simLast.res.map(r => r.id).join(''))).toBe('AD');
       await expect(page.locator('#simShowB')).toHaveCount(0);
       await expect(page.locator('#simN')).toHaveCount(0);
       const shot = () => page.locator('#simChart').screenshot();
       const before = await shot();
       await page.uncheck('#simShowA');
-      await expect(page.locator('#simLegend > span')).toHaveCount(3);
+      await expect(page.locator('#simLegend > span')).toHaveCount(2);
       expect((await shot()).equals(before)).toBe(false);
       await page.selectOption('#simUnits', 'pct');
       expect(await page.evaluate(() => sim.units)).toBe('pct');
@@ -184,7 +185,7 @@ test.describe('dose plan and explanation', () => {
       const why = page.locator('#simWhyBody');
       await expect(why).toContainText(`holds about ${(4.05 / Math.LN2).toFixed(2)} days' worth of dosing`);
       await expect(why).toContainText(`${mg(ss.mean)} mg on average`);
-      await expect(why).toContainText('(average = weekly amount)');
+      await expect(why.locator('tr', { hasText: '(average = weekly amount)' })).toContainText('200.0 mg');
       await expect(why).toContainText(`${(7 * Math.LN2).toFixed(2)} days (7 × ln 2)`);
       expect(await why.innerHTML()).toMatch(/^<p><b>200\.0 mg\/wk and 181\.6 mg measure different things/);
       // concentration is remembered per compound and changes only the volumes
@@ -198,12 +199,25 @@ test.describe('dose plan and explanation', () => {
   }
 });
 
+test('R9b older saves with the comparison on are switched off once', async ({ browser }, ti) => {
+  const { ctx, page } = await open(browser, ti, 'tracker.html', null);
+  await page.evaluate(() => { localStorage.setItem('ped_sim_v1', JSON.stringify({ cmp: true, W: 300 })); });
+  await page.reload();
+  expect(await page.evaluate(() => [sim.cmp, Number(sim.W), sim.cmpOffV2])).toEqual([false, 300, true]);
+  await page.check('#simCmp'); await page.reload();
+  expect(await page.evaluate(() => sim.cmp)).toBe(true);      // a choice made after the switch is kept
+  await ctx.close();
+});
+
 test.describe('decay model and half-life comparison', () => {
   for (const p of H.PAGES) {
     test(`R9 depot model, sourced ka, half-life comparison: ${p}`, async ({ browser }, ti) => {
       const { ctx, page, problems } = await open(browser, ti, p, null);
       const mg = x => (Math.round(x * 10) / 10).toFixed(1);
-      // comparison on by default for Test Cyp: other end of the sourced range (8 d)
+      // comparison is opt-in; when ticked for Test Cyp it uses the other end of the sourced range (8 d)
+      await expect(page.locator('#simCmpTable')).toBeEmpty();
+      await page.check('#simCmp');
+      await expect(page.locator('#simLegend')).toContainText('dotted curves: the same doses if the half-life were 8 d');
       const inst8 = await page.evaluate(() => PK.steadyState({ W: 200, tau: 1, tHalf: 8 }));
       const cmp = page.locator('#simCmpTable');
       await expect(cmp).toContainText('half-life 8 d');
