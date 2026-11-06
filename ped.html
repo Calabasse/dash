@@ -117,6 +117,7 @@
     <div id="simBody">
       <div class="ctrls">
         <label>Compound <select id="simComp" style="width:220px" onchange="simPickCompound()"></select></label>
+        <label>Concentration (mg/mL) <input type="number" id="simConc" step="1" style="width:70px" onchange="simInput('conc')"></label>
         <span id="simCompInfo" style="font-size:11px;color:var(--dim)"></span>
       </div>
       <details id="simSources" class="note" style="margin-top:0;margin-bottom:8px;display:none"><summary>half-life sources</summary><div id="simSourcesBody"></div></details>
@@ -128,16 +129,9 @@
         <label>Duration (d) <input type="number" id="simDur" step="1" style="width:64px" onchange="simInput('duration')"></label>
       </div>
       <div class="ctrls">
-        <label>Loading doses n <input type="number" id="simN" step="1" style="width:56px" onchange="simInput('n')"></label>
-        <label>Loading amount Q (mg) <input type="number" id="simQ" step="1" style="width:74px" onchange="simInput('Q')"></label>
-        <label><input type="checkbox" id="simScaleQ" style="width:auto" onchange="simInput('scaleQ')"> scale Q with weekly amount</label>
-      </div>
-      <div class="ctrls">
         <label>Units <select id="simUnits" style="width:150px" onchange="simInput('units')">
           <option value="mg">mg-equivalent</option><option value="pct">% of SS peak</option></select></label>
         <label><input type="checkbox" id="simShowA" style="width:auto" onchange="simInput('show')"> A</label>
-        <label><input type="checkbox" id="simShowB" style="width:auto" onchange="simInput('show')"> B</label>
-        <label><input type="checkbox" id="simShowC" style="width:auto" onchange="simInput('show')"> C</label>
         <label><input type="checkbox" id="simShowD" style="width:auto" onchange="simInput('show')"> D</label>
         <label><input type="checkbox" id="simTrough" style="width:auto" onchange="simInput('trough')"> SS trough line</label>
       </div>
@@ -147,11 +141,13 @@
         <button class="mini primary" id="simCsvBtn" onclick="simDownloadCSV()">&#10515; CSV</button>
         <span id="simMsg" role="status" style="font-size:12px;color:var(--red)"></span>
       </div>
+      <div id="simPlan" style="margin-bottom:10px"></div>
       <canvas id="simChart" width="1800" height="680"></canvas>
       <div id="simHover" style="font-size:12px;color:var(--muted);min-height:17px;margin-top:6px;font-variant-numeric:tabular-nums"></div>
       <div class="legend" id="simLegend"></div>
-      <div class="note" id="simLimit">Modeled drug amount under an effective apparent-decay model, in mg-equivalent. Not a serum concentration and not a dosing recommendation. Testosterone cypionate is released slowly from an oil depot, so real serum curves rise and fall differently. Equal mg across compounds does not mean equal effect or safety. Each dose is treated as an instant input that decays with k = ln 2 / half-life; steady-state and load (L) figures are mathematical equivalents under that model, not body burden or clinical targets. Scenario D is a theoretical initial condition, not a dosing recommendation.</div>
       <div class="stats" id="simSS"></div>
+      <details id="simWhy" open style="margin-top:10px;font-size:12px;line-height:1.6;color:var(--text)"><summary style="cursor:pointer;color:var(--muted)">Why this weekly amount gives this steady-state peak</summary><div id="simWhyBody" style="margin-top:6px"></div></details>
+      <div class="note" id="simLimit">Modeled drug amount under an effective apparent-decay model, in mg-equivalent. Not a serum concentration and not a dosing recommendation. Testosterone cypionate is released slowly from an oil depot, so real serum curves rise and fall differently. Equal mg across compounds does not mean equal effect or safety. Each dose is treated as an instant input that decays with k = ln 2 / half-life; steady-state and load (L) figures are mathematical equivalents under that model, not body burden or clinical targets. Scenario D is a theoretical initial condition, not a dosing recommendation.</div>
       <div style="overflow-x:auto;margin-top:10px"><table id="simTable" style="width:auto"></table></div>
       <div id="simFreqNote" class="note" style="display:none"></div>
     </div>
@@ -982,16 +978,19 @@ renderAll();
 // Math lives in pk.js (window.PK). Inputs live in memory and in their own key, ped_sim_v1.
 // The simulator never reads ped_tracker_v1 or state.protocol on its own and never writes
 // either; the one exception is "Use my protocol", which reads the first protocol row once.
+// Shows scenario A (steady dosing from day 0) and D (one up-front dose equal to L, then
+// steady dosing). pk.js still supports B and C; the page does not show them.
 const SIM_LS = "ped_sim_v1";
-const SIM_IDS = ['A','B','C','D'];
-const SIM_LABEL = {A:'A · steady dosing', B:'B · first dose = weekly amount', C:'C · n loading doses of Q',
-  D:'D · first dose = L (theoretical initial condition, not a dosing recommendation)'};
+const SIM_IDS = ['A','D'];
+const SIM_LABEL = {A:'A · no up-front dose: every dose is the regular dose',
+  D:'D · up-front dose = L, then the regular dose (theoretical initial condition, not a dosing recommendation)'};
 const SIM_SPD = 8;                       // samples per day, same density as the cycle chart
 const SIM_CUSTOM = '__custom__';
+const SIM_DEFAULT_CONC = {"Testosterone Cypionate": 250};   // owner's estimate for his vial
 const simEl = id => document.getElementById(id);
 const simNum = s => (s===null || s===undefined || String(s).trim()==='') ? NaN : Number(s);
 const simCss = (v, fb) => (getComputedStyle(document.documentElement).getPropertyValue(v).trim() || fb);
-function simColors(){ return {A:simCss('--muted','#8a8a8a'), B:simCss('--blue','#6aa9ff'), C:'#fb923c', D:simCss('--accent','#4ade80')}; }
+function simColors(){ return {A:simCss('--muted','#8a8a8a'), D:simCss('--accent','#4ade80')}; }
 
 // Frequencies come from the page's list; malformed saved entries are skipped, not thrown.
 function simFreqs(){
@@ -1005,42 +1004,43 @@ function simDefaults(){
   const fl=simFreqs().list, daily=fl.find(f=>f.days===1)||fl[0];
   const meta=PK.COMPOUND_META['Testosterone Cypionate'];
   return {comp:'Testosterone Cypionate', W:200, hl: meta ? meta.tHalf : 5, freq: daily ? daily.label : '',
-    n:3, Q:100, scaleQ:false, duration:42, units:'mg', show:{A:true,B:true,C:true,D:true}, trough:false, open:true};
+    duration:42, units:'mg', show:{A:true,D:true}, trough:false, open:true, concBy:Object.assign({}, SIM_DEFAULT_CONC)};
 }
 function simLoad(){
   const d=simDefaults();
   try{ const s=JSON.parse(localStorage.getItem(SIM_LS));
-    if(s && typeof s==='object') return Object.assign(d, s, {show:Object.assign({}, d.show, s.show||{})}); }catch(e){}
+    if(s && typeof s==='object') return Object.assign(d, s, {show:Object.assign({}, d.show, s.show||{}),
+      concBy:Object.assign({}, d.concBy, s.concBy||{})}); }catch(e){}
   return d;
 }
 function simSave(){ try{ localStorage.setItem(SIM_LS, JSON.stringify(sim)); }catch(e){} }
 let sim = simLoad();
 let simLast = null;                      // last successful computation, for drawing, hover and CSV
 
+// Concentration for the picked compound: what the user typed here, else the library's Conc.
+function simConcFor(name){
+  if(sim.concBy && sim.concBy[name]!==undefined) return sim.concBy[name];
+  const c=state.compounds.find(x=>x.name===name); return c && c.conc ? c.conc : '';
+}
 function simWrite(){
   const comps=simEl('simComp'); comps.innerHTML='';
   state.compounds.forEach(c=>{ const o=document.createElement('option'); o.value=c.name; o.textContent=c.name; comps.appendChild(o); });
   const oc=document.createElement('option'); oc.value=SIM_CUSTOM; oc.textContent='custom half-life'; comps.appendChild(oc);
-  if(!state.compounds.some(c=>c.name===sim.comp)) sim.comp=SIM_CUSTOM;
+  if(sim.comp!==SIM_CUSTOM && !state.compounds.some(c=>c.name===sim.comp)) sim.comp=SIM_CUSTOM;
   comps.value=sim.comp;
   const fs=simEl('simFreq'); fs.innerHTML='';
   simFreqs().list.forEach(f=>{ const o=document.createElement('option'); o.value=f.label; o.textContent=f.label+' ('+f.days+' d)'; fs.appendChild(o); });
   fs.value=sim.freq;
-  simEl('simW').value=sim.W; simEl('simHl').value=sim.hl; simEl('simN').value=sim.n; simEl('simQ').value=sim.Q;
-  simEl('simDur').value=sim.duration; simEl('simScaleQ').checked=!!sim.scaleQ; simEl('simUnits').value=sim.units;
+  simEl('simConc').value=simConcFor(sim.comp);
+  simEl('simW').value=sim.W; simEl('simHl').value=sim.hl; simEl('simDur').value=sim.duration; simEl('simUnits').value=sim.units;
   SIM_IDS.forEach(id=>simEl('simShow'+id).checked=!!sim.show[id]); simEl('simTrough').checked=!!sim.trough;
   simEl('simBody').style.display=sim.open?'':'none'; simEl('simToggle').textContent=sim.open?'hide':'show';
 }
 function simInput(field){
-  if(field==='W' && sim.scaleQ){            // Q follows W only when the tick is on
-    const oldW=simNum(sim.W), newW=simNum(simEl('simW').value), q=simNum(sim.Q);
-    if(Number.isFinite(q) && Number.isFinite(newW) && newW>0 && oldW>0)
-      simEl('simQ').value = +PK.scaleQ(q, oldW, newW, true).toPrecision(10);
-  }
   if(field==='hl') simEl('simComp').value=SIM_CUSTOM;   // a typed half-life is no longer the picked compound's
+  if(field==='conc') sim.concBy[simEl('simComp').value]=simEl('simConc').value;
   sim.comp=simEl('simComp').value; sim.W=simEl('simW').value; sim.hl=simEl('simHl').value;
-  sim.freq=simEl('simFreq').value; sim.n=simEl('simN').value; sim.Q=simEl('simQ').value;
-  sim.duration=simEl('simDur').value; sim.scaleQ=simEl('simScaleQ').checked; sim.units=simEl('simUnits').value;
+  sim.freq=simEl('simFreq').value; sim.duration=simEl('simDur').value; sim.units=simEl('simUnits').value;
   SIM_IDS.forEach(id=>sim.show[id]=simEl('simShow'+id).checked); sim.trough=simEl('simTrough').checked;
   simSave(); simRun();
 }
@@ -1056,7 +1056,7 @@ function simToggleOpen(){ sim.open=!sim.open; simWrite(); simSave(); if(sim.open
 function simReset(){ const open=sim.open; sim=simDefaults(); sim.open=open; simEl('simMsg').textContent='';
   simWrite(); simSave(); simRun(); }
 
-// "Use my protocol": read the first protocol row once, pre-fill W, half-life and frequency.
+// "Use my protocol": read the first protocol row once, pre-fill W, half-life, frequency, concentration.
 function simUseProtocol(){
   const msg=simEl('simMsg');
   const row=(state.protocol||[])[0];
@@ -1069,6 +1069,7 @@ function simUseProtocol(){
   if(!f){ msg.textContent='The first protocol row\'s frequency is missing or invalid, so nothing was filled in.'; return; }
   if(!(Number.isFinite(dose) && dose>0)){ msg.textContent='The first protocol row\'s dose is missing or invalid, so nothing was filled in.'; return; }
   sim.W = +(dose*7/f.days).toPrecision(10); sim.hl=comp.hl; sim.freq=f.label; sim.comp=comp.name;
+  if(Number(row.conc)>0) sim.concBy[comp.name]=Number(row.conc);
   msg.textContent='';
   simWrite(); simSave(); simRun();
 }
@@ -1106,11 +1107,12 @@ function simRun(){
   let out;
   try{
     if(!f) throw new RangeError('Choose a frequency from the list.');
-    const o={W:simNum(sim.W), tau:f.days, tHalf:simNum(sim.hl), n:simNum(sim.n), Q:simNum(sim.Q), duration:simNum(sim.duration)};
+    // n and Q only matter for scenario C, which this page does not show
+    const o={W:simNum(sim.W), tau:f.days, tHalf:simNum(sim.hl), n:1, Q:0, duration:simNum(sim.duration)};
     const ss=PK.steadyState(o);
     const res=SIM_IDS.map(id=>{ const s=PK.scenarioDoses(Object.assign({id}, o));
       return {id, sched:s, points:PK.simulate(s, ss.k, o.duration, SIM_SPD).points, m:PK.metrics(s, ss.k, o.duration, ss)}; });
-    out={o, ss, res};
+    out={o, ss, res, freq:f};
   }catch(e){
     if(!(e instanceof RangeError)) throw e;
     msg.textContent=e.message; simLast=null; simClear(); return;
@@ -1119,13 +1121,55 @@ function simRun(){
   const pctOpt=simEl('simUnits').options[1]; pctOpt.disabled=!(out.ss.peak>0);
   if(pctOpt.disabled && sim.units==='pct'){ sim.units='mg'; simEl('simUnits').value='mg'; }
   simEl('simCsvBtn').disabled=false;
-  simDraw(); simTables();
+  simPlan(); simDraw(); simTables(); simWhy();
 }
 function simClear(){
   const cv=simEl('simChart'), ctx=cv.getContext('2d'); ctx.clearRect(0,0,cv.width,cv.height);
   ctx.fillStyle="#666"; ctx.font="26px sans-serif"; ctx.fillText("Fix the input above to compute", 70, cv.height/2);
-  ['simLegend','simSS','simTable','simHover'].forEach(id=>simEl(id).innerHTML='');
+  ['simLegend','simSS','simTable','simHover','simPlan','simWhyBody'].forEach(id=>simEl(id).innerHTML='');
   simEl('simCsvBtn').disabled=true;
+}
+
+// Dose plan: the up-front dose, the regular dose after it, and the daily amount, in mg and mL.
+function simPlan(){
+  const L=simLast, F=PK.FMT, f=L.freq, conc=simNum(simConcFor(sim.comp));
+  const okConc=Number.isFinite(conc) && conc>0;
+  const vol=mg=> okConc ? `${(mg/conc).toFixed(3)} mL · ${(mg/conc*100).toFixed(1)} units (U-100)` : 'enter a concentration for mL';
+  const cell=mg=>`<b style="font-size:15px;color:var(--head)">${F.mg(mg)} mg</b><div style="font-size:11px;color:var(--muted)">${vol(mg)}</div>`;
+  const daily=L.o.W/7, every=f.days===1?'every day':`every ${f.days} days`;
+  const row=r=>{ const d=r.sched.doses;
+    return `<tr><td style="color:${simColors()[r.id]};font-weight:600">${r.id}</td><td>${cell(d[0].mg)}</td>
+      <td>${d.length>1?cell(d[1].mg):'none in this duration'}<div style="font-size:11px;color:var(--muted)">${every}, from day ${F.days(f.days)}</div></td></tr>`; };
+  simEl('simPlan').innerHTML =
+    `<div class="stats" style="margin-top:0;margin-bottom:8px">
+      <div class="stat"><b>${F.mg(daily)} mg/day</b><span>daily amount (${F.mg(L.o.W)} mg/wk ÷ 7)</span></div>
+      <div class="stat"><b>${F.mg(L.ss.dTau)} mg</b><span>regular dose, ${every}</span></div>
+      <div class="stat"><b>${F.mg(L.ss.load)} mg</b><span>up-front dose for D (= L)</span></div></div>
+    <table style="width:auto"><thead><tr><th>Scenario</th><th>Up-front dose (dose 1, day 0)</th><th>Then each regular dose</th></tr></thead>
+    <tbody>${L.res.map(row).join('')}</tbody></table>
+    <div class="note" style="margin-top:6px">${okConc ? `Volumes use ${conc} mg/mL. U-100 syringe: 100 units = 1 mL.` : 'Enter the concentration (mg/mL) above to see volumes.'}
+      Under A, dose 1 is just the regular dose, so there is no up-front dose.</div>`;
+}
+
+function simWhy(){
+  const L=simLast, F=PK.FMT, ss=L.ss, o=L.o, tau=o.tau, cleared=1-ss.r;
+  const tau_ = tau===1 ? '1 day' : `${tau} days`;
+  let alt='';
+  const hl2=Math.min(365, o.tHalf*2);
+  try{ const s2=PK.steadyState({W:o.W, tau, tHalf:hl2});
+    alt=` At double the half-life (${hl2} d) the same ${F.mg(o.W)} mg/wk would plateau at ${F.mg(s2.peak)} mg.`; }catch(e){}
+  simEl('simWhyBody').innerHTML = `<ol style="margin-left:18px">
+    <li><b>Regular dose.</b> ${F.mg(o.W)} mg/wk × ${tau_} ÷ 7 = <b>${ss.dTau.toFixed(2)} mg</b> per dose.</li>
+    <li><b>What is left one interval later.</b> r = e<sup>−ln 2 × ${tau} / ${o.tHalf}</sup> = <b>${ss.r.toFixed(4)}</b>.
+      So ${(ss.r*100).toFixed(1)}% of what is on board remains after ${tau_} and ${(cleared*100).toFixed(1)}% is cleared.</li>
+    <li><b>Steady state is where each dose only replaces what was cleared.</b> SS peak × ${cleared.toFixed(4)} = ${ss.dTau.toFixed(2)} mg,
+      so SS peak = ${ss.dTau.toFixed(2)} ÷ ${cleared.toFixed(4)} = <b>${F.mg(ss.peak)} mg</b>.</li>
+    <li><b>Range over each interval.</b> Right after a dose ${F.mg(ss.peak)} mg; just before the next ${F.mg(ss.peak)} × ${ss.r.toFixed(4)} = ${F.mg(ss.trough)} mg; average ${F.mg(ss.mean)} mg.</li>
+  </ol>
+  <p style="margin-top:6px"><b>Why it is not ${F.mg(o.W)}.</b> The weekly amount is how much goes in per week; the peak is how much is on board at one moment.
+    They are different quantities, and their ratio here (${F.ratio(ss.load/o.W)}) is set only by the half-life and the interval, not by the dose.
+    Double the weekly amount and the peak doubles; lengthen the half-life and the plateau rises.${alt}
+    Without an up-front dose (A), the climb to the plateau takes about 3.3 half-lives to reach 90% and 6.6 to reach 99%.</p>`;
 }
 
 function simDraw(){
@@ -1169,7 +1213,7 @@ function simHover(e){
 function simTables(){
   const L=simLast, F=PK.FMT, m0=L.res[0].m;
   simEl('simSS').innerHTML = [[F.mg(m0.ssPeak),'SS peak mg'],[F.mg(m0.ssTrough),'SS trough mg'],[F.mg(m0.load),'L (load) mg'],
-    [F.ratio(m0.loadOverD),'L / dose'],[F.ratio(m0.loadOverW),'L / weekly'],[F.mg(L.ss.dTau),'dose per interval mg']]
+    [F.ratio(m0.loadOverD),'L / regular dose'],[F.ratio(m0.loadOverW),'L / weekly']]
     .map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
   const dose=x=> x ? `dose ${x.index} · d${F.days(x.t)}${x.beyondChart?' (beyond chart)':''}` : '—';
   const rows=[
