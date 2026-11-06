@@ -82,3 +82,16 @@ test('I6 contrib matches the table captured from the pre-change inline function'
   }
   assert.deepEqual([...new Set(table.map(r => r.model))].sort(), ['bateman', 'mono']);
 });
+
+test('I7 single-dose frequency (interval 0) gives exactly one injection at the start', () => {
+  assert.deepEqual(PK.doseTimes(3, 40, 0), [3]);
+  assert.deepEqual(PK.doseTimes(3, 40, -1), [3]);
+  assert.deepEqual(PK.doseTimes(5, 4, 0), [], 'start after end: no injection');
+  const days = Array.from({ length: 81 }, (_, i) => i / 2);
+  for (const model of ['mono', 'bateman']) {
+    const [vals] = PK.protocolSeries([{ dose: 182, hl: 4.05, startOff: 2, endOff: 30, intervalDays: 0 }], { days, model });
+    vals.forEach((v, i) => assert.equal(v, days[i] >= 2 ? PK.contrib(182, days[i] - 2, 4.05, model) : 0));
+  }
+  // repeating intervals unchanged
+  assert.deepEqual(PK.doseTimes(0, 21, 7), [0, 7, 14, 21]);
+});

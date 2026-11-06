@@ -364,6 +364,7 @@ const SEED_FREQ = [
   {label:"Weekly", days:7},
   {label:"E10D", days:10},
   {label:"E14D", days:14},
+  {label:"Single dose (once)", days:0},   // days 0 = one injection on the start date
 ];
 function seedProtocol(){
   const today = new Date(); const s = today.toISOString().slice(0,10);
@@ -381,6 +382,9 @@ if(!state.ancillaries) state.ancillaries=[];
 state.compounds.forEach(c=>{ if(c.anab==null){ const r=ratioFor(c.name); c.anab=r[0]; c.andro=r[1]; }
   if(c.arbind==null || typeof c.arom==='boolean') Object.assign(c, mechFor(c.name)); });
 if(!state.customIndex) state.customIndex={};
+// migrate: offer the single-dose frequency once to saves made before it existed (deleting it later sticks)
+if(!state.freqSingleOffered){ if(!state.frequencies.some(f=>f.days===0)) state.frequencies.push({label:"Single dose (once)", days:0});
+  state.freqSingleOffered=true; }
 function load(){
   try{ const s = JSON.parse(localStorage.getItem(LS)); if(s&&s.compounds) return s; }catch(e){}
   return { compounds:[...SEED_COMPOUNDS], concentrations:[...SEED_CONC],
@@ -392,6 +396,9 @@ function save(){ localStorage.setItem(LS, JSON.stringify(state)); }
 
 const COLORS = ["#4ade80","#6aa9ff","#f5c451","#f87171","#c084fc","#22d3ee","#fb923c","#a3e635","#f472b6","#94a3b8"];
 const freqDays = label => (state.frequencies.find(f=>f.label===label)||{days:7}).days;
+// mg per week for a protocol row; a single dose (interval 0) adds nothing per week
+const weeklyMg = p => { const d=freqDays(p.freq); return d>0 ? (+p.dose||0)*(7/d) : 0; };
+const isSingle = p => !(freqDays(p.freq)>0);
 const compHl = name => (state.compounds.find(c=>c.name===name)||{hl:5}).hl;
 
 // ============================ PK MODEL ============================
@@ -423,8 +430,8 @@ function buildSeries(){
   const series = rows.map((p,i)=>{
     const comp = state.compounds.find(x=>x.name===p.comp)||{};
     const r = pkRows[i];
-    return {label:p.comp, color:COLORS[i%COLORS.length], vals:valsByRow[i], weekly: r.dose*(7/r.intervalDays), hl:r.hl,
-            events:PK.doseTimes(r.startOff, r.endOff, r.intervalDays).length, anab:comp.anab??100, andro:comp.andro??100,
+    return {label:p.comp, color:COLORS[i%COLORS.length], vals:valsByRow[i], weekly: r.intervalDays>0 ? r.dose*(7/r.intervalDays) : 0, hl:r.hl,
+            events:PK.doseTimes(r.startOff, r.endOff, r.intervalDays).length, single:!(r.intervalDays>0), anab:comp.anab??100, andro:comp.andro??100,
             arbind:comp.arbind??100, arom:!!comp.arom, prog:!!comp.prog, dht:!!comp.dht};
   });
   return {days,series,t0};
@@ -529,8 +536,8 @@ function redraw(){
   ctx.font="600 19px sans-serif";
   const labels = plot.map(p=>{ const mx=Math.max(...p.sv);
       const plat=p.sv.filter(v=>v>=mx*0.9); const css=plat.length?plat.reduce((a,v)=>a+v,0)/plat.length:mx;
-      return {color:p.color, css, label:p.label}; })
-    .filter(l=>l.css>0).sort((a,b)=>b.css-a.css);
+      return {color:p.color, css, label:p.label, single:p.src.single}; })
+    .filter(l=>l.css>0 && !l.single).sort((a,b)=>b.css-a.css);   // no steady state for a one-time dose
   let prevY=-99;
   labels.forEach(l=>{ let y=Y(l.css); if(y-prevY<20) y=prevY+20; prevY=y;
     ctx.fillStyle=l.color; ctx.textAlign="right";
@@ -559,10 +566,11 @@ function redraw(){
 function renderStats(){
   const rows=state.protocol.filter(p=>p.comp);
   const stats=document.getElementById('stats');
-  const wk = rows.reduce((a,p)=>a+ (+p.dose||0)*(7/freqDays(p.freq)),0);
+  const wk = rows.reduce((a,p)=>a+weeklyMg(p),0);
   let html = `<div class="stat"><b>${rows.length}</b><span>compounds</span></div>`;
-  rows.forEach(p=>{ const w=(+p.dose||0)*(7/freqDays(p.freq));
-    html += `<div class="stat"><b>${Math.round(w)}</b><span>${p.comp.split(' ')[0]} mg/wk</span></div>`; });
+  rows.forEach(p=>{ if(isSingle(p)){
+      html += `<div class="stat"><b>${Math.round(+p.dose||0)}</b><span>${p.comp.split(' ')[0]} mg once</span></div>`; return; }
+    html += `<div class="stat"><b>${Math.round(weeklyMg(p))}</b><span>${p.comp.split(' ')[0]} mg/wk</span></div>`; });
   html += `<div class="stat"><b>${Math.round(wk)}</b><span>total mg/wk</span></div>`;
   stats.innerHTML=html;
 }
@@ -611,7 +619,7 @@ function renderPresets(){
   document.getElementById('concChips').innerHTML =
     state.concentrations.map((c,i)=>`<span class="tag">${c} <a style="cursor:pointer;color:var(--red)" onclick="delPreset('concentrations',${i})">×</a></span>`).join(' ');
   document.getElementById('freqChips').innerHTML =
-    state.frequencies.map((f,i)=>`<span class="tag">${f.label} · ${f.days}d <a style="cursor:pointer;color:var(--red)" onclick="delPreset('frequencies',${i})">×</a></span>`).join(' ');
+    state.frequencies.map((f,i)=>`<span class="tag">${f.label} · ${f.days>0?f.days+'d':'once'} <a style="cursor:pointer;color:var(--red)" onclick="delPreset('frequencies',${i})">×</a></span>`).join(' ');
 }
 
 // ============================ MUTATIONS ============================
@@ -732,10 +740,12 @@ function calcSupply(){
   const out = document.getElementById('supplyOut');
   if(!rows.length){ out.innerHTML='<span style="color:var(--dim)">Add compounds to the protocol first.</span>'; return; }
 
-  const inj=[], orals=[];
+  const inj=[], orals=[], once=[];
   rows.forEach(p=>{
     const c = state.compounds.find(x=>x.name===p.comp)||{};
     const iv = freqDays(p.freq);
+    if(!(iv>0)){ const mL=(+p.dose)/(+p.conc||1);   // single dose: one injection, not part of the daily mix
+      once.push({name:p.comp, mg:+p.dose, conc:+p.conc, mL, oral:(c.cls||'')==='Oral'}); return; }
     const weekly = (+p.dose)*(7/iv);
     const periodMg = weekly*days/7;
     const item = {name:p.comp, conc:+p.conc, iv, weekly, periodMg,
@@ -757,13 +767,18 @@ function calcSupply(){
   let html = `<table><thead><tr><th>Compound</th><th>mg/wk</th><th>mg / ${days}d</th>
       <th>conc</th><th>vol / ${days}d</th><th>daily</th><th>daily units</th></tr></thead><tbody>${tr}</tbody></table>`;
 
-  html += `<div class="panel" style="margin-top:10px;background:#0c130c;border-color:#1d3a1d">
+  if(inj.length) html += `<div class="panel" style="margin-top:10px;background:#0c130c;border-color:#1d3a1d">
       <div style="font-size:13px;line-height:1.7">
       <b>Combined oil mix for ${days} days:</b> draw <b style="color:var(--accent)">${mixML.toFixed(2)} mL</b> total
       (${inj.map(it=>it.mL.toFixed(2)+' mL '+it.name.split(' ')[0]).join(' + ')}).<br>
       <b>Inject daily:</b> <b style="color:var(--accent)">${(dailyMixML*100).toFixed(1)} units</b>
       (${dailyMixML.toFixed(3)} mL) on a U-100 insulin syringe.</div></div>`;
 
+  if(once.length){
+    html += `<div style="margin-top:8px;font-size:12px;color:var(--muted)"><b>One-time doses (not in the daily mix):</b> `
+      + once.map(o=>o.oral ? `${o.name.split(' ')[0]} ${Math.round(o.mg)} mg once`
+          : `${o.name.split(' ')[0]} ${Math.round(o.mg)} mg once = <b style="color:var(--accent)">${o.mL.toFixed(3)} mL (${(o.mL*100).toFixed(1)} units)</b> at ${o.conc} mg/mL`).join(' · ') + `</div>`;
+  }
   if(orals.length){
     html += `<div style="margin-top:8px;font-size:12px;color:var(--muted)"><b>Orals (not in oil mix):</b> `
       + orals.map(o=>`${o.name.split(' ')[0]} ${Math.round(o.dailyMg)} mg/day`).join(' · ') + `</div>`;
@@ -774,7 +789,7 @@ function calcSupply(){
 
 // ============================ SAVED CYCLES ============================
 let editCycleId = null;
-function cycleWeekly(cyc){ return cyc.protocol.reduce((a,p)=>a+(+p.dose||0)*(7/freqDays(p.freq)),0); }
+function cycleWeekly(cyc){ return cyc.protocol.reduce((a,p)=>a+weeklyMg(p),0); }
 function minStart(proto){ const ds=proto.map(p=>p.start).filter(Boolean).sort(); return ds[0]||new Date().toISOString().slice(0,10); }
 
 function saveCurrentCycle(){
@@ -788,7 +803,7 @@ function saveCurrentCycle(){
   save(); renderCycles();
 }
 function defaultCycleName(){ return guessType()[0].toUpperCase()+guessType().slice(1)+' '+new Date().toISOString().slice(0,7); }
-function guessType(){ const w=state.protocol.reduce((a,p)=>a+(+p.dose||0)*(7/freqDays(p.freq)),0);
+function guessType(){ const w=state.protocol.reduce((a,p)=>a+weeklyMg(p),0);
   return w<=120?'cruise':'blast'; }
 
 function quickCycle(kind){
@@ -1004,7 +1019,7 @@ function simFreqs(){
   const list=[]; let skipped=0;
   (state.frequencies||[]).forEach(f=>{
     if(f && typeof f.label==='string' && f.label && typeof f.days==='number' && Number.isFinite(f.days) && f.days>0) list.push(f);
-    else skipped++; });
+    else if(!(f && f.days===0)) skipped++; });   // days 0 is the single-dose option, not malformed
   return {list, skipped};
 }
 function simDefaults(){
@@ -1097,6 +1112,7 @@ function simUseProtocol(){
   const dose=Number(row.dose);
   if(!comp || !(typeof comp.hl==='number' && Number.isFinite(comp.hl) && comp.hl>0)){
     msg.textContent='The first protocol row\'s compound or its half-life is missing, so nothing was filled in.'; return; }
+  if(freqDays(row.freq)===0){ msg.textContent='The first protocol row is a single dose; the simulator needs a repeating frequency, so nothing was filled in.'; return; }
   if(!f){ msg.textContent='The first protocol row\'s frequency is missing or invalid, so nothing was filled in.'; return; }
   if(!(Number.isFinite(dose) && dose>0)){ msg.textContent='The first protocol row\'s dose is missing or invalid, so nothing was filled in.'; return; }
   sim.W = +(dose*7/f.days).toPrecision(10); sim.hl=comp.hl; sim.freq=f.label; sim.comp=comp.name;

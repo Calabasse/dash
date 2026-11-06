@@ -29,6 +29,8 @@
   // Injection day offsets within [startOff, endOff]. Same float accumulation as the
   // original page loop, so the cycle chart's values stay bit-identical.
   function doseTimes(startOff, endOff, intervalDays) {
+    // A non-positive interval is the "Single dose" frequency: one injection at the start.
+    if (!(intervalDays > 0)) return startOff <= endOff + 1e-6 ? [startOff] : [];
     const events = [];
     for (let t = startOff; t <= endOff + 1e-6; t += intervalDays) events.push(t);
     return events;

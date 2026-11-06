@@ -229,6 +229,33 @@ test.describe('decay model and half-life comparison', () => {
   }
 });
 
+test.describe('single-dose frequency', () => {
+  for (const p of H.PAGES) {
+    test(`R10 single-dose row: one injection, "once" stat, supply line, old saves migrated: ${p}`, async ({ browser }, ti) => {
+      const { ctx, page, problems } = await open(browser, ti, p, STATE);   // fixture saved before the option existed
+      expect(await page.evaluate(() => state.frequencies.filter(f => f.days === 0).map(f => f.label))).toEqual(['Single dose (once)']);
+      await page.evaluate(() => { state.protocol.push({ comp: 'Testosterone Cypionate', conc: 250, dose: 182, freq: 'Single dose (once)',
+        start: '2026-01-05', end: '2026-03-30' }); renderProtocol(); redraw(); });
+      const r = await page.evaluate(() => { document.getElementById('model').value = 'mono'; const b = buildSeries(); const s = b.series[3];
+        return { events: s.events, weekly: s.weekly, ok: s.vals.every((v, i) => v === PK.contrib(182, b.days[i], s.hl, 'mono')) }; });
+      expect(r).toEqual({ events: 1, weekly: 0, ok: true });
+      expect(await page.evaluate(() => buildSeries().series.map(s => s.single))).toEqual([false, false, false, true]);
+      await expect(page.locator('#stats')).toContainText('mg once');
+      await page.getByRole('button', { name: 'Calculate', exact: true }).click();
+      await expect(page.locator('#supplyOut')).toContainText('One-time doses');
+      await expect(page.locator('#supplyOut')).toContainText('0.728 mL (72.8 units)');
+      expect(await page.evaluate(() => document.body.innerText.includes('Infinity'))).toBe(false);
+      // simulator: not counted as a malformed preset, and "Use my protocol" explains a single-dose first row
+      await expect(page.locator('#simFreqNote')).toBeHidden();
+      await page.evaluate(() => { state.protocol.unshift(state.protocol.pop()); });
+      await page.click('#simUseProto');
+      await expect(page.locator('#simMsg')).toContainText('single dose');
+      expect(problems).toEqual([]);
+      await ctx.close();
+    });
+  }
+});
+
 test('R6 intentional template/tracker differences survive', async ({ browser }, ti) => {
   const tpl = fs.readFileSync(path.join(REPO, 'templates/ped.html'), 'utf8');
   const trk = fs.readFileSync(path.join(REPO, 'tracker.html'), 'utf8');
