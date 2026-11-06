@@ -1032,11 +1032,12 @@ function simDefaults(){
   const meta=PK.COMPOUND_META['Testosterone Cypionate'];
   return {comp:'Testosterone Cypionate', W:200, hl: meta ? meta.tHalf : 5, freq: daily ? daily.label : '',
     duration:42, units:'mg', show:{A:true,D:true}, trough:false, open:true, concBy:Object.assign({}, SIM_DEFAULT_CONC),
-    model:'instant', ka:null, kaAuto:true, cmp:true, cmpHl:null, cmpAuto:true};
+    model:'instant', ka:null, kaAuto:true, cmp:false, cmpHl:null, cmpAuto:true, cmpOffV2:true};
 }
 function simLoad(){
   const d=simDefaults();
   try{ const s=JSON.parse(localStorage.getItem(SIM_LS));
+    if(s && typeof s==='object' && !s.cmpOffV2){ s.cmp=false; s.cmpOffV2=true; }   // comparison became opt-in: switch off once in older saves
     if(s && typeof s==='object') return Object.assign(d, s, {show:Object.assign({}, d.show, s.show||{}),
       concBy:Object.assign({}, d.concBy, s.concBy||{})}); }catch(e){}
   return d;
@@ -1249,7 +1250,27 @@ function simWhy(){
   const hl2=Math.min(365, o.tHalf*2);
   try{ const s2=PK.steadyState({W:o.W, tau, tHalf:hl2});
     alt=` At double the half-life (${hl2} d) the same ${F.mg(o.W)} mg/wk would plateau at ${F.mg(s2.peak)} mg.`; }catch(e){}
-  simEl('simWhyBody').innerHTML = `<ol style="margin-left:18px">
+  // plain version first: the body holds about (residence time) days' worth of dosing
+  const perDay=o.W/7, hlEq=PK.WEEK_EQUIV_HALF_LIFE;
+  const hls=[o.tHalf, hlEq]; if(L.cmp && hls.indexOf(L.cmp.o.tHalf)<0) hls.push(L.cmp.o.tHalf);
+  const hlRow=h=>{ try{ const s=PK.steadyState({W:o.W, tau, tHalf:h});
+      return `<tr><td>${+h.toFixed(2)} d${h===o.tHalf?' (current)':h===hlEq?' (average = weekly amount)':''}</td><td>${F.ratio(s.residence)} days</td><td>${F.mg(s.mean)} mg</td><td>${F.mg(s.peak)} mg</td></tr>`; }
+    catch(e){ return ''; } };
+  const plain = `<p><b>${F.mg(o.W)} mg/wk and ${F.mg(ss.peak)} mg measure different things.</b> ${F.mg(o.W)} mg/wk is how much goes in each week;
+    ${F.mg(ss.peak)} mg is how much is in the body at one moment (the high point, right after a dose). Nothing caps the amount at the weekly figure.</p>
+    <p style="margin-top:6px"><b>Your body holds about ${F.ratio(ss.residence)} days' worth of dosing.</b> On average a dose stays on board
+    1.44 half-lives (${o.tHalf} d × 1.44 = ${F.ratio(ss.residence)} days). At ${F.mg(perDay)} mg per day that is
+    ${F.ratio(ss.residence)} × ${F.mg(perDay)} = <b>${F.mg(ss.mean)} mg on average</b>. The peak sits above the average because each dose lands on top:
+    ${F.mg(ss.peak)} mg right after a dose, ${F.mg(ss.trough)} mg just before the next. A week of dosing is 7 days' worth; with this half-life the body
+    holds ${F.ratio(ss.residence)}, so the amount on board is ${ss.residence<7?'below':'above'} the weekly figure.</p>
+    <p style="margin-top:6px"><b>Bathtub version.</b> The tap adds ${F.mg(perDay)} mg per day; the drain removes ${(100*(1-Math.pow(ss.r,1/tau))).toFixed(1)}% of whatever is in the tub each day.
+    A fuller tub drains faster, so the level rises until the drain matches the tap, then holds.</p>
+    <table style="width:auto;margin-top:6px"><thead><tr><th>Half-life</th><th>Days' worth held</th><th>Average on board</th><th>Peak</th></tr></thead>
+      <tbody>${hls.map(hlRow).join('')}</tbody></table>
+    <p style="margin-top:6px;color:var(--muted)">The average equals the weekly amount only when the half-life is ${hlEq.toFixed(2)} days (7 × ln 2), at any dose.
+      Table values use the instant-input model; the average is the same in the depot model.</p>
+    <p style="margin-top:10px"><b>The exact steps</b></p>`;
+  simEl('simWhyBody').innerHTML = plain + `<ol style="margin-left:18px">
     <li><b>Regular dose.</b> ${F.mg(o.W)} mg/wk × ${tau_} ÷ 7 = <b>${ss.dTau.toFixed(2)} mg</b> per dose.</li>
     <li><b>What is left one interval later.</b> r = e<sup>−ln 2 × ${tau} / ${o.tHalf}</sup> = <b>${ss.r.toFixed(4)}</b>.
       So ${(ss.r*100).toFixed(1)}% of what is on board remains after ${tau_} and ${(cleared*100).toFixed(1)}% is cleared.</li>
@@ -1257,9 +1278,8 @@ function simWhy(){
       so SS peak = ${ss.dTau.toFixed(2)} ÷ ${cleared.toFixed(4)} = <b>${F.mg(ss.peak)} mg</b>.</li>
     <li><b>Range over each interval.</b> Right after a dose ${F.mg(ss.peak)} mg; just before the next ${F.mg(ss.peak)} × ${ss.r.toFixed(4)} = ${F.mg(ss.trough)} mg; average ${F.mg(ss.mean)} mg.</li>
   </ol>
-  <p style="margin-top:6px"><b>Why it is not ${F.mg(o.W)}.</b> The weekly amount is how much goes in per week; the peak is how much is on board at one moment.
-    They are different quantities, and their ratio here (${F.ratio(ss.load/o.W)}) is set only by the half-life and the interval, not by the dose.
-    Double the weekly amount and the peak doubles; lengthen the half-life and the plateau rises.${alt}
+  <p style="margin-top:6px">The ratio of peak to weekly amount here (${F.ratio(ss.load/o.W)}) is set only by the half-life and the interval, not by the dose:
+    double the weekly amount and the peak doubles.${alt}
     Without an up-front dose (A), the climb to the plateau takes about 3.3 half-lives to reach 90% and 6.6 to reach 99%.</p>
   ${L.model==='depot' ? `<p style="margin-top:6px"><b>Depot absorption (ka ${L.ka} per day).</b> The steps above are the instant-input model.
     With absorption, each dose first sits at the injection site and moves into the body over days. The average on board is unchanged at
@@ -1293,15 +1313,15 @@ function simDraw(){
     ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(W-padR,y);ctx.stroke(); ctx.setLineDash([]);
     ctx.fillStyle="#bbbbbb"; ctx.textAlign="right"; ctx.fillText(label, W-padR-6, y-6); ctx.textAlign="left"; };
   ref(L.ss.peak,[10,6],'SS peak'); if(sim.trough) ref(L.ss.trough,[3,6],'SS trough');
-  if(L.cmp) ref(L.cmp.ss.peak,[4,8],`SS peak at ${L.cmp.o.tHalf} d`);
-  ghost.forEach(r=>{ ctx.strokeStyle=col[r.id]; ctx.globalAlpha=0.55; ctx.lineWidth=1.8; ctx.setLineDash([8,6]); ctx.beginPath();
+  if(L.cmp) ref(L.cmp.ss.peak,[2,8],`SS peak if half-life were ${L.cmp.o.tHalf} d`);
+  ghost.forEach(r=>{ ctx.strokeStyle=col[r.id]; ctx.globalAlpha=0.5; ctx.lineWidth=1.6; ctx.setLineDash([2,6]); ctx.beginPath();
     r.points.forEach((p,i)=>{ const x=X(p.t), y=Y(p.a*sc); i?ctx.lineTo(x,y):ctx.moveTo(x,y); }); ctx.stroke(); });
   ctx.globalAlpha=1; ctx.setLineDash([]);
   vis.forEach(r=>{ ctx.strokeStyle=col[r.id]; ctx.lineWidth=2.6; ctx.beginPath();
     r.points.forEach((p,i)=>{ const x=X(p.t), y=Y(p.a*sc); i?ctx.lineTo(x,y):ctx.moveTo(x,y); }); ctx.stroke(); });
   simEl('simLegend').innerHTML = vis.map(r=>`<span><span class="swatch" style="background:${col[r.id]}"></span>${SIM_LABEL[r.id]}</span>`).join('')
     + `<span><span class="swatch" style="background:#bbb"></span>SS peak (dashed)</span>`
-    + (L.cmp ? `<span>dashed curves: same doses at half-life ${L.cmp.o.tHalf} d</span>` : '');
+    + (L.cmp ? `<span>dotted curves: the same doses if the half-life were ${L.cmp.o.tHalf} d (comparison)</span>` : '');
 }
 function simHover(e){
   const L=simLast; if(!L || !L.geo) return;
