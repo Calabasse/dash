@@ -218,6 +218,141 @@
     };
   }
 
+  // ---------------------------------------------------------------- depot absorption model
+  // Optional second model: each dose enters an injection-site depot and moves to the body at
+  // first-order rate ka; the body clears at k. Body amount C, depot amount Dp:
+  //   dDp/dt = -ka Dp,  dC/dt = ka Dp - k C.
+  // Over a step s with no dose: C(s) = C0 e^{-ks} + Dp0 g(s), Dp(s) = Dp0 e^{-ka s},
+  // g(s) = ka/(ka-k) (e^{-ks} - e^{-ka s})  (limit ka = k: ka s e^{-ks}).
+  function checkKa(ka) {
+    need(fin(ka) && ka > 0 && ka <= 1000, 'Absorption rate must be a number greater than 0 and at most 1000 per day.');
+  }
+  function absG(k, ka, s) {
+    const d = ka - k, ek = Math.exp(-k * s);
+    return Math.abs(d) < 1e-9 ? ka * s * ek : ka / d * (ek - Math.exp(-ka * s));
+  }
+  function absStep(C0, Dp0, k, ka, s) {
+    return { C: C0 * Math.exp(-k * s) + Dp0 * absG(k, ka, s), Dp: Dp0 * Math.exp(-ka * s) };
+  }
+  // Integral of C over [0, len] from state (C0, Dp0).
+  function absArea(C0, Dp0, k, ka, len) {
+    const d = ka - k, ik = (1 - Math.exp(-k * len)) / k;
+    const G = Math.abs(d) < 1e-9 ? ka * (1 - Math.exp(-k * len) * (1 + k * len)) / (k * k)
+                                 : ka / d * (ik - (1 - Math.exp(-ka * len)) / ka);
+    return C0 * ik + Dp0 * G;
+  }
+  // Exact maximum of C over [0, len] from state (C0, Dp0); returns {max, at}.
+  function absIntervalMax(C0, Dp0, k, ka, len) {
+    const end = absStep(C0, Dp0, k, ka, len).C;
+    let best = C0 >= end ? { max: C0, at: 0 } : { max: end, at: len };
+    if (Dp0 > 0) {
+      const d = ka - k;
+      let s = NaN;
+      if (Math.abs(d) < 1e-9) s = 1 / k - C0 / (Dp0 * k);
+      else {
+        const B = Dp0 * ka / d, x = B * ka / (k * (C0 + B));   // dC/ds = 0  <=>  e^{(ka-k)s} = x
+        if (x > 0) s = Math.log(x) / d;
+      }
+      if (s > 0 && s < len) { const c = absStep(C0, Dp0, k, ka, s).C; if (c > best.max) best = { max: c, at: s }; }
+    }
+    return best;
+  }
+  // Time of the single-dose peak, from an empty body.
+  function absTmax(k, ka) {
+    const d = ka - k;
+    return Math.abs(d) < 1e-9 ? 1 / k : Math.log(ka / k) / d;
+  }
+  // Absorption rate used by the cycle chart's illustrative Bateman option (unsourced).
+  function illustrativeKa(hl) { return Math.LN2 / Math.min(0.6, hl * 0.4); }
+
+  function steadyStateAbsorption(o) {
+    const ss = steadyState(o);                       // validates W, tau, tHalf, near-singular
+    checkKa(o.ka);
+    const k = ss.k, ka = o.ka, tau = o.tau, ra = Math.exp(-ka * tau);
+    need(1 - ra >= LIMITS.singular, 'Absorption is too slow for this interval (1 - e^(-ka tau) < 1e-6).');
+    const depotPost = ss.dTau / (1 - ra);           // depot right after each steady-state dose
+    const trough = depotPost * absG(k, ka, tau) / (1 - ss.r);   // body amount at each dose time
+    const pk = absIntervalMax(trough, depotPost, k, ka, tau);
+    return { k: k, ka: ka, r: ss.r, ra: ra, dTau: ss.dTau, peak: pk.max, peakAfter: pk.at, trough: trough,
+             mean: ss.mean, load: ss.load, depotPost: depotPost, tmaxSingle: absTmax(k, ka) };
+  }
+
+  function simulateAbsorption(schedule, k, ka, duration, samplesPerDay) {
+    checkKa(ka);
+    need(Number.isInteger(samplesPerDay) && samplesPerDay >= LIMITS.spdMin && samplesPerDay <= LIMITS.spdMax,
+      'Samples per day must be a whole number from ' + LIMITS.spdMin + ' to ' + LIMITS.spdMax + '.');
+    const spd = samplesPerDay, nS = Math.round(duration * spd), doses = schedule.doses;
+    const skip = new Set();
+    doses.forEach(d => { const j = Math.round(d.t * spd); if (Math.abs(j / spd - d.t) < 1e-9) skip.add(j); });
+    const ev = [];
+    for (let j = 0; j <= nS; j++) if (!skip.has(j)) ev.push({ t: j / spd, dose: null });
+    doses.forEach(d => ev.push({ t: d.t, dose: d }));
+    ev.sort((a, b) => a.t - b.t || (a.dose ? -1 : 1));
+    const points = [];
+    let C = 0, Dp = 0, T = 0;
+    for (const e of ev) {
+      const st = absStep(C, Dp, k, ka, e.t - T); C = st.C; Dp = st.Dp; T = e.t;
+      if (e.dose) {                                   // the body amount does not jump; the depot does
+        points.push({ t: e.t, a: C, kind: 'pre' }); Dp += e.dose.mg; points.push({ t: e.t, a: C, kind: 'post' });
+      } else points.push({ t: e.t, a: C, kind: 'sample' });
+    }
+    return { points: points };
+  }
+
+  // Same result shape as metrics(). Peaks are the exact maximum body amount in each dosing
+  // interval. Thresholds walk interval peaks past the chart until the state has converged to
+  // the steady-state cycle (relative 1e-12), so entry beyond the chart is found exactly.
+  function metricsAbsorption(schedule, k, ka, duration, ssA, thresholds) {
+    checkKa(ka);
+    const ps = thresholds || [0.90, 0.95, 0.97, 0.99];
+    const tau = schedule.tau, dTau = schedule.dTau, SS = ssA.peak, W = dTau * 7 / tau;
+    const doses = schedule.doses, N = doses.length, scn = schedule._scn;
+    // chart: peaks and AUC per interval, last interval cut at duration
+    const peaks = []; let C = 0, Dp = 0, T = 0, auc = 0;
+    doses.forEach((d, i) => {
+      const st = absStep(C, Dp, k, ka, d.t - T); C = st.C; Dp = st.Dp + d.mg; T = d.t;
+      const end = i + 1 < N ? doses[i + 1].t : duration;
+      peaks.push(absIntervalMax(C, Dp, k, ka, end - d.t).max);
+      auc += absArea(C, Dp, k, ka, end - d.t);
+    });
+    let maxPost = 0; peaks.forEach(v => { if (v > maxPost) maxPost = v; });
+    const cumulativeInput = doses.reduce((a, d) => a + d.mg, 0);
+    // threshold sequence: full-interval peaks, extended past the chart until converged
+    const seq = []; C = 0; Dp = 0;
+    const DpPre = ssA.depotPost - dTau, tol = 1e-12 * Math.max(SS, 1e-300);
+    for (let j = 1; j <= 2000000; j++) {
+      const mg = scn ? doseAmount(scn.id, j, scn.W, dTau, scn.n, scn.Q, scn.L) : dTau;
+      Dp += mg;
+      seq.push(absIntervalMax(C, Dp, k, ka, tau).max);
+      const st = absStep(C, Dp, k, ka, tau); C = st.C; Dp = st.Dp;
+      const done = j >= Math.max(N, schedule.maintStart) &&
+        Math.abs(C - ssA.trough) <= tol && Math.abs(Dp - DpPre) <= tol;
+      if (done) break;
+    }
+    const J = seq.length, at = j => ({ index: j, t: (j - 1) * tau, beyondChart: j > N });
+    const thresholds_ = ps.map(p => {
+      const lo = p * SS, hi = (2 - p) * SS;
+      let first = null;
+      for (let j = 1; j <= J; j++) if (seq[j - 1] >= lo) { first = at(j); break; }
+      let j = J; while (j > 1 && seq[j - 2] >= lo && seq[j - 2] <= hi) j--;
+      return { p: p, firstCrossing: first, sustainedEntry: at(j) };
+    });
+    return {
+      ssPeak: SS, ssTrough: ssA.trough, load: ssA.load, loadOverD: ssA.load / dTau, loadOverW: ssA.load / W,
+      maxPost: maxPost, overshootPct: Math.max(0, maxPost / SS - 1) * 100,
+      cumulativeInput: cumulativeInput, auc: auc, peaks: peaks, thresholds: thresholds_,
+    };
+  }
+
+  // Linear interpolation on a curve (used for hover on the absorption curve, which has no jumps).
+  function interpAt(points, t) {
+    let lo = 0, hi = points.length - 1, i = 0;
+    while (lo <= hi) { const mid = (lo + hi) >> 1; if (points[mid].t <= t) { i = mid; lo = mid + 1; } else hi = mid - 1; }
+    const p = points[i], q = points[i + 1];
+    if (!q || q.t === p.t) return p.a;
+    return p.a + (q.a - p.a) * (t - p.t) / (q.t - p.t);
+  }
+
   // ---------------------------------------------------------------- CSV
   function num6(x) {
     if (x === 0) return '0';
@@ -250,6 +385,13 @@
       tHalf: 4.05,
       tHalfRange: [4.05, 8],
       hlType: "apparent (depot-limited)",
+      ka: 1.22,
+      kaRange: [0.785, 2.67],
+      kaNote: "Absorption rate from the IM depot, Bi 2018 population PK (Table 2): ka 1.22 per day, " +
+        "95% CI 0.785 to 2.67, RSE 45%, between-subject variability 54%. The authors note only 1 to 2 " +
+        "samples per subject in the absorption phase, so ka is loosely estimated. With t1/2 4.05 d this " +
+        "puts a single-dose peak near day 1.9; the Azmiro label (N=26) reports a median Tmax of 71.7 h " +
+        "(range 24 to 191 h).",
       evidence: "Two distinct datasets disagree: FDA labels state about 8 d (no study, n or method given); " +
         "a population PK analysis of 31 healthy men on IM testosterone cypionate estimated 4.05 d.",
       rationale: "Spec rule: on disagreement, default to the source with human IM PK data at the larger " +
@@ -290,7 +432,9 @@
   const PK = {
     contrib: contrib, doseTimes: doseTimes, protocolSeries: protocolSeries,
     steadyState: steadyState, scenarioDoses: scenarioDoses, scaleQ: scaleQ,
-    simulate: simulate, amountAt: amountAt, metrics: metrics, toCSV: toCSV, COMPOUND_META: COMPOUND_META, LIMITS: LIMITS,
+    simulate: simulate, amountAt: amountAt, metrics: metrics,
+    steadyStateAbsorption: steadyStateAbsorption, simulateAbsorption: simulateAbsorption,
+    metricsAbsorption: metricsAbsorption, illustrativeKa: illustrativeKa, interpAt: interpAt, toCSV: toCSV, COMPOUND_META: COMPOUND_META, LIMITS: LIMITS,
     FMT: FMT,
   };
   if (typeof module !== 'undefined' && module.exports) module.exports = PK; else root.PK = PK;

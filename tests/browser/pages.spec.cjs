@@ -40,6 +40,12 @@ async function exerciseSimulator(page) {
   await setNum(page, '#simHl', 6);
   await page.selectOption('#simFreq', 'Twice weekly (E3.5D)');
   await setNum(page, '#simDur', 60);
+  await page.selectOption('#simModel', 'depot');
+  await setNum(page, '#simKa', 0.9);
+  await page.uncheck('#simCmp'); await page.check('#simCmp');
+  await setNum(page, '#simCmpHl', 10);
+  await page.locator('#simChart').hover({ position: { x: 150, y: 90 } });
+  await page.selectOption('#simModel', 'instant');
   await page.selectOption('#simUnits', 'pct');
   await page.selectOption('#simUnits', 'mg');
   for (const id of 'AD') { await page.uncheck('#simShow' + id); await page.check('#simShow' + id); }
@@ -86,14 +92,14 @@ for (const p of H.PAGES) {
 
     test(`R4 four curves, toggles, units, CSV equals toCSV: ${p}`, async ({ browser }, ti) => {
       const { ctx, page, problems } = await open(browser, ti, p, STATE);
-      await expect(page.locator('#simLegend > span')).toHaveCount(3);          // A, D + SS peak
+      await expect(page.locator('#simLegend > span')).toHaveCount(4);          // A, D, SS peak, compare note
       expect(await page.evaluate(() => simLast.res.map(r => r.id).join(''))).toBe('AD');
       await expect(page.locator('#simShowB')).toHaveCount(0);
       await expect(page.locator('#simN')).toHaveCount(0);
       const shot = () => page.locator('#simChart').screenshot();
       const before = await shot();
       await page.uncheck('#simShowA');
-      await expect(page.locator('#simLegend > span')).toHaveCount(2);
+      await expect(page.locator('#simLegend > span')).toHaveCount(3);
       expect((await shot()).equals(before)).toBe(false);
       await page.selectOption('#simUnits', 'pct');
       expect(await page.evaluate(() => sim.units)).toBe('pct');
@@ -172,6 +178,43 @@ test.describe('dose plan and explanation', () => {
       await expect(rows.nth(1).locator('td').nth(1)).toContainText(`${(ss.load / 200).toFixed(3)} mL`);
       await expect(rows.nth(1).locator('td').nth(1)).toContainText(`${mg(ss.load)} mg`);
       expect(await page.evaluate(() => JSON.parse(localStorage.getItem('ped_sim_v1')).concBy['Testosterone Cypionate'])).toBe('200');
+      expect(problems).toEqual([]);
+      await ctx.close();
+    });
+  }
+});
+
+test.describe('decay model and half-life comparison', () => {
+  for (const p of H.PAGES) {
+    test(`R9 depot model, sourced ka, half-life comparison: ${p}`, async ({ browser }, ti) => {
+      const { ctx, page, problems } = await open(browser, ti, p, null);
+      const mg = x => (Math.round(x * 10) / 10).toFixed(1);
+      // comparison on by default for Test Cyp: other end of the sourced range (8 d)
+      const inst8 = await page.evaluate(() => PK.steadyState({ W: 200, tau: 1, tHalf: 8 }));
+      const cmp = page.locator('#simCmpTable');
+      await expect(cmp).toContainText('half-life 8 d');
+      await expect(cmp).toContainText(mg(inst8.load));
+      await expect(page.locator('#simKaWrap')).toBeHidden();
+      // depot model
+      await page.selectOption('#simModel', 'depot');
+      await expect(page.locator('#simKaWrap')).toBeVisible();
+      expect(await page.inputValue('#simKa')).toBe('1.22');
+      await expect(page.locator('#simKaInfo')).toContainText('sourced: Bi 2018');
+      const want = await page.evaluate(() => PK.steadyStateAbsorption({ W: 200, tau: 1, tHalf: 4.05, ka: 1.22 }));
+      const got = await page.evaluate(() => ({ peak: simLast.ss.peak, first: simLast.res.find(r => r.id === 'D').points[0].a, model: simLast.model }));
+      expect(got.model).toBe('depot'); expect(got.peak).toBe(want.peak); expect(got.first).toBe(0);
+      await expect(page.locator('#simWhyBody')).toContainText('Depot absorption (ka 1.22 per day)');
+      await expect(page.locator('#simWhyBody')).toContainText(`${mg(want.mean)} mg`);
+      await expect(page.locator('#simPlan')).toContainText('does not put the body at the plateau on day 0');
+      // custom ka is labelled custom and persists; picking the compound again restores the sourced value
+      await setNum(page, '#simKa', 0.5);
+      await expect(page.locator('#simKaInfo')).toContainText('custom');
+      await page.selectOption('#simComp', 'Testosterone Cypionate');
+      expect(await page.inputValue('#simKa')).toBe('1.22');
+      // comparison off: no table, no ghost legend
+      await page.uncheck('#simCmp');
+      await expect(cmp).toBeEmpty();
+      await expect(page.locator('#simLegend')).not.toContainText('dashed curves');
       expect(problems).toEqual([]);
       await ctx.close();
     });

@@ -129,6 +129,17 @@
         <label>Duration (d) <input type="number" id="simDur" step="1" style="width:64px" onchange="simInput('duration')"></label>
       </div>
       <div class="ctrls">
+        <label>Model <select id="simModel" style="width:210px" onchange="simInput('model')">
+          <option value="instant">Instant input (decay only)</option><option value="depot">Depot absorption</option></select></label>
+        <label id="simKaWrap">Absorption rate ka (per day) <input type="number" id="simKa" step="0.01" style="width:70px" onchange="simInput('ka')"></label>
+        <span id="simKaInfo" style="font-size:11px;color:var(--dim)"></span>
+      </div>
+      <div class="ctrls">
+        <label><input type="checkbox" id="simCmp" style="width:auto" onchange="simInput('cmp')"> Compare half-life (d)</label>
+        <input type="number" id="simCmpHl" step="0.05" style="width:70px" onchange="simInput('cmpHl')">
+        <span id="simCmpInfo" style="font-size:11px;color:var(--dim)"></span>
+      </div>
+      <div class="ctrls">
         <label>Units <select id="simUnits" style="width:150px" onchange="simInput('units')">
           <option value="mg">mg-equivalent</option><option value="pct">% of SS peak</option></select></label>
         <label><input type="checkbox" id="simShowA" style="width:auto" onchange="simInput('show')"> A</label>
@@ -146,8 +157,9 @@
       <div id="simHover" style="font-size:12px;color:var(--muted);min-height:17px;margin-top:6px;font-variant-numeric:tabular-nums"></div>
       <div class="legend" id="simLegend"></div>
       <div class="stats" id="simSS"></div>
+      <div style="overflow-x:auto;margin-top:10px"><table id="simCmpTable" style="width:auto"></table></div>
       <details id="simWhy" open style="margin-top:10px;font-size:12px;line-height:1.6;color:var(--text)"><summary style="cursor:pointer;color:var(--muted)">Why this weekly amount gives this steady-state peak</summary><div id="simWhyBody" style="margin-top:6px"></div></details>
-      <div class="note" id="simLimit">Modeled drug amount under an effective apparent-decay model, in mg-equivalent. Not a serum concentration and not a dosing recommendation. Testosterone cypionate is released slowly from an oil depot, so real serum curves rise and fall differently. Equal mg across compounds does not mean equal effect or safety. Each dose is treated as an instant input that decays with k = ln 2 / half-life; steady-state and load (L) figures are mathematical equivalents under that model, not body burden or clinical targets. Scenario D is a theoretical initial condition, not a dosing recommendation.</div>
+      <div class="note" id="simLimit">Modeled drug amount under an effective apparent-decay model, in mg-equivalent. Not a serum concentration and not a dosing recommendation. Testosterone cypionate is released slowly from an oil depot, so real serum curves rise and fall differently. Equal mg across compounds does not mean equal effect or safety. In instant-input mode each dose enters the body at once and decays with k = ln 2 / half-life; depot mode adds first-order absorption from the injection site at rate ka; steady-state and load (L) figures are mathematical equivalents under that model, not body burden or clinical targets. Scenario D is a theoretical initial condition, not a dosing recommendation.</div>
       <div style="overflow-x:auto;margin-top:10px"><table id="simTable" style="width:auto"></table></div>
       <div id="simFreqNote" class="note" style="display:none"></div>
     </div>
@@ -999,7 +1011,8 @@ function simDefaults(){
   const fl=simFreqs().list, daily=fl.find(f=>f.days===1)||fl[0];
   const meta=PK.COMPOUND_META['Testosterone Cypionate'];
   return {comp:'Testosterone Cypionate', W:200, hl: meta ? meta.tHalf : 5, freq: daily ? daily.label : '',
-    duration:42, units:'mg', show:{A:true,D:true}, trough:false, open:true, concBy:Object.assign({}, SIM_DEFAULT_CONC)};
+    duration:42, units:'mg', show:{A:true,D:true}, trough:false, open:true, concBy:Object.assign({}, SIM_DEFAULT_CONC),
+    model:'instant', ka:null, kaAuto:true, cmp:true, cmpHl:null, cmpAuto:true};
 }
 function simLoad(){
   const d=simDefaults();
@@ -1017,6 +1030,21 @@ function simConcFor(name){
   if(sim.concBy && sim.concBy[name]!==undefined) return sim.concBy[name];
   const c=state.compounds.find(x=>x.name===name); return c && c.conc ? c.conc : '';
 }
+// Absorption rate: sourced value for the compound if COMPOUND_META has one, else the cycle chart's
+// illustrative rule. Compare half-life: the other end of the sourced range, else double.
+function simKaDefault(name, hl){ const m=PK.COMPOUND_META[name];
+  if(m && m.ka) return {ka:m.ka, src:'sourced'};
+  return {ka: Number.isFinite(hl)&&hl>0 ? +PK.illustrativeKa(hl).toPrecision(4) : NaN, src:'illustrative'}; }
+function simCmpDefault(name, hl){ const m=PK.COMPOUND_META[name];
+  if(m && m.tHalfRange){ const [a,b]=m.tHalfRange; return Math.abs(hl-a)>=Math.abs(hl-b) ? a : b; }
+  return Number.isFinite(hl)&&hl>0 ? Math.min(365, +(hl*2).toPrecision(4)) : NaN; }
+function simEff(){
+  const hl=simNum(sim.hl), name=simEl('simComp') ? simEl('simComp').value : sim.comp;
+  const kd=simKaDefault(name, hl);
+  const ka = sim.kaAuto ? kd.ka : simNum(sim.ka);
+  const cmpHl = sim.cmpAuto ? simCmpDefault(name, hl) : simNum(sim.cmpHl);
+  return {hl, ka, kaSrc: sim.kaAuto ? kd.src : 'custom', cmpHl, cmpSrc: sim.cmpAuto ? (PK.COMPOUND_META[name] ? 'range' : 'double') : 'custom'};
+}
 function simWrite(){
   const comps=simEl('simComp'); comps.innerHTML='';
   state.compounds.forEach(c=>{ const o=document.createElement('option'); o.value=c.name; o.textContent=c.name; comps.appendChild(o); });
@@ -1030,17 +1058,25 @@ function simWrite(){
   simEl('simW').value=sim.W; simEl('simHl').value=sim.hl; simEl('simDur').value=sim.duration; simEl('simUnits').value=sim.units;
   SIM_IDS.forEach(id=>simEl('simShow'+id).checked=!!sim.show[id]); simEl('simTrough').checked=!!sim.trough;
   simEl('simBody').style.display=sim.open?'':'none'; simEl('simToggle').textContent=sim.open?'hide':'show';
+  const e=simEff();
+  simEl('simModel').value=sim.model; simEl('simKaWrap').style.display = sim.model==='depot' ? 'inline-flex' : 'none';
+  simEl('simKa').value = Number.isFinite(e.ka) ? e.ka : (sim.ka ?? '');
+  simEl('simCmp').checked=!!sim.cmp; simEl('simCmpHl').value = Number.isFinite(e.cmpHl) ? e.cmpHl : (sim.cmpHl ?? '');
+  simEl('simCmpHl').disabled=!sim.cmp;
 }
 function simInput(field){
   if(field==='hl') simEl('simComp').value=SIM_CUSTOM;   // a typed half-life is no longer the picked compound's
   if(field==='conc') sim.concBy[simEl('simComp').value]=simEl('simConc').value;
+  if(field==='ka'){ sim.kaAuto=false; sim.ka=simEl('simKa').value; }
+  if(field==='cmpHl'){ sim.cmpAuto=false; sim.cmpHl=simEl('simCmpHl').value; }
+  sim.model=simEl('simModel').value; sim.cmp=simEl('simCmp').checked;
   sim.comp=simEl('simComp').value; sim.W=simEl('simW').value; sim.hl=simEl('simHl').value;
   sim.freq=simEl('simFreq').value; sim.duration=simEl('simDur').value; sim.units=simEl('simUnits').value;
   SIM_IDS.forEach(id=>sim.show[id]=simEl('simShow'+id).checked); sim.trough=simEl('simTrough').checked;
-  simSave(); simRun();
+  simSave(); simWrite(); simRun();
 }
 function simPickCompound(){
-  const name=simEl('simComp').value; sim.comp=name;
+  const name=simEl('simComp').value; sim.comp=name; sim.kaAuto=true; sim.cmpAuto=true;
   if(name!==SIM_CUSTOM){
     const meta=PK.COMPOUND_META[name], c=state.compounds.find(x=>x.name===name);
     if(meta) sim.hl=meta.tHalf; else if(c) sim.hl=c.hl;
@@ -1103,25 +1139,44 @@ function simRun(){
   try{
     if(!f) throw new RangeError('Choose a frequency from the list.');
     // n and Q only matter for scenario C, which this page does not show
-    const o={W:simNum(sim.W), tau:f.days, tHalf:simNum(sim.hl), n:1, Q:0, duration:simNum(sim.duration)};
-    const ss=PK.steadyState(o);
-    const res=SIM_IDS.map(id=>{ const s=PK.scenarioDoses(Object.assign({id}, o));
-      return {id, sched:s, points:PK.simulate(s, ss.k, o.duration, SIM_SPD).points, m:PK.metrics(s, ss.k, o.duration, ss)}; });
-    out={o, ss, res, freq:f};
+    const e=simEff();
+    const o={W:simNum(sim.W), tau:f.days, tHalf:e.hl, n:1, Q:0, duration:simNum(sim.duration)};
+    const run=simModelRun(o, sim.model, e.ka);
+    out={o, ss:run.ss, res:run.res, inst:run.inst, freq:f, model:sim.model, ka:e.ka, kaSrc:e.kaSrc, cmp:null};
+    if(sim.cmp){
+      try{
+        const kaC = (sim.model==='depot' && e.kaSrc==='illustrative') ? +PK.illustrativeKa(e.cmpHl).toPrecision(4) : e.ka;
+        const oc=Object.assign({}, o, {tHalf:e.cmpHl});
+        out.cmp=Object.assign(simModelRun(oc, sim.model, kaC), {o:oc, ka:kaC, src:e.cmpSrc});
+      }catch(err){ if(!(err instanceof RangeError)) throw err; out.cmpError='Compare half-life: '+err.message; }
+    }
   }catch(e){
     if(!(e instanceof RangeError)) throw e;
     msg.textContent=e.message; simLast=null; simClear(); return;
   }
+  if(out.cmpError) msg.textContent=out.cmpError;
   simLast=out;
   const pctOpt=simEl('simUnits').options[1]; pctOpt.disabled=!(out.ss.peak>0);
   if(pctOpt.disabled && sim.units==='pct'){ sim.units='mg'; simEl('simUnits').value='mg'; }
   simEl('simCsvBtn').disabled=false;
-  simPlan(); simDraw(); simTables(); simWhy();
+  simInfoLines(); simPlan(); simDraw(); simTables(); simCmpTable(); simWhy();
+}
+// One model run: steady state plus scenarios A and D. inst is always the instant-input steady
+// state, which defines L and the derivation shown in the explanation.
+function simModelRun(o, model, ka){
+  const inst=PK.steadyState(o);
+  if(model==='depot'){
+    const a=PK.steadyStateAbsorption(Object.assign({ka}, o));
+    return {inst, ss:a, res:SIM_IDS.map(id=>{ const s=PK.scenarioDoses(Object.assign({id}, o));
+      return {id, sched:s, points:PK.simulateAbsorption(s, a.k, ka, o.duration, SIM_SPD).points, m:PK.metricsAbsorption(s, a.k, ka, o.duration, a)}; })};
+  }
+  return {inst, ss:inst, res:SIM_IDS.map(id=>{ const s=PK.scenarioDoses(Object.assign({id}, o));
+    return {id, sched:s, points:PK.simulate(s, inst.k, o.duration, SIM_SPD).points, m:PK.metrics(s, inst.k, o.duration, inst)}; })};
 }
 function simClear(){
   const cv=simEl('simChart'), ctx=cv.getContext('2d'); ctx.clearRect(0,0,cv.width,cv.height);
   ctx.fillStyle="#666"; ctx.font="26px sans-serif"; ctx.fillText("Fix the input above to compute", 70, cv.height/2);
-  ['simLegend','simSS','simTable','simHover','simPlan','simWhyBody'].forEach(id=>simEl(id).innerHTML='');
+  ['simLegend','simSS','simTable','simHover','simPlan','simWhyBody','simCmpTable'].forEach(id=>simEl(id).innerHTML='');
   simEl('simCsvBtn').disabled=true;
 }
 
@@ -1138,16 +1193,17 @@ function simPlan(){
   simEl('simPlan').innerHTML =
     `<div class="stats" style="margin-top:0;margin-bottom:8px">
       <div class="stat"><b>${F.mg(daily)} mg/day</b><span>daily amount (${F.mg(L.o.W)} mg/wk ÷ 7)</span></div>
-      <div class="stat"><b>${F.mg(L.ss.dTau)} mg</b><span>regular dose, ${every}</span></div>
-      <div class="stat"><b>${F.mg(L.ss.load)} mg</b><span>up-front dose for D (= L)</span></div></div>
+      <div class="stat"><b>${F.mg(L.inst.dTau)} mg</b><span>regular dose, ${every}</span></div>
+      <div class="stat"><b>${F.mg(L.inst.load)} mg</b><span>up-front dose for D (= L)</span></div></div>
     <table style="width:auto"><thead><tr><th>Scenario</th><th>Up-front dose (dose 1, day 0)</th><th>Then each regular dose</th></tr></thead>
     <tbody>${L.res.map(row).join('')}</tbody></table>
     <div class="note" style="margin-top:6px">${okConc ? `Volumes use ${conc} mg/mL. U-100 syringe: 100 units = 1 mL.` : 'Enter the concentration (mg/mL) above to see volumes.'}
-      Under A, dose 1 is just the regular dose, so there is no up-front dose.</div>`;
+      Under A, dose 1 is just the regular dose, so there is no up-front dose.
+      ${L.model==='depot' ? `Depot model: each dose is absorbed from the injection site over days; a single dose peaks about ${F.days(L.ss.tmaxSingle)} days after injection, so the up-front dose in D does not put the body at the plateau on day 0.` : ''}</div>`;
 }
 
 function simWhy(){
-  const L=simLast, F=PK.FMT, ss=L.ss, o=L.o, tau=o.tau, cleared=1-ss.r;
+  const L=simLast, F=PK.FMT, ss=L.inst, o=L.o, tau=o.tau, cleared=1-ss.r;
   const tau_ = tau===1 ? '1 day' : `${tau} days`;
   let alt='';
   const hl2=Math.min(365, o.tHalf*2);
@@ -1164,7 +1220,11 @@ function simWhy(){
   <p style="margin-top:6px"><b>Why it is not ${F.mg(o.W)}.</b> The weekly amount is how much goes in per week; the peak is how much is on board at one moment.
     They are different quantities, and their ratio here (${F.ratio(ss.load/o.W)}) is set only by the half-life and the interval, not by the dose.
     Double the weekly amount and the peak doubles; lengthen the half-life and the plateau rises.${alt}
-    Without an up-front dose (A), the climb to the plateau takes about 3.3 half-lives to reach 90% and 6.6 to reach 99%.</p>`;
+    Without an up-front dose (A), the climb to the plateau takes about 3.3 half-lives to reach 90% and 6.6 to reach 99%.</p>
+  ${L.model==='depot' ? `<p style="margin-top:6px"><b>Depot absorption (ka ${L.ka} per day).</b> The steps above are the instant-input model.
+    With absorption, each dose first sits at the injection site and moves into the body over days. The average on board is unchanged at
+    ${F.mg(L.ss.mean)} mg, because every mg is still cleared at the same rate; absorption only smooths each interval: peak ${F.mg(L.ss.peak)} mg about
+    ${F.days(L.ss.peakAfter)} days after each dose, trough ${F.mg(L.ss.trough)} mg.</p>` : ''}`;
 }
 
 function simDraw(){
@@ -1173,7 +1233,9 @@ function simDraw(){
   const padL=70,padR=20,padT=18,padB=46, plotW=W-padL-padR, plotH=H-padT-padB;
   const pct=sim.units==='pct', sc=pct?100/L.ss.peak:1, col=simColors(), dur=L.o.duration;
   const vis=L.res.filter(r=>sim.show[r.id]);
-  let ymax=L.ss.peak*sc; vis.forEach(r=>r.points.forEach(p=>{ if(p.a*sc>ymax) ymax=p.a*sc; }));
+  const ghost=L.cmp ? L.cmp.res.filter(r=>sim.show[r.id]) : [];
+  let ymax=L.ss.peak*sc; vis.concat(ghost).forEach(r=>r.points.forEach(p=>{ if(p.a*sc>ymax) ymax=p.a*sc; }));
+  if(L.cmp && L.cmp.ss.peak*sc>ymax) ymax=L.cmp.ss.peak*sc;
   ymax=ymax*1.10||1;
   const X=t=>padL+t/dur*plotW, Y=v=>padT+plotH-(v/ymax)*plotH;
   L.geo={padL, plotW, dur, W};
@@ -1191,10 +1253,15 @@ function simDraw(){
     ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(W-padR,y);ctx.stroke(); ctx.setLineDash([]);
     ctx.fillStyle="#bbbbbb"; ctx.textAlign="right"; ctx.fillText(label, W-padR-6, y-6); ctx.textAlign="left"; };
   ref(L.ss.peak,[10,6],'SS peak'); if(sim.trough) ref(L.ss.trough,[3,6],'SS trough');
+  if(L.cmp) ref(L.cmp.ss.peak,[4,8],`SS peak at ${L.cmp.o.tHalf} d`);
+  ghost.forEach(r=>{ ctx.strokeStyle=col[r.id]; ctx.globalAlpha=0.55; ctx.lineWidth=1.8; ctx.setLineDash([8,6]); ctx.beginPath();
+    r.points.forEach((p,i)=>{ const x=X(p.t), y=Y(p.a*sc); i?ctx.lineTo(x,y):ctx.moveTo(x,y); }); ctx.stroke(); });
+  ctx.globalAlpha=1; ctx.setLineDash([]);
   vis.forEach(r=>{ ctx.strokeStyle=col[r.id]; ctx.lineWidth=2.6; ctx.beginPath();
     r.points.forEach((p,i)=>{ const x=X(p.t), y=Y(p.a*sc); i?ctx.lineTo(x,y):ctx.moveTo(x,y); }); ctx.stroke(); });
   simEl('simLegend').innerHTML = vis.map(r=>`<span><span class="swatch" style="background:${col[r.id]}"></span>${SIM_LABEL[r.id]}</span>`).join('')
-    + `<span><span class="swatch" style="background:#bbb"></span>SS peak (dashed)</span>`;
+    + `<span><span class="swatch" style="background:#bbb"></span>SS peak (dashed)</span>`
+    + (L.cmp ? `<span>dashed curves: same doses at half-life ${L.cmp.o.tHalf} d</span>` : '');
 }
 function simHover(e){
   const L=simLast; if(!L || !L.geo) return;
@@ -1203,11 +1270,11 @@ function simHover(e){
   const t=Math.max(0, Math.min(L.geo.dur, (x-L.geo.padL)/L.geo.plotW*L.geo.dur));
   const pct=sim.units==='pct', F=PK.FMT;
   simEl('simHover').textContent = `t = ${F.days(t)} d · ` + L.res.filter(r=>sim.show[r.id])
-    .map(r=>{ const a=PK.amountAt(r.points, L.ss.k, t); return `${r.id} ${pct?F.pct(a/L.ss.peak*100)+'%':F.mg(a)+' mg'}`; }).join(' · ');
+    .map(r=>{ const a=L.model==='depot' ? PK.interpAt(r.points, t) : PK.amountAt(r.points, L.ss.k, t); return `${r.id} ${pct?F.pct(a/L.ss.peak*100)+'%':F.mg(a)+' mg'}`; }).join(' · ');
 }
 function simTables(){
   const L=simLast, F=PK.FMT, m0=L.res[0].m;
-  simEl('simSS').innerHTML = [[F.mg(m0.ssPeak),'SS peak mg'],[F.mg(m0.ssTrough),'SS trough mg'],[F.mg(m0.load),'L (load) mg'],
+  simEl('simSS').innerHTML = [[F.mg(m0.ssPeak),'SS peak mg'],[F.mg(m0.ssTrough),'SS trough mg'],[F.mg(L.ss.mean),'SS average mg'],[F.mg(m0.load),'L (load) mg'],
     [F.ratio(m0.loadOverD),'L / regular dose'],[F.ratio(m0.loadOverW),'L / weekly']]
     .map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
   const dose=x=> x ? `dose ${x.index} · d${F.days(x.t)}${x.beyondChart?' (beyond chart)':''}` : '—';
@@ -1223,6 +1290,27 @@ function simTables(){
   const col=simColors();
   simEl('simTable').innerHTML = `<thead><tr><th>Metric</th>${L.res.map(r=>`<th style="color:${col[r.id]}">${r.id}</th>`).join('')}</tr></thead><tbody>`
     + rows.map(([label,fn])=>`<tr><td>${label}</td>${L.res.map(r=>`<td>${fn(r)}</td>`).join('')}</tr>`).join('') + '</tbody>';
+}
+function simInfoLines(){
+  const L=simLast, m=PK.COMPOUND_META[simEl('simComp').value];
+  simEl('simKaInfo').textContent = L.model!=='depot' ? '' :
+    L.kaSrc==='sourced' ? `sourced: Bi 2018, 95% CI ${m.kaRange[0]} to ${m.kaRange[1]} per day (loosely estimated)`
+    : L.kaSrc==='illustrative' ? 'illustrative: same rule as the cycle chart\'s Bateman option, unsourced' : 'custom value';
+  simEl('simCmpInfo').textContent = !sim.cmp || !L.cmp ? '' :
+    L.cmp.src==='range' ? 'other end of the sourced half-life range' : L.cmp.src==='double' ? 'double the half-life (no sourced range)' : 'custom value';
+}
+function simCmpTable(){
+  const L=simLast, F=PK.FMT, el=simEl('simCmpTable');
+  if(!L.cmp){ el.innerHTML=''; return; }
+  const cols=[L, L.cmp], A=x=>x.res.find(r=>r.id==='A').m.thresholds;
+  const entry=(x,p)=>{ const th=A(x).find(t=>t.p===p).sustainedEntry; return `day ${F.days(th.t)}${th.beyondChart?' (beyond chart)':''}`; };
+  const rows=[
+    ['SS peak (mg)', x=>F.mg(x.ss.peak)], ['SS trough (mg)', x=>F.mg(x.ss.trough)], ['SS average (mg)', x=>F.mg(x.ss.mean)],
+    ['Up-front dose for D, L (mg)', x=>F.mg(x.inst.load)],
+    ['A: within 10% of SS peak from', x=>entry(x,0.90)], ['A: within 1% of SS peak from', x=>entry(x,0.99)],
+  ];
+  el.innerHTML = `<thead><tr><th>Same doses, ${L.model==='depot'?'depot model':'instant model'}</th>${cols.map(x=>`<th>half-life ${x.o.tHalf} d</th>`).join('')}</tr></thead><tbody>`
+    + rows.map(([l,fn])=>`<tr><td>${l}</td>${cols.map(x=>`<td>${fn(x)}</td>`).join('')}</tr>`).join('') + '</tbody>';
 }
 function simDownloadCSV(){
   const L=simLast; if(!L) return;
