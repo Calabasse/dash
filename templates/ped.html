@@ -74,8 +74,8 @@
     <h2>Cycle / Protocol <button class="mini primary" onclick="addProtoRow()">+ add compound</button></h2>
     <table id="protoTable">
       <thead><tr>
-        <th>Compound</th><th>Conc (mg/ml)</th><th>Dose (mg)</th><th>Frequency</th>
-        <th>Start</th><th>End</th><th>ml/inj</th><th></th>
+        <th>Compound</th><th>Conc (mg/ml)</th><th>Dose (mg)</th><th>ml/inj</th><th>Frequency</th>
+        <th>Start</th><th>End</th><th></th>
       </tr></thead>
       <tbody></tbody>
     </table>
@@ -612,11 +612,11 @@ function renderProtocol(){
       <td><select onchange="updProto(${i},'comp',this.value)">${compOptions(p.comp)}</select></td>
       <td><select onchange="updProto(${i},'conc',this.value)">${concOptions(p.conc)}</select></td>
       <td><input type="number" value="${p.dose||''}" onchange="updProto(${i},'dose',this.value)"></td>
+      <td style="color:var(--muted)">${ml}</td>
       <td><select onchange="updProto(${i},'freq',this.value)">${freqOptions(p.freq)}</select></td>
       <td><input type="date" value="${p.start||''}" onchange="updProto(${i},'start',this.value)"></td>
       <td>${isSingle(p) ? `<span style="color:var(--dim);font-size:12px" title="Single dose: one injection on the Start date">once, no end date</span>`
         : `<input type="date" value="${p.end||''}" onchange="updProto(${i},'end',this.value)">`}</td>
-      <td style="color:var(--muted)">${ml}</td>
       <td><button class="mini danger" onclick="delProto(${i})">×</button></td>`;
     tb.appendChild(tr);
   });
