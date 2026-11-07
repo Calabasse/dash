@@ -75,7 +75,7 @@
     <table id="protoTable">
       <thead><tr>
         <th>Compound</th><th>Conc (mg/ml)</th><th>Dose (mg)</th><th>Frequency</th>
-        <th>Start</th><th>End</th><th>ml/inj</th><th title="Insulin-syringe units on a U-100 syringe (100 units = 1 mL)">IU/inj (U-100)</th><th></th>
+        <th>Start</th><th>End</th><th>ml/inj</th><th></th>
       </tr></thead>
       <tbody></tbody>
     </table>
@@ -601,9 +601,7 @@ function freqOptions(sel){ return state.frequencies.map(f=>`<option ${f.label===
 function renderProtocol(){
   const tb=document.querySelector('#protoTable tbody'); tb.innerHTML='';
   state.protocol.forEach((p,i)=>{
-    const mlv = (p.dose&&p.conc)? p.dose/p.conc : null;
-    const ml = mlv!=null ? mlv.toFixed(2) : '—';
-    const iu = mlv!=null ? (mlv*100).toFixed(1) : '—';   // U-100 insulin syringe: 100 units = 1 mL
+    const ml = (p.dose&&p.conc)? (p.dose/p.conc).toFixed(2):'—';
     const tr=document.createElement('tr');
     tr.innerHTML=`
       <td><select onchange="updProto(${i},'comp',this.value)">${compOptions(p.comp)}</select></td>
@@ -614,7 +612,6 @@ function renderProtocol(){
       <td>${isSingle(p) ? `<span style="color:var(--dim);font-size:12px" title="Single dose: one injection on the Start date">once, no end date</span>`
         : `<input type="date" value="${p.end||''}" onchange="updProto(${i},'end',this.value)">`}</td>
       <td style="color:var(--muted)">${ml}</td>
-      <td style="color:var(--muted)" title="${p.dose||0} mg ÷ ${p.conc||0} mg/mL × 100">${iu}</td>
       <td><button class="mini danger" onclick="delProto(${i})">×</button></td>`;
     tb.appendChild(tr);
   });

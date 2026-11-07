@@ -293,10 +293,6 @@ test.describe('protocol: single-date rows and curve modes', () => {
       const last = page.locator('#protoTable tbody tr').nth(3);
       await expect(last.locator('input[type=date]')).toHaveCount(1);
       await expect(last).toContainText('once, no end date');
-      // U-100 units column: 182 mg / 250 mg/mL = 0.728 mL = 72.8 units
-      await expect(page.locator('#protoTable thead')).toContainText('IU/inj (U-100)');
-      await expect(last.locator('td').nth(7)).toHaveText('72.8');
-      await expect(last.locator('td').nth(6)).toHaveText('0.73');
       const s = await page.evaluate(() => buildSeries().series[3]);
       expect(s.events).toBe(1);
       const legend = page.locator('#legend > span');
