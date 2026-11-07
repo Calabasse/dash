@@ -50,7 +50,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-11-07T06:30:20.676027",
+        "generated_at": "2026-11-07T07:09:56.664043",
         "fatigue_signal": {
           "bent over row barbell": 1.4979233838889796,
           "chest dip assisted": 0.9375,
@@ -1455,7 +1455,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-11-07T06:30:20.676027",
+        "generated_at": "2026-11-07T07:09:56.664043",
         "fatigue_signal": {
           "bent over row barbell": 1.4979233838889796,
           "chest dip assisted": 0.9375,
@@ -2548,7 +2548,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-11-07T06:30:20.676027",
+        "generated_at": "2026-11-07T07:09:56.664043",
         "fatigue_signal": {
           "bent over row barbell": 1.4979233838889796,
           "chest dip assisted": 0.9375,
@@ -4327,7 +4327,7 @@ window.PROGRAM = {
           }
         },
         "session_id": null,
-        "generated_at": "2026-11-07T06:30:20.676027",
+        "generated_at": "2026-11-07T07:09:56.664043",
         "fatigue_signal": {
           "bent over row barbell": 1.4979233838889796,
           "chest dip assisted": 0.9375,
